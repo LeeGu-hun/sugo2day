@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-MainPage
+<jsp:forward page="/board/boardList" />
 </body>
 </html>
