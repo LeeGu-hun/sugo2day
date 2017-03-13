@@ -137,7 +137,7 @@
 		</dependency>     
 		
 		<!-- DB connection -->
-		<!-- 수정 필요 -->
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
