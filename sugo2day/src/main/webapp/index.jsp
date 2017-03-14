@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:forward page="/board/boardList" />
+<!--  sugo2day-controller 에서 /main 을 defaultPage로 매핑 했으므로 
+자동으로 defaultPage.jsp 로 forwarding -->
+<jsp:forward page="/main" />
 </body>
 </html>

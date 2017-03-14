@@ -14,7 +14,7 @@
 	<mvc:default-servlet-handler />
 
 	<mvc:view-resolvers>
-		<mvc:jsp prefix="/WEB-INF/views" />
+		<mvc:jsp prefix="/WEB-INF/views/" />
 	</mvc:view-resolvers>
 
 </beans>
