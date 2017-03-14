@@ -21,9 +21,9 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				classpath:spring-mvc.xml
-				classpath:spring-controller.xml
-				classpath:spring-member.xml
+				classpath:sugo2day-member.xml
+				classpath:sugo2day-mvc.xml
+				classpath:sugo2day-controller.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
