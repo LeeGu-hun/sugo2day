@@ -16,7 +16,7 @@
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
 			value="jdbc:mysql://localhost/spring4fs?characterEncoding=utf8" />
-		<property name="user" value="db7" />
+		<property name="user" value="sugo2day" />
 		<property name="password" value="1234" />
 	</bean>
 

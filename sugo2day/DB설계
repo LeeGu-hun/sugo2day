@@ -1,0 +1,27 @@
+DB 설계
+
+1. MEMBER TABLE
+ID : 보여주지 않는 고유값. 가입 순서대로 자동 증가
+- int, auto_increment, PRIMARY KEY
+- 입력 Form X
+EMAIL : 로그인시 사용할 ID
+- varchar(255)
+- 입력 Form : input type=text
+* unique key (EMAIL)) engine=InnoDB character set = utf8;
+PASSWORD : 사용할 비밀번호
+- varchar(100)
+- 입력 Form : input type=text 
+NAME : 서비스 내에서 사용할 닉네임
+- varchar(100)
+- 입력 Form : input type=text
+GENDER : 남/여
+- varchar(100)
+- 입력 Form : Radiobox
+REGDATE : 가입 일자
+- datetime
+- 입력 Form X
+ENTERPRISE : 기업회원 여부
+- boolean,
+- 입력 Form : Checkbox
+
+******** Query.sql 참조
