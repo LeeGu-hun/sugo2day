@@ -1,6 +1,7 @@
 package member.register;
 
 public class RegisterRequest {
+	// DB에 맞게 추가해야 됨
 	private String email;
 	private String password;
 	private String confirmPassword;
@@ -10,6 +11,8 @@ public class RegisterRequest {
 		return password.equals(confirmPassword);
 	}
 	
+	
+	// Getter Setter도 새로
 	public String getEmail() {
 		return email;
 	}
