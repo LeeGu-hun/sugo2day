@@ -10,20 +10,7 @@
 	<!-- CSS는 추후에 -->
 
 
-	<!-- 페이지 전체 영역 -->
-	<div id="div-wrapper">
 	
-	
-		<!-- Header 부분 -->
-		
-		<div id="div-header">
-			<p>
-				<b><a href="#">This is a link1</a></b>
-				<b><a href="#">This is a link2</a></b>
-				<b><a href="#">This is a link3</a></b>
-			</p>
-			<h3>헤더 영역</h3>
-		</div>
 		
 		<!-- Content 부분 -->
 		<div id="div-content">
@@ -53,8 +40,10 @@
 						<li>퀘스트
 							<ol>
 								<li>
-								<a href=/project/main1>퀘스트 작성</a>
+								<a href=/project/quest/questReg>퀘스트 작성</a>
+								<a href="<c:url value="/login" />">[로그인]</a>
 								</li>
+				
 				
 								
 								<li>진행중인 퀘스트</li>
@@ -83,11 +72,7 @@
 			</div>
 
 
-			<!-- Footer 부분 -->
-			<div id="div-footer">
-				<h1>푸터 영역</h1>
-				
-			</div>
+		
 		</div>
 </body>
 </html>
