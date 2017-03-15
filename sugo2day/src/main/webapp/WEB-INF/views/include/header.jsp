@@ -23,6 +23,9 @@
 				<b><a href="#">This is a link3</a></b>
 			</p>
 			<h3>헤더 영역</h3>
+			
+			<!--  Register Test -->
+			<p><a href="<c:url value="/register/registerAgree" />">[회원가입]</a></p>
 		</div>
 		
 	</div>
