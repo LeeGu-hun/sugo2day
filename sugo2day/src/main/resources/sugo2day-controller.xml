@@ -10,6 +10,8 @@
 	
 	<mvc:view-controller path="/main" view-name="defaultPage" />
 	<mvc:view-controller path="/login/**" view-name="login" />
+	
+	<mvc:view-controller path="/main1" view-name="mainPage" />
 
 	<!-- 아래에 Controller Class Bean 등록 -->
 

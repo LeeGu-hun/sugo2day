@@ -12,10 +12,19 @@
 
 	<!-- 페이지 전체 영역 -->
 	<div id="div-wrapper">
+	
+	
 		<!-- Header 부분 -->
+		
 		<div id="div-header">
-			<h1>헤더 영역</h1>
+			<p>
+				<b><a href="#">This is a link1</a></b>
+				<b><a href="#">This is a link2</a></b>
+				<b><a href="#">This is a link3</a></b>
+			</p>
+			<h3>헤더 영역</h3>
 		</div>
+		
 		<!-- Content 부분 -->
 		<div id="div-content">
 			<!-- 여기서 로그인 Form // 회원가입 만들어라 -->
@@ -43,7 +52,11 @@
 					<ul>
 						<li>퀘스트
 							<ol>
-								<li>퀘스트작성</li>
+								<li>
+								<a href=/project/main1>퀘스트 작성</a>
+								</li>
+				
+								
 								<li>진행중인 퀘스트</li>
 								<li>퀘스트 리스트</li>
 								<li>결과 분석</li>
@@ -64,15 +77,16 @@
 						</li>
 					</ul>
 				</div>
-				
+
 				<!-- 스케줄러 -->
 				<div>CLENDAR</div>
 			</div>
-			
-			
+
+
 			<!-- Footer 부분 -->
 			<div id="div-footer">
 				<h1>푸터 영역</h1>
+				
 			</div>
 		</div>
 </body>
