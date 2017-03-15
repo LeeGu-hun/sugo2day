@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	margin: 0 auto;
+	background: #ff8040;
+	overflow: hidden;
+}
+
+#left-wrap {
+	background: #AAB9FF;
+	width: 280px;
+	height: 950px;
+	list-style: none;
+	float: left;
+	
+}
+
+#right-wrap {
+	position: relative;
+	float: left;
+	
+}
+
+#header {
+	background: #288CD2;
+	width: 1400px;
+	height: 100px;
+}
+
+#content {
+	background: #FFDCE1;
+	width: 1400px;
+	height: 750px;
+}
+
+#footer {
+	background: #5AC8C8;
+	width: 1400px;
+	height: 100px;
+	clear: left;
+}

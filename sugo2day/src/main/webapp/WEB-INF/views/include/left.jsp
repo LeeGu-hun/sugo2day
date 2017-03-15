@@ -43,9 +43,6 @@
 								<a href=/project/quest/questReg>퀘스트 작성</a>
 								<a href="<c:url value="questReg" />">[로그인]</a>
 								</li>
-				
-				
-								
 								<li>진행중인 퀘스트</li>
 								<li>퀘스트 리스트</li>
 								<li>결과 분석</li>
