@@ -25,7 +25,7 @@
 			<h3>헤더 영역</h3>
 			
 			<!--  Register Test -->
-			<p><a href="<c:url value="/register/registerAgree" />">[회원가입]</a></p>
+			<p><a href="<c:url value="/register/registerTerm" />">[회원가입]</a></p>
 		</div>
 		
 	</div>

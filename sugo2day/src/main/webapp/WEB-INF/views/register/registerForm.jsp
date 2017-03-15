@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
-	function memRegSucces() {
-		document.getElementById("").submit();
+	function memRegSuccess() {
+		document.getElementById("registerFrm").submit();
 	}
 </script>
 <title>Insert title here</title>
@@ -61,11 +61,10 @@
 								<div id="join_radio" class="join_row">
 									<span id="radio_box"> <span id="rb_man"
 										class="rb_select"> <input type="radio" id="man"
-											value="0" class="gender_check" onclick="man()?"> <label
+											value="0" class="gender_check"> <label
 											id="lb_man">남자</label>
 									</span> <span id="rb_woman" class="rb_select"> <input
-											type="radio" id="woman" value="1" class="gender_check"
-											onclick="woman()?"> <label id="lb_woman">여자</label>
+											type="radio" id="woman" value="1" class="gender_check"> <label id="lb_woman">여자</label>
 									</span> <!-- 온클릭 설정 부탁드려용  -->
 									</span>
 								</div>

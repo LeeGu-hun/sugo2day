@@ -62,6 +62,7 @@ public class RegisterController {
 		
 		try {
 			memberRegisterService.regist(regReq);
+			System.out.println("등록 성공");
 			return "register/registerSuccess";
 		} catch (AlreadyExistingMemberException ex) {
 			errors.rejectValue("email", "duplicate");
