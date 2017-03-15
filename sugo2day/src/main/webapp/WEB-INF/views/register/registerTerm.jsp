@@ -149,7 +149,7 @@
 							</a>
 						</span>
 						<span>
-							<a href="#" onclick="submitㅁgree();" id="btn_agree">
+							<a href="#" onclick="submitagree();" id="btn_agree">
 								동의
 							</a>
 						</span>
