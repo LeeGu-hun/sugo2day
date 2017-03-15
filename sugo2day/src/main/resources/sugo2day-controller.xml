@@ -10,7 +10,10 @@
 	
 	<mvc:view-controller path="/main" view-name="defaultPage" />
 	<mvc:view-controller path="/login/**" view-name="login" />
-	<mvc:view-controller path="/quest/questReg" view-name="questReg" />
+	
+	
+	<mvc:view-controller path="/quest/questReg" view-name="/quest/questReg" />
+	<mvc:view-controller path="/quest/questList" view-name="/quest/questList" />
 	
 	<mvc:resources location="/css/**" mapping="/css/**"/>
 
