@@ -13,7 +13,7 @@
 	
 		
 		<!-- Content 부분 -->
-		<div id="div-content">
+		<div id="div-content" >
 			<!-- 여기서 로그인 Form // 회원가입 만들어라 -->
 
 
@@ -41,7 +41,7 @@
 							<ol>
 								<li>
 								<a href=/project/quest/questReg>퀘스트 작성</a>
-								<a href="<c:url value="/login" />">[로그인]</a>
+								<a href="<c:url value="questReg" />">[로그인]</a>
 								</li>
 				
 				
