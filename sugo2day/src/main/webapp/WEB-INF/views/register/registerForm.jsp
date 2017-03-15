@@ -101,18 +101,18 @@
 							</div>
 						</fieldset>
 						<div id="button_cof">
-								<span>
-									<a href="#" onclick="submitDisagree();" id="form_discof">
-										취소
-									</a>
-								</span>
-								<span>
-									<a href="#" onclick="submitagree();" id="form_cof">
-										확인
-									</a>
-								</span>
-								<!-- 확인버튼을 눌렀을때 회원가입완료 페이지(registerEnd)으로 이동 취소 버튼누를시 메인화면으로 / 확인버튼은 초록색 취소는 빨강색 -->
-							</div>
+							<span>
+								<a href="#" onclick="submitDisagree();" id="form_discof">
+									취소
+								</a>
+							</span>
+							<span>
+								<a href="#" onclick="submitagree();" id="form_cof">
+									확인
+								</a>
+							</span>
+							<!-- 확인버튼을 눌렀을때 회원가입완료 페이지(registerEnd)으로 이동 취소 버튼누를시 메인화면으로 / 확인버튼은 초록색 취소는 빨강색 -->
+						</div>
 					</form>
 				</div>
 			</div>
