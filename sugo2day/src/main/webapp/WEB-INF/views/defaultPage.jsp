@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 테스트용 주석 
  	<%@ include file="/WEB-INF/views/include/left.jsp" %>
+ 	-->
+ 	기본페이지
 </body>
 </html>

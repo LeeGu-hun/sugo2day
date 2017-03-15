@@ -15,6 +15,9 @@
 
 	<!-- 아래에 Controller Class Bean 등록 -->
 
+	<bean class="controller.RegisterController">
+		<property name="memberRegisterService" ref="memberRegSvc" />
+	</bean>
 
 </beans>	
 	
