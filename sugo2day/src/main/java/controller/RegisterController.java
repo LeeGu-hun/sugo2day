@@ -35,10 +35,10 @@ public class RegisterController {
 	// 약관 동의 페이지를 통해 가입 양식 폼으로 접근할 때
 	@RequestMapping(value="/register/registerForm", method=RequestMethod.POST)
 	public String handlerForm(
-			@RequestParam(value="agree", defaultValue="false") Boolean agree, Model model) {
+			@RequestParam(value="agree") Boolean agree, Model model) {
 		// 약관 동의를 하지 않으면 되돌아가기
 		if(!agree) {
-			return "register/registerTerm";
+			return "defaultPage";
 		}
 		// 약관 동의를 했으면 registerForm으로 이동
 		model.addAttribute("registerRequest", new RegisterRequest());
@@ -49,6 +49,7 @@ public class RegisterController {
 	@RequestMapping(value="/register/registerSuccess", method=RequestMethod.POST)
 	public String handlerSuccess(RegisterRequest regReq, Errors errors) {
 		// 커맨드 객체에 담긴 값 검증
+		/*
 		System.out.println("***********************************************************");
 		System.out.println(regReq.getEmail() + " email");
 		System.out.println(regReq.getPassword() + " password");
@@ -57,6 +58,7 @@ public class RegisterController {
 		System.out.println(regReq.getGender() + " gender");
 		System.out.println(regReq.getBirthday() + " birthday");
 		System.out.println("***********************************************************");
+		*/
 		
 		// 전 단계에서 model.addAttribute로 커맨드객체 regReq에 값을 담았다.
 		// 작성된 값 검증
