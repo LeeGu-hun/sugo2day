@@ -1,19 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<!-- CSS는 추후에 -->
-
-
-	<!-- 페이지 전체 영역 -->
-	<div id="div-wrapper">
-
-
 		<!-- Header 부분 -->
 
 		<div id="div-header">
@@ -36,7 +22,6 @@
 					<a href="<c:url value='/edit/changePassword' />">[비밀번호 변경]</a></p>
 			</c:if>
 			</div>
-
-	</div>
+		</div>
 </body>
 </html>
