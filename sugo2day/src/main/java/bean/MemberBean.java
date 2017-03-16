@@ -2,6 +2,8 @@ package bean;
 
 import java.util.Date;
 
+import exception.IdPasswordNotMatchingException;
+
 public class MemberBean {
 		
 	private Long id;
@@ -63,6 +65,17 @@ public class MemberBean {
 	}
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
+	}
+	
+	public boolean matchPassword(String password) {
+		return (this.password.equals(password)) ? true : false;
+	}
+	
+	public void changePassword(String oldPassword, String newPassword) {
+		if(!password.equals(oldPassword)) {
+			throw new IdPasswordNotMatchingException();
+		}
+		this.password = newPassword;
 	}
 		
 }

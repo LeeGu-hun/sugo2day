@@ -37,4 +37,12 @@
 		<constructor-arg ref="memberDao" />
 	</bean>
 	
+	<bean id="authService" class="member.login.AuthService">
+		<property name="memberDao" ref="memberDao" />
+	</bean>
+	
+	<bean id="changePwdSvc" class="member.edit.ChangePasswordService">
+		<constructor-arg ref="memberDao" />
+	</bean>
+	
 </beans>
