@@ -20,6 +20,7 @@
 					<p>${authInfo.name }님, 환영합니다.</p>
 					<p><a href="<c:url value='/logout' />">[로그아웃]</a>&nbsp;&nbsp;&nbsp;
 					<a href="<c:url value='/edit/changePassword' />">[비밀번호 변경]</a></p>
+					<a href="<c:url value="/boardList" />">[게시판]</a></p>
 			</c:if>
 			</div>
 		</div>

@@ -28,6 +28,8 @@
 	<bean class="controller.ChangePwdController">
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>
-
+	<bean class="controller.BoardController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
 </beans>	
 	
