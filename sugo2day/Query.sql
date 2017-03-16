@@ -15,14 +15,14 @@ create table MEMBER(
 	BIRTHDAY date not null,
 	GENDER varchar(100) not null,
 	REGDATE date not null,
-	ENTERPRISE varchar(50) null,
 	constraint member_id_pk primary key(id)
 );
 
+// SEQUENCE 사용은 보류
 CREATE SEQUENCE memberID_seq START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCYCLE;
 
 INSERT INTO MEMBER
-values(memberID_seq.nextval, 'admin@admin.com', 1234, 'admin', '1987-11-14', 'male', '2017-03-15', 'false');
+values(memberID_seq.nextval, 'admin@admin.com', 1234, 'admin', '1987-11-14', 'male', '2017-03-15');
 
 
 
@@ -43,6 +43,7 @@ CREATE TABLE USER_BOARD(
     constraint board_num_pk primary key(BOARD_NUM)
 ); 
 
+// SEQUENCE 사용은 보류
 CREATE SEQUENCE boardNUM_seq START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCYCLE;
 
 INSERT INTO USER_BOARD

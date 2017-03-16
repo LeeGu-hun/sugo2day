@@ -7,7 +7,6 @@ public class RegisterRequest {
 	private String name;
 	private String birthday;
 	private String gender;
-	private boolean enterprise;
 
 	
 	public boolean isPasswordEqaulToConfirmPassword() {
@@ -61,12 +60,5 @@ public class RegisterRequest {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-	public boolean isEnterprise() {
-		return enterprise;
-	}
-
-	public void setEnterprise(boolean enterprise) {
-		this.enterprise = enterprise;
-	}
+	
 }

@@ -11,18 +11,16 @@ public class MemberBean {
 	private String birthday;
 	private String gender;
 	private Date registerDate;
-	private boolean enterprise;
 	
 		
 	public MemberBean(String email, String password, String name, String birthday, String gender,
-			Date registerDate, boolean enterprise) {
+			Date registerDate) {
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.birthday = birthday;
 		this.gender = gender;
 		this.registerDate = registerDate;
-		this.enterprise = enterprise;
 	}
 	public Long getId() {
 		return id;
@@ -66,12 +64,5 @@ public class MemberBean {
 	public void setRegisterDate(Date registerDate) {
 		this.registerDate = registerDate;
 	}
-	public boolean isEnterprise() {
-		return enterprise;
-	}
-	public void setEnterprise(boolean enterprise) {
-		this.enterprise = enterprise;
-	}
-	
-	
+		
 }

@@ -18,6 +18,7 @@ import bean.MemberBean;
 
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
+	private long rsId = 0;
 	
 	// 	중복되는 코드 부분 정리
 	private RowMapper<MemberBean> memRowMapper = new RowMapper<MemberBean>() {
@@ -29,8 +30,7 @@ public class MemberDao {
 					rs.getString("NAME"),
 					rs.getString("BIRTHDAY"),
 					rs.getString("GENDER"),
-					rs.getTimestamp("REGDATE"),
-					rs.getBoolean("ENTERPRISE"));
+					rs.getTimestamp("REGDATE"));
 			member.setId(rs.getLong("ID"));
 			return member;
 		}
@@ -54,21 +54,28 @@ public class MemberDao {
 	
 	// 회원 신규 등록 (member.register)
 	public void insert(final MemberBean member) {
-		KeyHolder keyHolder = new GeneratedKeyHolder();
+						
+		rsId = jdbcTemplate.queryForObject("select max(id) from member ", Integer.class);
+		
+		if(rsId >= Math.max(rsId, 0)) {
+			rsId = rsId + 1;
+		} else if(rsId == 0) {
+			rsId = 1;
+		}
+		
 		jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(
-						"insert into MemberBean (email, password, name, birthday, gender, regdate, enterprise) values (?, ?, ?, ?, ?, ?, ?) ", new String[] {"ID"});
-				pstmt.setString(1, member.getEmail());
-				pstmt.setString(2, member.getPassword());
-				pstmt.setString(3, member.getName());
-				pstmt.setString(4, member.getBirthday());
-				pstmt.setString(5, member.getGender());
-				pstmt.setTimestamp(6, new Timestamp(member.getRegisterDate().getTime()));
-				pstmt.setBoolean(7, member.isEnterprise());
+						"insert into MEMBER (id, email, password, name, birthday, gender, regdate) values (?, ?, ?, ?, ?, ?, ?) ", new String[] {"id"});
+				pstmt.setLong(1, rsId);
+				pstmt.setString(2, member.getEmail());
+				pstmt.setString(3, member.getPassword());
+				pstmt.setString(4, member.getName());
+				pstmt.setString(5, member.getBirthday());
+				pstmt.setString(6, member.getGender());
+				pstmt.setTimestamp(7, new Timestamp(member.getRegisterDate().getTime()));
 				return pstmt;
-			}, keyHolder);
-		Number keyValue = keyHolder.getKey();
-		member.setId(keyValue.longValue());
+			});
+		
 	}
 	
 	// 회원 정보 수정 (member.manage)

@@ -20,7 +20,7 @@ public class MemberRegisterService {
 			throw new AlreadyExistingMemberException("중복된 아이디 " + req.getEmail());
 		}
 		
-		MemberBean newMember = new MemberBean(req.getEmail(), req.getPassword(), req.getName(), req.getBirthday(), req.getGender(), new Date(), req.isEnterprise());
+		MemberBean newMember = new MemberBean(req.getEmail(), req.getPassword(), req.getName(), req.getBirthday(), req.getGender(), new Date());
 		memberDao.insert(newMember);
 	}
 }

@@ -48,6 +48,16 @@ public class RegisterController {
 	// 가입하기를 눌렀을 때,
 	@RequestMapping(value="/register/registerSuccess", method=RequestMethod.POST)
 	public String handlerSuccess(RegisterRequest regReq, Errors errors) {
+		// 커맨드 객체에 담긴 값 검증
+		System.out.println("***********************************************************");
+		System.out.println(regReq.getEmail() + " email");
+		System.out.println(regReq.getPassword() + " password");
+		System.out.println(regReq.getConfirmPassword() + " confirm password");
+		System.out.println(regReq.getName() + " nick name");
+		System.out.println(regReq.getGender() + " gender");
+		System.out.println(regReq.getBirthday() + " birthday");
+		System.out.println("***********************************************************");
+		
 		// 전 단계에서 model.addAttribute로 커맨드객체 regReq에 값을 담았다.
 		// 작성된 값 검증
 		new RegisterRequestValidator().validate(regReq, errors);
@@ -62,7 +72,6 @@ public class RegisterController {
 		
 		try {
 			memberRegisterService.regist(regReq);
-			System.out.println("등록 성공");
 			return "register/registerSuccess";
 		} catch (AlreadyExistingMemberException ex) {
 			errors.rejectValue("email", "duplicate");
