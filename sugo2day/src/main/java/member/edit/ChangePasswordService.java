@@ -14,13 +14,13 @@ public class ChangePasswordService {
 	}
 	
 	@Transactional
-	public void changePassword(String email, String oldPwd, String newPwd) {
+	public void changePassword(String email, String oldPwd, String cfnNewPwd) {
 		MemberBean member = memberDao.selectByEmail(email);
 		if(member == null) {
 			throw new MemberNotFoundException();
-		}
+		} 
 		
-		member.changePassword(oldPwd, newPwd);
+		member.changePassword(oldPwd, cfnNewPwd);
 		memberDao.update(member);
 	}
 	

@@ -31,14 +31,25 @@
 		<h2 class="form-pwdChange-heading">비밀번호 변경</h2>
 	
 		<label for="inputCurPassword" class="sr-only">현재 비밀번호</label>
-		<form:password path="currentPassword" id="curPassword" class="form-control"
+		<form:password path="currentPassword" id="inputCurPassword" class="form-control"
 			placeholder="현재 비밀번호"/>
-		<form:errors path="currentPassword" />
+		<div class="error-message">
+			<span class="label label-danger label-large"><form:errors path="currentPassword"/></span>
+		</div>
 	
 		<label for="inputNewPassword" class="sr-only">새 비밀번호</label>
-		<form:password path="newPassword" id="newPassword" class="form-control"
+		<form:password path="newPassword" id="inpuNewPassword" class="form-control"
 			placeholder="새 비밀번호"/>
-		<form:errors path="newPassword" />	
+		<div class="error-message">
+			<span class="label label-danger label-large"><form:errors path="newPassword" /></span>
+		</div>	
+		
+		<label for="inputConfirmNewPassword" class="sr-only">새 비밀번호 확인</label>
+		<form:password path="confirmNewPassword" id="inputNewConfirmPassword" class="form-control"
+			placeholder="새 비밀번호 확인"/>
+		<div class="error-message">
+			<span class="label label-danger label-large"><form:errors path="confirmNewPassword" /></span>
+		</div>	
 		
 		<button class="btn btn-lg btn-primary btn-block" type="submit">변경하기</button>
 	</form:form>

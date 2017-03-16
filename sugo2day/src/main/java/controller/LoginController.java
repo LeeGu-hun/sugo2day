@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import exception.IdPasswordNotMatchingException;
+import exception.MemberNotFoundException;
 import member.login.AuthInfo;
 import member.login.AuthService;
 import member.login.LoginCommand;
@@ -42,26 +43,33 @@ public class LoginController {
 	public String submit(LoginCommand loginCommand, Errors errors,
 			HttpSession session, HttpServletResponse response) {
 		new LoginCommandValidator().validate(loginCommand, errors);
+		
 		if(errors.hasErrors()) {
 			return "login/loginForm";
 		}
+		
 		try {
 			AuthInfo authInfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
 			session.setAttribute("authInfo", authInfo);
 			
 			Cookie rememberCookie = new Cookie("REMEMBER", loginCommand.getEmail());
 			rememberCookie.setPath("/");
+			
 			if(loginCommand.isRmbEmail()) {
 				rememberCookie.setMaxAge(60 * 60 * 24 * 30);
 			} else {
 				rememberCookie.setMaxAge(0);
 			}
 			response.addCookie(rememberCookie);
-			
 			return "redirect:/"; 
+			
 		} catch (IdPasswordNotMatchingException e) {
 			errors.reject("idPasswordNotMatching");
 			return "login/loginForm";
+		} catch (MemberNotFoundException e) {
+			errors.reject("memberNotFound");
+			return "login/loginForm";
+			
 		}
 	}
 	

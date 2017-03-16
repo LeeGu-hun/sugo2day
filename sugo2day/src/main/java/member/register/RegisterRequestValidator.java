@@ -35,15 +35,21 @@ public class RegisterRequestValidator implements Validator {
 				errors.rejectValue("email", "bad");
 			}
 		}
+		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 		ValidationUtils.rejectIfEmpty(errors, "password", "required");
 		ValidationUtils.rejectIfEmpty(errors, "confirmPassword", "required");
+		
 		if(!regReq.getPassword().isEmpty()) {
-			if(!regReq.isPasswordEqaulToConfirmPassword()) {
-				errors.rejectValue("confirmPassword", "nomatch");
+			if(!regReq.getConfirmPassword().isEmpty()) {
+				if(!regReq.isPasswordEqaulToConfirmPassword()) {
+					errors.rejectValue("confirmPassword", "nomatch");
+				}
 			}
 		}
-	
+		
+		ValidationUtils.rejectIfEmpty(errors, "birthday", "required");
+		ValidationUtils.rejectIfEmpty(errors, "gender", "required");
 	}
 	
 	

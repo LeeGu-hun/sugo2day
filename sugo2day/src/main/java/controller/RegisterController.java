@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import exception.AlreadyExistingMemberException;
+import exception.AlreadyExistingNameException;
 import member.register.MemberRegisterService;
 import member.register.RegisterRequest;
 import member.register.RegisterRequestValidator;
@@ -48,35 +49,31 @@ public class RegisterController {
 	// 가입하기를 눌렀을 때,
 	@RequestMapping(value="/register/registerSuccess", method=RequestMethod.POST)
 	public String handlerSuccess(RegisterRequest regReq, Errors errors) {
-		// 커맨드 객체에 담긴 값 검증
-		/*
-		System.out.println("***********************************************************");
-		System.out.println(regReq.getEmail() + " email");
-		System.out.println(regReq.getPassword() + " password");
-		System.out.println(regReq.getConfirmPassword() + " confirm password");
-		System.out.println(regReq.getName() + " nick name");
-		System.out.println(regReq.getGender() + " gender");
-		System.out.println(regReq.getBirthday() + " birthday");
-		System.out.println("***********************************************************");
-		*/
-		
-		// 전 단계에서 model.addAttribute로 커맨드객체 regReq에 값을 담았다.
 		// 작성된 값 검증
 		new RegisterRequestValidator().validate(regReq, errors);
+		
+		// 값을 제대로 가져오는지 테스트
+		System.out.println(regReq.getEmail() + " // Email");
+		System.out.println(regReq.getName() + " // Name");
+		System.out.println(regReq.getPassword() + " // Password");
+		System.out.println(regReq.getConfirmPassword() + " // ConfirmPassword");
+		System.out.println(regReq.getBirthday() + " // Birthday");
+		System.out.println(regReq.getGender() + " // Gender");
 		
 		// 잘못된 입력일 때 registerForm으로
 		if(errors.hasErrors()) {
 			return "register/registerForm";
 		}
 		
-		// try-catch 문을 이용하여 중복된 email이 없을 시 등록 성공, 중복된 email이 존재하면 registerForm으로
-		// RegisterService 내 method 미구현으로 일시적 주석처리, 추후 method 구현 시 주석 아래 return 문 제거
-		
+		// try-catch 문을 이용하여 중복된 email, name이 없을 시 등록 성공, 중복된 email이 존재하면 registerForm으로
 		try {
 			memberRegisterService.regist(regReq);
 			return "register/registerSuccess";
 		} catch (AlreadyExistingMemberException ex) {
 			errors.rejectValue("email", "duplicate");
+			return "register/registerForm";
+		} catch	(AlreadyExistingNameException ex) {
+			errors.rejectValue("name", "duplicate");
 			return "register/registerForm";
 		}
 					

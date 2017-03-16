@@ -3,6 +3,12 @@ package member.edit;
 public class ChangePwdCommand {
 	private String currentPassword;
 	private String newPassword;
+	private String confirmNewPassword;
+	
+	
+	public boolean isPasswordEqaulToConfirmNewPassword() {
+		return newPassword.equals(confirmNewPassword);
+	}
 	
 	public String getCurrentPassword() {
 		return currentPassword;
@@ -15,6 +21,12 @@ public class ChangePwdCommand {
 	}
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
+	}
+	public String getConfirmNewPassword() {
+		return confirmNewPassword;
+	}
+	public void setConfirmNewPassword(String confirmNewPassword) {
+		this.confirmNewPassword = confirmNewPassword;
 	}
 	
 }
