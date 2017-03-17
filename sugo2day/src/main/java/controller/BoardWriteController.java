@@ -41,7 +41,7 @@ public class BoardWriteController {
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		boardCommand.setBoard_writer(authInfo.getId());
-				
+		System.out.println(boardCommand.getBoard_subject() + " // Command 객체 저장된 subject");		
 		MultipartFile multi = boardCommand.getMultiFile();
 		String newFileName = "";
 		// 파일이 많을 경우 업로드 파일 리스트
@@ -63,6 +63,7 @@ public class BoardWriteController {
 				e.printStackTrace();
 			}
 		}
+		
 		boardDao.insert(boardCommand);
 		return "redirect:/board/boardList";
 		

@@ -18,9 +18,6 @@ function pageGo(page) {
 function goWrite(){
 	location.href="./boardWrite";
 }
-function goMemList(){
-	location.href="./member/list";
-}
 
 </script>
 <style>

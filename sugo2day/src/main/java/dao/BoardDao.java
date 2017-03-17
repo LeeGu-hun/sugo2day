@@ -38,7 +38,7 @@ public class BoardDao {
 				public BoardBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 					BoardBean board = new BoardBean(
 							rs.getInt("board_num"),
-							rs.getString("board_writer"),
+							rs.getLong("board_writer"),
 							rs.getInt("board_pass"),
 							rs.getString("board_subject"),
 							rs.getString("board_content"),
@@ -87,7 +87,7 @@ public class BoardDao {
 		@Transactional
 		public void insert(final BoardCommand board) {
 			
-			rsNum = jdbcTemplate.queryForObject("select max(board_num) from uesr_board ", Integer.class);
+			rsNum = jdbcTemplate.queryForObject("select max(board_num) from user_board ", Integer.class);
 			
 			if(rsNum >= Math.max(rsNum, 0)) {
 				rsNum = rsNum + 1;
@@ -97,13 +97,14 @@ public class BoardDao {
 			
 			jdbcTemplate.update((Connection con) -> {
 					PreparedStatement pstmt = con.prepareStatement(
-							"insert into user_board (board_writer, board_pass, board_subject, board_content, board_file, "
-							+ "board_re_ref, board_re_lev, board_re_seq, board_date) values (?, ?, ?, ?, ?, 0, 0, 0, now()) ", new String[] {"num"});
-					pstmt.setLong(1, board.getBoard_writer());
-					pstmt.setInt(2, board.getBoard_pass());
-					pstmt.setString(3, board.getBoard_subject());
-					pstmt.setString(4, board.getBoard_content());
-					pstmt.setString(5, board.getFileName());
+							"insert into user_board (board_num, board_writer, board_pass, board_subject, board_content, board_file, "
+							+ "board_re_ref, board_re_lev, board_re_seq, board_date) values (?, ?, ?, ?, ?, ?, 0, 0, 0, now()) ", new String[] {"num"});
+					pstmt.setInt(1, rsNum);
+					pstmt.setLong(2, board.getBoard_writer());
+					pstmt.setInt(3, board.getBoard_pass());
+					pstmt.setString(4, board.getBoard_subject());
+					pstmt.setString(5, board.getBoard_content());
+					pstmt.setString(6, board.getFileName());
 					return pstmt;
 				});
 			
@@ -137,7 +138,7 @@ public class BoardDao {
 							+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, now()) ", new String[] {"num"});
 			pstmt.setInt(1, rsNum);
 			pstmt.setInt(2, board.getBOARD_PASS());
-			pstmt.setString(3, board.getBOARD_WRITER());
+			pstmt.setLong(3, board.getBOARD_WRITER());
 			pstmt.setString(4, board.getBOARD_SUBJECT());
 			pstmt.setString(5, board.getBOARD_CONTENT());
 			pstmt.setInt(6, board.getBOARD_RE_REF());				// re_ref
@@ -191,14 +192,16 @@ public class BoardDao {
 			List<BoardBean> results;
 			if(srch == null || srch.equals("")){
 				results = jdbcTemplate.query(
-						"select board_num, board_writer, board_subject, board_content, board_re_ref, board_re_lev, "
+						"select board_num, (select m.name from user_board b, member m where m.id = b.board_writer), "
+						+ "board_subject, board_content, board_re_ref, board_re_lev, "
 						+ "board_re_seq, board_readcount, board_date from user_board where "
 						+ "board_num >= ? and board_num <= ? "
 						+ "order by board_re_ref desc, board_re_seq, board_num ",
 						boardRowMapper, startPage, limit);
 			} else {
 				results = jdbcTemplate.query(
-						"select board_num, board_writer, board_subject, board_content, board_re_ref, board_re_lev, "
+						"select board_num, (select m.name from user_board b, member m where m.id = b.board_writer), "
+						+ "board_subject, board_content, board_re_ref, board_re_lev, "
 						+ "board_re_seq, board_readcount, board_date from user_board "
 						+ "where (board_subject like '%?%' or board_content like '%?%' or board_writer like '%?%' ) and "
 						+ "board_num >= ? and board_num <= ? "

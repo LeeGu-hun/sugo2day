@@ -28,23 +28,12 @@ public class BoardListController {
 		int point = (pageMaker.getPage()-1) * 10;
 		count = boardDao.countPage(srch);
 		pageMaker.setCount(count);
-		System.out.println("setCount 종료 시점");
-		System.out.println(srch + " // srch");
-		System.out.println(point + " // point");
-		System.out.println(limit + " // limit");
+				
+		List<BoardBean> boards = boardDao.selectPage(srch, point, limit);
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("boards", boards);
+		return "board/boardList";
 		
-		
-		try {
-			List<BoardBean> boards = boardDao.selectPage(srch, point, limit);
-			model.addAttribute("pageMaker", pageMaker);
-			model.addAttribute("boards", boards);
-			System.out.println("boardList 불러오기 성공");
-			return "board/boardList";
-		} catch (Exception e){
-			e.printStackTrace();
-			System.out.println("boardList 불러오기 실패");
-			return "";
-		}
 		
 	}
 }

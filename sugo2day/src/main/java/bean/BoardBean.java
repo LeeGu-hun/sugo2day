@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BoardBean {
 	private int BOARD_NUM;
-	private String BOARD_WRITER;
+	private Long BOARD_WRITER;
 	private int BOARD_PASS;
 	private String BOARD_SUBJECT;
 	private String BOARD_CONTENT;
@@ -17,7 +17,7 @@ public class BoardBean {
 	
 	public BoardBean() {	}
 
-	public BoardBean(int bOARD_NUM, String bOARD_WRITER, int bOARD_PASS, String bOARD_SUBJECT, String bOARD_CONTENT,
+	public BoardBean(int bOARD_NUM, Long bOARD_WRITER, int bOARD_PASS, String bOARD_SUBJECT, String bOARD_CONTENT,
 			String bOARD_FILE, int bOARD_RE_REF, int bOARD_RE_LEV, int bOARD_RE_SEQ, int bOARD_READCOUNT,
 			Date bOARD_DATE) {
 		super();
@@ -42,11 +42,11 @@ public class BoardBean {
 		BOARD_NUM = bOARD_NUM;
 	}
 
-	public String getBOARD_WRITER() {
+	public Long getBOARD_WRITER() {
 		return BOARD_WRITER;
 	}
 
-	public void setBOARD_WRITER(String bOARD_WRITER) {
+	public void setBOARD_WRITER(Long bOARD_WRITER) {
 		BOARD_WRITER = bOARD_WRITER;
 	}
 

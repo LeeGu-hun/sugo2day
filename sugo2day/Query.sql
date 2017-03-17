@@ -48,3 +48,8 @@ CREATE SEQUENCE boardNUM_seq START WITH 1 INCREMENT BY 1 NOMAXVALUE NOCYCLE;
 
 INSERT INTO USER_BOARD
 values(boardNUM_seq.nextval, 'admin', 1234, 'TEST', 'TEST', null, 1, 1, 1, 0, '2017-03-15');
+
+
+// Foreign Key 설정
+ALTER TABLE USER_BOARD ADD CONSTRAINT BOARD_WRITER_FK FOREIGN KEY(BOARD_WRITER) REFERENCES MEMBER(id);
+select m.name from user_board b, member m where m.id = b.board_writer;
