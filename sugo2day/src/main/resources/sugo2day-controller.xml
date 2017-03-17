@@ -13,8 +13,10 @@
 	<!-- Bootstrap 사용을 위한 경로 Mapping -->	
 	<mvc:resources location="/resources/**" mapping="/resources/" />
 	
+	
 	<!-- 아래에 Controller Class Bean 등록 -->
-
+	
+	<!-- Member 관련 Controller -->
 	<bean class="controller.RegisterController">
 		<property name="memberRegisterService" ref="memberRegSvc" />
 	</bean>
@@ -28,8 +30,32 @@
 	<bean class="controller.ChangePwdController">
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>
-	<bean class="controller.BoardController">
+	
+	<!-- Board 관련 Controller -->
+	<bean class="controller.BoardListController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>	
+	
+	<bean class="controller.BoardWriteController">
 		<property name="boardDao" ref="boardDao" />
 	</bean>
+	
+	<bean class="controller.BoardDeleteController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	<bean class="controller.BoardModifyController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	<bean class="controller.BoardDetailController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	<bean class="controller.BoardReplyController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	
 </beans>	
 	

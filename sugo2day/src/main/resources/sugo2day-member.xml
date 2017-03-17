@@ -29,6 +29,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!--  Member 관련 설정 -->
 	<bean id="memberDao" class="dao.MemberDao">
 		<constructor-arg ref="dataSource" />	
 	</bean>
@@ -36,10 +37,7 @@
 	<bean id="memberRegSvc" class="member.register.MemberRegisterService">
 		<constructor-arg ref="memberDao" />
 	</bean>
-		<bean id="boardDao" class="dao.BoardDao"> 
-		<constructor-arg ref="dataSource" />
-	</bean>
-	
+		
 	<bean id="authService" class="member.login.AuthService">
 		<property name="memberDao" ref="memberDao" />
 	</bean>
@@ -47,5 +45,12 @@
 	<bean id="changePwdSvc" class="member.edit.ChangePasswordService">
 		<constructor-arg ref="memberDao" />
 	</bean>
+	
+		
+	<!--  Board 관련 설정 -->
+	<bean id="boardDao" class="dao.BoardDao">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
 	
 </beans>

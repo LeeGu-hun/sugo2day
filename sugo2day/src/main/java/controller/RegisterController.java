@@ -51,15 +51,7 @@ public class RegisterController {
 	public String handlerSuccess(RegisterRequest regReq, Errors errors) {
 		// 작성된 값 검증
 		new RegisterRequestValidator().validate(regReq, errors);
-		
-		// 값을 제대로 가져오는지 테스트
-		System.out.println(regReq.getEmail() + " // Email");
-		System.out.println(regReq.getName() + " // Name");
-		System.out.println(regReq.getPassword() + " // Password");
-		System.out.println(regReq.getConfirmPassword() + " // ConfirmPassword");
-		System.out.println(regReq.getBirthday() + " // Birthday");
-		System.out.println(regReq.getGender() + " // Gender");
-		
+				
 		// 잘못된 입력일 때 registerForm으로
 		if(errors.hasErrors()) {
 			return "register/registerForm";

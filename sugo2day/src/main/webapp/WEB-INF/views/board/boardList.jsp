@@ -31,20 +31,14 @@ function goMemList(){
 <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
 </head>
 <body>
-
-		<a href="#" onclick="goMemList();">회원목록</a>
+	<c:if test="${empty boards }">
 	<form:form commandName="pageMaker" id="frm">
 		<p>
-			<input type='text' id='txtFilter' onkeyup='{filter();return false}' 
-			onkeypress='javascript:if(event.keyCode==13){ filter(); return false;}'>
-			<input type="submit" value="조회">
 			<input type="button" value="글쓰기" onclick="goWrite();">
-			
 		</p>
 	</form:form>
-
+	</c:if>
 	<c:if test="${! empty boards}">
-	
 		<table >
 			<tr>
 				<th>글번호</th>
@@ -91,10 +85,6 @@ function goMemList(){
 			</tr>
 		</table>
 	</c:if>
-	
 
-
-
-		
 </body>
 </html>

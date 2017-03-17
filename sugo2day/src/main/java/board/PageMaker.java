@@ -1,4 +1,4 @@
-package board.edit;
+package board;
 
 public class PageMaker {
 	Integer page, count;
@@ -64,12 +64,5 @@ public class PageMaker {
 			this.prev = this.start != 1;
 			this.next = this.end * 10 < this.count;
 		}
-		System.out.println("page = " + page);
-		System.out.println("tempEnd = " + tempEnd);
-		System.out.println("this.start =" + this.start);
-		System.out.println("this.end =" + this.end);
-		System.out.println("this.count =" + this.count);
-		System.out.println("this.prev =" + this.prev);
-		System.out.println("this.next =" + this.next);
 	}
 }
