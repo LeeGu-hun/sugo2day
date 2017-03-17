@@ -187,23 +187,22 @@ public class BoardDao {
 		
 		// 페이지 보기
 		public List<BoardBean> selectPage(String srch, int startPage, int limit) {
-			// (select name from member where id = board_writer)
+						
 			List<BoardBean> results;
 			if(srch == null || srch.equals("")){
 				results = jdbcTemplate.query(
-						"select board_num, board_Writer, "
-								+ "board_subject, board_content, board_file, board_re_ref, board_re_lev, "
-								+ "board_re_seq, board_readcount, board_date from user_board "
-								+ "order by board_re_ref desc, board_re_seq, board_num limit ?, ? ",
+						"select board_num, board_writer, board_subject, board_content, board_re_ref, board_re_lev, "
+						+ "board_re_seq, board_readcount, board_date from user_board where "
+						+ "board_num >= ? and board_num <= ? "
+						+ "order by board_re_ref desc, board_re_seq, board_num ",
 						boardRowMapper, startPage, limit);
 			} else {
 				results = jdbcTemplate.query(
-						"select board_num, board_writer, "
-						+ "board_subject, board_content, board_file, board_re_ref, board_re_lev, "
+						"select board_num, board_writer, board_subject, board_content, board_re_ref, board_re_lev, "
 						+ "board_re_seq, board_readcount, board_date from user_board "
-						+ "where (board_subject like '%?%' or board_content like '%?%' or board_writer like '%?%' ) "
-						+ "order by re_ref desc, re_seq, num "
-						+ "limit ?, ? ",
+						+ "where (board_subject like '%?%' or board_content like '%?%' or board_writer like '%?%' ) and "
+						+ "board_num >= ? and board_num <= ? "
+						+ "order by board_re_ref desc, board_re_seq, board_num ",
 						boardRowMapper, srch, srch, srch, startPage, limit);
 			}
 			return results;

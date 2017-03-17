@@ -23,6 +23,17 @@
 <title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=cp%>/resources/bootstrap/css/else/registerTerm.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+function oneCheckbox(x){
+    var obj = document.getElementsByName("agree");
+    for(var i=0; i<obj.length; i++){
+        if(obj[i] != x){
+            obj[i].checked = false;
+        }
+    }
+}
+</script>
 </head>
 <body>
 	<fieldset>
@@ -39,11 +50,13 @@
      		<p class="lead">개인정보를 제공하는데 동의함?</p>
       		<div class="checkbox">
       		<label>
-            	<input type="checkbox" name="agree" value="true">
+            	<input type="checkbox" name="agree" class="check_class" value="true"
+            		onclick="oneCheckbox(this)">
             	 네, 약관에 동의합니다.
           	</label>
           	<label>
-          		<input type="checkbox" name="agree" value="false">
+          		<input type="checkbox" name="agree" class="check_class" value="false"
+          			onclick="oneCheckbox(this)">
           		아니오, 약관에 동의하지 않습니다.
           	</label>	
         	</div>

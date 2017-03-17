@@ -36,7 +36,8 @@
 	<bean id="memberRegSvc" class="member.register.MemberRegisterService">
 		<constructor-arg ref="memberDao" />
 	</bean>
-		<bean id="boardDao" class="dao.BoardDao"> 
+	
+	<bean id="boardDao" class="dao.BoardDao"> 
 		<constructor-arg ref="dataSource" />
 	</bean>
 	

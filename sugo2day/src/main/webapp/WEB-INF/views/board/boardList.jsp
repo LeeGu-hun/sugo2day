@@ -49,20 +49,20 @@ function goMemList(){
 			</tr>
 			<c:forEach var="board" items="${boards}">
 				<tr>
-					<td>${board.num}</td>
+					<td>${board.board_num}</td>
 					<td>
 					<c:choose>
-					<c:when test="${board.re_lev ne 0 }">
-					<c:forEach var="i" begin="0" end="${board.re_lev*2}"
+					<c:when test="${board.board_re_lev ne 0 }">
+					<c:forEach var="i" begin="0" end="${board.board_re_lev*2}"
 					step="1">&nbsp;</c:forEach>▶
 					</c:when>
 					<c:otherwise>▶</c:otherwise></c:choose>
-					<a href="<c:url value="/board/detail/${board.num }"/>">
-							${board.subject}</a></td>
-					<td><fmt:formatDate value="${board.regDate}"
+					<a href="<c:url value="/board/detail/${board.board_num }"/>">
+							${board.board_subject}</a></td>
+					<td><fmt:formatDate value="${board.board_Date}"
 							pattern="yyyy-MM-dd" /></td>
-					<td>${board.writer}</td>
-					<td>${board.readcount}</td>
+					<td>${board.board_writer}</td>
+					<td>${board.board_readcount}</td>
 				</tr>
 			</c:forEach>
 			<tr>
