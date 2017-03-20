@@ -133,4 +133,19 @@ public class BoardDao {
 			jdbcTemplate.update("update board set re_ref = ? where num = ? ",
 					num, num);
 		}
+		
+		// 글 삭제하기
+		public void delete(int num, int pass) {
+			jdbcTemplate.update("delete from board where num = ? and pass = ? ",
+					num, pass);
+		}
+		
+		// 입력받은 비밀번호를 바탕으로 글 삭제하기
+		// 동일한 비밀번호가 여러개일 경우?
+		@Transactional
+		public void checkBoardPass(int pass) {
+			int num = jdbcTemplate.queryForObject("select num from board where pass = ? ", Integer.class);
+			jdbcTemplate.update("delete from board where num = ? and pass = ? ", num, pass);
+		}
+				
 }
