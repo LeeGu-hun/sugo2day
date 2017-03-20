@@ -7,7 +7,6 @@ import org.springframework.validation.Validator;
 import bean.BoardBean;
 
 public class BoardValidator implements Validator {
-
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return BoardBean.class.isAssignableFrom(clazz);
@@ -19,6 +18,4 @@ public class BoardValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "content", "required");
 		
 	}
-	
-
 }

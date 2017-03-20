@@ -22,23 +22,18 @@
 		</tr>
 		<tr>
 			<td>글쓴이</td>
-			<td><input type="text" id="name" name="name"
-				value="${sessionScope.authInfo.name}" readonly ></td>
-			<form:hidden path="board_writer" id="writer" value="${sessionScope.authInfo.id }" />	
-		</tr>
-		<tr>
-			<td>글 비밀번호</td>
-			<td><form:password path="board_pass" /></td>
+			<td><input type="text" value="${sessionScope.authInfo.name}" readonly ></td>
+			<form:hidden path="writer" value="${sessionScope.authInfo.name }" />
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td><form:input path="board_subject" /></td>
+			<td><form:input path="subject" /></td>
 		</tr>	
 		<tr>
 			<td>내용</td>
 			<td>
-				<form:textarea path="board_content" cols="67" rows="15" /><br>
-				<form:errors path="board_content" />
+				<form:textarea path="content" cols="67" rows="15" /><br>
+				<form:errors path="content" />
 			</td>
 		</tr>	
 		<tr>

@@ -5,6 +5,10 @@ public class PageMaker {
 	Integer start, end;
 	Boolean prev, next;
 	
+	public Integer getCount() {
+		return count;
+	}
+	
 	public Integer getStart() {
 		return start;
 	}
@@ -16,9 +20,6 @@ public class PageMaker {
 	}
 	public void setEnd(Integer end) {
 		this.end = end;
-	}
-	public Integer getCount() {
-		return count;
 	}
 	public Boolean getPrev() {
 		return prev;
@@ -32,30 +33,28 @@ public class PageMaker {
 	public void setNext(Boolean next) {
 		this.next = next;
 	}
-	public Integer getPage() { return page; }
-
+	
+	public Integer getPage() {
+		return page;
+	}
+	
 	public void setPage(Integer page) {
-		if (page == null || page < 1) {
+		if(page == null || page < 1) {
 			this.page = 1;
 			return;
 		}
-		this.page = page;
 	}
-
+	
 	public void setCount(Integer count) {
-		if (count < 1) return;
+		if(count < 1) return;
 		this.count = count;
 		calcPage();
 	}
-
+	
 	private void calcPage() {
-		// page변수는 현재 페이지번호
 		int tempEnd = (int) (Math.ceil(page / 10.0) * 10);
-		// 현재 페이지번호를 기준으로 끝 페이지를 계산한다.
-		// 시작 페이지 계산
 		this.start = tempEnd - 9;
-		if (tempEnd * 10 > this.count) {
-			// 가상으로 계산한 tempEnd크기가 실제 count보다 많을경우
+		if(tempEnd * 10 > this.count) {
 			this.end = (int) Math.ceil(this.count / 10.0);
 			this.prev = (this.page == 1) ? false : true;
 			this.next = (this.page >= this.end) ? false : true;
@@ -65,4 +64,5 @@ public class PageMaker {
 			this.next = this.end * 10 < this.count;
 		}
 	}
+
 }

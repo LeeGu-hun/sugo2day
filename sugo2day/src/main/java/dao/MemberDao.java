@@ -11,27 +11,26 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.transaction.annotation.Transactional;
 
 import bean.MemberBean;
 
 public class MemberDao {
 	private JdbcTemplate jdbcTemplate;
-	private long rsId = 0;
 	
 	// 	중복되는 코드 부분 정리
 	private RowMapper<MemberBean> memRowMapper = new RowMapper<MemberBean>() {
 		
 		@Override
 		public MemberBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-			MemberBean member = new MemberBean(rs.getString("EMAIL"),
+			MemberBean member = new MemberBean(
+					rs.getString("EMAIL"),
 					rs.getString("PASSWORD"),
 					rs.getString("NAME"),
 					rs.getString("BIRTHDAY"),
 					rs.getString("GENDER"),
 					rs.getTimestamp("REGDATE"));
-			member.setId(rs.getLong("ID"));
+			member.setId(rs.getInt("ID"));
 			return member;
 		}
 	};
@@ -53,28 +52,23 @@ public class MemberDao {
 	}
 	
 	// 회원 신규 등록 (member.register)
+	@Transactional
 	public void insert(final MemberBean member) {
-						
-		rsId = jdbcTemplate.queryForObject("select max(id) from member ", Integer.class);
-		
-		if(rsId >= Math.max(rsId, 0)) {
-			rsId = rsId + 1;
-		} else if(rsId == 0) {
-			rsId = 1;
-		}
-		
 		jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(
-						"insert into MEMBER (id, email, password, name, birthday, gender, regdate) values (?, ?, ?, ?, ?, ?, ?) ", new String[] {"id"});
-				pstmt.setLong(1, rsId);
-				pstmt.setString(2, member.getEmail());
-				pstmt.setString(3, member.getPassword());
-				pstmt.setString(4, member.getName());
-				pstmt.setString(5, member.getBirthday());
-				pstmt.setString(6, member.getGender());
-				pstmt.setTimestamp(7, new Timestamp(member.getRegisterDate().getTime()));
+						"insert into MEMBER (id, email, password, name, birthday, gender, regdate)"
+						+ " values (mID_seq.nextval, ?, ?, ?, ?, ?, ?) ", new String[] {"id"});
+				pstmt.setString(1, member.getEmail());
+				pstmt.setString(2, member.getPassword());
+				pstmt.setString(3, member.getName());
+				pstmt.setString(4, member.getBirthday());
+				pstmt.setString(5, member.getGender());
+				pstmt.setTimestamp(6, new Timestamp(member.getRegisterDate().getTime()));
 				return pstmt;
 			});
+	
+		jdbcTemplate.queryForObject("select mID_seq.currval from dual ", Integer.class);
+		
 		
 	}
 	

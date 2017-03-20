@@ -3,124 +3,127 @@ package bean;
 import java.util.Date;
 
 public class BoardBean {
-	private int BOARD_NUM;
-	private Long BOARD_WRITER;
-	private int BOARD_PASS;
-	private String BOARD_SUBJECT;
-	private String BOARD_CONTENT;
-	private String BOARD_FILE;
-	private int BOARD_RE_REF;
-	private int BOARD_RE_LEV;
-	private int BOARD_RE_SEQ;
-	private int BOARD_READCOUNT;
-	private Date BOARD_DATE;
+	private int NUM;
+	private String WRITER;
+	private int PASS;
+	private String SUBJECT;
+	private String CONTENT;
+	private String FILES;
+	private int RE_REF;
+	private int RE_LEV;
+	private int RE_SEQ;
+	private int READCOUNT;
+	private Date REGDATE;
 	
 	public BoardBean() {	}
 
-	public BoardBean(int bOARD_NUM, Long bOARD_WRITER, int bOARD_PASS, String bOARD_SUBJECT, String bOARD_CONTENT,
-			String bOARD_FILE, int bOARD_RE_REF, int bOARD_RE_LEV, int bOARD_RE_SEQ, int bOARD_READCOUNT,
-			Date bOARD_DATE) {
-		super();
-		BOARD_NUM = bOARD_NUM;
-		BOARD_WRITER = bOARD_WRITER;
-		BOARD_PASS = bOARD_PASS;
-		BOARD_SUBJECT = bOARD_SUBJECT;
-		BOARD_CONTENT = bOARD_CONTENT;
-		BOARD_FILE = bOARD_FILE;
-		BOARD_RE_REF = bOARD_RE_REF;
-		BOARD_RE_LEV = bOARD_RE_LEV;
-		BOARD_RE_SEQ = bOARD_RE_SEQ;
-		BOARD_READCOUNT = bOARD_READCOUNT;
-		BOARD_DATE = bOARD_DATE;
-	}
-
-	public int getBOARD_NUM() {
-		return BOARD_NUM;
-	}
-
-	public void setBOARD_NUM(int bOARD_NUM) {
-		BOARD_NUM = bOARD_NUM;
-	}
-
-	public Long getBOARD_WRITER() {
-		return BOARD_WRITER;
-	}
-
-	public void setBOARD_WRITER(Long bOARD_WRITER) {
-		BOARD_WRITER = bOARD_WRITER;
-	}
-
-	public int getBOARD_PASS() {
-		return BOARD_PASS;
-	}
-
-	public void setBOARD_PASS(int bOARD_PASS) {
-		BOARD_PASS = bOARD_PASS;
-	}
-
-	public String getBOARD_SUBJECT() {
-		return BOARD_SUBJECT;
-	}
-
-	public void setBOARD_SUBJECT(String bOARD_SUBJECT) {
-		BOARD_SUBJECT = bOARD_SUBJECT;
-	}
-
-	public String getBOARD_CONTENT() {
-		return BOARD_CONTENT;
-	}
-
-	public void setBOARD_CONTENT(String bOARD_CONTENT) {
-		BOARD_CONTENT = bOARD_CONTENT;
-	}
-
-	public String getBOARD_FILE() {
-		return BOARD_FILE;
-	}
-
-	public void setBOARD_FILE(String bOARD_FILE) {
-		BOARD_FILE = bOARD_FILE;
-	}
-
-	public int getBOARD_RE_REF() {
-		return BOARD_RE_REF;
-	}
-
-	public void setBOARD_RE_REF(int bOARD_RE_REF) {
-		BOARD_RE_REF = bOARD_RE_REF;
-	}
-
-	public int getBOARD_RE_LEV() {
-		return BOARD_RE_LEV;
-	}
-
-	public void setBOARD_RE_LEV(int bOARD_RE_LEV) {
-		BOARD_RE_LEV = bOARD_RE_LEV;
-	}
-
-	public int getBOARD_RE_SEQ() {
-		return BOARD_RE_SEQ;
-	}
-
-	public void setBOARD_RE_SEQ(int bOARD_RE_SEQ) {
-		BOARD_RE_SEQ = bOARD_RE_SEQ;
-	}
-
-	public int getBOARD_READCOUNT() {
-		return BOARD_READCOUNT;
-	}
-
-	public void setBOARD_READCOUNT(int bOARD_READCOUNT) {
-		BOARD_READCOUNT = bOARD_READCOUNT;
-	}
-
-	public Date getBOARD_DATE() {
-		return BOARD_DATE;
-	}
-
-	public void setBOARD_DATE(Date bOARD_DATE) {
-		BOARD_DATE = bOARD_DATE;
-	}
-
-}	
 	
+	public BoardBean(int nUM, String wRITER, int pASS, String sUBJECT, String cONTENT, String fILES, int rE_REF,
+			int rE_LEV, int rE_SEQ, int rEADCOUNT, Date rEGDATE) {
+		super();
+		NUM = nUM;
+		WRITER = wRITER;
+		PASS = pASS;
+		SUBJECT = sUBJECT;
+		CONTENT = cONTENT;
+		FILES = fILES;
+		RE_REF = rE_REF;
+		RE_LEV = rE_LEV;
+		RE_SEQ = rE_SEQ;
+		READCOUNT = rEADCOUNT;
+		REGDATE = rEGDATE;
+	}
+
+
+
+	public int getNUM() {
+		return NUM;
+	}
+
+	public void setNUM(int nUM) {
+		NUM = nUM;
+	}
+
+	public String getWRITER() {
+		return WRITER;
+	}
+
+	public void setWRITER(String wRITER) {
+		WRITER = wRITER;
+	}
+
+	public int getPASS() {
+		return PASS;
+	}
+
+	public void setPASS(int pASS) {
+		PASS = pASS;
+	}
+
+	public String getSUBJECT() {
+		return SUBJECT;
+	}
+
+	public void setSUBJECT(String sUBJECT) {
+		SUBJECT = sUBJECT;
+	}
+
+	public String getCONTENT() {
+		return CONTENT;
+	}
+
+	public void setCONTENT(String cONTENT) {
+		CONTENT = cONTENT;
+	}
+
+	public String getFILES() {
+		return FILES;
+	}
+
+	public void setFILES(String fILES) {
+		FILES = fILES;
+	}
+
+	public int getRE_REF() {
+		return RE_REF;
+	}
+
+	public void setRE_REF(int rE_REF) {
+		RE_REF = rE_REF;
+	}
+
+	public int getRE_LEV() {
+		return RE_LEV;
+	}
+
+
+	public void setRE_LEV(int rE_LEV) {
+		RE_LEV = rE_LEV;
+	}
+
+
+	public int getRE_SEQ() {
+		return RE_SEQ;
+	}
+
+	public void setRE_SEQ(int rE_SEQ) {
+		RE_SEQ = rE_SEQ;
+	}
+
+	public int getREADCOUNT() {
+		return READCOUNT;
+	}
+
+	public void setREADCOUNT(int rEADCOUNT) {
+		READCOUNT = rEADCOUNT;
+	}
+
+	public Date getREGDATE() {
+		return REGDATE;
+	}
+
+	public void setREGDATE(Date rEGDATE) {
+		REGDATE = rEGDATE;
+	}
+
+}

@@ -6,7 +6,7 @@ import exception.IdPasswordNotMatchingException;
 
 public class MemberBean {
 		
-	private Long id;
+	private int id;
 	private String email;
 	private String password;
 	private String name;
@@ -24,10 +24,10 @@ public class MemberBean {
 		this.gender = gender;
 		this.registerDate = registerDate;
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getEmail() {

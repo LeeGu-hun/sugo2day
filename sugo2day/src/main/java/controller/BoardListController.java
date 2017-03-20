@@ -14,12 +14,11 @@ import dao.BoardDao;
 @Controller
 public class BoardListController {
 	private BoardDao boardDao;
-	
+
 	public void setBoardDao(BoardDao boardDao) {
 		this.boardDao = boardDao;
 	}
-
-	//@RequestMapping(value = "/board/boardList", method=RequestMethod.GET)
+	
 	@RequestMapping("/board/boardList")
 	public String boardList(@RequestParam(value="srch", required=false) String srch, PageMaker pageMaker, Model model) {
 		int count = 0;
@@ -28,12 +27,11 @@ public class BoardListController {
 		int point = (pageMaker.getPage()-1) * 10;
 		count = boardDao.countPage(srch);
 		pageMaker.setCount(count);
-				
+		
 		List<BoardBean> boards = boardDao.selectPage(srch, point, limit);
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("boards", boards);
+		
 		return "board/boardList";
-		
-		
 	}
 }

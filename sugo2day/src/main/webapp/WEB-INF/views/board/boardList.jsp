@@ -1,87 +1,141 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+
+<%-- Context Path 경로를 String cp 로 정의--%>
+<% String cp = request.getContextPath(); %>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Title 왼쪽 아이콘 삽입 -->
+<!-- 
+    <link rel="icon" href="../../favicon.ico">
+	 -->
+
+<title>Insert title here</title>
+<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <script>
-function pageGo(page) {
-	document.getElementById("page").value = page;
-	document.getElementById("frm").submit();
-}
-
-function goWrite(){
-	location.href="./boardWrite";
-}
-
-</script>
-<style>
-	ul{list-style: none;}
-	li{float: left;margin-right: 15px;}
-</style>
-<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet">
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+	function pageGo(page) {
+		document.getElementById("page").value = page;
+		document.getElementById("frm").submit();
+	}
+	
+	function goWrite() {
+		location.href = "<c:url value='/board/boardWrite' />";
+	}
+</script>	
 </head>
 <body>
-	<c:if test="${empty boards }">
-	<form:form commandName="pageMaker" id="frm">
-		<p>
-			<input type="button" value="글쓰기" onclick="goWrite();">
-		</p>
-	</form:form>
-	</c:if>
-	<c:if test="${! empty boards}">
-		<table >
-			<tr>
-				<th>글번호</th>
-				<th>글제목</th>
-				<th>작성일자</th>
-				<th>글쓴이</th>
-				<th>조회수</th>
-			</tr>
-			<c:forEach var="board" items="${boards}">
-				<tr>
-					<td>${board.board_num}</td>
-					<td>
-					<c:choose>
-					<c:when test="${board.board_re_lev ne 0 }">
-					<c:forEach var="i" begin="0" end="${board.board_re_lev*2}"
-					step="1">&nbsp;</c:forEach>▶
-					</c:when>
-					<c:otherwise>▶</c:otherwise></c:choose>
-					<a href="<c:url value="/board/detail/${board.board_num }"/>">
-							${board.board_subject}</a></td>
-					<td><fmt:formatDate value="${board.board_Date}"
-							pattern="yyyy-MM-dd" /></td>
-					<td>${board.board_writer}</td>
-					<td>${board.board_readcount}</td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="4">
-					<ul class="pageUL">
-						<c:if test="${pageMaker.prev }">
-							<li><a href='#' onclick='pageGo(${pageMaker.page-1});'>이전</a></li>
-						</c:if>
-						<c:forEach begin="${pageMaker.start }" end="${pageMaker.end}"
-							var="idx">
-							<li class='<c:out value="${idx == pageMaker.page?'current':''}"/>'>
-								<a href='#' onclick='pageGo(${idx});'>${idx}</a>
-							</li>
-						</c:forEach>
-						<c:if test="${pageMaker.next }">
-							<li><a href='#' onclick='pageGo(${pageMaker.page+1});'>다음</a></li>
-						</c:if>
-					</ul>
-				</td>
-			</tr>
-		</table>
-	</c:if>
 
+<div class="wrapper">
+	<form class="navbar-form navbar-right" role="search">
+		<div class="form-group">
+			<form:form commandName="pageMaker" id="frm">
+				<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요" />
+				<input type="submit" class="btn btn-default" value="검색">
+				<input type="button" class="btn btn-default" onclick="goWrite();" value="글쓰기">
+				<form:hidden path="page" id="page" />
+			</form:form>
+		</div>
+	</form>
+		
+	<table class="table table-hover">
+		<thead>
+		<tr align="center" valign="middle">
+			<td colspan="4">게시판</td>
+		</tr>	
+		<tr class="info" align="center" valign="middle">
+			<td style="font-family:Tahoma; font-size:8pt;" width="8%" height="26">
+				<div align="center">글번호</div>
+			</td>
+			<td style="font-family:Tahoma; font-size:8pt;" width="50%" height="26">
+				<div align="center">제목</div>
+			</td>	
+			<td style="font-family:Tahoma; font-size:8pt;" width="14%" height="26">
+				<div align="center">작성일</div>
+			</td>	
+			<td style="font-family:Tahoma; font-size:8pt;" width="17%" height="26">
+				<div align="center">작성자</div>
+			</td>	
+			<td style="font-family:Tahoma; font-size:8pt;" width="11%" height="26">
+				<div align="center">조회수</div>
+			</td>
+		</tr>
+		</thead>
+		<c:if test="${!empty boards }">
+		<c:forEach var="board" items="${boards}">
+		<tbody>
+			<tr align="center" valign="middle">
+				<td height="23" style="font-family:Tahoma; font-size:10pt;">${board.NUM }</td>
+				
+				<td style="font-family:Tahoma; font-size:10pt;">
+				<div align="left">
+				<c:if test="${0 == board.RE_LEV }">
+					<a href="<c:url value="/board/boardDetail/${board.NUM }"/>" >${board.SUBJECT }</a>
+				</c:if>
+				<c:if test="${0 != board.RE_LEV}">
+					<a href="<c:url value="/board/boardDetail/${board.NUM }"/>" >
+						<c:forEach begin="0" end="${board.REe_LEV }" var="lev">
+							<c:out value="${lev < board.RE_LEV ? '▶' : ''  }"/>
+						</c:forEach>
+					${board.SUBJECT }</a>
+				</c:if>
+				</div>
+				</td>
+				
+				<td style="font-family:Tahoma; font-size:10pt;">
+					<div align="center">
+						<fmt:formatDate value="${board.REGDATE }" pattern="yyyy-MM-dd"/>
+					</div>
+				</td>
+			
+				<td style="font-family:Tahoma; font-size:10pt;">
+					<div align="center">${board.WRITER }</div>
+				</td>
+			
+				<td style="font-family:Tahoma; font-size:10pt;">
+					<div align="center">${board.READCOUNT }</div>
+				</td>
+			</tr>		
+		</tbody>
+		</c:forEach>
+		</c:if>
+		<!--  Paging -->
+	</table>
+	<nav>	
+		<ul class="pagination">
+  			<c:if test="${pageMaker.prev }">
+  				<li class="active"><a href="#" aria-label="Previous"
+   				onclick='pageGo(${pageMaker.page-1});'><span aria-hidden="true">Prev</span></a></li>
+	   		</c:if>
+	   		<c:forEach begin="${pageMaker.start }" end="${pageMaker.end }" var="idx">
+	   			<c:if test="${idx == pageMaker.page }">
+	   				<li class="active">
+	   					<a href="#" onclick = "pageGo(${idx});"><span class="sr-only">${idx }</span></a>
+	   				</li>
+	   			</c:if>
+	   				<c:if test="${idx != pageMaker.page }">
+	   				<li class="disabled">
+	   					<a href="#" onclick = "pageGo(${idx});"><span class="sr-only">${idx }</span></a>
+	   				</li>
+	   			</c:if>
+	   		</c:forEach>
+	   		<c:if test="${pageMaker.next }">
+	  			<li class="active"><a href="#" aria-label="Next"
+	   			onclick='pageGo(${pageMaker.page+1});'><span aria-hidden="true">Next</span></a></li>
+	   		</c:if>	
+	   	</ul>
+	</nav>
+</div>		
 </body>
 </html>
