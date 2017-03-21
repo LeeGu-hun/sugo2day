@@ -27,7 +27,7 @@ public class BoardDeleteController {
 	@RequestMapping("/board/boardDeleteForm")
 	public String boardDeleteForm(BoardBean board, Errors errors) {
 		new BoardDeleteValidator().validate(board, errors);
-		boardDao.delete(board.getNUM(), board.getPASS());
+		boardDao.delete(board.getNum(), board.getPass());
 		return "board/boardDeleteComplete";
 	}
 }

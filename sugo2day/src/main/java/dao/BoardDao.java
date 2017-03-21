@@ -51,8 +51,6 @@ public class BoardDao {
 	
 	// 페이지 보기
 		public List<BoardBean> selectPage(String srch, int startPage, int limit) {
-			System.out.println(startPage + " // StartPage");
-			System.out.println(limit + " // limit");
 			List<BoardBean> results;
 			if(srch == null || srch.equals("")){
 				results = jdbcTemplate.query(
@@ -132,6 +130,14 @@ public class BoardDao {
 			
 			jdbcTemplate.update("update board set re_ref = ? where num = ? ",
 					num, num);
+		}
+		
+		// 글 내용 상세보기
+		public BoardBean selectByNum(int num) {
+			List<BoardBean> results = jdbcTemplate.query(
+					"select * from board where num = ? ",
+					boardRowMapper, num);
+			return results.isEmpty() ? null : results.get(0);
 		}
 		
 		// 글 삭제하기

@@ -9,6 +9,8 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/sugo2day-mvc.xml</config>
+		<config>src/main/resources/sugo2day-member.xml</config>
 		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
 	</autoconfigs>
 	<configSets>

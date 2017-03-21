@@ -33,7 +33,24 @@
 	function goWrite() {
 		location.href = "<c:url value='/board/boardWrite' />";
 	}
-</script>	
+</script>
+<style>
+body {
+	background-color: #eee;
+}
+
+.wrapper {
+	max-width: 800px;
+	max-height: 600px;
+	margin: 0 auto;
+	padding: 40px;
+}
+
+.paging {
+	margin: 5 auto;
+	padding: 5px;
+}
+</style>
 </head>
 <body>
 
@@ -72,70 +89,84 @@
 			</td>
 		</tr>
 		</thead>
-		<c:if test="${!empty boards }">
-		<c:forEach var="board" items="${boards}">
+		<c:if test="${empty boards }">
 		<tbody>
+		<tr>
+		<td colspan=5>커맨드객체 boards로 값을 가져올 수 없다.</td>
+		</tr>
+		</tbody>
+		</c:if>
+		<c:if test="${!empty boards }">
+		<tbody>
+		<c:forEach var="board" items="${boards}">
 			<tr align="center" valign="middle">
-				<td height="23" style="font-family:Tahoma; font-size:10pt;">${board.NUM }</td>
+				<td height="23" style="font-family:Tahoma; font-size:10pt;">${board.num }</td>
 				
 				<td style="font-family:Tahoma; font-size:10pt;">
 				<div align="left">
-				<c:if test="${0 == board.RE_LEV }">
-					<a href="<c:url value="/board/boardDetail/${board.NUM }"/>" >${board.SUBJECT }</a>
+				<c:if test="${0 == board.re_lev }">
+					<a href="<c:url value="/board/boardDetail/${board.num }"/>" >${board.subject }</a>
 				</c:if>
-				<c:if test="${0 != board.RE_LEV}">
-					<a href="<c:url value="/board/boardDetail/${board.NUM }"/>" >
-						<c:forEach begin="0" end="${board.REe_LEV }" var="lev">
-							<c:out value="${lev < board.RE_LEV ? '▶' : ''  }"/>
+				<c:if test="${0 != board.re_lev}">
+					<a href="<c:url value="/board/boardDetail/${board.num }"/>" >
+						<c:forEach begin="0" end="${board.re_lev }" var="lev">
+							<c:out value="${lev < board.re_lev ? '▶' : ''  }"/>
 						</c:forEach>
-					${board.SUBJECT }</a>
+					${board.subject }</a>
 				</c:if>
 				</div>
 				</td>
 				
 				<td style="font-family:Tahoma; font-size:10pt;">
 					<div align="center">
-						<fmt:formatDate value="${board.REGDATE }" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${board.regdate }" pattern="yyyy-MM-dd"/>
 					</div>
 				</td>
 			
 				<td style="font-family:Tahoma; font-size:10pt;">
-					<div align="center">${board.WRITER }</div>
+					<div align="center">${board.writer }</div>
 				</td>
 			
 				<td style="font-family:Tahoma; font-size:10pt;">
-					<div align="center">${board.READCOUNT }</div>
+					<div align="center">${board.readcount }</div>
 				</td>
 			</tr>		
-		</tbody>
 		</c:forEach>
+		</tbody>
 		</c:if>
-		<!--  Paging -->
-	</table>
-	<nav>	
+		<tfoot>
+		<tr>
+		<td colspan=5>
+		<div align="center">
+		<nav>
 		<ul class="pagination">
   			<c:if test="${pageMaker.prev }">
   				<li class="active"><a href="#" aria-label="Previous"
-   				onclick='pageGo(${pageMaker.page-1});'><span aria-hidden="true">Prev</span></a></li>
+   				onclick='pageGo(${pageMaker.page-1});'><span aria-hidden="true">&laquo;</span></a></li>
 	   		</c:if>
 	   		<c:forEach begin="${pageMaker.start }" end="${pageMaker.end }" var="idx">
 	   			<c:if test="${idx == pageMaker.page }">
 	   				<li class="active">
-	   					<a href="#" onclick = "pageGo(${idx});"><span class="sr-only">${idx }</span></a>
+	   					<a href="#" onclick = "pageGo(${idx});">${idx } <span class="sr-only">(current)</span></a>
 	   				</li>
 	   			</c:if>
 	   				<c:if test="${idx != pageMaker.page }">
 	   				<li class="disabled">
-	   					<a href="#" onclick = "pageGo(${idx});"><span class="sr-only">${idx }</span></a>
+	   					<a href="#" onclick = "pageGo(${idx});">${idx } <span class="sr-only">(current)</span></a>
 	   				</li>
 	   			</c:if>
 	   		</c:forEach>
 	   		<c:if test="${pageMaker.next }">
 	  			<li class="active"><a href="#" aria-label="Next"
-	   			onclick='pageGo(${pageMaker.page+1});'><span aria-hidden="true">Next</span></a></li>
+	   			onclick='pageGo(${pageMaker.page+1});'><span aria-hidden="true">&raquo;</span></a></li>
 	   		</c:if>	
 	   	</ul>
-	</nav>
+	   	</nav>
+	   	</div>
+	   	</td>
+	   	</tr>
+	   	</tfoot>	
+	</table>
 </div>		
 </body>
 </html>

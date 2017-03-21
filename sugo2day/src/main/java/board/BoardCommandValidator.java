@@ -13,6 +13,7 @@ public class BoardCommandValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		ValidationUtils.rejectIfEmpty(errors, "pass", "required");
 		ValidationUtils.rejectIfEmpty(errors, "subject", "required");
 		ValidationUtils.rejectIfEmpty(errors, "content", "required");
 		

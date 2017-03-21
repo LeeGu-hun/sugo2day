@@ -58,13 +58,14 @@
 						
 						<li><a href="<c:url value="/login" />">로그인</a></li>
 						<li><a href="<c:url value="/register/registerTerm" />">회원가입</a></li>
-						<li>${authInfo.name }님,환영합니다.</li>
+						
 					</c:if>
 
 					<c:if test="${!empty authInfo }">
+						<li>${authInfo.name }님,환영합니다.</li>
 						<li><a href="<c:url value='/logout' />">로그아웃</a></li>
 						<li><a href="<c:url value='/edit/changePassword' />">비밀번호 변경</a></li>
-						<li><a href="<c:url value="board/boardList" />">게시판</a></li>
+						<li><a href="<c:url value="/board/boardList" />">게시판</a></li>
 					</c:if>
 
 				</ul>

@@ -1,6 +1,5 @@
 package board;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +13,7 @@ public class BoardCommand {
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	
+		
 	
 	public String getWriter() {
 		return writer;
@@ -64,5 +63,5 @@ public class BoardCommand {
 	public void setUpDir(String upDir) {
 		this.upDir = upDir;
 	}
-		
+	
 }

@@ -3,127 +3,123 @@ package bean;
 import java.util.Date;
 
 public class BoardBean {
-	private int NUM;
-	private String WRITER;
-	private int PASS;
-	private String SUBJECT;
-	private String CONTENT;
-	private String FILES;
-	private int RE_REF;
-	private int RE_LEV;
-	private int RE_SEQ;
-	private int READCOUNT;
-	private Date REGDATE;
+	private int num;
+	private String writer;
+	private int pass;
+	private String subject;
+	private String content;
+	private String files;
+	private int re_ref;
+	private int re_lev;
+	private int re_seq;
+	private int readcount;
+	private Date regdate;
 	
 	public BoardBean() {	}
 
+	public BoardBean(int num, String writer, int pass, String subject, String content, String files, int re_ref,
+			int re_lev, int re_seq, int readcount, Date regdate) {
+		this.num = num;
+		this.writer = writer;
+		this.pass = pass;
+		this.subject = subject;
+		this.content = content;
+		this.files = files;
+		this.re_ref = re_ref;
+		this.re_lev = re_lev;
+		this.re_seq = re_seq;
+		this.readcount = readcount;
+		this.regdate = regdate;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public int getPass() {
+		return pass;
+	}
+
+	public void setPass(int pass) {
+		this.pass = pass;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFiles() {
+		return files;
+	}
+
+	public void setFiles(String files) {
+		this.files = files;
+	}
+
+	public int getRe_ref() {
+		return re_ref;
+	}
+
+	public void setRe_ref(int re_ref) {
+		this.re_ref = re_ref;
+	}
+
+	public int getRe_lev() {
+		return re_lev;
+	}
+
+	public void setRe_lev(int re_lev) {
+		this.re_lev = re_lev;
+	}
+
+	public int getRe_seq() {
+		return re_seq;
+	}
+
+	public void setRe_seq(int re_seq) {
+		this.re_seq = re_seq;
+	}
+
+	public int getReadcount() {
+		return readcount;
+	}
+
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
 	
-	public BoardBean(int nUM, String wRITER, int pASS, String sUBJECT, String cONTENT, String fILES, int rE_REF,
-			int rE_LEV, int rE_SEQ, int rEADCOUNT, Date rEGDATE) {
-		super();
-		NUM = nUM;
-		WRITER = wRITER;
-		PASS = pASS;
-		SUBJECT = sUBJECT;
-		CONTENT = cONTENT;
-		FILES = fILES;
-		RE_REF = rE_REF;
-		RE_LEV = rE_LEV;
-		RE_SEQ = rE_SEQ;
-		READCOUNT = rEADCOUNT;
-		REGDATE = rEGDATE;
-	}
-
-
-
-	public int getNUM() {
-		return NUM;
-	}
-
-	public void setNUM(int nUM) {
-		NUM = nUM;
-	}
-
-	public String getWRITER() {
-		return WRITER;
-	}
-
-	public void setWRITER(String wRITER) {
-		WRITER = wRITER;
-	}
-
-	public int getPASS() {
-		return PASS;
-	}
-
-	public void setPASS(int pASS) {
-		PASS = pASS;
-	}
-
-	public String getSUBJECT() {
-		return SUBJECT;
-	}
-
-	public void setSUBJECT(String sUBJECT) {
-		SUBJECT = sUBJECT;
-	}
-
-	public String getCONTENT() {
-		return CONTENT;
-	}
-
-	public void setCONTENT(String cONTENT) {
-		CONTENT = cONTENT;
-	}
-
-	public String getFILES() {
-		return FILES;
-	}
-
-	public void setFILES(String fILES) {
-		FILES = fILES;
-	}
-
-	public int getRE_REF() {
-		return RE_REF;
-	}
-
-	public void setRE_REF(int rE_REF) {
-		RE_REF = rE_REF;
-	}
-
-	public int getRE_LEV() {
-		return RE_LEV;
-	}
-
-
-	public void setRE_LEV(int rE_LEV) {
-		RE_LEV = rE_LEV;
-	}
-
-
-	public int getRE_SEQ() {
-		return RE_SEQ;
-	}
-
-	public void setRE_SEQ(int rE_SEQ) {
-		RE_SEQ = rE_SEQ;
-	}
-
-	public int getREADCOUNT() {
-		return READCOUNT;
-	}
-
-	public void setREADCOUNT(int rEADCOUNT) {
-		READCOUNT = rEADCOUNT;
-	}
-
-	public Date getREGDATE() {
-		return REGDATE;
-	}
-
-	public void setREGDATE(Date rEGDATE) {
-		REGDATE = rEGDATE;
-	}
+	
 
 }
