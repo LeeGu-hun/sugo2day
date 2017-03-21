@@ -38,7 +38,7 @@
 <body>
 	<div class="container">
 		<form:form commandName="boardCommand" id="boardFrm" class="form-horizontal" method="POST"
-			enctype="multipart/form-data" action="/project/board/boardWrite">
+			enctype="multipart/form-data" action="/sugo2day/board/boardWrite">
 			<h2 class="form-join-heading">사용자 게시판</h2>
 			<div class="input-group">
 				<label for="inputWriter">글쓴이</label>

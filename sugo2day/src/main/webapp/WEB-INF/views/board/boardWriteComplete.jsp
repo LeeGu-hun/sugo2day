@@ -20,7 +20,7 @@
     <link rel="icon" href="../../favicon.ico">
 	 -->
 <!--  5초 뒤 메인으로 이동 -->
-<meta http-equiv="refresh" content="5; url=<c:url value='/'/>">
+<meta http-equiv="refresh" content="5; url=<c:url value='/board/boardList'/>">
 
 <title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
@@ -34,11 +34,11 @@
 			<div class="cover-container">
 				<div class="inner cover">
 					<h1 class="cover-heading">게시글 작성 완료</h1>
-					<p class="lead">5초 후, 자동으로 메인 페이지로 이동합니다.</p>
+					<p class="lead">5초 후, 자동으로 게시판으로 이동합니다.</p>
 					<br>
 					<br>
 					<p class="lead">
-						<a href="<c:url value='/'/>" class="btn btn-lg btn-default">즉시 이동</a>
+						<a href="<c:url value='/board/boardList'/>" class="btn btn-lg btn-default">즉시 이동</a>
 					</p>
 				</div>
 			</div>

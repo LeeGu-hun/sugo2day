@@ -63,7 +63,7 @@ public class BoardWriteController {
 			}
 		}
 		boardDao.insert(boardCommand);
-		return "redirect:/board/boardList";
+		return "board/boardWriteComplete";
 
 	}
 }

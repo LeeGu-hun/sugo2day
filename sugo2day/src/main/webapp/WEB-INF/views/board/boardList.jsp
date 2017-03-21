@@ -55,16 +55,17 @@ body {
 <body>
 
 <div class="wrapper">
-	<form class="navbar-form navbar-right" role="search">
+	<nav class="navbar-form navbar-right" role="search">
 		<div class="form-group">
 			<form:form commandName="pageMaker" id="frm">
-				<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요" />
-				<input type="submit" class="btn btn-default" value="검색">
-				<input type="button" class="btn btn-default" onclick="goWrite();" value="글쓰기">
-				<form:hidden path="page" id="page" />
+			<input type="text" class="form-control" placeholder="검색할 내용을 입력하세요" />
+			<input type="submit" class="btn btn-default" value="검색">
+			<input type="button" class="btn btn-default" onclick="goWrite();" value="글쓰기">
+			<form:hidden path="page" id="page" />
 			</form:form>
 		</div>
-	</form>
+	</nav>
+
 		
 	<table class="table table-hover">
 		<thead>
@@ -89,16 +90,9 @@ body {
 			</td>
 		</tr>
 		</thead>
-		<c:if test="${empty boards }">
+		<c:if test="${! empty boards }">
 		<tbody>
-		<tr>
-		<td colspan=5>커맨드객체 boards로 값을 가져올 수 없다.</td>
-		</tr>
-		</tbody>
-		</c:if>
-		<c:if test="${!empty boards }">
-		<tbody>
-		<c:forEach var="board" items="${boards}">
+		<c:forEach var="board" items="${boards }">
 			<tr align="center" valign="middle">
 				<td height="23" style="font-family:Tahoma; font-size:10pt;">${board.num }</td>
 				
@@ -141,24 +135,25 @@ body {
 		<nav>
 		<ul class="pagination">
   			<c:if test="${pageMaker.prev }">
-  				<li class="active"><a href="#" aria-label="Previous"
-   				onclick='pageGo(${pageMaker.page-1});'><span aria-hidden="true">&laquo;</span></a></li>
+  				<li>
+  					<a href="#" aria-label="Previous" onclick='pageGo(${pageMaker.page-1});'>
+  						<span aria-hidden="true">&laquo;</span>
+  					</a>
+  				</li>
 	   		</c:if>
 	   		<c:forEach begin="${pageMaker.start }" end="${pageMaker.end }" var="idx">
-	   			<c:if test="${idx == pageMaker.page }">
-	   				<li class="active">
-	   					<a href="#" onclick = "pageGo(${idx});">${idx } <span class="sr-only">(current)</span></a>
-	   				</li>
-	   			</c:if>
-	   				<c:if test="${idx != pageMaker.page }">
-	   				<li class="disabled">
-	   					<a href="#" onclick = "pageGo(${idx});">${idx } <span class="sr-only">(current)</span></a>
-	   				</li>
-	   			</c:if>
+	   			<li class='<c:out value="${idx == pageMaker.page?'active':''}"/>'>
+	   				<a href="#" onclick="pageGo(${idx});">${idx }
+	   					<span class="sr-only">(current)</span>
+	   				</a>
+	   			</li>
 	   		</c:forEach>
 	   		<c:if test="${pageMaker.next }">
-	  			<li class="active"><a href="#" aria-label="Next"
-	   			onclick='pageGo(${pageMaker.page+1});'><span aria-hidden="true">&raquo;</span></a></li>
+	  			<li>
+	  				<a href="#" aria-label="Next" onclick='pageGo(${pageMaker.page+1});'>
+	   					<span aria-hidden="true">&raquo;</span>
+	   				</a>
+	   			</li>
 	   		</c:if>	
 	   	</ul>
 	   	</nav>

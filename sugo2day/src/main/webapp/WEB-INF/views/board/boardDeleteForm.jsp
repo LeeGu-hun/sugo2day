@@ -38,11 +38,11 @@
 			<h2 class="form-signin-heading">글을 삭제하시겠습니까?</h2>
 
 			<label for="inputPassword" class="sr-only">Password</label>
-			<form:password path="password" id="inputPassword" class="form-control"
+			<form:password path="pass" id="inputPassword" class="form-control"
 				placeholder="Password" />
 						
 			<div class="error-message">
-				<span class="label label-danger label-large"><form:errors path="password"/></span>
+				<span class="label label-danger label-large"><form:errors path="pass"/></span>
 			</div>
 			
 			<div class="btn-group btn-group-justified" role="group">

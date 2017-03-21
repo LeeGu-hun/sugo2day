@@ -46,6 +46,7 @@
 </head>
 <body>
 	<input type="hidden" value="${board.num}" />
+	<input type="hidden" value="${board.pass }" />
 	<input type="hidden" value="${board.re_ref}" />
 	<input type="hidden" value="${board.re_lev}" />
 	<input type="hidden" value="${board.re_seq}" />
@@ -85,7 +86,7 @@
 				</tr>
 				
 				<tr>
-					<c:if test="${!empty board.file }">
+					<c:if test="${!empty board.files }">
 					<td	style="font-family: 돋음; font-size: 12">		
 						<div class="input-group">
 							<label for="inputFiles">첨부파일 : </label>
@@ -94,10 +95,10 @@
 					</td>
 					<td style="font-family: 돋음; font-size: 12">
 						<div class="attach-files">
-							<c:set var="ext" value="${fn:split(board.file,'.')}"/>
+							<c:set var="ext" value="${fn:split(board.files,'.')}"/>
 							<c:choose>
 								<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
-									<img src='<c:url value="/" />uploads/${board.file }' class="img-responsive">
+									<img src='<c:url value="/" />uploads/${board.files }' class="img-responsive">
 								</c:when>
 								<c:otherwise>첨부파일 없음	</c:otherwise>
 							</c:choose>

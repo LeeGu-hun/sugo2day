@@ -8,7 +8,6 @@ public class PageMaker {
 	public Integer getCount() {
 		return count;
 	}
-	
 	public Integer getStart() {
 		return start;
 	}
@@ -33,11 +32,9 @@ public class PageMaker {
 	public void setNext(Boolean next) {
 		this.next = next;
 	}
-	
 	public Integer getPage() {
 		return page;
 	}
-	
 	public void setPage(Integer page) {
 		if(page == null || page < 1) {
 			this.page = 1;
@@ -63,6 +60,13 @@ public class PageMaker {
 			this.prev = this.start != 1;
 			this.next = this.end * 10 < this.count;
 		}
+		/*System.out.println(page + " // page");
+		System.out.println(count + " // count");
+		System.out.println(start + " // start");
+		System.out.println(end + " // end");
+		System.out.println(prev + " // prev");
+		System.out.println(next + " // next");*/
+		
 	}
 
 }
