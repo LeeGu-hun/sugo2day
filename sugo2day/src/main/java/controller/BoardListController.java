@@ -23,14 +23,11 @@ public class BoardListController {
 	public String boardList(@RequestParam(value="srch", required=false) String srch, PageMaker pageMaker, Model model) {
 		int count = 0;
 		int limit = 10;
-		System.out.println(pageMaker.getPage() + " // 1st page");
+		
 		pageMaker.setPage(pageMaker.getPage());
 		int point = (pageMaker.getPage()-1) * 10;
 		count = boardDao.countPage(srch);
 		pageMaker.setCount(count);
-		
-		/*System.out.println(point + "// startPart");
-		System.out.println(limit + "// limit");*/
 		
 		List<BoardBean> boards = boardDao.selectPage(srch, point, limit);
 		model.addAttribute("pageMaker", pageMaker);
