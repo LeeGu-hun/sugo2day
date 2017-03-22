@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.transaction.annotation.Transactional;
 
 import bean.BoardBean;
@@ -50,16 +47,21 @@ public class BoardDao {
 	};
 	
 	// 페이지 보기
-		public List<BoardBean> selectPage(String srch, int startPage, int limit) {
+		public List<BoardBean> selectPage(String srch, int page, int limit) {
+			int startRow = page * 10 + 1;
+			int endRow = startRow + limit - 1;
+			
+			System.out.println(startRow + " // start");
+			System.out.println(endRow + " // end");
+			
+						
 			List<BoardBean> results;
 			if(srch == null || srch.equals("")){
 				results = jdbcTemplate.query(
-						"select num, writer, pass, "
-								+ "subject, content, files, re_ref, re_lev, re_seq, readcount, "
-								+ "regdate from board "
-								+ "where num >= ? and num <= ? "
-								+ "order by re_ref desc, re_seq, num ",
-						boardRowMapper, startPage, limit);
+						"select * from (select rownum rnum, num, writer, subject, pass, "
+						+ "content, files, re_ref, re_lev, re_seq, readcount, regdate from ( " 
+						+ "select * from board order by re_ref desc, re_seq, num )) "
+						+ " where rnum >= ? and rnum <= ? ", boardRowMapper, startRow, endRow);
 			} else {
 				results = jdbcTemplate.query(
 						"select num, writer, pass, "
@@ -68,7 +70,7 @@ public class BoardDao {
 						+ "where(subject like '%?%' or content like '%?%' or writer like '%?%' ) "
 						+ "and num >= ? and num <= ? "
 						+ "order by re_ref desc, re_seq, num ",
-						boardRowMapper, srch, srch, srch, startPage, limit);
+						boardRowMapper, srch, srch, srch, startRow, endRow);
 			}
 			return results;
 			
@@ -140,18 +142,46 @@ public class BoardDao {
 			return results.isEmpty() ? null : results.get(0);
 		}
 		
+				
 		// 글 삭제하기
 		public void delete(int num, int pass) {
 			jdbcTemplate.update("delete from board where num = ? and pass = ? ",
 					num, pass);
 		}
 		
-		// 입력받은 비밀번호를 바탕으로 글 삭제하기
-		// 동일한 비밀번호가 여러개일 경우?
-		@Transactional
-		public void checkBoardPass(int pass) {
-			int num = jdbcTemplate.queryForObject("select num from board where pass = ? ", Integer.class);
-			jdbcTemplate.update("delete from board where num = ? and pass = ? ", num, pass);
+		// 글 수정하기
+		public void update(BoardBean board) {
+			jdbcTemplate.update("update board set subject = ?, content = ? where num = ? ",
+					board.getSubject(), board.getContent(), board.getNum());
 		}
+		
+		// 답글 등록하기
+		
+		@Transactional
+		public void replyBoard(final BoardBean board) {
+							
+			// 커맨드 객체에서 받아온 re_ref 값과 re_seq 값에 기반하여 seq 값 갱신
+			jdbcTemplate.update("update board set re_seq = re_seq+1 "
+					+ "where re_ref = ? and re_seq > ? ", board.getRe_ref(), board.getRe_seq());
+			
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(
+						"insert into board (num, writer, pass, subject, content, files, "
+							+ "re_ref, re_lev, re_seq, readcount, regdate) "
+							+ "values (bNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, 0, sysdate) ");
+			
+			pstmt.setString(1, board.getWriter());
+			pstmt.setInt(2, board.getPass());
+			pstmt.setString(3, board.getSubject());
+			pstmt.setString(4, board.getContent());
+			pstmt.setString(5, "/");
+			pstmt.setInt(6, board.getRe_ref());				// re_ref
+			pstmt.setInt(7, board.getRe_lev()+1);			// re_lev
+			pstmt.setInt(8, board.getRe_seq()+1);			// re_seq
+			return pstmt;
+			});	
+			
+		}	
+		
 				
 }

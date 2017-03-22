@@ -23,9 +23,8 @@ public class BoardListController {
 	public String boardList(@RequestParam(value="srch", required=false) String srch, PageMaker pageMaker, Model model) {
 		int count = 0;
 		int limit = 10;
-		
 		pageMaker.setPage(pageMaker.getPage());
-		int point = (pageMaker.getPage()-1) * 10;
+		int point = pageMaker.getPage()-1;
 		count = boardDao.countPage(srch);
 		pageMaker.setCount(count);
 		

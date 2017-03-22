@@ -28,14 +28,14 @@ public class BoardWriteController {
 	@RequestMapping(value = "board/boardWrite", method = RequestMethod.GET)
 	public String boardWriteGet(BoardCommand boardCommand, Model model) {
 		model.addAttribute("board", boardCommand);
-		return "board/boardWrite";
+		return "board/boardWriteForm";
 	}
 
 	@RequestMapping(value = "board/boardWrite", method = RequestMethod.POST)
 	public String boardWrite(BoardCommand boardCommand, Errors errors, Model model, HttpSession session) {
 		new BoardCommandValidator().validate(boardCommand, errors);
 		if (errors.hasErrors()) {
-			return "board/boardWrite";
+			return "board/boardWriteForm";
 		}
 
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");

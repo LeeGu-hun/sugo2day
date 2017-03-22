@@ -9,25 +9,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import bean.BoardBean;
 import board.BoardDeleteValidator;
 import dao.BoardDao;
+import exception.PasswordWrongException;
 
 @Controller
 public class BoardDeleteController {
-	BoardDao boardDao;
-
+	private BoardDao boardDao;
+	int chkNum;
+	int chkPass;
+	
 	public void setBoardDao(BoardDao boardDao) {
 		this.boardDao = boardDao;
 	}
-	
-	@RequestMapping("/board/boardDelete/{num}")
+
+	@RequestMapping("board/boardDelete/{num}")
 	public String boardDelete(@PathVariable("num") int num, BoardBean board, Model model) {
 		model.addAttribute("board", board);
 		return "board/boardDeleteForm";
 	}
 	
-	@RequestMapping("/board/boardDeleteForm")
-	public String boardDeleteForm(BoardBean board, Errors errors) {
+	@RequestMapping("board/boardDeleteSuccess")
+	public String boardDeleteSuccess(int num, int pass, BoardBean board, Model model, Errors errors) {
+		model.addAttribute("board", board);
 		new BoardDeleteValidator().validate(board, errors);
-		boardDao.delete(board.getNum(), board.getPass());
-		return "board/boardDeleteComplete";
-	}
+		
+		if(errors.hasErrors()) {
+			return "board/boardDeleteForm";
+		}
+		
+		try {
+			boardDao.delete(num, pass);
+			return "board/boardDeleteComplete";
+		} catch(PasswordWrongException e) {
+			errors.reject("passwordWrong");
+			return "board/boardDeleteForm";
+		}
+	}	
 }

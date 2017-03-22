@@ -48,5 +48,13 @@
 	<bean class="controller.BoardDeleteController">
 		<property name="boardDao" ref="boardDao" />
 	</bean>
+	
+	<bean class="controller.BoardModifyController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	<bean class="controller.BoardReplyController">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
 </beans>	
 	

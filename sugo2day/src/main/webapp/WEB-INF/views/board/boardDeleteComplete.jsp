@@ -34,7 +34,7 @@
 			<div class="cover-container">
 				<div class="inner cover">
 					<h1 class="cover-heading">게시글 삭제 완료</h1>
-					<p class="lead">5초 후, 자동으로 이전 페이지로 이동합니다.</p>
+					<p class="lead">5초 후, 자동으로 게시판 이동합니다.</p>
 					<br>
 					<br>
 					<p class="lead">

@@ -89,7 +89,7 @@
 					<c:if test="${!empty board.files }">
 					<td	style="font-family: 돋음; font-size: 12">		
 						<div class="input-group">
-							<label for="inputFiles">첨부파일 : </label>
+							<label for="inputFiles">파일 : </label>
 							<input type="hidden" id="inputFiles" class="form-control" />
 						</div>
 					</td>

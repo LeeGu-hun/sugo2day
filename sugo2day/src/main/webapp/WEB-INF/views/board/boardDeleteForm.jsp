@@ -34,7 +34,8 @@
 
 <body>
 	<div class="container">
-		<form:form action="boarDeleteSuccess" commandName="board" class="form-delete">
+		<form:form action="/sugo2day/board/boardDeleteSuccess" commandName="board" class="form-delete">
+			<form:hidden path="num" />
 			<h2 class="form-signin-heading">글을 삭제하시겠습니까?</h2>
 
 			<label for="inputPassword" class="sr-only">Password</label>

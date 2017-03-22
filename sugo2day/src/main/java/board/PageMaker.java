@@ -42,7 +42,6 @@ public class PageMaker {
 			return;
 		}
 		this.page = page;
-		System.out.println(page + " // 현재 page");
 	}
 	
 	public void setCount(Integer count) {

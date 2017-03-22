@@ -48,5 +48,5 @@
 	<bean id="boardDao" class="dao.BoardDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
-	
+		
 </beans>

@@ -15,7 +15,7 @@ public class BoardDeleteValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "password", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pass", "required");
 				
 	}
 }
