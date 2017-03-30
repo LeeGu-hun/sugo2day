@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>assan - Professional theme</title>
+<title>수고했어, 오늘도</title>
 <!-- Bootstrap -->
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -60,12 +60,20 @@
 					</div>
 					<div class="col-sm-7 text-right">
 						<ul class="list-inline top-dark-right">
-
+						<c:if test="${empty authInfo }">
 							<li><a href="<c:url value="/login" />"><i class="fa fa-lock"></i> Login</a></li>
 							<li><a href="<c:url value="/register/registerTerm" />"><i class="fa fa-user"></i> Sign Up</a></li>
 							<li><a class="topbar-icons" href="#"><span><i
 										class="fa fa-search top-search"></i></span></a></li>
+						</c:if>
+						<c:if test="${!empty authInfo }">
+							<li> ${authInfo.name }님,환영합니다.</li>
+							<li><a href="<c:url value='/logout' />"><i class="fa fa-user"></i> Logout</a></li>
+							<li><a href="<c:url value='/edit/changePassword' />"><i class="fa fa-lock"></i> ChangePW</a></li>
+						</c:if>
 						</ul>
+						
+						
 						<div class="search">
 							<form role="form">
 								<input type="text" class="form-control" autocomplete="off"
@@ -437,6 +445,7 @@
 				</footer>
 			</div>
 		</div>
+	</div>	
 		<!--default footer end here-->
 		<!--scripts and plugins -->
 		<!--must need plugin jquery-->
