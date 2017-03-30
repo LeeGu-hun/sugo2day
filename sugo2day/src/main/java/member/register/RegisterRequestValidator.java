@@ -15,10 +15,23 @@ public class RegisterRequestValidator implements Validator {
 			"[A-Za-z0-9-]+(\\A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private Pattern pattern;
 	
+	private static final String birthdayRegExp = 
+			"^([1-2]{1}[0-9]{1,3})-([0-1]{1}[0-9]{1,2})-([0-2]{1}[0-9]{1,2}|30|31)$";
+	
+	private Pattern pattern2;
+	
+	private static final String genderRegExp =
+			"^(male|female)$";
+	
+	private Pattern pattern3;
+	
 	public RegisterRequestValidator() {
 		pattern = Pattern.compile(emailRegExp);
+		pattern2 = Pattern.compile(birthdayRegExp);
+		pattern3 = Pattern.compile(genderRegExp);
 	}
-
+	
+	
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return RegisterRequest.class.isAssignableFrom(clazz);
@@ -35,6 +48,18 @@ public class RegisterRequestValidator implements Validator {
 				errors.rejectValue("email", "bad");
 			}
 		}
+		
+		Matcher matcher2 = pattern2.matcher(regReq.getBirthday());
+		if(!matcher2.matches()) {
+			errors.rejectValue("birthday", "bad");
+		}
+		
+		Matcher matcher3 = pattern3.matcher(regReq.getGender());
+		if(!matcher3.matches()) {
+			errors.rejectValue("gender", "bad");
+		}
+		
+		
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 		ValidationUtils.rejectIfEmpty(errors, "password", "required");

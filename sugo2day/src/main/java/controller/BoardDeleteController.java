@@ -1,47 +1,37 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import bean.BoardBean;
-import board.BoardDeleteValidator;
+import board.BoardWriterCheck;
 import dao.BoardDao;
-import exception.PasswordWrongException;
+import exception.BoardNotFoundException;
+import member.login.AuthInfo;
 
 @Controller
 public class BoardDeleteController {
-	private BoardDao boardDao;
-	int chkNum;
-	int chkPass;
+	BoardWriterCheck boardWriterCheck;
 	
-	public void setBoardDao(BoardDao boardDao) {
-		this.boardDao = boardDao;
+	public void setBoardWriterCheck(BoardWriterCheck boardWriterCheck) {
+		this.boardWriterCheck = boardWriterCheck;
 	}
 
 	@RequestMapping("board/boardDelete/{num}")
-	public String boardDelete(@PathVariable("num") int num, BoardBean board, Model model) {
-		model.addAttribute("board", board);
-		return "board/boardDeleteForm";
-	}
-	
-	@RequestMapping("board/boardDeleteSuccess")
-	public String boardDeleteSuccess(int num, int pass, BoardBean board, Model model, Errors errors) {
-		model.addAttribute("board", board);
-		new BoardDeleteValidator().validate(board, errors);
-		
-		if(errors.hasErrors()) {
-			return "board/boardDeleteForm";
-		}
+	public String boardDelete(@PathVariable("num") int num, HttpSession session) {
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		boardWriterCheck.setWriter(authInfo.getName());
 		
 		try {
-			boardDao.delete(num, pass);
+			boardWriterCheck.match(num, boardWriterCheck.getWriter());
 			return "board/boardDeleteComplete";
-		} catch(PasswordWrongException e) {
-			errors.reject("passwordWrong");
-			return "board/boardDeleteForm";
+		} catch (BoardNotFoundException e) {
+			e.printStackTrace();
+			return "board/boardCheckFail";
 		}
-	}	
+	}
+	
+	
 }

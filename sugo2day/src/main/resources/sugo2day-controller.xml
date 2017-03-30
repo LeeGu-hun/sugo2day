@@ -46,10 +46,11 @@
 	</bean>
 	
 	<bean class="controller.BoardDeleteController">
-		<property name="boardDao" ref="boardDao" />
+		<property name="boardWriterCheck" ref="boardWriterCheck" />
 	</bean>
 	
 	<bean class="controller.BoardModifyController">
+		<property name="boardWriterCheck" ref="boardWriterCheck" />
 		<property name="boardDao" ref="boardDao" />
 	</bean>
 	

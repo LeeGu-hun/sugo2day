@@ -142,11 +142,18 @@ public class BoardDao {
 			return results.isEmpty() ? null : results.get(0);
 		}
 		
+		// 본인 확인하기
+		public int checkWriter(int num, String writer) {
+			int result = jdbcTemplate.queryForObject(
+					"select count(*) from board where num = ? and writer = ? ",
+					Integer.class, num, writer);
+			return result;
+		}
 				
 		// 글 삭제하기
-		public void delete(int num, int pass) {
-			jdbcTemplate.update("delete from board where num = ? and pass = ? ",
-					num, pass);
+		public void delete(int num, String writer) {
+			jdbcTemplate.update("delete from board where num = ? and writer = ? ",
+					num, writer);
 		}
 		
 		// 글 수정하기
