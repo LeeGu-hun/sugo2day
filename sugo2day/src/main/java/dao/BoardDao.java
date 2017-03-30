@@ -106,6 +106,13 @@ public class BoardDao {
 			return results;
 		}
 		
+		// num 만 가져오기
+		public int selectNum(int num) {
+			int result = jdbcTemplate.queryForObject(
+					"select num from board where num = ? ", Integer.class, num);
+			return result;		
+		}
+		
 		// 조회수 업데이트
 		public void setReadCountUpdate(int num) {
 			jdbcTemplate.update("update board set readcount = "
@@ -157,6 +164,7 @@ public class BoardDao {
 		}
 		
 		// 글 수정하기
+		@Transactional
 		public void update(BoardBean board) {
 			jdbcTemplate.update("update board set subject = ?, content = ? where num = ? ",
 					board.getSubject(), board.getContent(), board.getNum());

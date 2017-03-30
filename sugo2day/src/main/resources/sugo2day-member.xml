@@ -52,5 +52,9 @@
 	<bean id="boardWriterCheck" class="board.BoardWriterCheck">
 		<property name="boardDao" ref="boardDao" />
 	</bean>
+	
+	<bean id="questDao" class="dao.QuestDao">
+		<constructor-arg ref="dataSource" />
+	</bean>
 		
 </beans>

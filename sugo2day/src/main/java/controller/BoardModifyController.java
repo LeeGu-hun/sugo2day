@@ -35,8 +35,10 @@ public class BoardModifyController {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		boardWriterCheck.setWriter(authInfo.getName());
 		
+		
 		try {
-			boardWriterCheck.match(num, boardWriterCheck.getWriter());
+			boardWriterCheck.matchMod(num, boardWriterCheck.getWriter());
+			num = board.getNum();
 			model.addAttribute("board", board);
 			return "board/boardModifyForm";
 		} catch (BoardNotFoundException e) {
@@ -45,14 +47,19 @@ public class BoardModifyController {
 		}
 	}
 	
-	@RequestMapping(value="board/boardModify", method=RequestMethod.POST)
-	public String boardModify(BoardBean board, Errors errors) {
+	@RequestMapping(value="board/boardModifyForm", method=RequestMethod.POST)
+	public String boardModify(@PathVariable("num") int num, BoardBean board, Errors errors) {
+		System.out.println(board.getNum() + "board.getNum");
+		int boards = boardDao.selectNum(board.getNum());
 		new BoardValidator().validate(board, errors);
+		System.out.println(boards + "num");
 		
 		if(errors.hasErrors()) {
-			return "board/boardModifyForm";
-		}
+			return "board/boardModify/" + boards;
+		} 
+		
 		boardDao.update(board);
-		return "board/boardModifyComplete";
+		return "board/boardModifyComplete";	
+		
 	}
 }

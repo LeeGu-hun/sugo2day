@@ -1,6 +1,5 @@
 package board;
 
-import bean.BoardBean;
 import dao.BoardDao;
 import exception.BoardNotFoundException;
 
@@ -27,7 +26,14 @@ public class BoardWriterCheck {
 		} else if(result == 1) {
 			boardDao.delete(num, writer);
 		}
-		
 	}
+
+	public void matchMod(int num, String writer) {
+		int result = boardDao.checkWriter(num, writer);
+		if(result == 0) {
+			throw new BoardNotFoundException();
+		} 
+	}
+		
 
 }

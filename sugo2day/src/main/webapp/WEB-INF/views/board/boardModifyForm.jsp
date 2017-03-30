@@ -37,9 +37,8 @@
 </head>
 <body>
 	<div class="container">
-		<form:form commandName="board" id="modifyform" class="form-horizontal" method="POST"
-			action="/sugo2day/board/boardModify">
-			<form:hidden path="num" id="num" />
+		<form:form commandName="board" id="modifyform" class="form-horizontal" method="POST">
+			<input type="hidden" value="${board.num }"/>
 			<h2 class="form-join-heading">게시글 수정</h2>
 						
 			<div class="input-group">

@@ -78,7 +78,7 @@
 							style="table-layout: fixed">
 							<tr>
 								<td valign=top style="font-maily: 돋음; font-size: 12">
-									${board.subject }
+									${board.content }
 								</td>
 							</tr>
 						</table>			

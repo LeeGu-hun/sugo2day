@@ -57,5 +57,12 @@
 	<bean class="controller.BoardReplyController">
 		<property name="boardDao" ref="boardDao" />
 	</bean>
+	
+	<!-- Quest 관련 Controller -->
+	
+	<bean class="controller.BoardQuestController">
+		<property name="questDao" ref="questDao" />
+	</bean>
+	
 </beans>	
 	
