@@ -9,7 +9,7 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,20 +60,24 @@
 					</div>
 					<div class="col-sm-7 text-right">
 						<ul class="list-inline top-dark-right">
-						<c:if test="${empty authInfo }">
-							<li><a href="<c:url value="/login" />"><i class="fa fa-lock"></i> Login</a></li>
-							<li><a href="<c:url value="/register/registerTerm" />"><i class="fa fa-user"></i> Sign Up</a></li>
-							<li><a class="topbar-icons" href="#"><span><i
-										class="fa fa-search top-search"></i></span></a></li>
-						</c:if>
-						<c:if test="${!empty authInfo }">
-							<li> ${authInfo.name }님,환영합니다.</li>
-							<li><a href="<c:url value='/logout' />"><i class="fa fa-user"></i> Logout</a></li>
-							<li><a href="<c:url value='/edit/changePassword' />"><i class="fa fa-lock"></i> ChangePW</a></li>
-						</c:if>
+							<c:if test="${empty authInfo }">
+								<li><a href="<c:url value="/login" />"><i
+										class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<c:url value="/register/registerTerm" />"><i
+										class="fa fa-user"></i> Sign Up</a></li>
+								<li><a class="topbar-icons" href="#"><span><i
+											class="fa fa-search top-search"></i></span></a></li>
+							</c:if>
+							<c:if test="${!empty authInfo }">
+								<li>${authInfo.name }님,환영합니다.</li>
+								<li><a href="<c:url value='/logout' />"><i
+										class="fa fa-user"></i> Logout</a></li>
+								<li><a href="<c:url value='/edit/changePassword' />"><i
+										class="fa fa-lock"></i> ChangePW</a></li>
+							</c:if>
 						</ul>
-						
-						
+
+
 						<div class="search">
 							<form role="form">
 								<input type="text" class="form-control" autocomplete="off"
@@ -106,203 +110,33 @@
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown active "><a href="index.jsp"
-								class="dropdown-toggle" data-toggle="dropdown">Home <i
-									class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu multi-level" role="menu"
-									aria-labelledby="dropdownMenu">
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Sliders
-									</a>
-										<ul class="dropdown-menu">
-											<li><a href="index.html">Revolution Full-width</a></li>
-											<li><a href="home-revolution-boxed.html">Revolution
-													Boxed</a></li>
-											<li><a href="home-revolution-fullscreen.html">Revolution
-													Fullscreen</a></li>
-											<li><a href="ken-burns.html">Ken burns Slider</a></li>
-											<li><a href="home-carousel.html">Carousel Slider</a></li>
-											<li><a href="home-flexslider.html">Flex slider</a></li>
-										</ul></li>
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Revolution
-											5</a>
-										<ul class="dropdown-menu">
-											<li><a href="r5-classic.html">Carousel classic</a></li>
-											<li><a href="r5-gym.html">Slider Gym</a></li>
-										</ul></li>
-
-									<li><a href="home-parallax.html">Home - Parallax</a></li>
-									<li><a href="home-youtube-hero.html">Home -Youtube
-											hero</a></li>
-									<li><a href="home-self-video.html">Home - Self Video</a></li>
-									<li><a href="home-boxed.html">Home - Boxed</a></li>
-									<li><a href="home-construction.html">Home -
-											Construction</a></li>
-									<li><a href="home-portfolio.html">Home - Portfolio</a></li>
-
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Multi
-											level menu </a>
-										<ul class="dropdown-menu">
-											<li><a href="#"> menu level 2</a></li>
-											<li class="dropdown-submenu"><a tabindex="-1" href="#">menu
-													level 2 </a>
-												<ul class="dropdown-menu">
-													<li><a href="#"> menu level 3</a></li>
-													<li><a href="#"> menu level 3</a></li>
-												</ul></li>
-										</ul></li>
-								</ul></li>
-							<!--menu home li end here-->
 							
 							<!--menu Portfolio li end here-->
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Quest <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									
-								</ul></li>
+								data-toggle="dropdown">Quest </a>
+								</li>
 							<!--menu blog li end here-->
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu" role="menu">
-									
-										<ul class="dropdown-menu">
-											
-										</ul></li>
-									<li><a href="search-results.html">Search Results</a></li>
-									<li><a href="career.html">Career</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-
-									<li><a href="process.html">Our Process</a></li>
-
-								</ul></li>
-							<!--menu pages li end here-->
-
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu">
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Headers
-									</a>
-										<ul class="dropdown-menu">
-											<li><a href="index.html">Header 1 - Default</a></li>
-											<li><a href="header-dark.html">Header 2 - dark </a></li>
-											<li><a href="header-transparent.html">header 3 -
-													transparent </a></li>
-											<li><a href="header-center-logo.html">header 4 -
-													Logo center </a></li>
-											<li><a href="header-side-panel.html">header 5 - Side
-													panel </a></li>
-										</ul></li>
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Footers
-									</a>
-										<ul class="dropdown-menu">
-											<li><a href="index.html">Footer dark - 1</a></li>
-											<li><a href="footer-2.html">Footer dark - 2</a></li>
-											<li><a href="footer-3.html">Footer dark - 3 </a></li>
-											<li><a href="footer-light-1.html">Footer Light - 1</a></li>
-											<li><a href="footer-light-2.html">Footer Light - 2</a></li>
-											<li><a href="footer-light-3.html">Footer Light - 3 </a></li>
-										</ul></li>
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Page
-											Templates </a>
-										<ul class="dropdown-menu">
-											<li><a href="full-width.html">Full Width</a></li>
-											<li><a href="left-sidebar.html">Left Sidebar</a></li>
-											<li><a href="right-sidebar.html">Right sidebar</a></li>
-											<li><a href="both-sidebar.html">Both Sidebar</a></li>
-											<li><a href="both-right-sidebar.html">Both Right
-													sidebar</a></li>
-											<li><a href="both-left-sidebar.html">Both Left
-													Sidebar</a></li>
-										</ul></li>
-									<li class="dropdown-submenu"><a tabindex="-1" href="#">Coming
-											Soon </a>
-										<ul class="dropdown-menu">
-											<li><a href="coming-soon-1.html">Coming soon 1</a></li>
-											<li><a href="coming-soon-2.html">Coming soon 2</a></li>
-											<li><a href="coming-soon-3.html">Coming soon 3</a></li>
-										</ul></li>
-									<li><a href="side-nav.html">side navigation </a></li>
-									<li><a href="maintenance-page.html">Maintenance page </a></li>
-									<li><a href="blank.html">Blank Page</a></li>
-									<li><a href="error.html">Error - 404</a></li>
-									<li><a href="login-ragister.html">Login / Register</a></li>
-									<li><a href="login-ragister-classic.html">Login /
-											Register - Classic </a></li>
-									<li><a href="invoice.html">Invoice</a></li>
-									<li><a href="site-map.html">Site Map</a></li>
-								</ul></li>
-							<!--features-->
-
-							<!--mega menu-->
-							<li class="dropdown yamm-fw"><a href="#"
-								class="dropdown-toggle" data-toggle="dropdown">Shortcodes <i
-									class="fa fa-angle-down"></i></a>
-								<ul class="dropdown-menu">
-									<li>
-										<div class="yamm-content">
-											<div class="row">
-
-												<div class="col-sm-3">
-													<h3 class="heading">Shortcode 1</h3>
-													<ul class="nav mega-vertical-nav">
-
-														<li><a href="typography.html"><i
-																class="fa fa-text-height"></i> Typography</a></li>
-														<li><a href="grid-system.html"><i
-																class="fa fa-bars"></i> Grid System</a></li>
-														<li><a href="testimonials.html"><i
-																class="fa fa-comment-o"></i> testimonials </a></li>
-														<li><a href="tabs-accordian.html"><i
-																class="fa fa-table"></i> tabs & Accordions </a></li>
-													</ul>
-
-												</div>
-												<div class="col-sm-3">
-													<h3 class="heading">Shortcode 2</h3>
-													<ul class="nav mega-vertical-nav">
-														<li><a href="buttons.html"><i class="fa fa-cog"></i>
-																Buttons</a></li>
-														<li><a href="social-buttons.html"><i
-																class="fa fa-share"></i> Social Buttons</a></li>
-														<li><a href="alerts.html"><i class="fa fa-bell"></i>
-																Alerts </a></li>
-														<li><a href="other-elements.html"><i
-																class="fa fa-cogs"></i> Other Elements </a></li>
-													</ul>
-												</div>
-												<div class="col-sm-3">
-													<h3 class="heading">Shortcode 3</h3>
-													<ul class="nav mega-vertical-nav">
-														<li><a href="font-awesome.html"><i
-																class="fa fa-flag"></i> Font Awesome icons</a></li>
-														<li><a href="pe-icons.html"><i class="pe-7s-like"></i>
-																Pe icons</a></li>
-														<li><a href="carousel-shortcodes.html"><i
-																class="fa fa-sliders"></i> Carousel Sliders </a></li>
-														<li><a href="tables.html"><i class="fa fa-table"></i>
-																Tables </a></li>
-													</ul>
-												</div>
-												<div class="col-sm-3">
-													<h3 class="heading">Shortcode 4</h3>
-													<ul class="nav mega-vertical-nav">
-														<li><a href="pricing-tables.html"><i
-																class="fa fa-usd"></i> Pricing tables</a></li>
-														<li><a href="videos.html"><i class="fa fa-image"></i>
-																Responsive videos</a></li>
-														<li><a href="cta.html"><i class="fa fa-map-pin"></i>
-																call to cations </a></li>
-														<li><a href="maps.html"><i
-																class="fa fa-map-marker"></i> Google maps </a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
+								data-toggle="dropdown">Ranking</a>
+								<ul class="" role="menu">
 									</li>
-								</ul></li>
-							<!--menu Features li end here-->
-							<!--mega menu end-->
+						</ul>
+						</li>
+						<!--menu pages li end here-->
 
-							<!--                        <li class="dropdown">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">analysis </a>
+							</li>
+						<!--features-->
+
+						<!--mega menu-->
+						<li class="dropdown yamm-fw"><a href="<c:url value="/board/boardList" />"
+							>board </a>
+							</li>
+						<!--menu Features li end here-->
+						<!--mega menu end-->
+
+						<!--                        <li class="dropdown">
                                                     <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i> Sign In</a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
                                                         <form role="form">
@@ -356,17 +190,23 @@
 					</ol>
 					<!-- Carousel items -->
 					<div class="carousel-inner">
+
+
 						<div class="item  active" id="carousel-slide-1">
 							<div class="carousel-overlay">
 								<div class="carousel-item-content">
+
+
 									<div class="container">
 										<div class="animated fadeInDown delay-1">
-											<h1>Ultimate Flexible</h1>
+											<h1>제발..</h1>
 										</div>
 										<div class="animated fadeInUp delay-2">
-											<p>Clean & Creative Multipurpose Theme</p>
+											<p>여자친구가 태어나긴 했나요?</p>
 										</div>
 									</div>
+
+
 								</div>
 							</div>
 						</div>
@@ -376,10 +216,10 @@
 								<div class="carousel-item-content">
 									<div class="container">
 										<div class="animated fadeInLeft delay-1">
-											<h1>Responsive at all</h1>
+											<h1>최고의 성형은 다이어트다.</h1>
 										</div>
 										<div class="animated fadeInRight delay-2">
-											<p>Fully responsive creative template</p>
+											<p>성형미인으로 다시 태어나겠다.</p>
 										</div>
 									</div>
 								</div>
@@ -391,10 +231,10 @@
 								<div class="carousel-item-content">
 									<div class="container">
 										<div class="animated fadeInUp delay-1">
-											<h1>Ultimate Flexible</h1>
+											<h1>물러서지 않겠다.</h1>
 										</div>
 										<div class="animated fadeInUp delay-2">
-											<p>Clean & Creative Multipurpose Theme</p>
+											<p>두려움을 이겨내는 용기를 가질 수 있기를</p>
 										</div>
 									</div>
 								</div>
@@ -414,17 +254,22 @@
 
 				<div class="divide70"></div>
 
+				<div calss="main-place">
+					<div class="sugo2day-logo">
+						<img src="<%=cp%>/resources/images/Logo.png">
+					</div>
+					<div>
+						<h1>Welcome</h1>
+						<p>수고했어, 오늘도는 이러쿵 저러쿵 해서 어쩌구저쩌구 스웩스웩</p>
+						<p>그렇기 때문 이러이러합니다. 그런데 말입니다.</p>
+						<p>성배야 수술 잘하고 돌아오길 바래 꼭!</p>
+						
+					</div> 
+				</div>
+
 				<div class="main-content-1">
-					<div class="how_to_use">
-						<img class="img-responsive" src="http://placehold.it/230x400">
-					</div>
-					<div class="how_to_use">
-						<img class="img-responsive"
-							src="<%=cp%>/resources/images/use2.png">
-					</div>
-					<div class="how_to_use">
-						<img class="img-responsive"
-							src="<%=cp%>/resources/images/use3.png">
+					<div>
+						<img src="<%=cp%>/resources/images/use.png">
 					</div>
 				</div>
 
@@ -445,46 +290,46 @@
 				</footer>
 			</div>
 		</div>
-	</div>	
-		<!--default footer end here-->
-		<!--scripts and plugins -->
-		<!--must need plugin jquery-->
-		<script src="<%=cp%>/resources/js/jquery.min.js"></script>
-		<!--bootstrap js plugin-->
-		<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
-			type="text/javascript"></script>
-		<!--easing plugin for smooth scroll-->
-		<script src="<%=cp%>/resources/js/jquery.easing.1.3.min.js"
-			type="text/javascript"></script>
-		<!--sticky header-->
-		<script type="text/javascript"
-			src="<%=cp%>/resources/js/jquery.sticky.js"></script>
-		<!--flex slider plugin-->
-		<script src="<%=cp%>/resources/js/jquery.flexslider-min.js"
-			type="text/javascript"></script>
-		<!--parallax background plugin-->
-		<script src="<%=cp%>/resources/js/jquery.stellar.min.js"
-			type="text/javascript"></script>
+	</div>
+	<!--default footer end here-->
+	<!--scripts and plugins -->
+	<!--must need plugin jquery-->
+	<script src="<%=cp%>/resources/js/jquery.min.js"></script>
+	<!--bootstrap js plugin-->
+	<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<!--easing plugin for smooth scroll-->
+	<script src="<%=cp%>/resources/js/jquery.easing.1.3.min.js"
+		type="text/javascript"></script>
+	<!--sticky header-->
+	<script type="text/javascript"
+		src="<%=cp%>/resources/js/jquery.sticky.js"></script>
+	<!--flex slider plugin-->
+	<script src="<%=cp%>/resources/js/jquery.flexslider-min.js"
+		type="text/javascript"></script>
+	<!--parallax background plugin-->
+	<script src="<%=cp%>/resources/js/jquery.stellar.min.js"
+		type="text/javascript"></script>
 
 
-		<!--digit countdown plugin-->
-		<script src="<%=cp%>/resources/js/waypoints.min.js"></script>
-		<!--digit countdown plugin-->
-		<script src="<%=cp%>/resources/js/jquery.counterup.min.js"
-			type="text/javascript"></script>
-		<!--on scroll animation-->
-		<script src="<%=cp%>/resources/js/wow.min.js" type="text/javascript"></script>
-		<!--owl carousel slider-->
-		<script src="<%=cp%>/resources/owl-carousel/owl.carousel.min.js"
-			type="text/javascript"></script>
-		<!--popup js-->
-		<script src="<%=cp%>/resources/js/jquery.magnific-popup.min.js"
-			type="text/javascript"></script>
+	<!--digit countdown plugin-->
+	<script src="<%=cp%>/resources/js/waypoints.min.js"></script>
+	<!--digit countdown plugin-->
+	<script src="<%=cp%>/resources/js/jquery.counterup.min.js"
+		type="text/javascript"></script>
+	<!--on scroll animation-->
+	<script src="<%=cp%>/resources/js/wow.min.js" type="text/javascript"></script>
+	<!--owl carousel slider-->
+	<script src="<%=cp%>/resources/owl-carousel/owl.carousel.min.js"
+		type="text/javascript"></script>
+	<!--popup js-->
+	<script src="<%=cp%>/resources/js/jquery.magnific-popup.min.js"
+		type="text/javascript"></script>
 
 
 
 
-		<!--customizable plugin edit according to your needs-->
-		<script src="<%=cp%>/resources/js/custom.js" type="text/javascript"></script>
+	<!--customizable plugin edit according to your needs-->
+	<script src="<%=cp%>/resources/js/custom.js" type="text/javascript"></script>
 </body>
 </html>
