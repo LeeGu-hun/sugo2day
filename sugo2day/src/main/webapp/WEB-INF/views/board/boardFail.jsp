@@ -33,8 +33,11 @@
 		<div class="site-wrapper-inner">
 			<div class="cover-container">
 				<div class="inner cover">
-					<h1 class="cover-heading">게시글을 찾을 수 없습니다</h1>
-					<p class="lead">5초 후, 자동으로 메인 페이지로 이동합니다.</p>
+					<h1 class="cover-heading">입력한 값에 문제가 있습니다!</h1>
+					<p class="lead">글 비밀번호, 제목, 본문 내용은 필수로 작성하셔야 됩니다</p>
+					<br>
+					<br>
+					<p class="lead">5초 후, 자동으로 게시글 목록으로 이동합니다.</p>
 					<br>
 					<br>
 					<p class="lead">

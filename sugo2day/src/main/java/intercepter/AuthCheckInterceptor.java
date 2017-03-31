@@ -18,7 +18,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 				return true;
 			}
 		}
-		response.sendRedirect(request.getContextPath() + "/loginSuggest");
+		response.sendRedirect(request.getContextPath() + "/login");
 		return false;
 	}
 	

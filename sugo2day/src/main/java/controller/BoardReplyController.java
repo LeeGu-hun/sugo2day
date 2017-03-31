@@ -23,17 +23,18 @@ public class BoardReplyController {
 	}
 	
 	@RequestMapping("board/boardReply/{num}")
-	public String boardRe(@PathVariable("num") int num, BoardBean board, Model model) {
+	public String boardRe(@PathVariable("num") Integer num, BoardBean board, Model model) {
 		board = boardDao.selectByNum(num);
 		model.addAttribute("board", board);
 		return "board/boardReplyForm";
 	}
 	
 	@RequestMapping(value="board/boardReply", method = RequestMethod.POST)
-	public String boardReply(BoardBean board, Errors errors, HttpSession session) {
+	public String boardReply(BoardBean board, Errors errors, HttpSession session, Model model) {
 		new BoardValidator().validate(board, errors);
 		if(errors.hasErrors()) {
-			return "board/boardReplyForm";
+			model.addAttribute("board", board);
+			return "board/boardFail";
 		}
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");

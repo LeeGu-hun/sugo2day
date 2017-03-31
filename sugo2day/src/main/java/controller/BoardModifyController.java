@@ -31,14 +31,12 @@ public class BoardModifyController {
 	}
 	
 	@RequestMapping("board/boardModify/{num}")
-	public String boardMod(@PathVariable("num") int num, BoardBean board, Model model, HttpSession session) {
+	public String boardMod(@PathVariable("num") Integer num, BoardBean board, Model model, HttpSession session) {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		boardWriterCheck.setWriter(authInfo.getName());
-		
-		
+				
 		try {
 			boardWriterCheck.matchMod(num, boardWriterCheck.getWriter());
-			num = board.getNum();
 			model.addAttribute("board", board);
 			return "board/boardModifyForm";
 		} catch (BoardNotFoundException e) {
@@ -47,16 +45,14 @@ public class BoardModifyController {
 		}
 	}
 	
-	@RequestMapping(value="board/boardModifyForm", method=RequestMethod.POST)
-	public String boardModify(@PathVariable("num") int num, BoardBean board, Errors errors) {
-		System.out.println(board.getNum() + "board.getNum");
-		int boards = boardDao.selectNum(board.getNum());
+	@RequestMapping(value="board/boardModifyAct", method=RequestMethod.POST)
+	public String boardModify(BoardBean board, Errors errors, Model model) {
 		new BoardValidator().validate(board, errors);
-		System.out.println(boards + "num");
 		
 		if(errors.hasErrors()) {
-			return "board/boardModify/" + boards;
-		} 
+			model.addAttribute("board", board);
+			return "board/boardFail";
+		}
 		
 		boardDao.update(board);
 		return "board/boardModifyComplete";	

@@ -13,6 +13,19 @@
 	<!-- Bootstrap 사용을 위한 경로 Mapping -->	
 	<mvc:resources location="/resources/**" mapping="/resources/" />
 	
+	<!-- Intercepter 설정 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 로그인이 안되면 볼 수 없는 것들 -->
+			<mvc:mapping path="/board/**" />
+			
+			<!-- 그 중에서도 예외로 볼 수 있는 것들 -->
+			<mvc:exclude-mapping path="/board/boardList" />
+			<mvc:exclude-mapping path="/board/boardDetail/**" />
+			<bean class="intercepter.AuthCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	
 	<!-- 아래에 Controller Class Bean 등록 -->
 	
