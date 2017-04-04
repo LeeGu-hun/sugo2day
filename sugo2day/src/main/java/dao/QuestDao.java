@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -12,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.annotation.Transactional;
 
+import bean.MemberBean;
 import bean.QuestBean;
 import quest.QuestCommand;
 
@@ -38,7 +40,9 @@ public class QuestDao {
 					rs.getString("PROB"),
 					rs.getDate("STARTDATE"),
 					rs.getDate("ENDDATE"),
-					rs.getInt("DIFFICULTY"));
+					rs.getInt("DIFFICULTY"),
+					rs.getInt("ID"));
+					
 			return quest;
 		}
 	};
@@ -68,8 +72,8 @@ public class QuestDao {
 				jdbcTemplate.update((Connection con) -> {
 						PreparedStatement pstmt = con.prepareStatement(
 								"insert into QUEST (NUM, NAME,SUBJECT, CONTENT,  "
-								+ "PROB , STARTDATE , ENDDATE, DIFFICULTY ) "
-								+ "values (QUEST_NUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ? ) ");
+								+ "PROB , STARTDATE , ENDDATE, DIFFICULTY,ID ) "
+								+ "values (QUEST_NUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ? ) ");
 						pstmt.setString(1, quest.getNAME());
 						pstmt.setString(2, quest.getSUBJECT());
 						pstmt.setString(3, quest.getCONTENT());
@@ -77,6 +81,7 @@ public class QuestDao {
 						pstmt.setDate(5, new java.sql.Date(quest.getSTARTDATE().getTime()));
 						pstmt.setDate(6, new java.sql.Date(quest.getENDDATE().getTime()));
 						pstmt.setInt(7, quest.getDIFFICULTY());
+						pstmt.setInt(8, quest.getID());
 						return pstmt;
 					});
 				
@@ -89,7 +94,49 @@ public class QuestDao {
 				return quest;
 			}
 			
+			public QuestBean selectByNum(int num){
+				List<QuestBean> quest =jdbcTemplate.query("SELECT * FROM QUEST "
+						+ "WHERE NUM = ?", QuestRowMapper, num );
+				return quest.isEmpty() ? null : quest.get(0);
+			}
 			
+			public List<QuestBean> selectById(int num){
+				List<QuestBean> quest =jdbcTemplate.query("SELECT * FROM QUEST "
+						+ "WHERE ID = ?", QuestRowMapper, num );
+				return quest;
+			}
 			
-				
+			public QuestBean selectByMid(int num) {
+				List<QuestBean> results = jdbcTemplate.query(
+						"select q.SUBJECT,q.CONTENT, q.NUM" 
+								+" FROM member m, quest q "
+								+" WHERE m.id = q.ID " 
+								+" AND q.ID= ? ", QuestRowMapper, num);
+				return results.isEmpty() ? null : results.get(0);
+			}
+
+			
+//			public List<Integer> countDay(int id , int num) {
+//				List<Integer> count = jdbcTemplate.queryForList(
+//						"SELECT (TO_DATE(SYSDATE, 'YYYY/MM/DD') "
+//					  + "- TO_DATE(ENDDATE, 'YYYY/MM/DD')) AS "+"DAY"+" FROM QUEST "
+//					  + " WHERE ID=? AND NUM=? ", Integer.class, id , num);
+//				return count;
+//			}
+			
+//			public int countDay(int num) {
+//				Integer count = jdbcTemplate.queryForObject(
+//						"SELECT (TO_DATE(SYSDATE, 'YYYY/MM/DD') "
+//					  + "- TO_DATE(ENDDATE, 'YYYY/MM/DD')) AS "+"DAY"+" FROM QUEST "
+//					  + " WHERE ID=? ", Integer.class, num);
+//				return count;
+//			}
+			
+			public List<Integer> countDay(int num) {
+				List<Integer> count = jdbcTemplate.queryForList(
+						"SELECT (TO_DATE(SYSDATE, 'YYYY/MM/DD') "
+					  + "- TO_DATE(ENDDATE, 'YYYY/MM/DD')) AS "+"DAY"+" FROM QUEST "
+					  + " WHERE ID=? ", Integer.class, num);
+				return count;
+			}
 }

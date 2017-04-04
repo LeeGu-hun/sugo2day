@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,11 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bean.QuestBean;
 import dao.QuestDao;
+import exception.BoardNotFoundException;
 import member.login.AuthInfo;
 import quest.QuestCommand;
 import quest.QuestCommandValidator;
@@ -26,23 +27,60 @@ public class BoardQuestController {
 		this.questDao = questDao;
 	}
 
-	@RequestMapping( "quest/questList")
-	public String questBoard(QuestCommand quest , Model model) {
-//		model.addAttribute("board", boardCommand);
-		List<QuestBean> questList = questDao.questAll();
-		System.out.println("list->"+questList+"quest"+quest.getSUBJECT());
-//		
+	@RequestMapping(value="quest/questList/{num}" , method=RequestMethod.GET)
+	public String questBoard(@PathVariable("num") int num , Model model ) {	
+		List<QuestBean> questList = questDao.selectById(num);
+		List<Integer> countDday = questDao.countDay(num);
+//		if(countDday == 0){
+//			System.out.println("퀘스트기간이 끝났습니다.");
+//		}
 		model.addAttribute("quest", questList);
-//		System.out.println("questList ->->"+questList);
+		model.addAttribute("countDday",countDday);
+//		List<Integer> countDday = questDao.countDay(num, quest.getNUM());
+
 		return "quest/questList";
 	}
+	
+//	@RequestMapping(value="quest/questList/{num}" , method=RequestMethod.GET)
+//	public String questBoard(@PathVariable("num") int num , Model model ) {	
+//		List<QuestBean> questList = questDao.selectById(num);
+//		int countDday = questDao.countDay(num);
+//		if(countDday == 0){
+//			System.out.println("퀘스트기간이 끝났습니다.");
+//		}
+//		model.addAttribute("quest", questList);
+//		model.addAttribute("countDday",countDday);
+//		
+//		return "quest/questList";
+//	}
+//	@RequestMapping(value="quest/questList/{num}" , method=RequestMethod.GET)
+//	public String questBoard(@PathVariable("num") int num ,List<QuestBean> quest , Model model) {
+////		model.addAttribute("board", boardCommand);
+//		quest= questDao.selectById(num);
+////		System.out.println("list->"+quest+"quest"+quest.get);
+////		
+//		model.addAttribute("quest", quest);
+////		System.out.println("questList ->->"+questList);
+//		return "quest/questList";
+//	}
 
 	@RequestMapping( "quest/questReg")
 	public String questReg() {
 //		model.addAttribute("board", boardCommand);
 		return "quest/questReg";
 	}
-
+	
+	
+	@RequestMapping(value ="quest/questDetail/{num}" , method=RequestMethod.GET)
+	public String questDetailGet(@PathVariable("num") int num, Model model,QuestCommand quest){
+			model.addAttribute("quest", quest);
+			
+			if(quest == null) {
+				throw new BoardNotFoundException();
+			}
+			questDao.selectByNum(num);
+			return "quest/questDetail";
+	}
 	
 	@RequestMapping(value = "quest/questRegister", method = RequestMethod.GET)
 	public String boardWriteGet(QuestCommand quest, Model model) {
@@ -65,29 +103,7 @@ public class BoardQuestController {
 			e.printStackTrace();
 		}
 		
-//		MultipartFile multi = boardCommand.getMultiFile();
-//		String newFileName = "";
-//		// 파일이 많을 경우 업로드 파일 리스트
-//		// List<MultipartFile> files = boardCommand.getFiles();
-//
-//		if (!multi.isEmpty()) {
-//			System.out.println("If 타느냐");
-//			String fileName = multi.getOriginalFilename();
-//			// 파일명이 중복되지 않게 파일명에 시간 추가
-//			newFileName = System.currentTimeMillis() + "_" + fileName;
-//			boardCommand.setFileName(newFileName);
-//
-//			String path = boardCommand.getUpDir() + newFileName;
-//
-//			try {
-//				File file = new File(path);
-//				multi.transferTo(file);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		questDao.insert(boardCommand);
-		return "redirect:/quest/questList";
+		return "redirect:/quest/questList/"+quest.getID();
 
 	}
 	

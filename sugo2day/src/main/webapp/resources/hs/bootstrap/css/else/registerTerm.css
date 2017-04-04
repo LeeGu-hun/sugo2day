@@ -1,0 +1,32 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.container {
+  width: auto;
+  max-width: 600px;
+  padding: 0 15px;
+}
+
+.form-agree {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-agree .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-agree .checkbox {
+  font-weight: normal;
+  font-size: 14px;
+}
