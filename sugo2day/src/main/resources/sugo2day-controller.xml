@@ -48,7 +48,7 @@
 	
 	<!-- Quest 관련 Controller -->
 	
-	<bean class="controller.BoardQuestController">
+	<bean class="controller.LetterController">
 		<property name="questDao" ref="questDao" />
 	</bean>
 	

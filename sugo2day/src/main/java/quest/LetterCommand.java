@@ -6,48 +6,71 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class QuestCommand {
+public class LetterCommand {
+
 	private Integer NUM;
-	private String NAME;
+	private String WRITER;
 	private String SUBJECT;
 	private String CONTENT;
-	private String PROB;
+	private String FILES;
+
+
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date STARTDATE;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ENDDATE;
-	private Integer DIFFICULTY;
+	private int ISQUEST;
+	private int ISPRIVATE;
+	
+
 		
+	
 	public Integer getNUM() {
 		return NUM;
 	}
+
+
 	public void setNUM(Integer nUM) {
 		NUM = nUM;
 	}
-	public String getNAME() {
-		return NAME;
+
+
+	public String getWRITER() {
+		return WRITER;
 	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
+
+
+	public void setWRITER(String wRITER) {
+		WRITER = wRITER;
 	}
+
+
 	public String getSUBJECT() {
 		return SUBJECT;
 	}
+
+
 	public void setSUBJECT(String sUBJECT) {
 		SUBJECT = sUBJECT;
 	}
-	
+
+
 	public String getCONTENT() {
 		return CONTENT;
 	}
+
+
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
 	}
-	public String getPROB() {
-		return PROB;
+
+	public String getFILES() {
+		return FILES;
 	}
-	public void setPROB(String pROB) {
-		PROB = pROB;
+
+	public void setFILES(String fILES) {
+		FILES = fILES;
 	}
 	public Date getSTARTDATE() {
 		return STARTDATE;
@@ -55,20 +78,35 @@ public class QuestCommand {
 	public void setSTARTDATE(String sTARTDATE) {
 		STARTDATE = transformDate(sTARTDATE);
 	}
+	
 	public Date getENDDATE() {
 		return ENDDATE;
 	}
 	public void setENDDATE(String eNDDATE) {
 		ENDDATE = transformDate(eNDDATE);
 	}
-	
-	public Integer getDIFFICULTY() {
-		return DIFFICULTY;
+
+
+	public int getISQUEST() {
+		return ISQUEST;
 	}
-	public void setDIFFICULTY(Integer dIFFICULTY) {
-		DIFFICULTY = dIFFICULTY;
+
+
+	public void setISQUEST(int iSQUEST) {
+		ISQUEST = iSQUEST;
 	}
-	
+
+
+	public int getISPRIVATE() {
+		return ISPRIVATE;
+	}
+
+
+	public void setISPRIVATE(int iSPRIVATE) {
+		ISPRIVATE = iSPRIVATE;
+	}
+
+
 	public Date transDate(Date d, String times){
 		if(d != null){
 			SimpleDateFormat transFormat; 

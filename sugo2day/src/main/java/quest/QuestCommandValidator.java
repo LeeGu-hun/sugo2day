@@ -7,7 +7,7 @@ import org.springframework.validation.Validator;
 public class QuestCommandValidator implements Validator{
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return QuestCommand.class.isAssignableFrom(clazz);
+		return LetterCommand.class.isAssignableFrom(clazz);
 	}
 
 	@Override
