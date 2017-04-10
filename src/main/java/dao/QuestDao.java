@@ -10,14 +10,15 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 import bean.QuestBean;
-import quest.LetterCommand;
+import quest.QuestCommand;
 
-public class LetterDao {
+public class QuestDao {
 	private JdbcTemplate jdbcTemplate;
 
-	public LetterDao(DataSource dataSource) {
+	public QuestDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
@@ -31,15 +32,13 @@ public class LetterDao {
 		public QuestBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 			QuestBean quest = new QuestBean(
 					rs.getInt("NUM"),
-					rs.getString("WRITER"),
+					rs.getString("NAME"),
 					rs.getString("SUBJECT"),
 					rs.getString("CONTENT"),
-					rs.getString("FILES"),
+					rs.getString("PROB"),
 					rs.getDate("STARTDATE"),
 					rs.getDate("ENDDATE"),
-					rs.getInt("ISQUEST"),
-					rs.getInt("ISPRIVATE")
-					);
+					rs.getInt("DIFFICULTY"));
 			return quest;
 		}
 	};
@@ -64,20 +63,20 @@ public class LetterDao {
 //				
 //			
 //			}
-			public void insert(final LetterCommand quest) {
+			@Transactional
+			public void insert(final QuestCommand quest) {
 				jdbcTemplate.update((Connection con) -> {
 						PreparedStatement pstmt = con.prepareStatement(
-								"insert into QUEST (NUM, WRITER ,SUBJECT, CONTENT, FILES, "
-								+ "  STARTDATE , ENDDATE , ISQUEST , ISPRIVATE) "
+								"insert into QUEST (NUM, NAME,SUBJECT, CONTENT,  "
+								+ "PROB , STARTDATE , ENDDATE, DIFFICULTY ) "
 								+ "values (QUEST_NUM_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ? ) ");
-						pstmt.setString(1, quest.getWRITER());
+						pstmt.setString(1, quest.getNAME());
 						pstmt.setString(2, quest.getSUBJECT());
 						pstmt.setString(3, quest.getCONTENT());
-						pstmt.setString(5, quest.getFILES());
-						pstmt.setDate(6, new java.sql.Date(quest.getSTARTDATE().getTime()));
-						pstmt.setDate(7, new java.sql.Date(quest.getENDDATE().getTime()));
-						pstmt.setInt(8, quest.getISQUEST());
-						pstmt.setInt(9, quest.getISPRIVATE());
+						pstmt.setString(4, quest.getPROB());
+						pstmt.setDate(5, new java.sql.Date(quest.getSTARTDATE().getTime()));
+						pstmt.setDate(6, new java.sql.Date(quest.getENDDATE().getTime()));
+						pstmt.setInt(7, quest.getDIFFICULTY());
 						return pstmt;
 					});
 				

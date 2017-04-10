@@ -6,97 +6,96 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class QuestBean {
 	private Integer NUM;
-	private String WRITER;
+	private String NAME;
 	private String SUBJECT;
 	private String CONTENT;
-	private String FILES;
+	private String PROB;
 	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date STARTDATE;
 	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date ENDDATE;
-	private int ISQUEST;
-	private int ISPRIVATE;
+	private Integer DIFFICULTY;
+
 	
-	
-	public QuestBean(Integer nUM, String wRITER, String sUBJECT, String cONTENT, String fILES, Date sTARTDATE,
-			Date eNDDATE, int iSQUEST, int iSPRIVATE) {
+
+	public QuestBean(Integer nUM, String nAME, String sUBJECT, String cONTENT, String pROB,
+			Date sTARTDATE, Date eNDDATE,Integer dIFFICULTY) {
 		super();
 		NUM = nUM;
-		WRITER = wRITER;
+		NAME = nAME;
 		SUBJECT = sUBJECT;
 		CONTENT = cONTENT;
-		FILES = fILES;
+		PROB = pROB;
 		STARTDATE = sTARTDATE;
 		ENDDATE = eNDDATE;
-		ISQUEST = iSQUEST;
-		ISPRIVATE = iSPRIVATE;
+		DIFFICULTY = dIFFICULTY;
 	}
-	
-	public QuestBean() {
-	}
-	
+
+	public QuestBean() {	}
+
 	public Integer getNUM() {
 		return NUM;
 	}
+
 	public void setNUM(Integer nUM) {
 		NUM = nUM;
 	}
-	public String getWRITER() {
-		return WRITER;
+
+	public String getNAME() {
+		return NAME;
 	}
-	public void setWRITER(String wRITER) {
-		WRITER = wRITER;
+
+	public void setNAME(String nAME) {
+		NAME = nAME;
 	}
+
 	public String getSUBJECT() {
 		return SUBJECT;
 	}
+
 	public void setSUBJECT(String sUBJECT) {
 		SUBJECT = sUBJECT;
 	}
+
 	public String getCONTENT() {
 		return CONTENT;
 	}
+
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
 	}
-	
-	public String getFILES() {
-		return FILES;
-	}
-	public void setFILES(String fILES) {
-		FILES = fILES;
-	}
+
 	public Date getSTARTDATE() {
 		return STARTDATE;
 	}
+
 	public void setSTARTDATE(Date sTARTDATE) {
 		STARTDATE = sTARTDATE;
 	}
+
 	public Date getENDDATE() {
 		return ENDDATE;
 	}
+
 	public void setENDDATE(Date eNDDATE) {
 		ENDDATE = eNDDATE;
 	}
-	public int getISQUEST() {
-		return ISQUEST;
-	}
-	public void setISQUEST(int iSQUEST) {
-		ISQUEST = iSQUEST;
-	}
-	public int getISPRIVATE() {
-		return ISPRIVATE;
-	}
-	public void setISPRIVATE(int iSPRIVATE) {
-		ISPRIVATE = iSPRIVATE;
+
+	public String getPROB() {
+		return PROB;
 	}
 
+	public void setPROB(String pROB) {
+		PROB = pROB;
+	}
 	
-
-
-
+	public Integer getDIFFICULTY() {
+		return DIFFICULTY;
+	}
 	
-	
+	public void setDIFFICULTY(Integer dIFFICULTY) {
+		DIFFICULTY = dIFFICULTY;
+	}
 	
 	//difficulty 난이도를 추가한다.
 	

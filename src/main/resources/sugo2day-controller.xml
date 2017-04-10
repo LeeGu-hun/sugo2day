@@ -17,11 +17,9 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- 로그인이 안되면 볼 수 없는 것들 -->
-			<mvc:mapping path="/board/**" />
+			<mvc:mapping path="/my/**" />
 			
 			<!-- 그 중에서도 예외로 볼 수 있는 것들 -->
-			<mvc:exclude-mapping path="/board/boardList" />
-			<mvc:exclude-mapping path="/board/boardDetail/**" />
 			<bean class="intercepter.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -48,13 +46,13 @@
 	
 	<!-- Quest 관련 Controller -->
 	
-	<bean class="controller.LetterController">
+	<bean class="controller.BoardQuestController">
 		<property name="questDao" ref="questDao" />
 	</bean>
 	
 	<!-- My Page Controller -->
-	<bean class="controller.MyPageController">
-	
+	<bean class="controller.LetterController">
+		<property name="letterDao" ref="letterDao" />
 	</bean>
 </beans>	
 	

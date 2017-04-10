@@ -45,7 +45,11 @@
 		<constructor-arg ref="memberDao" />
 	</bean>
 		
-	<bean id="questDao" class="dao.LetterDao">
+	<bean id="questDao" class="dao.QuestDao">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="letterDao" class="dao.LetterDao">
 		<constructor-arg ref="dataSource" />
 	</bean>
 		

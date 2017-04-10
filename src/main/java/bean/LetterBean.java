@@ -23,6 +23,22 @@ public class LetterBean {
 	public LetterBean() {
 		super();
 	}
+	
+	
+	public LetterBean(int num, String writer, String subject, String content, String fileName, Date startdate,
+			Date enddate, int isquest, int isprivate) {
+		super();
+		this.num = num;
+		this.writer = writer;
+		this.subject = subject;
+		Content = content;
+		this.fileName = fileName;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.isquest = isquest;
+		this.isprivate = isprivate;
+	}
+
 
 	// getter & setter
 	public int getNum() {

@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import bean.QuestBean;
-import dao.LetterDao;
+import dao.QuestDao;
 import member.login.AuthInfo;
-import quest.LetterCommand;
+import quest.QuestCommand;
 import quest.QuestCommandValidator;
 
 @Controller
-public class LetterController {
-	private LetterDao questDao;
+public class pageController {
+	private QuestDao questDao;
 
 	
-	public void setQuestDao(LetterDao questDao) {
+	public void setQuestDao(QuestDao questDao) {
 		this.questDao = questDao;
 	}
 
 	@RequestMapping( "quest/questList")
-	public String questBoard(LetterCommand quest , Model model) {
+	public String questBoard(QuestCommand quest , Model model) {
 //		model.addAttribute("board", boardCommand);
 		List<QuestBean> questList = questDao.questAll();
 		System.out.println("list->"+questList+"quest"+quest.getSUBJECT());
@@ -44,20 +44,18 @@ public class LetterController {
 
 	
 	@RequestMapping(value = "quest/questRegister", method = RequestMethod.GET)
-	public String boardWriteGet(LetterCommand quest, Model model) {
-
+	public String boardWriteGet(QuestCommand quest, Model model) {
 		model.addAttribute("quest", quest);
-		
 		return "/quest/questRegister";
 	}
 
 	@RequestMapping(value = "quest/questRegister", method = RequestMethod.POST)
-	public String boardWrite(LetterCommand quest, Model model, Errors errors,HttpSession session ){
+	public String boardWrite(QuestCommand quest, Model model, Errors errors,HttpSession session ){
 		
 		new QuestCommandValidator().validate(quest, errors);
 		try{
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-		quest.setWRITER(authInfo.getName());
+		quest.setNAME(authInfo.getName());
 		
 		questDao.insert(quest);
 		}catch(Exception e){
@@ -86,7 +84,7 @@ public class LetterController {
 //			}
 //		}
 //		questDao.insert(boardCommand);
-		return "redirect:/quest/questList";
+		return "quest/questList";
 
 	}
 	
