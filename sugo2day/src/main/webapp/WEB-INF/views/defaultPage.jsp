@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -9,46 +9,29 @@
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>수고했어, 오늘도</title>
 <!-- Bootstrap -->
-<link href="<%=cp%>/resources/hs/bootstrap/css/bootstrap.min.css"
+<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <!-- custom css (blue color by default) -->
-<link href="<%=cp%>/resources/css2/style.css" rel="stylesheet"
+<link href="<%=cp%>/resources/css/style.css?ver=1" rel="stylesheet"
 	type="text/css" media="screen">
 <!-- font awesome for icons -->
-<link href="<%=cp%>/resources/hs/font-awesome/css/font-awesome.min.css"
+<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
 <!-- flex slider css -->
-<link href="<%=cp%>/resources/css2/flexslider.css" rel="stylesheet"
+<link href="<%=cp%>/resources/css/flexslider.css" rel="stylesheet"
 	type="text/css" media="screen">
 <!-- animated css  -->
-<link href="<%=cp%>/resources/css2/animate.css" rel="stylesheet"
+<link href="<%=cp%>/resources/css/animate.css" rel="stylesheet"
 	type="text/css" media="screen">
-<!--owl carousel css-->
-<link href="<%=cp%>/resources/hs/owl-carousel/assets/owl.carousel.css"
-	rel="stylesheet" type="text/css" media="screen">
-<link href="<%=cp%>/resources/hs/owl-carousel/assets/owl.theme.default.css"
-	rel="stylesheet" type="text/css" media="screen">
-<!--mega menu -->
-<link href="<%=cp%>/resources/css2/yamm.css" rel="stylesheet"
+<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet"
 	type="text/css">
-<!--popups css-->
-<link href="<%=cp%>/resources/css2/magnific-popup.css" rel="stylesheet"
-	type="text/css">
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-
 </head>
 <body>
 	<div class="wrapper">
@@ -65,30 +48,15 @@
 										class="fa fa-lock"></i> Login</a></li>
 								<li><a href="<c:url value="/register/registerTerm" />"><i
 										class="fa fa-user"></i> Sign Up</a></li>
-								<li><a class="topbar-icons" href="#"><span><i
-											class="fa fa-search top-search"></i></span></a></li>
 							</c:if>
 							<c:if test="${!empty authInfo }">
 								<li>${authInfo.name }님,환영합니다.</li>
-								<li><a href="<c:url value='/logout' />"><i
-										class="fa fa-user"></i> Logout</a></li>
-								<li><a href="<c:url value='/edit/changePassword' />"><i
-										class="fa fa-lock"></i> ChangePW</a></li>
-								<li><a href="<c:url value='/quest/questList/${authInfo.id }' />"><i
-										class="fa fa-lock"></i> my quest</a></li>
-							
+								<li><a href="<c:url value='/logout' />"><i class="fa fa-user"></i> Logout</a></li>
+								<li><a
+									href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+										<i class="fa fa-lock"></i> ChangePW</a></li>
 							</c:if>
-							
 						</ul>
-
-
-						<div class="search">
-							<form role="form">
-								<input type="text" class="form-control" autocomplete="off"
-									placeholder="Write something and press enter"> <span
-									class="search-close"><i class="fa fa-times"></i></span>
-							</form>
-						</div>
 
 					</div>
 				</div>
@@ -108,69 +76,16 @@
 								class="icon-bar"></span>
 						</button>
 						<div id="brandLogo">
-							<a class="navbar-brand" href="index.jsp"><img
+							<a class="navbar-brand" href="<c:url value="/main" />"><img
 								src="<%=cp%>/resources/images/Logo.png" alt=""></a>
 						</div>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							
-							<!--menu quest li end here-->
-							<li class="dropdown"><a href="<c:url value='/quest/questList/${authInfo.id }' />">Quest </a>
-								</li>
-								
-							<!--menu ranking li end here-->
-							<li class="dropdown"><a href="/quest/questList" class="dropdown-toggle"
-								data-toggle="dropdown">Ranking </a>
-								
-									</li>
-					
-						
-						</li>
-						
-						<!--menu pages li end here-->
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">Analysis </a>
-							</li>
-						
-						<!--mega menu-->
-						<li class="dropdown yamm-fw"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown">Board </a>
-							</li>
-							</ul>
-						<!--menu Features li end here-->
-						<!--mega menu end-->
-
-						<!--                        <li class="dropdown">
-                                                    <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i> Sign In</a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                                        <form role="form">
-                                                            <h4>Signin</h4>
-                        
-                                                            <div class="form-group">
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                    <input type="text" class="form-control" placeholder="Username">
-                                                                </div>
-                                                                <br>
-                                                                <div class="input-group">
-                                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                                    <input type="password" class="form-control" placeholder="Password">
-                                                                </div>
-                                                                <div class="checkbox pull-left">
-                                                                    <label>
-                                                                        <input type="checkbox"> Remember me
-                                                                    </label>
-                                                                </div>
-                                                                <a class="btn btn-theme-bg pull-right">Login</a>
-                                                                                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 
-                                                                <div class="clearfix"></div>
-                                                                <hr>
-                                                                <p>Don't have an account! <a href="#">Register Now</a></p>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </li> menu login li end here-->
+							<!-- 메뉴 -->
+							<li class="dropdown"><a
+								href="<c:url value="/quest/questList"/>">Quest </a></li>
+							<li class="dropdown"><a href="<c:url value ="/my/myPage"/>">My page</a></li>
 						</ul>
 					</div>
 					<!--/.nav-collapse -->
@@ -179,7 +94,7 @@
 			</div>
 		</div>
 		<!--navbar-default-->
-		
+
 
 		<!--carousel slider-->
 		<div id="page-wrapper">
@@ -197,7 +112,7 @@
 					<div class="carousel-inner">
 
 
-						<div class="item  active" id="carousel-slide-1">
+						<div class="item active" id="carousel-slide-1">
 							<div class="carousel-overlay">
 								<div class="carousel-item-content">
 
@@ -259,17 +174,21 @@
 
 				<div class="divide70"></div>
 
-				<div calss="main-place">
+				<div class="main-place">
+
 					<div class="sugo2day-logo">
-						<img src="<%=cp%>/resources/images/Logo.png">
+						<img class="img-responsive" src="<%=cp%>/resources/images/Logo.png">
 					</div>
-					<div>
-						<h1>Welcome</h1>
+
+					<div id="main-text" style="text-align: center;">
+					<br>
+					
+					<div><hr><br><h2>Welcome</h2></div>
 						<p>수고했어, 오늘도는 이러쿵 저러쿵 해서 어쩌구저쩌구 스웩스웩</p>
 						<p>그렇기 때문 이러이러합니다. 그런데 말입니다.</p>
-						<p>성배야 수술 잘하고 꼭 돌아오길 바래!</p>
-						
-					</div> 
+						<p>성호 언제올껀데?</p>
+					<br>
+					</div>
 				</div>
 
 				<div class="main-content-1">
@@ -277,31 +196,45 @@
 						<img src="<%=cp%>/resources/images/use.png">
 					</div>
 				</div>
+				
+				
+				<div class="main-content-2" style="text-align: center;">
+					<br>
+					<br>
+					<hr>
+					<br>
+					<br>
+					<h1>상세 사용설명서가 들어갈 영역입니다.</h1>
+					 <img src="http://placehold.it/1000x600/FF0000/FFFFFF?text=상세 사용 설명서">
+					 <br>
+					 <br>
+					 <br>
+				</div>
 
-				<div class="divide60"></div>
-				<footer id="footer">
-					<div class="container">
 
-
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<div class="footer-btm">
-									<span>&copy;2017. Theme by Design_mylife</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</footer>
 			</div>
 		</div>
+		<footer id="footer">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="footer-btm">
+							<span>&copy;2017. Theme by Design_mylife</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</footer>
 	</div>
 	<!--default footer end here-->
 	<!--scripts and plugins -->
 	<!--must need plugin jquery-->
-	<script src="<%=cp%>/resources/hs/js/jquery.min.js"></script>
+	<script src="<%=cp%>/resources/js/jquery.min.js"></script>
 	<!--bootstrap js plugin-->
-	<script src="<%=cp%>/resources/hs/bootstrap/js/bootstrap.min.js"
+	<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
 		type="text/javascript"></script>
 	<!--easing plugin for smooth scroll-->
 	<script src="<%=cp%>/resources/js/jquery.easing.1.3.min.js"
@@ -316,25 +249,11 @@
 	<script src="<%=cp%>/resources/js/jquery.stellar.min.js"
 		type="text/javascript"></script>
 
-
-	<!--digit countdown plugin-->
-	<script src="<%=cp%>/resources/hs/js/waypoints.min.js"></script>
-	<!--digit countdown plugin-->
-	<script src="<%=cp%>/resources/hs/js/jquery.counterup.min.js"
-		type="text/javascript"></script>
 	<!--on scroll animation-->
-	<script src="<%=cp%>/resources/hs/js/wow.min.js" type="text/javascript"></script>
+	<script src="<%=cp%>/resources/js/wow.min.js" type="text/javascript"></script>
 	<!--owl carousel slider-->
-	<script src="<%=cp%>/resources/hs/owl-carousel/owl.carousel.min.js"
-		type="text/javascript"></script>
-	<!--popup js-->
-	<script src="<%=cp%>/resources/hs/js/jquery.magnific-popup.min.js"
+	<script src="<%=cp%>/resources/owl-carousel/owl.carousel.min.js"
 		type="text/javascript"></script>
 
-
-
-
-	<!--customizable plugin edit according to your needs-->
-	<script src="<%=cp%>/resources/hs/js/custom.js" type="text/javascript"></script>
 </body>
 </html>

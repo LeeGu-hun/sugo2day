@@ -4,12 +4,10 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import board.BoardCommand;
-
 public class QuestCommandValidator implements Validator{
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return BoardCommand.class.isAssignableFrom(clazz);
+		return QuestCommand.class.isAssignableFrom(clazz);
 	}
 
 	@Override

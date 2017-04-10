@@ -1,16 +1,13 @@
 
-html {
+#con-wrap {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
   position: relative;
   min-height: 100%;
 }
 
-body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #eee;
-}
-
-.container {
+.page-container {
   width: auto;
   max-width: 600px;
   padding: 0 15px;

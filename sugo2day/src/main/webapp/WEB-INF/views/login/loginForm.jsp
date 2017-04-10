@@ -4,7 +4,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <%-- Context Path 경로를 String cp 로 정의--%>
-<% String cp = request.getContextPath(); %>
+<%
+	String cp = request.getContextPath();
+%>
 
 <!DOCTYPE html>
 <html>
@@ -23,13 +25,145 @@
 <title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="<%=cp%>/resources/bootstrap/css/else/loginForm.css"
-	rel="stylesheet">
+<link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+
+<style>
+body {
+  background-color: #eee;
+}
+
+#nav-form-wrapper {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox,
+.form-signin .error-message {
+  font-weight: normal;
+}
+
+.form-signin .error-message {
+	margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin #inputEmail {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin #inputPassword {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+	
+</style>
 
 </head>
-
 <body>
-	<div class="container">
+	<div class="top-bar-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 hidden-xs">
+					<div class="top-bar-socials"></div>
+				</div>
+				<div class="col-sm-7 text-right">
+					<ul class="list-inline top-dark-right">
+						<c:if test="${empty authInfo }">
+							<li><a href="<c:url value="/login" />"><i
+									class="fa fa-lock"></i> Login</a></li>
+							<li><a href="<c:url value="/register/registerTerm" />"><i
+									class="fa fa-user"></i> Sign Up</a></li>
+						</c:if>
+						<c:if test="${!empty authInfo }">
+							<li>${authInfo.name }님,환영합니다.</li>
+							<li><a href="<c:url value='/logout' />"><i
+									class="fa fa-user"></i> Logout</a></li>
+							<li><a
+								href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+									<i class="fa fa-lock"></i> ChangePW
+							</a></li>
+							<li><a
+								href="javascript:void(window.open('<c:url value='/my/myPage' />', '_blank', 'width=800, height=500'))">
+									<i class="fa fa-lock"></i> My Schedule
+							</a></li>
+						</c:if>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--top-bar end here-->
+	<!--navigation -->
+	<div id="nav-wrapper">
+		<div class="navbar navbar-default navbar-static-top yamm sticky"
+			role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<div id="brandLogo">
+						<a class="navbar-brand" href="<c:url value="/main" />"><img
+							src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+
+						<!--menu Portfolio li end here-->
+						<li class="dropdown"><a
+							href="<c:url value="/quest/questList"/>">Quest </a></li>
+
+						<!--mega menu-->
+						<li class="dropdown"><a
+							href="<c:url value="/board/boardList" />">board </a></li>
+
+						<li class="dropdown"><a href="<c:url value ="/my/myPage"/>">My
+								page</a></li>
+
+					</ul>
+
+
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--container-->
+		</div>
+	</div>
+	<!--navbar-default-->
+
+	<div id="nav-form-wrapper">
 		<form:form commandName="loginCommand" class="form-signin">
 			<h2 class="form-signin-heading">로그인 하세요</h2>
 
@@ -39,21 +173,21 @@
 			<form:errors path="email" />
 
 			<label for="inputPassword" class="sr-only">Password</label>
-			<form:password path="password" id="inputPassword" class="form-control"
-				placeholder="Password" />
-				
+			<form:password path="password" id="inputPassword"
+				class="form-control" placeholder="Password" />
+
 			<div class="checkbox">
-				<label> <form:checkbox path="rmbEmail" /> Remember me</label>
+				<label> <form:checkbox path="rmbEmail" /> Remember me
+				</label>
 			</div>
-			
+
 			<div class="error-message">
 				<span class="label label-danger label-large"><form:errors /></span>
 			</div>
-			
+
 			<button class="btn btn-primary btn-block" type="submit">Login</button>
 		</form:form>
 	</div>
 	<!-- /container -->
-
 </body>
 </html>

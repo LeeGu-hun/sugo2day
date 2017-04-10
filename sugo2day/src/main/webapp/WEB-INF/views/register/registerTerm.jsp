@@ -22,49 +22,197 @@
 
 <title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=cp%>/resources/bootstrap/css/else/registerTerm.css" rel="stylesheet">
+
+<!-- font awesome for icons -->
+<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!--mega menu -->
+<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet"
+	type="text/css">
+<!-- Head CSS -->
+<link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+<!--must need plugin jquery-->
+	<script src="<%=cp%>/resources/js/jquery.min.js"></script>
+<!--bootstrap js plugin-->
+<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+<!--sticky header-->
+<script type="text/javascript"
+		src="<%=cp%>/resources/js/jquery.sticky.js"></script>	
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
-function oneCheckbox(x){
-    var obj = document.getElementsByName("agree");
-    for(var i=0; i<obj.length; i++){
-        if(obj[i] != x){
-            obj[i].checked = false;
-        }
-    }
+function goBack() {
+	location.href = "<c:url value='/' />";
 }
+
+
+
+function toggle_btn() {
+	if ($("input:checkbox[id='agree_check']").is(":checked") == true) {
+		$("#btn-agree").removeClass("hidden");
+		$("#btn-agree").addClass("show");
+	}
+	
+	if ($("input:checkbox[id='agree_check']").is(":checked") == false) {
+		$("#btn-agree").removeClass("show");
+		$("#btn-agree").addClass("hidden");
+	}
+}
+
 </script>
+<style>
+body {
+  background-color: #eee;	
+}
+
+#con-wrap {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+  left: 32%;
+}
+
+.page-container {
+  width: auto;
+  max-width: 600px;
+  padding: 0 15px;
+}
+
+.form-agree {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-agree .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-agree .checkbox {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.show {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+</style>
 </head>
 <body>
+	<div class="top-bar-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 hidden-xs">
+					<div class="top-bar-socials"></div>
+				</div>
+				<div class="col-sm-7 text-right">
+					<ul class="list-inline top-dark-right">
+						<c:if test="${empty authInfo }">
+							<li><a href="<c:url value="/login" />"><i
+									class="fa fa-lock"></i> Login</a></li>
+							<li><a href="<c:url value="/register/registerTerm" />"><i
+									class="fa fa-user"></i> Sign Up</a></li>
+						</c:if>
+						<c:if test="${!empty authInfo }">
+							<li>${authInfo.name }님,환영합니다.</li>
+							<li><a href="<c:url value='/logout' />">
+							<i class="fa fa-user"></i> Logout</a></li>
+							<li><a href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+							<i class="fa fa-lock"></i> ChangePW</a></li>
+							<li><a href="<c:url value='/my/myPage' />">
+							<i class="fa fa-lock"></i> MyPage</a></li>
+						</c:if>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--top-bar end here-->
+	<!--navigation -->
+	<div id="nav-wrapper">
+		<div class="navbar navbar-default navbar-static-top yamm sticky"
+			role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<div id="brandLogo">
+						<a class="navbar-brand" href="<c:url value="/main" />"><img
+							src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+					</div>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<!--menu Portfolio li end here-->
+						<li class="dropdown"><a
+							href="<c:url value="/quest/questList"/>">Quest </a></li>
+						<!-- mega menu -->
+						<li class="dropdown"><a
+							href="<c:url value="/board/boardList" />">board </a></li>
+						<!-- mega menu -->
+						<li class="dropdwon"><a
+							href="<c:url value="/my/myPage" />">MyPage </a></li>	
+						</ul>
+
+
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+				<!--container-->
+			</div>
+		</div>
+		<!--navbar-default-->
+	<div id="bgcolor">
+	<div id="con-wrap">
 	<fieldset>
-	<div class="container">
+	<div class="page-container">
 		<fieldset>
-     	<div class="page-header">
+     	<div class="page-header text-center">
         	<h1>이용 약관</h1>
       	</div>
       	</fieldset>
       	
       	<form class="form-agree" action="registerForm" method="post">
-      	<fieldset>
+      	<fieldset class="text-left">
      		<p class="lead">약관 내용 솰라솰롸</p>
      		<p class="lead">개인정보를 제공하는데 동의함?</p>
       		<div class="checkbox">
       		<label>
-            	<input type="checkbox" name="agree" class="check_class" value="true"
-            		onclick="oneCheckbox(this)">
+            	<input type="checkbox" name="agree" id="agree_check" value="true"
+            		onclick="toggle_btn()">
             	 네, 약관에 동의합니다.
           	</label>
-          	<label>
-          		<input type="checkbox" name="agree" class="check_class" value="false"
-          			onclick="oneCheckbox(this)">
-          		아니오, 약관에 동의하지 않습니다.
-          	</label>	
-        	</div>
+          	</div>
         </fieldset>
-           	<button class="btn btn-lg btn-primary btn-block" type="submit">
-          		다음 단계</button>
+        <!-- 
+        <div class="btn-group btn-group-justified" role="group">
+         -->
+			<div id="btn-agree" class="hidden" role="group">
+				<button class="btn btn-primary btn-block" type="submit">동의</button>
+			</div>
+			<div class="show" role="group">
+				<button class="btn btn-warning btn-block" type="button"
+						onclick="goBack();">거부</button>
+			</div>		
+		<!-- </div>  -->
         </form>
     </div>
     </fieldset>
+    </div>
+    </div>
+        
 </body>
 </html>

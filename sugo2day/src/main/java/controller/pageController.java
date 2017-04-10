@@ -17,7 +17,7 @@ import quest.QuestCommand;
 import quest.QuestCommandValidator;
 
 @Controller
-public class BoardQuestController {
+public class pageController {
 	private QuestDao questDao;
 
 	
@@ -45,9 +45,7 @@ public class BoardQuestController {
 	
 	@RequestMapping(value = "quest/questRegister", method = RequestMethod.GET)
 	public String boardWriteGet(QuestCommand quest, Model model) {
-
 		model.addAttribute("quest", quest);
-		
 		return "/quest/questRegister";
 	}
 
@@ -86,7 +84,7 @@ public class BoardQuestController {
 //			}
 //		}
 //		questDao.insert(boardCommand);
-		return "redirect:/quest/questList";
+		return "quest/questList";
 
 	}
 	

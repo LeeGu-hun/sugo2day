@@ -24,15 +24,173 @@
 
 <title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=cp%>/resources/bootstrap/css/else/registerForm.css" rel="stylesheet">
+<!-- font awesome for icons -->
+<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!--mega menu -->
+<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet"
+	type="text/css">
+<!-- Head CSS -->
+<link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+<!--must need plugin jquery-->
+	<script src="<%=cp%>/resources/js/jquery.min.js"></script>
+<!--bootstrap js plugin-->
+<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+<!--sticky header-->
+<script type="text/javascript"
+		src="<%=cp%>/resources/js/jquery.sticky.js"></script>	
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>
 	function registerCancel(){
 		location.href = "<c:url value='/' />";
 	}
 </script>
+<style>
+body {
+	background-color: #eee;
+}
+
+.pg-container {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.form-horizontal {
+	max-width: 600px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form-horizontal .form-join-heading {
+	margin-bottom: 10px;
+}
+
+.form-horizontal .input-group {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.form-horizontal .error-message {
+	font-weight: normal;
+}
+
+.form-horizontal .error-message {
+	margin-top: 1px;
+	margin-bottom: 2px;
+}
+
+.form-horizontal .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.form-horizontal .form-control:focus {
+	z-index: 2;
+}
+
+.form-horizontal #inputEmail {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-horizontal #inputPassword {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+</style>
+
 </head>
 <body>
-	<div class="container">
+		<div class="top-bar-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 hidden-xs">
+						<div class="top-bar-socials"></div>
+					</div>
+					<div class="col-sm-7 text-right">
+						<ul class="list-inline top-dark-right">
+							<c:if test="${empty authInfo }">
+								<li><a href="<c:url value="/login" />"><i
+										class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<c:url value="/register/registerTerm" />"><i
+										class="fa fa-user"></i> Sign Up</a></li>
+							</c:if>
+							<c:if test="${!empty authInfo }">
+								<li>${authInfo.name }님,환영합니다.</li>
+								<li><a href="<c:url value='/logout' />">
+								<i class="fa fa-user"></i> Logout</a></li>
+								<li><a href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+								<i class="fa fa-lock"></i> ChangePW</a></li>
+								<li><a href="<c:url value='/my/myPage' />">
+								<i class="fa fa-lock"></i> MyPage</a></li>
+							</c:if>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--top-bar end here-->
+		<!--navigation -->
+		<div id="nav-wrapper">
+			<div class="navbar navbar-default navbar-static-top yamm sticky"
+				role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<div id="brandLogo">
+							<a class="navbar-brand" href="<c:url value="/main" />"><img
+								src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+						</div>
+					</div>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+
+							<!--menu Portfolio li end here-->
+							<li class="dropdown"><a
+								href="<c:url value="/quest/questList"/>">Quest </a></li>
+
+							<!--menu blog li end here-->
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">Ranking</a></li>
+
+
+							<!--menu pages li end here-->
+
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown">analysis </a></li>
+							<!--features-->
+
+							<!--mega menu-->
+							<li class="dropdown yamm-fw"><a
+								href="<c:url value="/board/boardList" />">board </a></li>
+						</ul>
+
+
+					</div>
+					<!--/.nav-collapse -->
+				</div>
+				<!--container-->
+			</div>
+		</div>
+		<!--navbar-default-->
+
+	<div class="pg-container">
 		<form:form action="registerSuccess" commandName="registerRequest" class="form-horizontal">
 			<h2 class="form-join-heading">회원 가입 양식</h2>
 			<div class="input-group">

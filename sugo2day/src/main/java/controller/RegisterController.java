@@ -35,8 +35,10 @@ public class RegisterController {
 	
 	// 약관 동의 페이지를 통해 가입 양식 폼으로 접근할 때
 	@RequestMapping(value="/register/registerForm", method=RequestMethod.POST)
-	public String handlerForm(
-			@RequestParam(value="agree") Boolean agree, Model model) {
+	public String handlerForm(@RequestParam(value="agree") Boolean agree, Model model) {
+		if(agree.equals(null)) {
+			return "defaultPage";
+		}
 		// 약관 동의를 하지 않으면 되돌아가기
 		if(!agree) {
 			return "defaultPage";
@@ -45,6 +47,8 @@ public class RegisterController {
 		model.addAttribute("registerRequest", new RegisterRequest());
 		return "register/registerForm";
 	}
+	
+	
 	
 	// 가입하기를 눌렀을 때,
 	@RequestMapping(value="/register/registerSuccess", method=RequestMethod.POST)

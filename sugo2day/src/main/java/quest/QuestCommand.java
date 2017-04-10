@@ -17,7 +17,6 @@ public class QuestCommand {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date ENDDATE;
 	private Integer DIFFICULTY;
-	private int ID;
 		
 	public Integer getNUM() {
 		return NUM;
@@ -70,13 +69,6 @@ public class QuestCommand {
 		DIFFICULTY = dIFFICULTY;
 	}
 	
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
 	public Date transDate(Date d, String times){
 		if(d != null){
 			SimpleDateFormat transFormat; 

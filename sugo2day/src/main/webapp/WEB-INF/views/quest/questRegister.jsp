@@ -39,11 +39,10 @@
 <body>
 
 	<div class="container">
-		
 		<!-- 	NUM;QNUM;QSUBJECT;NAME;CONTENT;STARTDATE;ENDDATE;WORKINGDATE;PROD; -->
+		
 		<form:form commandName="quest" id="questFrm" class="form-horizontal"
 			method="POST" action="/sugo2day/quest/questRegister">
-			<form:hidden path="ID" value="${sessionScope.authInfo.id }"/>
 			<h2 class="form-join-heading">퀘스트 등록테스트</h2>
 
 			<div class="input-group" style="width: 200px;">

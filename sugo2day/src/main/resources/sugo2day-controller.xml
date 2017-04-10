@@ -9,7 +9,7 @@
 	<!-- Controller 구현 없이 View Page Mapping -->
 	<mvc:view-controller path="/main" view-name="defaultPage" />
 	<mvc:view-controller path="/login/**" view-name="login" />
-
+	
 	<!-- Bootstrap 사용을 위한 경로 Mapping -->	
 	<mvc:resources location="/resources/**" mapping="/resources/" />
 	
@@ -46,36 +46,15 @@
 	
 	<!-- Board 관련 Controller -->
 	
-	<bean class="controller.BoardListController">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
-	<bean class="controller.BoardWriteController">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
-	<bean class="controller.BoardDetailController">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
-	<bean class="controller.BoardDeleteController">
-		<property name="boardWriterCheck" ref="boardWriterCheck" />
-	</bean>
-	
-	<bean class="controller.BoardModifyController">
-		<property name="boardWriterCheck" ref="boardWriterCheck" />
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
-	<bean class="controller.BoardReplyController">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
 	<!-- Quest 관련 Controller -->
 	
 	<bean class="controller.BoardQuestController">
 		<property name="questDao" ref="questDao" />
 	</bean>
 	
+	<!-- My Page Controller -->
+	<bean class="controller.MyPageController">
+	
+	</bean>
 </beans>	
 	

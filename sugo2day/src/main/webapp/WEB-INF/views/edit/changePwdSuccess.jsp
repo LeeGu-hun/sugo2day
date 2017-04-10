@@ -19,26 +19,30 @@
 <!-- 
     <link rel="icon" href="../../favicon.ico">
 	 -->
-<!--  5초 뒤 메인으로 이동 -->
-<meta http-equiv="refresh" content="5; url=<c:url value='/'/>">
+<!--  5초 뒤 자동으로 창 닫기 -->
+<!-- 
+<script type='text/javascript'>
+     opener=self;
+     setTimeout('self.close()',5000);
+</script>
 
-<title>Insert title here</title>
+ --><title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="<%=cp%>/resources/bootstrap/css/else/successPage.css"
 	rel="stylesheet">
 </head>
-<body>
+<body onLoad="setTimeout('window.close()', 5000);">
 	<div class="site-wrapper">
 		<div class="site-wrapper-inner">
 			<div class="cover-container">
 				<div class="inner cover">
 					<h1 class="cover-heading">비밀번호 변경 완료</h1>
-					<p class="lead">5초 후, 자동으로 메인 페이지로 이동합니다.</p>
+					<p class="lead">5초 후, 자동으로 창이 닫힙니다.</p>
 					<br>
 					<br>
 					<p class="lead">
-						<a href="<c:url value='/'/>" class="btn btn-lg btn-default">즉시 이동</a>
+						<a href="#" class="btn btn-lg btn-default" onclick="window.close();">즉시 닫기</a>
 					</p>
 				</div>
 			</div>

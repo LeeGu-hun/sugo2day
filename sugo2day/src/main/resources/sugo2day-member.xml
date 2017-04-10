@@ -44,15 +44,7 @@
 	<bean id="changePwdSvc" class="member.edit.ChangePasswordService">
 		<constructor-arg ref="memberDao" />
 	</bean>
-	
-	<bean id="boardDao" class="dao.BoardDao">
-		<constructor-arg ref="dataSource" />
-	</bean>
-	
-	<bean id="boardWriterCheck" class="board.BoardWriterCheck">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
-	
+		
 	<bean id="questDao" class="dao.QuestDao">
 		<constructor-arg ref="dataSource" />
 	</bean>

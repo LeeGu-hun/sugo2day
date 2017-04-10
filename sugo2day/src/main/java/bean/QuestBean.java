@@ -15,11 +15,11 @@ public class QuestBean {
 	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date ENDDATE;
 	private Integer DIFFICULTY;
-	private int ID;
+
 	
 
 	public QuestBean(Integer nUM, String nAME, String sUBJECT, String cONTENT, String pROB,
-			Date sTARTDATE, Date eNDDATE,Integer dIFFICULTY,int iD) {
+			Date sTARTDATE, Date eNDDATE,Integer dIFFICULTY) {
 		super();
 		NUM = nUM;
 		NAME = nAME;
@@ -29,7 +29,6 @@ public class QuestBean {
 		STARTDATE = sTARTDATE;
 		ENDDATE = eNDDATE;
 		DIFFICULTY = dIFFICULTY;
-		ID=iD;
 	}
 
 	public QuestBean() {	}
@@ -98,13 +97,6 @@ public class QuestBean {
 		DIFFICULTY = dIFFICULTY;
 	}
 	
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
 	//difficulty 난이도를 추가한다.
 	
 }
