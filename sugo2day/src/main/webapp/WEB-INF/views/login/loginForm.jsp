@@ -23,10 +23,26 @@
 	 -->
 
 <title>Insert title here</title>
-<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- font awesome for icons -->
+<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!--mega menu -->
+<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet"
+	type="text/css">
+<!-- Head CSS -->
+<link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+<!--must need plugin jquery-->
+	<script src="<%=cp%>/resources/js/jquery.min.js"></script>
+<!--bootstrap js plugin-->
+<script src="<%=cp%>/resources/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+<!--sticky header-->
+<script type="text/javascript"
+		src="<%=cp%>/resources/js/jquery.sticky.js"></script>	
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style>
 body {
   background-color: #eee;
@@ -107,12 +123,8 @@ body {
 									class="fa fa-user"></i> Logout</a></li>
 							<li><a
 								href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
-									<i class="fa fa-lock"></i> ChangePW
-							</a></li>
-							<li><a
-								href="javascript:void(window.open('<c:url value='/my/myPage' />', '_blank', 'width=800, height=500'))">
-									<i class="fa fa-lock"></i> My Schedule
-							</a></li>
+									<i class="fa fa-lock"></i> ChangePW</a></li>
+							
 						</c:if>
 					</ul>
 
@@ -139,19 +151,16 @@ body {
 					</div>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-
+						<ul class="nav navbar-nav navbar-right">
 						<!--menu Portfolio li end here-->
 						<li class="dropdown"><a
 							href="<c:url value="/quest/questList"/>">Quest </a></li>
-
-						<!--mega menu-->
+						<!-- mega menu -->
 						<li class="dropdown"><a
 							href="<c:url value="/board/boardList" />">board </a></li>
-
-						<li class="dropdown"><a href="<c:url value ="/my/myPage"/>">My
-								page</a></li>
-
+						<!-- mega menu -->
+						<li class="dropdwon"><a
+							href="<c:url value="/my/myPage" />">MyPage </a></li>	
 					</ul>
 
 

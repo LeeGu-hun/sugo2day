@@ -131,8 +131,6 @@ body {
 								<i class="fa fa-user"></i> Logout</a></li>
 								<li><a href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
 								<i class="fa fa-lock"></i> ChangePW</a></li>
-								<li><a href="<c:url value='/my/myPage' />">
-								<i class="fa fa-lock"></i> MyPage</a></li>
 							</c:if>
 						</ul>
 
