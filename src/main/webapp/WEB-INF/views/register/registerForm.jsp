@@ -158,25 +158,8 @@ body {
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-
-							<!--menu Portfolio li end here-->
 							<li class="dropdown"><a
-								href="<c:url value="/quest/questList"/>">Quest </a></li>
-
-							<!--menu blog li end here-->
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">Ranking</a></li>
-
-
-							<!--menu pages li end here-->
-
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown">analysis </a></li>
-							<!--features-->
-
-							<!--mega menu-->
-							<li class="dropdown yamm-fw"><a
-								href="<c:url value="/board/boardList" />">board </a></li>
+								href="<c:url value="/letter/letterWrite" />">MyPage </a></li>
 						</ul>
 
 

@@ -37,10 +37,9 @@ public class LetterDao {
 					rs.getString("fileName"),
 					rs.getDate("startdate"),
 					rs.getDate("enddate"),
-					rs.getInt("isquest"),
-					rs.getInt("isprivate"));
+					rs.getString("isquest"),
+					rs.getString("isprivate"));
 			return letter;
-					
 		}
 	};
 	
@@ -59,8 +58,8 @@ public class LetterDao {
 			pstmt.setString(4, letter.getFileName());
 			pstmt.setDate(5, new java.sql.Date(letter.getStartdate().getTime()));
 			pstmt.setDate(6, new java.sql.Date(letter.getEnddate().getTime()));
-			pstmt.setInt(7, letter.getIsquest());
-			pstmt.setInt(8, letter.getIsprivate());
+			pstmt.setString(7, letter.getIsquest());
+			pstmt.setString(8, letter.getIsprivate());
 			return pstmt;
 		});
 	}
@@ -75,7 +74,7 @@ public class LetterDao {
 	// 퀘스트 글만 보기
 	public List<LetterBean> selectQuest() {
 		List<LetterBean> results = jdbcTemplate.query(
-				"select * from letter where isquest = 1 ", LetterRowMapper);
+				"select * from letter where isquest = '퀘스트글' ", LetterRowMapper);
 		return results;
 	}
 	

@@ -61,7 +61,7 @@ public class LoginController {
 				rememberCookie.setMaxAge(0);
 			}
 			response.addCookie(rememberCookie);
-			return "redirect:/my/myPage"; 
+			return "redirect:/letter/letterWrite"; 
 			
 		} catch (IdPasswordNotMatchingException e) {
 			errors.reject("idPasswordNotMatching");

@@ -2,6 +2,9 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import bean.LetterBean;
 import dao.LetterDao;
@@ -26,15 +30,17 @@ public class LetterController {
 	}
 	
 	
-	// 글 작성
+	// 아 머리아프네 이거
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.GET)
 	public String letterWriteGet(LetterBean letter, Model model) {
 		model.addAttribute("letter", letter);
-		return "letter/letterWrite";
+		return "my/myList";
 	}
-	
-	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
+		
+	// 글 작성 누를때
+	@RequestMapping(value = "letter/letterRegist", method=RequestMethod.POST)
 	public String letterWrite(LetterBean letter, Errors errors, Model model, HttpSession session) {
+				
 		new LetterBeanValidator().validate(letter, errors);
 		if(errors.hasErrors()) {
 			return "letter/letterWrite";
@@ -65,22 +71,26 @@ public class LetterController {
 		}
 		
 		letterDao.insert(letter);
-		return "redirect:/my/myPage";
+		return "redirect:/letter/letterWrite";
 	}
 	
 
 	// 전체 글 목록보기
-	@RequestMapping("my/myPage")
-	public String selectAll() {
-		letterDao.selectAll();
-		return "my/myPage";
+	@RequestMapping("letter/myLetter")
+	public String selectAll(LetterBean letters, Model model) {
+		List<LetterBean> letter = letterDao.selectAll();
+		model.addAttribute("letter", letter);
+				
+		return "letter/letterWrite";
 	}
 	
 	// 퀘스트 글만 보기
-	@RequestMapping("my/myPageQuest")
-	public String selectQuest() {
-		letterDao.selectQuest();
-		 return "my/myPage";
+	@RequestMapping("letter/myQuest")
+	public String selectQuest(LetterBean letters, Model model) {
+		List<LetterBean> letter = letterDao.selectQuest();
+		model.addAttribute("letter", letter);
+		
+		return "letter/letterWrite";
 	}
 	
 }	

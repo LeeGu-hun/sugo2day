@@ -152,15 +152,8 @@ body {
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<!--menu Portfolio li end here-->
-						<li class="dropdown"><a
-							href="<c:url value="/quest/questList"/>">Quest </a></li>
-						<!-- mega menu -->
-						<li class="dropdown"><a
-							href="<c:url value="/board/boardList" />">board </a></li>
-						<!-- mega menu -->
 						<li class="dropdwon"><a
-							href="<c:url value="/my/myPage" />">MyPage </a></li>	
+							href="<c:url value="/letter/letterWrite" />">MyPage </a></li>	
 					</ul>
 
 

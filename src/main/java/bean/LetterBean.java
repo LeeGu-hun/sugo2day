@@ -1,37 +1,41 @@
 package bean;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class LetterBean {
-	private int num;
+	private Integer num;
 	private String writer;
 	private String subject;
-	private String Content;
+	private String content;
 	private MultipartFile multiFile;
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
+	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date startdate;
+	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date enddate;
-	private int isquest;
-	private int isprivate;
+	private String isquest;
+	private String isprivate;
 	
 	// 기본 생성자
 	public LetterBean() {
 		super();
 	}
 	
-	
-	public LetterBean(int num, String writer, String subject, String content, String fileName, Date startdate,
-			Date enddate, int isquest, int isprivate) {
+	public LetterBean(Integer num, String writer, String subject, String content, String fileName, Date startdate,
+			Date enddate, String isquest, String isprivate) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.subject = subject;
-		Content = content;
+		this.content = content;
 		this.fileName = fileName;
 		this.startdate = startdate;
 		this.enddate = enddate;
@@ -39,102 +43,131 @@ public class LetterBean {
 		this.isprivate = isprivate;
 	}
 
-
-	// getter & setter
-	public int getNum() {
+	public Integer getNum() {
 		return num;
 	}
-	
-	public void setNum(int num) {
+
+	public void setNum(Integer num) {
 		this.num = num;
 	}
-	
+
 	public String getWriter() {
 		return writer;
 	}
-	
+
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	
+
 	public String getSubject() {
 		return subject;
 	}
-	
+
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	
+
 	public String getContent() {
-		return Content;
+		return content;
 	}
-	
+
 	public void setContent(String content) {
-		Content = content;
+		this.content = content;
 	}
-	
+
 	public MultipartFile getMultiFile() {
 		return multiFile;
 	}
-	
+
 	public void setMultiFile(MultipartFile multiFile) {
 		this.multiFile = multiFile;
 	}
-	
+
 	public List<MultipartFile> getFiles() {
 		return files;
 	}
-	
+
 	public void setFiles(List<MultipartFile> files) {
 		this.files = files;
 	}
-	
+
 	public String getFileName() {
 		return fileName;
 	}
-	
+
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	
+
 	public String getUpDir() {
 		return upDir;
 	}
-	
+
 	public void setUpDir(String upDir) {
 		this.upDir = upDir;
 	}
-	
+
 	public Date getStartdate() {
 		return startdate;
 	}
-	
+
 	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
 	}
-	
+
 	public Date getEnddate() {
 		return enddate;
 	}
-	
+
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
 	}
-	
-	public int getIsquest() {
+
+	public String getIsquest() {
 		return isquest;
 	}
-	
-	public void setIsquest(int isquest) {
+
+	public void setIsquest(String isquest) {
 		this.isquest = isquest;
 	}
-	
-	public int getIsprivate() {
+
+	public String getIsprivate() {
 		return isprivate;
 	}
-	
-	public void setIsprivate(int isprivate) {
+
+	public void setIsprivate(String isprivate) {
 		this.isprivate = isprivate;
+	}
+
+	
+	public Date transDate(Date d, String times){
+		if(d != null){
+			SimpleDateFormat transFormat; 
+			transFormat = new SimpleDateFormat("yyyyMMdd");
+			String toWord = transFormat.format(d) + times;
+			transFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+			try { d = (Date) transFormat.parse(toWord);
+			} catch (Exception e) { e.printStackTrace(); }
+		}
+		return d;
+	}
+	
+	//날짜 chan
+	public Date transformDate(String date) {
+	        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
+	        
+	        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
+	        java.util.Date tempDate = null;
+	        
+	        try {
+	            tempDate = beforeFormat.parse(date);
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+	        String transDate = afterFormat.format(tempDate);
+	        Date d = Date.valueOf(transDate);
+	        
+	        return d;
 	}
 	
 }
