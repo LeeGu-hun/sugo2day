@@ -3,15 +3,20 @@ package bean;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
-public class LetterBean {
+public class LetterWriteBean {
 	private Integer num;
 	private String writer;
 	private String subject;
 	private String content;
-	private String files;
+	private MultipartFile multiFile;
+	private List<MultipartFile> files;
+	private String fileName;
+	private String upDir;
 	@DateTimeFormat(pattern="yyyyMMdd")
 	private Date startdate;
 	@DateTimeFormat(pattern="yyyyMMdd")
@@ -21,25 +26,24 @@ public class LetterBean {
 	private String showQ;
 	
 	// 기본 생성자
-	public LetterBean() {
+	public LetterWriteBean() {
 		super();
 	}
 	
-	public LetterBean(Integer num, String writer, String subject, String content, String files, Date startdate,
+	public LetterWriteBean(Integer num, String writer, String subject, String content, String fileName, Date startdate,
 			Date enddate, String isquest, String isprivate) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.subject = subject;
 		this.content = content;
-		this.files = files;
+		this.fileName = fileName;
 		this.startdate = startdate;
 		this.enddate = enddate;
 		this.isquest = isquest;
 		this.isprivate = isprivate;
 	}
 
-	
 	public Integer getNum() {
 		return num;
 	}
@@ -72,12 +76,36 @@ public class LetterBean {
 		this.content = content;
 	}
 
-	public String getFiles() {
+	public MultipartFile getMultiFile() {
+		return multiFile;
+	}
+
+	public void setMultiFile(MultipartFile multiFile) {
+		this.multiFile = multiFile;
+	}
+
+	public List<MultipartFile> getFiles() {
 		return files;
 	}
 
-	public void setFiles(String files) {
+	public void setFiles(List<MultipartFile> files) {
 		this.files = files;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getUpDir() {
+		return upDir;
+	}
+
+	public void setUpDir(String upDir) {
+		this.upDir = upDir;
 	}
 
 	public Date getStartdate() {
@@ -119,8 +147,8 @@ public class LetterBean {
 	public void setShowQ(String showQ) {
 		this.showQ = showQ;
 	}
-
 	
+
 	public Date transDate(Date d, String times){
 		if(d != null){
 			SimpleDateFormat transFormat; 

@@ -2,9 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,9 +12,9 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import bean.LetterBean;
+import bean.LetterWriteBean;
 import dao.LetterDao;
 import letter.LetterBeanValidator;
 import member.login.AuthInfo;
@@ -32,15 +30,17 @@ public class LetterController {
 	
 	// 아 머리아프네 이거
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.GET)
-	public String letterWriteGet(LetterBean letter, Model model) {
+	public String letterWriteGet(LetterWriteBean letter, Model model) {
 		model.addAttribute("letter", letter);
 		return "my/myList";
 	}
 		
 	// 글 작성 누를때
-	@RequestMapping(value = "letter/letterRegist", method=RequestMethod.POST)
-	public String letterWrite(LetterBean letter, Errors errors, Model model, HttpSession session) {
-				
+	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
+	public String letterWrite(LetterWriteBean letter, Errors errors, Model model, HttpSession session) {
+		System.out.println(letter.getStartdate() + " = startDate");
+		System.out.println(letter.getEnddate() + " = endDate");
+		
 		new LetterBeanValidator().validate(letter, errors);
 		if(errors.hasErrors()) {
 			return "letter/letterWrite";
@@ -71,26 +71,44 @@ public class LetterController {
 		}
 		
 		letterDao.insert(letter);
-		return "redirect:/letter/letterWrite";
+		return "redirect:/letter/myLetter";
 	}
 	
 
 	// 전체 글 목록보기
-	@RequestMapping("letter/myLetter")
-	public String selectAll(LetterBean letters, Model model) {
-		List<LetterBean> letter = letterDao.selectAll();
-		model.addAttribute("letter", letter);
-				
-		return "letter/letterWrite";
+	@RequestMapping(value="letter/myLetter", method=RequestMethod.GET)
+	public String selectDefault(LetterWriteBean Wletter, Model model, HttpSession session) {
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		LetterBean letter = new LetterBean();
+		letter.setWriter(authInfo.getName());
+		String writer = letter.getWriter();
+
+		System.out.println("letter/myLetter Get type : writer = " + writer);
+					
+		List<LetterBean> letters = letterDao.selectAll(writer);
+		model.addAttribute("letters", letters);
+		model.addAttribute("letter", Wletter);
+		
+		return "my/myList";
 	}
 	
-	// 퀘스트 글만 보기
-	@RequestMapping("letter/myQuest")
-	public String selectQuest(LetterBean letters, Model model) {
-		List<LetterBean> letter = letterDao.selectQuest();
-		model.addAttribute("letter", letter);
+	// 퀘스트 글 목록보기
+	@RequestMapping(value="letter/myQuest", method=RequestMethod.POST)
+	public String selectAll(LetterWriteBean Wletter, String isquest, Model model, HttpSession session) {
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		LetterBean letter = new LetterBean();
+		letter.setWriter(authInfo.getName());
+		String writer = letter.getWriter();
+				
+		System.out.println("letter/myLetter POST type : writer = " + letter.getWriter());
+		System.out.println("letter/myLetter POST type : isquest = " + letter.getIsquest());
+
+		List<LetterBean> letters = letterDao.selectQuest(letter);
+		model.addAttribute("letters", letters);
+		model.addAttribute("letter", Wletter);
 		
-		return "letter/letterWrite";
+		return "my/myList";
 	}
+	
 	
 }	

@@ -26,34 +26,79 @@
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
 
 <!-- JQuery Main -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- DatePicker -->
-<link rel="stylesheet" href="<%=cp%>/resources/datetimepicker/css/bootstrap-datetimepicker.min.css" />
-<script src="<%=cp %>/resources/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8">
-</script>
-<script src="<%=cp %>/resources/datetimepicker/js/locales/bootstrap-datetimepicker.ko.js" type="text/javascript" charset="utf-8">
-</script>
+<!-- DatePicker OLD -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	type="text/css" media="all" />
+<!-- 
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+	type="text/javascript"></script>
+ -->	
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"
+	type="text/javascript"></script>
 
 
+<!-- Custom Style -->
+<style>
+	.pull-left {
+	  float: left !important;
+	}
+	.pull-right {
+	  float: right !important;
+	}
+	
+	.show {
+		display: block !important;
+	}
+	
+	.hidden {
+		display: none !important;
+		visibility: hidden !important;
+	}
+</style>
 <!-- Custom Script -->
 <script>
-	function toggle_div() {
-		if ($("intput:checkbox[id='quest-show']").is(":checked") == true) {
-			$("#all-list").removeClass("hidden");
+	$(function() {
+		$("#startdate, #enddate").datepicker(
+				{
+					dateFormat : 'yymmdd',
+					prevText : '이전 달',
+					nextText : '다음 달',
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+							'8월', '9월', '10월', '11월', '12월' ],
+					monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월',
+							'7월', '8월', '9월', '10월', '11월', '12월' ],
+					dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+					dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+					showMonthAfterYear : true,
+					yearSuffix : '년'
+	
+				});
+	
+	});
+
+	function divToggle() {
+		if ($('input:checkbox[id="quest-show"]').is(":checked") == true) {
+			$("#all-list").removeClass("show");
+			$("#all-list").addClass("hidden");
+			$("#quest-list").removeClass("hidden");
 			$("#quest-list").addClass("show");
-			location.href = "<c:url value='myQuest' />";
 		}
 		
-		if ($("intput:checkbox[id='quest-show']").is(":checked") == false) {
-			$("#all-list").removeClass("show");
+		if ($('input:checkbox[id="quest-show"]').is(":checked") == false) {
+			$("#quest-list").removeClass("show");
 			$("#quest-list").addClass("hidden");
-			location.href = "<c:url value='myLetter' />";
+			$("#all-list").removeClass("hidden");
+			$("#all-list").addClass("show");
 		}
 	}
 	
 	function goBack() {
-		location.href = "<c:url value='/letter/letterWrite' />";
+		location.href = "<c:url value='/letter/myLetter' />";
 	}
 </script>				
 </head>
@@ -123,10 +168,8 @@
 			</div>
 		</div>	
 		<div class="body-footer">
-			<input type="checkbox" id="quest-show" value="true">
-			<button class="btn btn-default btn-sm" onclick="toggle_div()">
-				<span class="lead">퀘스트글 보기</span>
-			</button>
+			<input type="checkbox" id="quest-show" value="true" onclick="divToggle()" />
+			<span class="lead">퀘스트글 보기</span>
 		</div>	
 		<div class="body-list">
 			<h3>작성 글 목록</h3>
@@ -135,7 +178,7 @@
 				<%@include file="incAllList.jsp" %>
 			</div>
 			<div id="quest-list" class="hidden">
-				<!-- 퀘스트 보기를 선택하면 보여줄 리스트 -->
+				<!-- 퀘스트 글 리스트 -->
 				<%@include file="incQList.jsp" %>
 			</div>
 		</div>	

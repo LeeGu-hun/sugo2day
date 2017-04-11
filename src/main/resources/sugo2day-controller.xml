@@ -44,12 +44,6 @@
 	
 	<!-- Board 관련 Controller -->
 	
-	<!-- Quest 관련 Controller -->
-	
-	<bean class="controller.BoardQuestController">
-		<property name="questDao" ref="questDao" />
-	</bean>
-	
 	<!-- My Page Controller -->
 	<bean class="controller.LetterController">
 		<property name="letterDao" ref="letterDao" />

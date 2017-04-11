@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.annotation.Transactional;
 
 import bean.LetterBean;
+import bean.LetterWriteBean;
 
 public class LetterDao {
 	private JdbcTemplate jdbcTemplate;
@@ -34,7 +35,7 @@ public class LetterDao {
 					rs.getString("writer"),
 					rs.getString("subject"),
 					rs.getString("content"),
-					rs.getString("fileName"),
+					rs.getString("files"),
 					rs.getDate("startdate"),
 					rs.getDate("enddate"),
 					rs.getString("isquest"),
@@ -44,9 +45,10 @@ public class LetterDao {
 	};
 	
 	
+	
 	// 글 등록하기
 	@Transactional
-	public void insert(final LetterBean letter) {
+	public void insert(final LetterWriteBean letter) {
 		jdbcTemplate.update((Connection con) -> {
 			PreparedStatement pstmt = con.prepareStatement(
 					"insert into letter (num, writer, subject, content, files, "
@@ -64,17 +66,20 @@ public class LetterDao {
 		});
 	}
 	
+	
+	
 	// 전체 글 보기
-	public List<LetterBean> selectAll() {
+	public List<LetterBean> selectAll(String writer) {
 		List<LetterBean> results = jdbcTemplate.query(
-				"select * from letter ", LetterRowMapper);
-		return results;
+				"select * from (select * from letter order by num desc) where writer = ? " , LetterRowMapper, writer);
+		return results;	
 	}
 	
 	// 퀘스트 글만 보기
-	public List<LetterBean> selectQuest() {
+	public List<LetterBean> selectQuest(LetterBean letter) {
 		List<LetterBean> results = jdbcTemplate.query(
-				"select * from letter where isquest = '퀘스트글' ", LetterRowMapper);
+				"select * from (select * from letter order by num desc) "
+						+ "where isquest = ? and writer = ? ", LetterRowMapper, letter.getIsquest(), letter.getWriter());
 		return results;
 	}
 	

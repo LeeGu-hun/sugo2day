@@ -1,0 +1,32 @@
+<!-- DatePicker -->
+<link rel="stylesheet" href="<%=cp%>/resources/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<script src="<%=cp %>/resources/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8">
+</script>
+<script src="<%=cp %>/resources/datetimepicker/js/locales/bootstrap-datetimepicker.ko.js" type="text/javascript" charset="utf-8">
+</script>
+
+
+	<div class="input-group">
+		<div class="input-append date form_startdate">
+			<input size="16" type="text" id="startdate" placeholder="목표 시작일" readonly />
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
+		<script type="text/javascript">
+			$(".form_startdate").datetimepicker({
+				format: "yyyy-mm-dd",
+				autoclose: true,
+				pickerPosition: "bottom-right"
+			});
+		</script>
+		<div class="input-append date form_enddate">
+			<input size="16" type="text" id="enddate" placeholder="목표 종료일" readonly />
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
+		<script type="text/javascript">
+			$('.form_enddate').datetimepicker({
+				format: "yyyy-mm-dd",
+				autoclose: true,
+				pickerPosition: "bottom-right"
+			});
+		</script>
+	</div>
