@@ -15,17 +15,7 @@
 	<div class="input-group" style="width: 200px;">
 		<form:checkbox path="isprivate" value="비공개" label="비공개" />
 	</div>
-	
-	<div class="input-group" style="width: 200px;">
-		<div class="pull-left" style="width: 88px;">	
-			<input size="10" type="text" id="startdate" placeholder="목표 시작일" readonly />
-		</div>
-		<span class="lead" style="width: 2px;"> ~ </span>
-		<div class="pull-right" style="width: 88px;">
-			<input size="10" type="text" id="enddate" placeholder="목표 종료일" readonly />
-		</div>
-	</div>
-		    
+			    
 	<div class="input-group" style="width: 200px;">
 		<label>글쓴이</label>
 		<form:input path="writer" value="${sessionScope.authInfo.name }"
@@ -43,6 +33,31 @@
 		<form:textarea path="content" class="form-control" cols="60" rows="8"
 			style="resize: none;" placeholder="내용을 입력하세요 최소 300자" />
 		<form:errors path="subject" />
+	</div>
+	
+	<div class="input-group">
+		<div class="input-append date form_startdate">
+			<input size="16" type="text" id="startdate" placeholder="목표 시작일" readonly />
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
+		<script type="text/javascript">
+			$(".form_startdate").datetimepicker({
+				format: "yyyy-mm-dd",
+				autoclose: true,
+				pickerPosition: "bottom-right"
+			});
+		</script>
+		<div class="input-append date form_enddate">
+			<input size="16" type="text" id="enddate" placeholder="목표 종료일" readonly />
+			<span class="add-on"><i class="icon-th"></i></span>
+		</div>
+		<script type="text/javascript">
+			$('.form_enddate').datetimepicker({
+				format: "yyyy-mm-dd",
+				autoclose: true,
+				pickerPosition: "bottom-right"
+			});
+		</script>
 	</div>
 	
 	<div class="input-group">

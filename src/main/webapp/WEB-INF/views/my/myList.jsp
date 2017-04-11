@@ -28,18 +28,12 @@
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- DatePicker OLD -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
-	type="text/css" media="all" />
-<!-- 
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
-	type="text/javascript"></script>
- -->	
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"
-	type="text/javascript"></script>
-
+<!-- DatePicker -->
+<link rel="stylesheet" href="<%=cp%>/resources/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<script src="<%=cp %>/resources/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8">
+</script>
+<script src="<%=cp %>/resources/datetimepicker/js/locales/bootstrap-datetimepicker.ko.js" type="text/javascript" charset="utf-8">
+</script>
 
 <!-- Custom Style -->
 <style>
