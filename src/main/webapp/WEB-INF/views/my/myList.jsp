@@ -6,7 +6,7 @@
 <% String cp = request.getContextPath(); %>
            
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,12 +72,13 @@
 	}
 	
 	function questToggle() {
-		if ($('input:checkbox[id="isquest"]').is(":checked") == true) {
+		if ($('input:radio[id="isquest"]').is(":checked") == true && $('input:radio[id="isnormal"]').is(":checked") == false) {
 			$("#datepick-div").removeClass("hidden");
 			$("#datepick-div").addClass("show");
-		}
-		
-		if ($('input:checkbox[id="isquest"]').is(":checked") == false) {
+		} else if ($('input:radio[id="isquest"]').is(":checked") == false && $('input:radio[id="isnormal"]').is(":checked") == true) {
+			$("#datepick-div").removeClass("show");
+			$("#datepick-div").addClass("hidden");
+		} else {
 			$("#datepick-div").removeClass("show");
 			$("#datepick-div").addClass("hidden");
 		}

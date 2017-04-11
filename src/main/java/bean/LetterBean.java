@@ -18,7 +18,6 @@ public class LetterBean {
 	private Date enddate;
 	private String isquest;
 	private String isprivate;
-	private String showQ;
 	
 	// 기본 생성자
 	public LetterBean() {
@@ -110,14 +109,6 @@ public class LetterBean {
 
 	public void setIsprivate(String isprivate) {
 		this.isprivate = isprivate;
-	}
-
-	public String getShowQ() {
-		return showQ;
-	}
-
-	public void setShowQ(String showQ) {
-		this.showQ = showQ;
 	}
 
 	

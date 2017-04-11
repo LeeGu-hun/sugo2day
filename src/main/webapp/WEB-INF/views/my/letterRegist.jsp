@@ -1,20 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>	
-	
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <form:form commandName="letter" class="form-horizontal"
 	enctype="multipart/form-data" action="letterWrite" method="post">
 	<h4 class="form-join-heading">글을 등록하세요</h4>
 
 	<label>글 종류</label>
 	<div class="input-group" style="width: 200px;">
-		<input type="checkbox" name="isquest" id="isquest" value="퀘스트글" onclick="questToggle()">
+		<input type="radio" name="isquest" id="isnormal" value="일반글" onclick="questToggle()">
+		<label>일반글</label>		
+		<input type="radio" name="isquest" id="isquest" value="퀘스트글" onclick="questToggle()">
 		<label>퀘스트글</label>		
 	</div>
 
 	<label>공개여부</label>
 	<div class="input-group" style="width: 200px;">
-		<form:checkbox path="isprivate" value="비공개" label="비공개" />
+		<input type="radio" name="isprivate" id="isprivate" value="공개글">
+		<label>공개글</label>
+		<input type="radio" name="isprivate" id="isprivate" value="비공개">
+		<label>비공개글</label>
 	</div>
 			    
 	<div class="input-group" style="width: 200px;">
@@ -43,8 +48,8 @@
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>
 		<script type="text/javascript">
-			$(".form_startdate").datetimepicker({
-				format: "yyyymmdd",
+			$("#startdate").datetimepicker({
+				format: "yyyy-mm-dd",
 				autoclose: true,
 				pickerPosition: "bottom-right"
 			});
@@ -54,8 +59,8 @@
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>
 		<script type="text/javascript">
-			$('.form_enddate').datetimepicker({
-				format: "yyyymmdd",
+			$('#enddate').datetimepicker({
+				format: "yyyy-mm-dd",
 				autoclose: true,
 				pickerPosition: "bottom-right"
 			});

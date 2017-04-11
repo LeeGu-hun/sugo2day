@@ -32,8 +32,9 @@
 				<div class="inner cover">
 					<h1 class="cover-heading">글 작성 실패...</h1>
 					<br>
-					<p class="lead">제목 혹은 내용을 입력하지 않으셨나요?</p>
+					<p class="lead">앗! 혹시 입력하지 않은 내용이 있나요?</p>
 					<br>
+					<p class="lead">일반글/퀘스트글, 공개/비공개 여부 선택</p>
 					<p class="lead">제목과 내용은 필수입력 사항입니다.</p>
 					<br>
 					<br>

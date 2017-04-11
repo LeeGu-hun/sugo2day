@@ -17,13 +17,12 @@ public class LetterWriteBean {
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	@DateTimeFormat(pattern="yyyyMMdd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date startdate;
-	@DateTimeFormat(pattern="yyyyMMdd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date enddate;
 	private String isquest;
 	private String isprivate;
-	private String showQ;
 	
 	// 기본 생성자
 	public LetterWriteBean() {
@@ -140,13 +139,6 @@ public class LetterWriteBean {
 		this.isprivate = isprivate;
 	}
 
-	public String getShowQ() {
-		return showQ;
-	}
-
-	public void setShowQ(String showQ) {
-		this.showQ = showQ;
-	}
 	
 	public Date transDate(Date d, String times){
 		if(d != null){
@@ -160,23 +152,22 @@ public class LetterWriteBean {
 		return d;
 	}
 	
-	//날짜 chan
 	public Date transformDate(String date) {
         SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
         SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
         
-        java.util.Date tempDate;
-        Date d;
+        java.util.Date tempDate = null;
         
         try {
             tempDate = beforeFormat.parse(date);
-            String transDate = afterFormat.format(tempDate);
-            d = Date.valueOf(transDate);
-            return d;
         } catch (ParseException e) {
             e.printStackTrace();
-            return null;
         }
-	}
+        
+        String transDate = afterFormat.format(tempDate);
+        Date d = Date.valueOf(transDate);
+        
+        return d;
+    }
 	
 }

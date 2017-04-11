@@ -36,11 +36,13 @@ public class LetterWriteController {
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
 	public String letterWrite(LetterWriteBean letter, Errors errors, Model model, HttpSession session) {
-		/*new LetterBeanValidator().validate(letter, errors);
+		new LetterBeanValidator().validate(letter, errors);
 		
 		if(errors.hasErrors()) {
 			return "error/errorPage";
-		}*/
+		}
+		
+		
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setWriter(authInfo.getName());
