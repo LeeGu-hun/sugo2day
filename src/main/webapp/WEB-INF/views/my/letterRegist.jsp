@@ -8,7 +8,8 @@
 
 	<label>글 종류</label>
 	<div class="input-group" style="width: 200px;">
-		<form:checkbox path="isquest" value="퀘스트글" label="퀘스트글" />
+		<input type="checkbox" name="isquest" id="isquest" value="퀘스트글" onclick="questToggle()">
+		<label>퀘스트글</label>		
 	</div>
 
 	<label>공개여부</label>
@@ -32,32 +33,34 @@
 		<label>내용</label>
 		<form:textarea path="content" class="form-control" cols="60" rows="8"
 			style="resize: none;" placeholder="내용을 입력하세요 최소 300자" />
-		<form:errors path="subject" />
+		<form:errors path="content" />
 	</div>
 	
+	<div id="datepick-div" class="hidden">
 	<div class="input-group">
 		<div class="input-append date form_startdate">
-			<input size="16" type="text" id="startdate" placeholder="목표 시작일" readonly />
+			<input size="16" type="text" id="startdate" name="startdate" placeholder="목표 시작일" readonly />
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>
 		<script type="text/javascript">
 			$(".form_startdate").datetimepicker({
-				format: "yyyy-mm-dd",
+				format: "yyyymmdd",
 				autoclose: true,
 				pickerPosition: "bottom-right"
 			});
 		</script>
 		<div class="input-append date form_enddate">
-			<input size="16" type="text" id="enddate" placeholder="목표 종료일" readonly />
+			<input size="16" type="text" id="enddate" name="enddate" placeholder="목표 종료일" readonly />
 			<span class="add-on"><i class="icon-th"></i></span>
 		</div>
 		<script type="text/javascript">
 			$('.form_enddate').datetimepicker({
-				format: "yyyy-mm-dd",
+				format: "yyyymmdd",
 				autoclose: true,
 				pickerPosition: "bottom-right"
 			});
 		</script>
+	</div>
 	</div>
 	
 	<div class="input-group">

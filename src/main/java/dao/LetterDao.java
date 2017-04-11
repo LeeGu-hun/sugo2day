@@ -49,21 +49,42 @@ public class LetterDao {
 	// 글 등록하기
 	@Transactional
 	public void insert(final LetterWriteBean letter) {
-		jdbcTemplate.update((Connection con) -> {
-			PreparedStatement pstmt = con.prepareStatement(
-					"insert into letter (num, writer, subject, content, files, "
+		System.out.println(letter.getStartdate() + " insert 실행할 때 startdate");
+		System.out.println(letter.getEnddate() + " insert 실행할 때 enddate");
+		
+		
+		if (letter.getStartdate().toString().equals(null) || letter.getEnddate().toString().equals(null)) {
+			String sql = "insert into letter (num, writer, subject, content, files, "
+					+ "isquest, isprivate) "
+					+ "values (lnum_seq.nextval, ?, ?, ?, ?, ?, ? )";
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, letter.getWriter());
+				pstmt.setString(2, letter.getSubject());
+				pstmt.setString(3, letter.getContent());
+				pstmt.setString(4, letter.getFileName());
+				pstmt.setString(5, letter.getIsquest());
+				pstmt.setString(6, letter.getIsprivate());
+				return pstmt;
+			});
+		} else {
+			String sql = "insert into letter (num, writer, subject, content, files, "
 					+ "startdate, enddate, isquest, isprivate) "
-					+ "values (lnum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? ");
-			pstmt.setString(1, letter.getWriter());
-			pstmt.setString(2, letter.getSubject());
-			pstmt.setString(3, letter.getContent());
-			pstmt.setString(4, letter.getFileName());
-			pstmt.setDate(5, new java.sql.Date(letter.getStartdate().getTime()));
-			pstmt.setDate(6, new java.sql.Date(letter.getEnddate().getTime()));
-			pstmt.setString(7, letter.getIsquest());
-			pstmt.setString(8, letter.getIsprivate());
-			return pstmt;
-		});
+					+ "values (lnum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? )";
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, letter.getWriter());
+				pstmt.setString(2, letter.getSubject());
+				pstmt.setString(3, letter.getContent());
+				pstmt.setString(4, letter.getFileName());
+				pstmt.setDate(5, new java.sql.Date(letter.getStartdate().getTime()));
+				pstmt.setDate(6, new java.sql.Date(letter.getEnddate().getTime()));
+				pstmt.setString(7, letter.getIsquest());
+				pstmt.setString(8, letter.getIsprivate());
+				return pstmt;
+			});
+		}
+		
 	}
 	
 	

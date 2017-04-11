@@ -135,20 +135,21 @@ public class LetterBean {
 	
 	//날짜 chan
 	public Date transformDate(String date) {
-	        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
-	        
-	        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
-	        java.util.Date tempDate = null;
-	        
-	        try {
-	            tempDate = beforeFormat.parse(date);
-	        } catch (ParseException e) {
-	            e.printStackTrace();
-	        }
-	        String transDate = afterFormat.format(tempDate);
-	        Date d = Date.valueOf(transDate);
-	        
-	        return d;
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
+        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
+        
+        java.util.Date tempDate;
+        Date d;
+        
+        try {
+            tempDate = beforeFormat.parse(date);
+            String transDate = afterFormat.format(tempDate);
+            d = Date.valueOf(transDate);
+            return d;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
 	}
 	
 }

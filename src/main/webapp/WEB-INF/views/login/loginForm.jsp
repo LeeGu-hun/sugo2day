@@ -152,8 +152,7 @@ body {
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdwon"><a
-							href="<c:url value="/letter/letterWrite" />">MyPage </a></li>	
+						<li class="dropdwon"><a href="<c:url value="/letter/myLetter" />">MyPage </a></li>
 					</ul>
 
 
