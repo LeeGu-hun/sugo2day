@@ -1,8 +1,11 @@
 package bean;
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class LetterWriteBean {
@@ -17,7 +20,9 @@ public class LetterWriteBean {
 	private Date regdate;
 	private String isquest;
 	private String isprivate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date startdate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date enddate;
 	
 	// 기본 생성자
@@ -25,21 +30,6 @@ public class LetterWriteBean {
 		super();
 	}
 	
-	public LetterWriteBean(Integer num, String writer, String subject, String content, String fileName, Date regdate,
-			String isquest, String isprivate, Date startdate, Date enddate) {
-		super();
-		this.num = num;
-		this.writer = writer;
-		this.subject = subject;
-		this.content = content;
-		this.fileName = fileName;
-		this.regdate = regdate;
-		this.isquest = isquest;
-		this.isprivate = isprivate;
-		this.startdate = startdate;
-		this.enddate = enddate;
-	}
-
 	public Integer getNum() {
 		return num;
 	}
@@ -132,17 +122,34 @@ public class LetterWriteBean {
 		return startdate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+	public void setStartdate(String startdate) {
+		this.startdate = transformDate(startdate);
 	}
 
 	public Date getEnddate() {
 		return enddate;
 	}
 
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
+	public void setEnddate(String enddate) {
+		this.enddate = transformDate(enddate);
 	}
+	
+	public Date transformDate(String date) {
+        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy.mm.dd");
+        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
+        java.util.Date tempDate = null;
+        
+        try {
+            tempDate = beforeFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
+        String transDate = afterFormat.format(tempDate);
+        Date d = Date.valueOf(transDate);
+        
+        return d;
+    }
 
 	
 	

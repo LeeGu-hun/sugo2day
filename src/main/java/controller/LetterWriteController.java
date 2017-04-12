@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpSession;
 
@@ -31,18 +32,20 @@ public class LetterWriteController {
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.GET)
 	public String letterWriteGet(LetterWriteBean letter, Model model) {
 		model.addAttribute("letter", letter);
-		return "redirect:/letter/myLetter";
+		return "my/myPage";
 	}
 		
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
 	public String letterWrite(LetterWriteBean letter, Errors errors, Model model, HttpSession session) {
+		System.out.println(letter.getStartdate() + " = startdate");
+		System.out.println(letter.getEnddate() + " = enddate");
 		
-		/*new LetterWriteValidator().validate(letter, errors);
+		new LetterWriteValidator().validate(letter, errors);
 		
 		if(errors.hasErrors()) {
 			return "error/errorPage";
-		}*/
+		}
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setWriter(authInfo.getName());
@@ -70,7 +73,7 @@ public class LetterWriteController {
 		
 		try {
 			letterDao.insert(letter);
-			return "redirec:/my/myLetter";
+			return "redirect:/letter/myLetter";
 		} catch (Exception e) {
 			e.printStackTrace();	
 			return "redirect:/main";

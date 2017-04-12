@@ -56,7 +56,7 @@
 		</dt>
 		<dd class="txt_set">			
 			<div class="input-group" style="width: 200px;">
-				<form:input path="subject" class="form-control" placeholder="너무 길게 적지마" />
+				<form:input path="subject" placeholder="너무 길게 적지마" />
 				<form:errors path="subject" />
 			</div>
 		</dd>
@@ -68,7 +68,7 @@
 		</dt>	
 		<dd class="txt_set">
 			<div class="input-group">
-				<form:textarea path="content" class="form-control" cols="60" rows="8"
+				<form:textarea path="content" cols="60" rows="8"
 					style="resize: none;" placeholder="4000자 이내로 적어봐" />
 				<form:errors path="content" />
 			</div>
@@ -81,36 +81,41 @@
 				<label>기간</label>
 			</dt>
 			<dd class="txt_set">
-				<div class="input-group1">
-					<div class="input-append date form_startdate">
-						<input size="16" type="text" id="startdate" name="startdate" placeholder="목표 시작일" readonly />
-						<span class="add-on"><i class="icon-th"></i></span>
+			    <div class="form-group pull-left" style="margin: 0;">
+					<div class="input-group date" id="startdate">
+						<input size="16" type="text" class="form-control" name="startdate" placeholder="목표 시작일" />
+						<span class="input-group-addon">
+                    		<span class="glyphicon glyphicon-calendar"></span>
+               			</span>	
 					</div>
-					<script type="text/javascript">
-						$("#startdate").datetimepicker({
-							format: "yyyy-mm-dd hh:ii:ss",
-							autoclose: true,
-							pickerPosition: "bottom-right"
-						});
-					</script>
-				</div>
+				</div>	
+		
 				<span class="txt-at"> - </span>
-				<div class="input-group2">	
-					<div class="input-append date form_enddate">
-						<input size="16" type="text" id="enddate" name="enddate" placeholder="목표 종료일" readonly />
-						<span class="add-on"><i class="icon-th"></i></span>
-					</div>
-					<script type="text/javascript">
-						$('#enddate').datetimepicker({
-							format: "yyyy-mm-dd hh:ii:ss",
-							autoclose: true,
-							pickerPosition: "bottom-right"
-						});
-					</script>
+				
+				<div class="form-group" style="margin: 0;">
+					<div class="input-group date" id="enddate">	
+						<input size="16" type="text" class="form-control" name="enddate" placeholder="목표 종료일" />
+						<span class="input-group-addon">
+                    		<span class="glyphicon glyphicon-calendar"></span>
+               			</span>	
+               		</div>	
 				</div>
+				<script type="text/javascript">
+					$(function() {
+						$('#startdate').datetimepicker({
+							locale: 'ko',
+							format: 'L'
+						});
+						
+						$('#enddate').datetimepicker({
+							locale: 'ko',
+							format: 'L'
+						});
+					});	
+				</script>	
 			</dd>
-		</dl>		
-	</div>
+		</dl>
+	</div>		
 	
 	<dl class="list_set">
 		<dt class="tit_set">	
@@ -122,7 +127,7 @@
 				value='<%=request.getRealPath("/uploads/")%>' />
 			<input type="file" name="multiFile" id="multiFile" />
 		</dd>
-	</dl>		
+	</dl>
 	
 	<hr>
 

@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -82,8 +81,8 @@ public class LetterDao {
 					pstmt.setString(4, letter.getFileName());
 					pstmt.setString(5, letter.getIsquest());
 					pstmt.setString(6, letter.getIsprivate());
-					pstmt.setDate(7, (Date) letter.getStartdate());
-					pstmt.setDate(8, (Date) letter.getEnddate());
+					pstmt.setDate(7, new java.sql.Date(letter.getStartdate().getTime()));
+					pstmt.setDate(8, new java.sql.Date(letter.getEnddate().getTime()));
 					return pstmt;
 			});
 		}

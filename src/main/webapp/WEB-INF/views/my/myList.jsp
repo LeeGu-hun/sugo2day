@@ -29,38 +29,13 @@
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<!-- DatePicker -->
-<link rel="stylesheet" href="<%=cp%>/resources/datetimepicker/css/bootstrap-datetimepicker.min.css" />
-<script src="<%=cp %>/resources/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8">
-</script>
-<script src="<%=cp %>/resources/datetimepicker/js/locales/bootstrap-datetimepicker.ko.js" type="text/javascript" charset="utf-8">
-</script>
+<!-- Dpick -->
+<script src="<%=cp %>/resources/dpick/moment.js"></script>
+<script src="<%=cp %>/resources/dpick/bootstrap.min.js"></script>
+<script src="<%=cp %>/resources/dpick/bootstrap-datetimepicker.min.js"></script>
+<link rel="<%=cp %>/resources/dpick/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="<%=cp %>/resources/dpick/ko.js"></script>
 
-<!-- Custom Style -->
-<style>
-	.pull-left {
-	  float: left !important;
-	}
-	
-	.pull-right {
-	  float: right !important;
-	}
-	
-	.show {
-		display: block !important;
-	}
-	
-	.hidden {
-		display: none !important;
-		visibility: hidden !important;
-	}
-	
-	.center-block {
-		display: block;
-		margin-left: 335px;
-		margin-right: auto;
-	}
-</style>
 <!-- Custom Script -->
 <script>
 	function divToggle() {
@@ -91,12 +66,12 @@
 			$("#datepick-div").addClass("hidden");
 		}
 	}
-	
-	
+		
 	function goBack() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
-</script>				
+</script>		
+		
 </head>
 <body>
 <!-- 본문 상단 공통 고정 메뉴 -->

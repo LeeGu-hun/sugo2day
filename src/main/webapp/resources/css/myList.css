@@ -8,10 +8,7 @@
 }
 
 .body-header {
-	
 	margin: 0 auto;
-	
-	
 }
 
 dt {
@@ -43,10 +40,6 @@ dd {
 	letter-spacing: -1px;
 }
 
-.input-group1 {
-	float: left;
-}
-
 .txt-at {
 	float: left;
 	margin: 0 20px;
@@ -70,7 +63,41 @@ hr{
 	margin-bottom: 30px;
 }
 
-#all-list {
-	float: left;
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.show {
+	display: block !important;
+}
+
+.hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.center-block {
+	display: block;
+	margin-left: 335px;
+	margin-right: auto;
+}
+
+.clearfix() {
+	&:before,
+	&:after {
+    	content: " ";
+  		display: table;
+	}
+	&:after {
+  		clear: both;
+	}
+}
+
+.form-group > div {
+	max-width: 200px;
 }
 
