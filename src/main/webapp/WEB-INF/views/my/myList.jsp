@@ -25,6 +25,7 @@
 <!-- Custom CSS -->
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
+<link href="<%=cp%>/resources/css/letterLayout.css" rel="stylesheet">
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -152,7 +153,6 @@
 		</div>	
 		
 		<div class="body-list">
-			<h3>작성 글 목록</h3>
 			<div id="all-list" class="show">
 				<!-- 기본적으로 보여줄 글 리스트 -->
 				<%@include file="incAllList.jsp" %>

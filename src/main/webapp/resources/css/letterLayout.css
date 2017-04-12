@@ -1,0 +1,60 @@
+.list_wrapper {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.list_container{
+	width: 600px;
+	padding: 15px 5px 15px 5px;
+	background-color: #EAEAEA;
+	border-radius:5px;
+}
+
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+.list_title1{
+	width: 350px;
+	padding: 0 20px 0 10px;
+	letter-spacing: -1px;
+}
+.list_title2{
+	width: 190px;
+	padding: 0 20px 0 10px;
+	letter-spacing: -1px;
+}
+
+.list_date{
+	padding: 20px 0 10px 0;
+	text-align:center;
+}
+
+.list_content{
+	margin-left: 20px;
+	max-height: 200px;
+}
+
+label {
+	color:#5D5D5D;
+}
+
+.user_id{
+	width: 380px;
+	padding: 10px 0 0 35px;
+	letter-spacing: -1px;
+}
+.user_write{
+	width: 190px;
+	padding: 10px 0 0 0;
+	letter-spacing: -1px;
+}
+.fake-size {
+	margin-bottom: 50px;
+}
+.fake-size-top {
+	margin-top: 30px;
+}

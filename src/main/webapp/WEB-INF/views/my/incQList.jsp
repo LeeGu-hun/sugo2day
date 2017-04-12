@@ -6,8 +6,10 @@
 <!-- 이 페이지는 전체 글 리스트 -->
 <!-- lists 는 커맨드 객체 이름(작성된 글이 있을때만 노출)-->
 
-
 <c:if test="${ empty letters }">
+<div class="fake-size-top">
+	<p>&nbsp;</p>
+</div>
 	<h3>글을 작성해 달라</h3>
 </c:if>
 
@@ -15,43 +17,64 @@
 <!-- 게시글을 주우우욱 보여주기 -->
 	<c:forEach var="letter" items="${letters }">
 	<c:if test="${letter.isquest == '퀘스트글'}">
-		<ul class="timeline">
-		<li>
-			<div class="timeline-panel">
-				<div class="timeline-heading">
-					<h4>${letter.content }</h4>
+		<div class="list_wrapper">
+			<div class="list_container">
+				<div>
+					<div class="pull-left">
+						<div class="list_title1">
+							<h4 class="lead">${letter.subject }</h4>
+						</div>
+					</div>
+					<div class="pull-right">
+						<div class="list_title2">
+							<h4 class="lead">${letter.regdate }</h4>
+						</div>
+					</div>
 				</div>
-				<div class="timeline-body">
-					<ul class="list-inline post-detail">
-						<li>${letter.subject }</li>
-						<li>by ${letter.writer }</li>
-						<li>
-							<a>
-								<i class="fa fa-calendar"></i>${letter.startdate } ~ 
-								<i class="fa fa-calendar"></i>${letter.enddate }
-							</a>
-						</li>
-						<li>
-							<c:if test="${! empty letter.files }">
-								<div>
-									<label>사진</label>
-								</div>
-								<div>
-									<c:set var="ext" value="${fn:split(letter.files,'.')}"/>
-									<c:choose>
-										<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
-											<img class="img-responsive" src='<c:url value="/" />uploads/${letter.files }'>
-										</c:when>
-									<c:otherwise>첨부된 사진 없음</c:otherwise>
-									</c:choose>
-								</div>
-							</c:if>
-						</li>				
-					</ul>
+				
+				<c:if test="${! empty letter.files }">
+				<div style="max-width: 600px;">	
+				<c:set var="ext" value="${fn:split(letter.files,'.')}"/>
+					<c:choose>
+						<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
+							<img class="img-responsive" src='<c:url value="/" />uploads/${letter.files }'>
+						</c:when>
+						<c:otherwise>첨부된 사진 없음</c:otherwise>
+					</c:choose>
+				</div>	
+				<br>
+				</c:if>
+				
+				<div class="list_content">
+					<h5 class="lead">${letter.content }</h5>					
 				</div>
+				<br>
+				
+				<c:if test="${! empty letter.startdate }">
+				<div class="list_date">
+					<h4 class="lead">${letter.startdate } 부터 ${letter.enddate } 까지</h4>
+				</div>		
+				</c:if>
+			
+				<div class="pull-left">
+					<div class="user_id">
+						<h3 class="lead">by <b>${letter.writer }</b></h3>
+						
+					</div>
+				</div>
+			
+				<!-- 추후 B페이지에서 사용 
+				<div class="pull-right">
+					<div class="user_write">
+						여기에 라디오 버튼으로 공개/비공개 설정
+					</div>
+				</div>
+				 -->
 			</div>
-		<li>	
-		</ul>
+		</div>
+	<div class="fake-size">
+		<p>&nbsp;</p>
+	</div>			
 	</c:if>	
 	</c:forEach>
 </c:if>
