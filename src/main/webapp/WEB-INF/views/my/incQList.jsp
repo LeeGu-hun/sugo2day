@@ -22,7 +22,7 @@
 				<div>
 					<div class="pull-left">
 						<div class="list_title1">
-							<h4 class="lead">${letter.subject }</h4>
+							<h4 class="lead"><b>${letter.subject }</b></h4>
 						</div>
 					</div>
 					<div class="pull-right">
@@ -42,13 +42,18 @@
 						<c:otherwise>첨부된 사진 없음</c:otherwise>
 					</c:choose>
 				</div>	
-				<br>
 				</c:if>
-				
-				<div class="list_content">
-					<h5 class="lead">${letter.content }</h5>					
-				</div>
 				<br>
+				
+				<div style="max-width: 600px;" class="list_content">
+					<textarea class="lead" id="content" cols="52" rows="6" style="overflow-y:scroll"
+						readonly="readonly">${letter.content }</textarea>
+					<script type="text/javascript">
+					$(function() {
+						$('#content').val().replace(/\n/g, "<br>");
+					});	
+				</script>					
+				</div>
 				
 				<c:if test="${! empty letter.startdate }">
 				<div class="list_date">
@@ -59,7 +64,6 @@
 				<div class="pull-left">
 					<div class="user_id">
 						<h3 class="lead">by <b>${letter.writer }</b></h3>
-						
 					</div>
 				</div>
 			

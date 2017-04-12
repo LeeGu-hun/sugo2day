@@ -53,7 +53,6 @@
 					});	
 				</script>					
 				</div>
-				<br>
 				
 				<c:if test="${! empty letter.startdate }">
 				<div class="list_date">
@@ -64,7 +63,6 @@
 				<div class="pull-left">
 					<div class="user_id">
 						<h3 class="lead">by <b>${letter.writer }</b></h3>
-						
 					</div>
 				</div>
 			
