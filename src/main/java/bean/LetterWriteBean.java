@@ -1,11 +1,8 @@
 package bean;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class LetterWriteBean {
@@ -17,30 +14,30 @@ public class LetterWriteBean {
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date startdate;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date enddate;
+	private Date regdate;
 	private String isquest;
 	private String isprivate;
+	private Date startdate;
+	private Date enddate;
 	
 	// 기본 생성자
 	public LetterWriteBean() {
 		super();
 	}
 	
-	public LetterWriteBean(Integer num, String writer, String subject, String content, String fileName, Date startdate,
-			Date enddate, String isquest, String isprivate) {
+	public LetterWriteBean(Integer num, String writer, String subject, String content, String fileName, Date regdate,
+			String isquest, String isprivate, Date startdate, Date enddate) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.subject = subject;
 		this.content = content;
 		this.fileName = fileName;
-		this.startdate = startdate;
-		this.enddate = enddate;
+		this.regdate = regdate;
 		this.isquest = isquest;
 		this.isprivate = isprivate;
+		this.startdate = startdate;
+		this.enddate = enddate;
 	}
 
 	public Integer getNum() {
@@ -107,20 +104,12 @@ public class LetterWriteBean {
 		this.upDir = upDir;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
-	}
-
-	public Date getEnddate() {
-		return enddate;
-	}
-
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getIsquest() {
@@ -139,35 +128,22 @@ public class LetterWriteBean {
 		this.isprivate = isprivate;
 	}
 
-	
-	public Date transDate(Date d, String times){
-		if(d != null){
-			SimpleDateFormat transFormat; 
-			transFormat = new SimpleDateFormat("yyyyMMdd");
-			String toWord = transFormat.format(d) + times;
-			transFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-			try { d = (Date) transFormat.parse(toWord);
-			} catch (Exception e) { e.printStackTrace(); }
-		}
-		return d;
+	public Date getStartdate() {
+		return startdate;
 	}
+
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+
+	public Date getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
+	}
+
 	
-	public Date transformDate(String date) {
-        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
-        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
-        
-        java.util.Date tempDate = null;
-        
-        try {
-            tempDate = beforeFormat.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        
-        String transDate = afterFormat.format(tempDate);
-        Date d = Date.valueOf(transDate);
-        
-        return d;
-    }
 	
 }

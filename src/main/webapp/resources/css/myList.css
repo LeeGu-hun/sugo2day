@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+
+.body-wrapper {
+	width: 1300px;
+	margin: 0 auto;
+	padding: 100px 140px 0 140px;
+	background: #ffffff;
+}
+
+.body-header {
+	
+	margin: 0 auto;
+	
+	
+}
+
+dt {
+	display: block;
+}
+
+dl {
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+dd {
+	display: block;
+	-webkit-margin-start: 40px;
+}
+
+
+
+.list_set .tit_set {
+	width: 140px;
+	margin-top: 7px;
+	padding: 0 20px;
+	float: left;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+.input-group1 {
+	float: left;
+}
+
+.txt-at {
+	float: left;
+	margin: 0 20px;
+}
+
+.input-append {
+	padding: 5px;
+	txt-align: center;
+	margin: 0;
+}
+
+hr{
+	
+}
+
+.body-content {
+	margin-bottom: 100px;
+}
+
+.body-footer {
+	margin-bottom: 30px;
+}
+
+#all-list {
+	float: left;
+}
+

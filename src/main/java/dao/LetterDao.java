@@ -36,38 +36,61 @@ public class LetterDao {
 					rs.getString("subject"),
 					rs.getString("content"),
 					rs.getString("files"),
-					rs.getDate("startdate"),
-					rs.getDate("enddate"),
+					rs.getDate("regdate"),
 					rs.getString("isquest"),
-					rs.getString("isprivate"));
+					rs.getString("isprivate"),
+					rs.getDate("startdate"),
+					rs.getDate("enddate"));
 			return letter;
 		}
 	};
 	
 	
 	
-	// 글 등록하기
+	// 퀘스트 글 등록하기
 	@Transactional
 	public void insert(final LetterWriteBean letter) {
-			String sql = "insert into letter (num, writer, subject, content, files, "
-					+ "isquest, isprivate, startdate, enddate) "
-					+ "values (lnum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ? )";
+		System.out.println(letter.getIsquest() + " = insert 될 때 quest 값");
+		System.out.println(letter.getIsprivate() + " = insert 될 때 private 값");
+		
+		String Qsql = "insert into letter (num, writer, subject, content, files, regdate, "
+				+ "isquest, isprivate, startdate, enddate) "
+				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ? )";
+		String Nsql = "insert into letter (num, writer, subject, content, files, regdate, "
+				+ "isquest, isprivate) "
+				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ? )";
+		
+		if(letter.getIsquest() == "일반글") {
 			jdbcTemplate.update((Connection con) -> {
-				PreparedStatement pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, letter.getWriter());
-				pstmt.setString(2, letter.getSubject());
-				pstmt.setString(3, letter.getContent());
-				pstmt.setString(4, letter.getFileName());
-				pstmt.setString(5, letter.getIsquest());
-				pstmt.setString(6, letter.getIsprivate());
-				pstmt.setDate(7, new java.sql.Date(letter.getStartdate().getTime()));
-				pstmt.setDate(8, new java.sql.Date(letter.getEnddate().getTime()));
-				return pstmt;
+				PreparedStatement pstmt = con.prepareStatement(Qsql);
+					pstmt.setString(1, letter.getWriter());
+					pstmt.setString(2, letter.getSubject());
+					pstmt.setString(3, letter.getContent());
+					pstmt.setString(4, letter.getFileName());
+					pstmt.setString(5, letter.getIsquest());
+					pstmt.setString(6, letter.getIsprivate());
+					pstmt.setDate(7, new java.sql.Date(letter.getStartdate().getTime()));
+					pstmt.setDate(8, new java.sql.Date(letter.getEnddate().getTime()));
+					return pstmt;
+			});
+		}
+		
+		if (letter.getIsquest() == "퀘스트글") {
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(Nsql);
+					pstmt.setString(1, letter.getWriter());
+					pstmt.setString(2, letter.getSubject());
+					pstmt.setString(3, letter.getContent());
+					pstmt.setString(4, letter.getFileName());
+					pstmt.setString(5, letter.getIsquest());
+					pstmt.setString(6, letter.getIsprivate());
+					return pstmt;
 			});
 		}
 	
+	}	
 	
-	
+		
 	// 전체 글 보기
 	public List<LetterBean> selectAll(String writer) {
 		List<LetterBean> results = jdbcTemplate.query(

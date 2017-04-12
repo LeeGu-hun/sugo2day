@@ -1,10 +1,6 @@
 package bean;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.Date;
 
 public class LetterBean {
 	private Integer num;
@@ -12,33 +8,34 @@ public class LetterBean {
 	private String subject;
 	private String content;
 	private String files;
-	@DateTimeFormat(pattern="yyyyMMdd")
-	private Date startdate;
-	@DateTimeFormat(pattern="yyyyMMdd")
-	private Date enddate;
+	private Date regdate;
 	private String isquest;
 	private String isprivate;
+	private Date startdate;
+	private Date enddate;
 	
 	// 기본 생성자
 	public LetterBean() {
 		super();
 	}
 	
-	public LetterBean(Integer num, String writer, String subject, String content, String files, Date startdate,
-			Date enddate, String isquest, String isprivate) {
+	public LetterBean(Integer num, String writer, String subject, String content, String files, Date regdate,
+			String isquest, String isprivate, Date startdate, Date enddate) {
 		super();
 		this.num = num;
 		this.writer = writer;
 		this.subject = subject;
 		this.content = content;
 		this.files = files;
-		this.startdate = startdate;
-		this.enddate = enddate;
+		this.regdate = regdate;
 		this.isquest = isquest;
 		this.isprivate = isprivate;
+		this.startdate = startdate;
+		this.enddate = enddate;
 	}
 
-	
+
+
 	public Integer getNum() {
 		return num;
 	}
@@ -79,20 +76,12 @@ public class LetterBean {
 		this.files = files;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
-	}
-
-	public Date getEnddate() {
-		return enddate;
-	}
-
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public String getIsquest() {
@@ -111,36 +100,22 @@ public class LetterBean {
 		this.isprivate = isprivate;
 	}
 
-	
-	public Date transDate(Date d, String times){
-		if(d != null){
-			SimpleDateFormat transFormat; 
-			transFormat = new SimpleDateFormat("yyyyMMdd");
-			String toWord = transFormat.format(d) + times;
-			transFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-			try { d = (Date) transFormat.parse(toWord);
-			} catch (Exception e) { e.printStackTrace(); }
-		}
-		return d;
+	public Date getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(Date startdate) {
+		this.startdate = startdate;
+	}
+
+	public Date getEnddate() {
+		return enddate;
+	}
+
+	public void setEnddate(Date enddate) {
+		this.enddate = enddate;
 	}
 	
-	//날짜 chan
-	public Date transformDate(String date) {
-        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
-        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
-        
-        java.util.Date tempDate;
-        Date d;
-        
-        try {
-            tempDate = beforeFormat.parse(date);
-            String transDate = afterFormat.format(tempDate);
-            d = Date.valueOf(transDate);
-            return d;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
-	}
 	
+
 }

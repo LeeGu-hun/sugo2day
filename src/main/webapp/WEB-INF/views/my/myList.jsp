@@ -24,6 +24,7 @@
 <link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet" type="text/css">
 <!-- Custom CSS -->
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
+<link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -40,6 +41,7 @@
 	.pull-left {
 	  float: left !important;
 	}
+	
 	.pull-right {
 	  float: right !important;
 	}
@@ -51,6 +53,12 @@
 	.hidden {
 		display: none !important;
 		visibility: hidden !important;
+	}
+	
+	.center-block {
+		display: block;
+		margin-left: 335px;
+		margin-right: auto;
 	}
 </style>
 <!-- Custom Script -->
@@ -146,18 +154,28 @@
 	<!-- 본문 내용 -->
 	<div class="body-wrapper">
 		<div class="body-header">
-			<h3>퀘스트 관리</h3>
+			<!-- B 페이지에서 사용 
+			<button type="button" class="btn btn-default btn-lg ">퀘스트 등록</button>
+			 -->
+			<button type="button" class="btn btn-default btn-lg ">퀘스트 관리</button>
+			<hr>
 		</div>	
+		
 		<div class="body-content">
 			<div id="letter-reg">
 				<!-- 글 작성 페이지 -->
 				<%@include file="letterRegist.jsp" %>
 			</div>
 		</div>	
+		
+		<h3>작성 글 목록</h3>
+		<hr>
+		
 		<div class="body-footer">
 			<input type="checkbox" id="quest-show" value="true" onclick="divToggle()" />
 			<span class="lead">퀘스트글 보기</span>
 		</div>	
+		
 		<div class="body-list">
 			<h3>작성 글 목록</h3>
 			<div id="all-list" class="show">
