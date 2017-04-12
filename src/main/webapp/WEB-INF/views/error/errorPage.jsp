@@ -17,7 +17,7 @@
 <meta name="author" content="">
 
 <!--  5초 뒤 메인으로 이동 -->
-<meta http-equiv="refresh" content="5; url=<c:url value='/letter/myLetter'/>">
+<meta http-equiv="refresh" content="500; url=<c:url value='/letter/myLetter'/>">
 
 
 <title>Insert title here</title>

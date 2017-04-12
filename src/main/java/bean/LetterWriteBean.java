@@ -140,15 +140,16 @@ public class LetterWriteBean {
         java.util.Date tempDate = null;
         
         try {
-            tempDate = beforeFormat.parse(date);
+        	tempDate = beforeFormat.parse(date);
         } catch (ParseException e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
-        
+       
         String transDate = afterFormat.format(tempDate);
-        Date d = Date.valueOf(transDate);
-        
+    	Date d = Date.valueOf(transDate);
+              
         return d;
+        
     }
 
 	

@@ -72,7 +72,7 @@
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
 </script>		
-		
+
 </head>
 <body>
 <!-- 본문 상단 공통 고정 메뉴 -->

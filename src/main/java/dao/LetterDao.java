@@ -55,13 +55,14 @@ public class LetterDao {
 		
 		String Qsql = "insert into letter (num, writer, subject, content, files, regdate, "
 				+ "isquest, isprivate, startdate, enddate) "
-				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ? )";
+				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ? ) ";
 		String Nsql = "insert into letter (num, writer, subject, content, files, regdate, "
 				+ "isquest, isprivate) "
-				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ? )";
+				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?) ";
 		
 
 		if (letter.getIsquest().equals("일반글")) {
+			System.out.println("일반글 루트");
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Nsql);
 					pstmt.setString(1, letter.getWriter());
@@ -73,6 +74,7 @@ public class LetterDao {
 					return pstmt;
 			});
 		} else if(letter.getIsquest().equals("퀘스트글")) {
+			System.out.println("퀘스트글 루트");
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Qsql);
 					pstmt.setString(1, letter.getWriter());

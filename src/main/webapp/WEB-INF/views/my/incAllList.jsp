@@ -45,8 +45,13 @@
 				<br>
 				
 				<div style="max-width: 600px;" class="list_content">
-					<br>
-					<h5 class="lead">${letter.content }</h5>					
+					<textarea class="lead" id="content" cols="52" rows="6" style="overflow-y:scroll"
+						readonly="readonly">${letter.content }</textarea>
+					<script type="text/javascript">
+					$(function() {
+						$('#content').val().replace(/\n/g, "<br>");
+					});	
+				</script>					
 				</div>
 				<br>
 				

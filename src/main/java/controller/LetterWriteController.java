@@ -2,21 +2,19 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import bean.LetterWriteBean;
 import dao.LetterDao;
-import letter.LetterWriteValidator;
 import member.login.AuthInfo;
 
 @Controller
@@ -37,16 +35,8 @@ public class LetterWriteController {
 		
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
-	public String letterWrite(LetterWriteBean letter, Errors errors, Model model, HttpSession session) {
-		System.out.println(letter.getStartdate() + " = startdate");
-		System.out.println(letter.getEnddate() + " = enddate");
-		
-		new LetterWriteValidator().validate(letter, errors);
-		
-		if(errors.hasErrors()) {
-			return "error/errorPage";
-		}
-		
+	public String letterWrite(LetterWriteBean letter, Model model, HttpSession session) {
+				
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setWriter(authInfo.getName());
 		
