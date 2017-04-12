@@ -37,10 +37,10 @@
 									<label>사진</label>
 								</div>
 								<div>
-									<c:set var="ext" value="${fn:split(letter.file,'.')}"/>
+									<c:set var="ext" value="${fn:split(letter.files,'.')}"/>
 									<c:choose>
 										<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
-											<img class="img-responsive" src='<c:url value="/" />uploads/${letter.file }'>
+											<img class="img-responsive" src='<c:url value="/" />uploads/${letter.files }'>
 										</c:when>
 									<c:otherwise>첨부된 사진 없음</c:otherwise>
 									</c:choose>

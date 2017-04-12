@@ -27,7 +27,7 @@
 <link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
 
 <!-- JQuery Main -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <!-- DatePicker -->
 <link rel="stylesheet" href="<%=cp%>/resources/datetimepicker/css/bootstrap-datetimepicker.min.css" />

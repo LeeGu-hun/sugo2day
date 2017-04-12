@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,16 +37,12 @@ public class LetterWriteController {
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
 	public String letterWrite(LetterWriteBean letter, Errors errors, Model model, HttpSession session) {
-		System.out.println(letter.getIsquest() + " = Controller 에서 quest 값");
-		System.out.println(letter.getIsprivate() + " = Controller 에서 private 값");
-		System.out.println(letter.getSubject() + " = Controller 에서 subject 값");
-		System.out.println(letter.getContent() + " = Controller 에서 content 값");
 		
-		new LetterWriteValidator().validate(letter, errors);
+		/*new LetterWriteValidator().validate(letter, errors);
 		
 		if(errors.hasErrors()) {
 			return "error/errorPage";
-		}
+		}*/
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setWriter(authInfo.getName());
@@ -71,8 +68,13 @@ public class LetterWriteController {
 			}
 		}
 		
-		letterDao.insert(letter);
-		return "redirect:/letter/myLetter";
+		try {
+			letterDao.insert(letter);
+			return "redirec:/my/myLetter";
+		} catch (Exception e) {
+			e.printStackTrace();	
+			return "redirect:/main";
+		}
 	}
 	
 

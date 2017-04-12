@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -60,22 +61,8 @@ public class LetterDao {
 				+ "isquest, isprivate) "
 				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ? )";
 		
-		if(letter.getIsquest() == "일반글") {
-			jdbcTemplate.update((Connection con) -> {
-				PreparedStatement pstmt = con.prepareStatement(Qsql);
-					pstmt.setString(1, letter.getWriter());
-					pstmt.setString(2, letter.getSubject());
-					pstmt.setString(3, letter.getContent());
-					pstmt.setString(4, letter.getFileName());
-					pstmt.setString(5, letter.getIsquest());
-					pstmt.setString(6, letter.getIsprivate());
-					pstmt.setDate(7, new java.sql.Date(letter.getStartdate().getTime()));
-					pstmt.setDate(8, new java.sql.Date(letter.getEnddate().getTime()));
-					return pstmt;
-			});
-		}
-		
-		if (letter.getIsquest() == "퀘스트글") {
+
+		if (letter.getIsquest().equals("일반글")) {
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Nsql);
 					pstmt.setString(1, letter.getWriter());
@@ -86,7 +73,21 @@ public class LetterDao {
 					pstmt.setString(6, letter.getIsprivate());
 					return pstmt;
 			});
+		} else if(letter.getIsquest().equals("퀘스트글")) {
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(Qsql);
+					pstmt.setString(1, letter.getWriter());
+					pstmt.setString(2, letter.getSubject());
+					pstmt.setString(3, letter.getContent());
+					pstmt.setString(4, letter.getFileName());
+					pstmt.setString(5, letter.getIsquest());
+					pstmt.setString(6, letter.getIsprivate());
+					pstmt.setDate(7, (Date) letter.getStartdate());
+					pstmt.setDate(8, (Date) letter.getEnddate());
+					return pstmt;
+			});
 		}
+		
 	
 	}	
 	

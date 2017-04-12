@@ -25,21 +25,19 @@ public class LetterController {
 	// 전체 글 목록보기
 	@RequestMapping(value="letter/myLetter", method=RequestMethod.GET)
 	public String selectDefault(LetterWriteBean Wletter, Model model, HttpSession session) {
-		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		LetterBean letter = new LetterBean();
-		letter.setWriter(authInfo.getName());
-		String writer = letter.getWriter();
 
-		System.out.println("letter/myLetter Get type : writer = " + writer);
-					
-		List<LetterBean> letters = letterDao.selectAll(writer);
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		letter.setWriter(authInfo.getName());
+							
+		List<LetterBean> letters = letterDao.selectAll(letter.getWriter());
 		model.addAttribute("letters", letters);
 		model.addAttribute("letter", Wletter);
 		
 		return "my/myList";
 	}
 	
-	// 퀘스트 글 목록보기
+	// 퀘스트 글 목록보기 (사용 안함)
 	@RequestMapping(value="letter/myQuest", method=RequestMethod.POST)
 	public String selectAll(LetterWriteBean Wletter, String isquest, Model model, HttpSession session) {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
