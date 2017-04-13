@@ -108,7 +108,11 @@ public class LetterDao {
 		return results;
 	}
 	
-	
+	// 공개글 설정하기
+	public void changePrivate(int num, String isprivate) {
+		jdbcTemplate.update(
+				"update letter set isprivate = ? where num = ? ", isprivate, num);		
+	}
 	
 
 }

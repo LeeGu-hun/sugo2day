@@ -55,5 +55,10 @@
 	<bean class="controller.LetterManageController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
+	
+	<bean class="controller.ApiLetterManageController">
+		<property name="letterDao" ref="letterDao" />
+	</bean>
+	
 </beans>	
 	

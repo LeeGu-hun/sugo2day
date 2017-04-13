@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -31,11 +32,7 @@ public class LetterManageController {
 		List<LetterBean> letters = letterDao.selectQuest(letter.getWriter());
 		model.addAttribute("letterM", letters);
 		
-		System.out.println(letters.get(0).toString() + " = letterM에 담긴 0번째");
-		
-		
 		return "my/myQuestManager";
 	}
 	
-
 }

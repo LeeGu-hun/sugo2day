@@ -34,7 +34,7 @@
 }
 
 .list_content{
-	margin-left: 20px;
+	margin-left: 15px;
 	max-height: 200px;
 }
 
@@ -42,13 +42,19 @@ label {
 	color:#5D5D5D;
 }
 
+.list_under {
+	width: 600px;
+	max-height: 80px;
+}
+
 .user_id{
-	width: 380px;
-	padding: 10px 0 0 35px;
+	max-width: 300px;
+	padding: 10px 0 0 0px;
 	letter-spacing: -1px;
 }
 .user_write{
-	width: 190px;
+	max-width: 170px;
+	max-height: 80px;
 	padding: 10px 0 0 0;
 	letter-spacing: -1px;
 }
@@ -58,3 +64,7 @@ label {
 .fake-size-top {
 	margin-top: 30px;
 }
+
+
+
+

@@ -31,35 +31,7 @@
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script>
-$(function() {
-	$('input:checkbox[id="onprivate"]').is('checked', function() {
-	    $.ajax({
-	        url:'letter/letterManage',
-			type: 'post',
-		    data: { isprivate: $('#onprivate').val() },
-			success: function(t) { alert('비밀글 설정 완료'); },
-			error: function() { alert('설정 실패...'); }
-	    });
-	});
-	
-	$('input:checkbox[id="offprivate"]').is('checked', function() {
-	    $.ajax({
-	        url:'letter/letterManage',
-			type: 'post',
-		    data: { isprivate: $('#offprivate').val() },
-			success: function(t) { alert('공개글 설정 완료'); },
-			error: function() { alert('설정 실패...'); }
-	    });
-	});
-});
 
-
-function goQL() {
-	location.href = "<c:url value='/letter/myLetter' />";
-}
-
-</script>
 </head>
 <body>
 <!-- 본문 상단 공통 고정 메뉴 -->
@@ -119,14 +91,14 @@ function goQL() {
 		<hr>
 	</div>	
 	
+	<c:if test="${ empty letterM }">
 	<div class="body-content">
-		<c:if test="${ empty letterM }">
 			<div class="fake-size-top">
 				<p>&nbsp;</p>
 			</div>
 			<h3>글을 작성해 달라</h3>
-		</c:if>
 	</div>	
+	</c:if>
 
 	<div class="body-list">
 	<c:if test="${! empty letterM }">
@@ -136,6 +108,7 @@ function goQL() {
 				<div class="list_container">
 					<div>
 						<div class="pull-left">
+							<input type="hidden" id="lnum"  value="${mletter.num }"/>
 							<div class="list_title1">
 								<h4 class="lead"><b>${mletter.subject }</b></h4>
 							</div>
@@ -161,7 +134,7 @@ function goQL() {
 					<br>
 					
 					<div style="max-width: 600px;" class="list_content">
-						<textarea class="lead" id="content" cols="52" rows="6" style="overflow-y:scroll"
+						<textarea class="lead" id="content" cols="54" rows="6" style="overflow-y:scroll"
 							readonly="readonly">${mletter.content }</textarea>
 						<script type="text/javascript">
 						$(function() {
@@ -175,27 +148,89 @@ function goQL() {
 						<h4 class="lead">${mletter.startdate } 부터 ${mletter.enddate } 까지</h4>
 					</div>		
 					</c:if>
-				
-					<div class="pull-left">
-						<div class="user_id">
-							<h3 class="lead">by <b>${mletter.writer }</b></h3>
+					<div class="row" style="margin-left: 0; margin-right: 0; padding-left: 15px;">
+						<div class="pull-left" style="max-width: 300px;">
+							<span class="lead">by <b>${mletter.writer }</b></span>
+						</div>	
+						
+						<div class="input-group pull-right" role="group" style="width: 300px; height: 35px;">
+							<div class="col-lg-5" style="padding: 0; max-width: 125px;">		
+								<div class="input-group">	
+									<span class="input-group-addon">
+										<input type="radio" name="stat" value="공개글" onclick="changeShow(${mletter.num }, '공개글')">
+									</span>
+									<input type="text" class="form-control" placeholder="공개글" readonly style="width: 88px;">
+								</div>
+							</div>
+							<div class="col-lg-5" style="padding: 0; max-width: 125px;">	
+								<div class="input-group">	
+									<span class="input-group-addon">
+										<input type="radio" name="stat" value="비공개" onclick="changeShow(${mletter.num }, '비공개')">
+									</span>
+									<input type="text" class="form-control" placeholder="비공개" readonly style="width: 88px;">
+								</div>
+							</div>
 						</div>
-					</div>
-				
+					</div>	
 					
-					<div class="pull-right">
-						<div class="user_write">
-							<input type="radio" name="isprivate" id="onprivate" value="공개글" checked="checked">
-							<label> 공개글</label>
-							<input type="radio" name="isprivate" id="offprivate" value="비공개">
-							<label> 비공개글</label>
-						</div>
-					</div>
-				</div>
+				</div>	
 			</div>
 		<div class="fake-size">
 			<p>&nbsp;</p>
-		</div>			
+		</div>
+		<script type="text/javascript">
+			// 참고용
+			/* function changeStat() {
+				if ($('input:radio[name="stat"]').is(":checked") == true) {
+					var num = $("#lnum").val();
+					var stat = $(':radio[name="stat"]:checked').val();
+				}
+			
+				console.log("변경할 글의 번호 = " + num);
+				console.log("변경할 공개여부 = " + stat);
+				
+			    $.ajax({
+			        url: 'letterOnpriv',
+					type: 'POST',
+					data: { 'num': num, 'isprivate': stat },
+					dataType: 'json',
+				    success: onSuccess,
+					error: onError
+			    });
+			} */
+			
+			function onError(status) {
+				console.log("ERROR!!" + status);
+			}
+			
+			function onSuccess(data, status) {
+				console.log("SUCCESS data = " + data + "status = " + status);
+			}
+			
+			
+			function goQL() {
+				location.href = "<c:url value='/letter/myLetter' />";
+			}
+			
+			function changeShow(num, stat){
+				if ($('input:radio[name="stat"]').is(":checked") == true) {
+					var num = num;
+					var stat = stat;
+				}
+			
+				console.log("변경할 글의 번호 = " + num);
+				console.log("변경할 공개여부 = " + stat);
+				
+			    $.ajax({
+			        url: 'letterOnpriv',
+					type: 'POST',
+					data: { 'num': num, 'isprivate': stat },
+					dataType: 'json',
+				    success: onSuccess,
+					error: onError
+			    });
+			}
+			</script>			
 		</c:forEach>
 	</c:if>
 	</div>
