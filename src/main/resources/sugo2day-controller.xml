@@ -43,14 +43,16 @@
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>
 	
-	<!-- Board 관련 Controller -->
-	
 	<!-- My Page Controller -->
 	<bean class="controller.LetterController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
 	
 	<bean class="controller.LetterWriteController">
+		<property name="letterDao" ref="letterDao" />
+	</bean>
+	
+	<bean class="controller.LetterManageController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
 </beans>	

@@ -101,10 +101,10 @@ public class LetterDao {
 	}
 	
 	// 퀘스트 글만 보기
-	public List<LetterBean> selectQuest(LetterBean letter) {
+	public List<LetterBean> selectQuest(String writer) {
 		List<LetterBean> results = jdbcTemplate.query(
 				"select * from (select * from letter order by num desc) "
-						+ "where isquest = ? and writer = ? ", LetterRowMapper, letter.getIsquest(), letter.getWriter());
+						+ "where isquest = '퀘스트글' and writer = ? ", LetterRowMapper, writer);
 		return results;
 	}
 	

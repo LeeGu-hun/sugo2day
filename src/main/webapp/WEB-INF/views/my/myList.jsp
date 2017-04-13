@@ -71,6 +71,11 @@
 	function goBack() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
+	
+	function goQM() {
+		location.href = "<c:url value='/letter/letterManage' />";		
+	}
+	
 </script>		
 
 </head>
@@ -130,10 +135,7 @@
 	<!-- 본문 내용 -->
 	<div class="body-wrapper">
 		<div class="body-header">
-			<!-- B 페이지에서 사용 
-			<button type="button" class="btn btn-default btn-lg ">퀘스트 등록</button>
-			 -->
-			<button type="button" class="btn btn-default btn-lg ">퀘스트 관리</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="goQM()">퀘스트 관리</button>
 			<hr>
 		</div>	
 		
