@@ -59,9 +59,23 @@ public class LetterDao {
 		String Nsql = "insert into letter (num, writer, content, files, regdate, "
 				+ "isquest, isprivate) "
 				+ "values (lnum_seq.nextval, ?, ?, ?, sysdate, ?, ?) ";
+		String Nullsql = "insert into letter (num, writer, content, files, regdate, "
+				+ "isquest, isprivate) "
+				+ "values (lnum_seq.nextval, ?, ?, ?, sysdate, '일반글', ?) ";
 		
-
-		if (letter.getIsquest().equals("일반글")) {
+		
+		if(letter.getIsquest() == null) {
+			System.out.println("일반글 값 null 루트");
+			jdbcTemplate.update((Connection con) -> {
+				PreparedStatement pstmt = con.prepareStatement(Nullsql);
+					pstmt.setString(1, letter.getWriter());
+					pstmt.setString(2, letter.getContent());
+					pstmt.setString(3, letter.getFileName());
+					pstmt.setString(4, letter.getIsprivate());
+					return pstmt;
+			});
+			
+		} else if (letter.getIsquest() != null && letter.getIsquest().equals("일반글")) {
 			System.out.println("일반글 루트");
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Nsql);
@@ -72,7 +86,8 @@ public class LetterDao {
 					pstmt.setString(5, letter.getIsprivate());
 					return pstmt;
 			});
-		} else if(letter.getIsquest().equals("퀘스트글")) {
+			
+		} else if(letter.getIsquest() != null && letter.getIsquest().equals("퀘스트글")) {
 			System.out.println("퀘스트글 루트");
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Qsql);
@@ -86,7 +101,7 @@ public class LetterDao {
 					pstmt.setString(8, letter.getQuestcate());
 					return pstmt;
 			});
-		}
+		} 
 		
 	
 	}	
@@ -111,6 +126,15 @@ public class LetterDao {
 	public void changePrivate(int num, String isprivate) {
 		jdbcTemplate.update(
 				"update letter set isprivate = ? where num = ? ", isprivate, num);		
+	}
+	
+	// Select 박스 선택될 때마다 Qlist 가져오기
+	public List<LetterBean> changeQList(String questcate, String writer) {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select * from (select * from letter order by num desc) "
+						+ "where questcate = ? and writer = ? ", 
+						LetterRowMapper, questcate, writer);
+		return results;
 	}
 	
 

@@ -31,6 +31,10 @@
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- Custom Ajax Script -->
+<script src="<%=cp %>/resources/customJS/changePublicStatus.js"></script>
+
 <script>
 	function goQL() {
 		location.href = "<c:url value='/letter/myLetter' />";
@@ -113,9 +117,6 @@
 					<div>
 						<div class="pull-left">
 							<input type="hidden" id="lnum"  value="${mletter.num }"/>
-							<div class="list_title1">
-								<h4 class="lead"><b>${mletter.subject }</b></h4>
-							</div>
 						</div>
 						<div class="pull-right">
 							<div class="list_title2">
@@ -182,54 +183,7 @@
 		<div class="fake-size">
 			<p>&nbsp;</p>
 		</div>
-		<script type="text/javascript">
 		
-			// 참고용
-			/* function changeStat() {
-				if ($('input:radio[name="stat"]').is(":checked") == true) {
-					var num = $("#lnum").val();
-					var stat = $(':radio[name="stat"]:checked').val();
-				}
-			
-				console.log("변경할 글의 번호 = " + num);
-				console.log("변경할 공개여부 = " + stat);
-				
-			    $.ajax({
-			        url: 'letterOnpriv',
-					type: 'POST',
-					data: { 'num': num, 'isprivate': stat },
-					dataType: 'json',
-				    success: onSuccess,
-					error: onError
-			    });
-			} */
-			
-			function onError(status) {
-				console.log("ERROR!!" + status);
-			}
-			
-			function onSuccess(data, status) {
-				console.log("SUCCESS data = " + data + "status = " + status);
-			}
-			
-			function changeShow(num, stat){
-				if ($('input:radio[name="stat"]').is(":checked") == true) {
-					var num = num;
-					var stat = stat;
-				}
-			
-				console.log("변경할 글의 번호 = " + num);
-				console.log("변경할 공개여부 = " + stat);
-				
-			    $.ajax({
-			        url: 'letterOnpriv',
-					type: 'POST',
-					data: { 'num': num, 'isprivate': stat },
-					dataType: 'json',
-				    success: onSuccess
-			    });
-			}
-			</script>			
 		</c:forEach>
 	</c:if>
 	</div>

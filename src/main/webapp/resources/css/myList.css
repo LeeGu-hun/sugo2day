@@ -56,12 +56,11 @@ hr{
 }
 
 .body-content {
-	width: 500px;
-	margin-bottom: 100px;
+	margin-bottom: 20px;
 }
 
 .body-footer {
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 
 .pull-left {
@@ -100,6 +99,10 @@ hr{
 
 .form-group > div {
 	max-width: 200px;
+}
+
+.fake-size-bottom {
+	max-height: 8px;
 }
 
 

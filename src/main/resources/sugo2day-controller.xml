@@ -21,6 +21,7 @@
 			<mvc:mapping path="/letter/**" />
 			
 			<!-- 그 중에서도 예외로 볼 수 있는 것들 -->
+			<mvc:mapping path="/letter/incQList" />
 			<bean class="intercepter.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -57,6 +58,10 @@
 	</bean>
 	
 	<bean class="controller.ApiLetterManageController">
+		<property name="letterDao" ref="letterDao" />
+	</bean>
+	
+	<bean class="controller.ApiLetterQShowController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
 	

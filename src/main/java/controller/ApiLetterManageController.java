@@ -19,7 +19,8 @@ public class ApiLetterManageController {
 	}
 
 	@RequestMapping(value="letter/letterOnpriv", method=RequestMethod.POST)
-	public @ResponseBody void letterOnpriv(@RequestParam("num") int num,
+	@ResponseBody
+	public void letterOnpriv(@RequestParam("num") int num,
 							@RequestParam("isprivate") String isprivate, HttpServletResponse response) {
 		
 		response.setContentType("application/json;charset=UTF-8");

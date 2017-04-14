@@ -22,6 +22,7 @@
 <link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <!--mega menu -->
 <link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet" type="text/css">
+
 <!-- Custom CSS -->
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
@@ -40,8 +41,8 @@
 
 <!-- Custom Script -->
 <script src="<%=cp %>/resources/customJS/imageUp.js"></script>
-<script src="<%=cp %>/resources/customJS/divToggle.js"></script>
 <script src="<%=cp %>/resources/customJS/questToggle.js"></script>
+<script src="<%=cp %>/resources/customJS/showSelectedList.js"></script>
 
 <script>
 function goBack() {
@@ -123,21 +124,31 @@ function goQM() {
 		
 		<h3>작성 글 목록</h3>
 		<hr>
-		
+				
 		<div class="body-footer">
-			<input type="checkbox" id="quest-show" value="true" onclick="divToggle()" />
-			<span class="lead">퀘스트글 보기</span>
-		</div>	
+			<!-- 검색 폼 들어갈 곳 -->
+			<div id="qlist-space">
+				<select id="select-QList" style="width: 300px;">
+					<c:forEach var="letter" items="${letters }">
+						<c:if test="${ empty letter.isquest }">
+							<option value="" selected="selected">검색할 퀘스트 종류를 선택하세요</option>
+						</c:if>
+						<c:if test="${ !empty letter.isquest }">
+							<option value="${letter.questcate }">${letter.questcate }</option>							
+						</c:if>
+					</c:forEach>
+				</select>
+			</div>
+			
+		</div>
 		
 		<div class="body-list">
+			<!-- 기본적으로 보여줄 글 목록 리스트 -->
 			<div id="all-list" class="show">
-				<!-- 기본적으로 보여줄 글 리스트 -->
 				<%@include file="incAllList.jsp" %>
 			</div>
-			<div id="quest-list" class="hidden">
-				<!-- 퀘스트 글 리스트 -->
-				<%@include file="incQList.jsp" %>
-			</div>
+			<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
+			<div id="qselected-list" class="hidden"></div>
 		</div>	
 	</div>	
 	

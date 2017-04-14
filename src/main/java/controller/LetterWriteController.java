@@ -36,7 +36,7 @@ public class LetterWriteController {
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
 	public String letterWrite(LetterWriteBean letter, Model model, HttpSession session) {
-				
+						
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setWriter(authInfo.getName());
 		

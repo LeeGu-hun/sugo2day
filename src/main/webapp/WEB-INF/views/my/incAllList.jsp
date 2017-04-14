@@ -40,7 +40,7 @@
 				<br>
 				
 				<div style="max-width: 600px;" class="list_content">
-					<textarea class="lead" id="content" cols="52" rows="6" style="overflow-y:scroll"
+					<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"
 						readonly="readonly">${letter.content }</textarea>
 					<script type="text/javascript">
 					$(function() {
