@@ -5,7 +5,6 @@ import java.util.Date;
 public class LetterBean {
 	private Integer num;
 	private String writer;
-	private String subject;
 	private String content;
 	private String files;
 	private Date regdate;
@@ -13,18 +12,18 @@ public class LetterBean {
 	private String isprivate;
 	private Date startdate;
 	private Date enddate;
+	private String questcate;
 	
 	// 기본 생성자
 	public LetterBean() {
 		super();
 	}
 	
-	public LetterBean(Integer num, String writer, String subject, String content, String files, Date regdate,
-			String isquest, String isprivate, Date startdate, Date enddate) {
+	public LetterBean(Integer num, String writer, String content, String files, Date regdate,
+			String isquest, String isprivate, Date startdate, Date enddate, String questcate) {
 		super();
 		this.num = num;
 		this.writer = writer;
-		this.subject = subject;
 		this.content = content;
 		this.files = files;
 		this.regdate = regdate;
@@ -32,8 +31,8 @@ public class LetterBean {
 		this.isprivate = isprivate;
 		this.startdate = startdate;
 		this.enddate = enddate;
+		this.questcate = questcate;
 	}
-
 
 
 	public Integer getNum() {
@@ -50,14 +49,6 @@ public class LetterBean {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	public String getContent() {
@@ -115,7 +106,13 @@ public class LetterBean {
 	public void setEnddate(Date enddate) {
 		this.enddate = enddate;
 	}
-	
-	
 
+	public String getQuestcate() {
+		return questcate;
+	}
+
+	public void setQuestcate(String questcate) {
+		this.questcate = questcate;
+	}
+	
 }

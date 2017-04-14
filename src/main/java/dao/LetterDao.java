@@ -33,14 +33,14 @@ public class LetterDao {
 			LetterBean letter = new LetterBean(
 					rs.getInt("num"),
 					rs.getString("writer"),
-					rs.getString("subject"),
 					rs.getString("content"),
 					rs.getString("files"),
 					rs.getDate("regdate"),
 					rs.getString("isquest"),
 					rs.getString("isprivate"),
 					rs.getDate("startdate"),
-					rs.getDate("enddate"));
+					rs.getDate("enddate"),
+					rs.getString("questcate"));
 			return letter;
 		}
 	};
@@ -53,12 +53,12 @@ public class LetterDao {
 		System.out.println(letter.getIsquest() + " = insert 될 때 quest 값");
 		System.out.println(letter.getIsprivate() + " = insert 될 때 private 값");
 		
-		String Qsql = "insert into letter (num, writer, subject, content, files, regdate, "
-				+ "isquest, isprivate, startdate, enddate) "
-				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ? ) ";
-		String Nsql = "insert into letter (num, writer, subject, content, files, regdate, "
+		String Qsql = "insert into letter (num, writer, content, files, regdate, "
+				+ "isquest, isprivate, startdate, enddate, questcate) "
+				+ "values (lnum_seq.nextval, ?, ?, ?, sysdate, ?, ?, ?, ?, ? ) ";
+		String Nsql = "insert into letter (num, writer, content, files, regdate, "
 				+ "isquest, isprivate) "
-				+ "values (lnum_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?) ";
+				+ "values (lnum_seq.nextval, ?, ?, ?, sysdate, ?, ?) ";
 		
 
 		if (letter.getIsquest().equals("일반글")) {
@@ -66,11 +66,10 @@ public class LetterDao {
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Nsql);
 					pstmt.setString(1, letter.getWriter());
-					pstmt.setString(2, letter.getSubject());
-					pstmt.setString(3, letter.getContent());
-					pstmt.setString(4, letter.getFileName());
-					pstmt.setString(5, letter.getIsquest());
-					pstmt.setString(6, letter.getIsprivate());
+					pstmt.setString(2, letter.getContent());
+					pstmt.setString(3, letter.getFileName());
+					pstmt.setString(4, letter.getIsquest());
+					pstmt.setString(5, letter.getIsprivate());
 					return pstmt;
 			});
 		} else if(letter.getIsquest().equals("퀘스트글")) {
@@ -78,13 +77,13 @@ public class LetterDao {
 			jdbcTemplate.update((Connection con) -> {
 				PreparedStatement pstmt = con.prepareStatement(Qsql);
 					pstmt.setString(1, letter.getWriter());
-					pstmt.setString(2, letter.getSubject());
-					pstmt.setString(3, letter.getContent());
-					pstmt.setString(4, letter.getFileName());
-					pstmt.setString(5, letter.getIsquest());
-					pstmt.setString(6, letter.getIsprivate());
-					pstmt.setDate(7, new java.sql.Date(letter.getStartdate().getTime()));
-					pstmt.setDate(8, new java.sql.Date(letter.getEnddate().getTime()));
+					pstmt.setString(2, letter.getContent());
+					pstmt.setString(3, letter.getFileName());
+					pstmt.setString(4, letter.getIsquest());
+					pstmt.setString(5, letter.getIsprivate());
+					pstmt.setDate(6, new java.sql.Date(letter.getStartdate().getTime()));
+					pstmt.setDate(7, new java.sql.Date(letter.getEnddate().getTime()));
+					pstmt.setString(8, letter.getQuestcate());
 					return pstmt;
 			});
 		}

@@ -65,7 +65,7 @@ public class LetterWriteController {
 			letterDao.insert(letter);
 			return "redirect:/letter/myLetter";
 		} catch (Exception e) {
-			e.printStackTrace();	
+			System.out.println("Error! = " + e);	
 			return "redirect:/main";
 		}
 	}

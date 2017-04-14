@@ -31,7 +31,11 @@
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+<script>
+	function goQL() {
+		location.href = "<c:url value='/letter/myLetter' />";
+	}
+</script>
 </head>
 <body>
 <!-- 본문 상단 공통 고정 메뉴 -->
@@ -179,6 +183,7 @@
 			<p>&nbsp;</p>
 		</div>
 		<script type="text/javascript">
+		
 			// 참고용
 			/* function changeStat() {
 				if ($('input:radio[name="stat"]').is(":checked") == true) {
@@ -207,11 +212,6 @@
 				console.log("SUCCESS data = " + data + "status = " + status);
 			}
 			
-			
-			function goQL() {
-				location.href = "<c:url value='/letter/myLetter' />";
-			}
-			
 			function changeShow(num, stat){
 				if ($('input:radio[name="stat"]').is(":checked") == true) {
 					var num = num;
@@ -226,8 +226,7 @@
 					type: 'POST',
 					data: { 'num': num, 'isprivate': stat },
 					dataType: 'json',
-				    success: onSuccess,
-					error: onError
+				    success: onSuccess
 			    });
 			}
 			</script>			

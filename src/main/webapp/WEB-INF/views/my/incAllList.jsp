@@ -19,11 +19,6 @@
 		<div class="list_wrapper">
 			<div class="list_container">
 				<div>
-					<div class="pull-left">
-						<div class="list_title1">
-							<h4 class="lead"><b>${letter.subject }</b></h4>
-						</div>
-					</div>
 					<div class="pull-right">
 						<div class="list_title2">
 							<h4 class="lead">${letter.regdate }</h4>

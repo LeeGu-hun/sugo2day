@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class LetterWriteBean {
 	private Integer num;
 	private String writer;
-	private String subject;
 	private String content;
 	private MultipartFile multiFile;
 	private List<MultipartFile> files;
@@ -24,6 +23,7 @@ public class LetterWriteBean {
 	private Date startdate;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date enddate;
+	private String questcate;
 	
 	// 기본 생성자
 	public LetterWriteBean() {
@@ -44,14 +44,6 @@ public class LetterWriteBean {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	public String getContent() {
@@ -134,6 +126,14 @@ public class LetterWriteBean {
 		this.enddate = transformDate(enddate);
 	}
 	
+	public String getQuestcate() {
+		return questcate;
+	}
+
+	public void setQuestcate(String questcate) {
+		this.questcate = questcate;
+	}
+
 	public Date transformDate(String date) {
         SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy.mm.dd");
         SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");

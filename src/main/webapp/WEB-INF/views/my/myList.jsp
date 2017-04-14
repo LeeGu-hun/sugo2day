@@ -26,6 +26,7 @@
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/letterLayout.css" rel="stylesheet">
+<link href="<%=cp%>/resources/css/file-upload-css.css" rel="stylesheet">
 
 <!-- JQuery Main -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -38,44 +39,18 @@
 <script src="<%=cp %>/resources/dpick/ko.js"></script>
 
 <!-- Custom Script -->
+<script src="<%=cp %>/resources/customJS/imageUp.js"></script>
+<script src="<%=cp %>/resources/customJS/divToggle.js"></script>
+<script src="<%=cp %>/resources/customJS/questToggle.js"></script>
+
 <script>
-	function divToggle() {
-		if ($('input:checkbox[id="quest-show"]').is(":checked") == true) {
-			$("#all-list").removeClass("show");
-			$("#all-list").addClass("hidden");
-			$("#quest-list").removeClass("hidden");
-			$("#quest-list").addClass("show");
-		}
-		
-		if ($('input:checkbox[id="quest-show"]').is(":checked") == false) {
-			$("#quest-list").removeClass("show");
-			$("#quest-list").addClass("hidden");
-			$("#all-list").removeClass("hidden");
-			$("#all-list").addClass("show");
-		}
-	}
-	
-	function questToggle() {
-		if ($('input:radio[id="isquest"]').is(":checked") == true && $('input:radio[id="isnormal"]').is(":checked") == false) {
-			$("#datepick-div").removeClass("hidden");
-			$("#datepick-div").addClass("show");
-		} else if ($('input:radio[id="isquest"]').is(":checked") == false && $('input:radio[id="isnormal"]').is(":checked") == true) {
-			$("#datepick-div").removeClass("show");
-			$("#datepick-div").addClass("hidden");
-		} else {
-			$("#datepick-div").removeClass("show");
-			$("#datepick-div").addClass("hidden");
-		}
-	}
-		
-	function goBack() {
-		location.href = "<c:url value='/letter/myLetter' />";
-	}
-	
-	function goQM() {
-		location.href = "<c:url value='/letter/letterManage' />";		
-	}
-	
+function goBack() {
+	location.href = "<c:url value='/letter/myLetter' />";
+}
+
+function goQM() {
+	location.href = "<c:url value='/letter/letterManage' />";		
+}	
 </script>		
 
 </head>
