@@ -134,7 +134,8 @@ function goQM() {
 							<option value="" selected="selected">검색할 퀘스트 종류를 선택하세요</option>
 						</c:if>
 						<c:if test="${ !empty letter.isquest }">
-							<option value="${letter.questcate }">${letter.questcate }</option>							
+							<option value="${letter.questcate }">
+							${letter.questcate } / by ${letter.writer } / when ${letter.regdate } / 내용 ${letter.content }</option>							
 						</c:if>
 					</c:forEach>
 				</select>
