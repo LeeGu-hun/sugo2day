@@ -1,38 +1,38 @@
+/* Null Check */
+var isEmpty = function(value) {
+	if (value == ""
+		|| value == null
+		|| value == undefined
+		|| (value != null
+				&& typeof value == "object" && !Object
+				.keys(value).length)) {
+		return true
+	} else {
+		return false
+	}
+};
 
+/* Select option Get */
 $(function() {
 	$('#select-QList').change(function() {
 		var selItem = $("#select-QList option:selected").val();
 		var selDefault = $("#select-QList option:selected").text();
 		console.log(selItem);
-		console.log(selDefault)
-		
+		console.log(selDefault);
+				
 		if(selDefault != "선택하세요") {
 			showSelectedList(selItem);
-		}
-		
-		
-		
+		}	
 	});
 });
 
+
 function showSelectedList(selItem) {
+		
     $.post("incQList", {
         questcate : selItem
     }, function(jsonResult) {
-    	var isEmpty = function(value) {
-			if (value == ""
-					|| value == null
-					|| value == undefined
-					|| (value != null
-							&& typeof value == "object" && !Object
-							.keys(value).length)) {
-				return true
-			} else {
-				return false
-			}
-		};
-    	
-    	
+    	    	
     	$("#all-list").removeClass("show");
     	$("#all-list").addClass("hidden");
     	
@@ -50,16 +50,26 @@ function showSelectedList(selItem) {
 	    		html += '<h4 class="lead">' + jsonResult[i].regdate + '</h4>';
 	    		html += '</div>';
 	    		html += '</div>';
+	    		var splitData = '' + jsonResult[i].files + ''; 
+	    		var splitImagePath =  splitData.split('.');
+	    		console.log(splitImagePath[1]);
 	    		if(!isEmpty(jsonResult[i].files)) {
-		    		html += '<div style="max-width: 600px;">';
-		    		html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].files + "'>";
-		    		html += '</div>';
+	    			if (splitImagePath[1] != 'jpg' || splitImagePath[1] != 'gif' || !splitImagePath[1] != 'png') {	
+	 	    			html += '<div style="max-width: 600px;">';
+	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
+	 	    			html += '</div>';
+	    			} else if(isEmpty(jsonResult[i].files)){
+	    				html += '<div style="max-width: 600px;">';
+	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].files + "'>";
+	    				html += '</div>';
+	    			}	
 	    		} else if (isEmpty(jsonResult[i].files)) {
 	    			html += '<div style="max-width: 600px;">';
 	    			html += '<h5>등록된 사진이 없거나 잘못된 포맷입니다.</h5>';
-	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	    			html += '</div>';
-	    		}
+	    		} 
+	    		
+	    		
 	    		
 	    		html += '<br>';
 	    		

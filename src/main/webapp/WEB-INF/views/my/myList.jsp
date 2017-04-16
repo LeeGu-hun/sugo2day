@@ -136,7 +136,7 @@
 
 		<h3>작성 글 목록</h3>
 		<hr>
-
+		
 		<div class="body-footer">
 			<!-- 검색 폼 들어갈 곳 -->
 			<div id="qlist-space">
