@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- Context Path 경로를 String cp 로 정의--%>
-<% String cp = request.getContextPath(); %>
-           
+<%
+	String cp = request.getContextPath();
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,11 +19,14 @@
 <title>Insert title here</title>
 
 <!-- Bootstrap main -->
-<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 <!-- font awesome for icons -->
-<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="<%=cp%>/resources/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
 <!--mega menu -->
-<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet" type="text/css">
+<link href="<%=cp%>/resources/css/yamm.css" rel="stylesheet"
+	type="text/css">
 
 <!-- Custom CSS -->
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
@@ -30,33 +35,35 @@
 <link href="<%=cp%>/resources/css/file-upload-css.css" rel="stylesheet">
 
 <!-- JQuery Main -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <!-- Dpick -->
-<script src="<%=cp %>/resources/dpick/moment.js"></script>
-<script src="<%=cp %>/resources/dpick/bootstrap.min.js"></script>
-<script src="<%=cp %>/resources/dpick/bootstrap-datetimepicker.min.js"></script>
-<link rel="<%=cp %>/resources/dpick/bootstrap-datetimepicker.min.css" rel="stylesheet">
-<script src="<%=cp %>/resources/dpick/ko.js"></script>
+<script src="<%=cp%>/resources/dpick/moment.js"></script>
+<script src="<%=cp%>/resources/dpick/bootstrap.min.js"></script>
+<script src="<%=cp%>/resources/dpick/bootstrap-datetimepicker.min.js"></script>
+<link rel="<%=cp%>/resources/dpick/bootstrap-datetimepicker.min.css"
+	rel="stylesheet">
+<script src="<%=cp%>/resources/dpick/ko.js"></script>
 
 <!-- Custom Script -->
-<script src="<%=cp %>/resources/customJS/imageUp.js"></script>
-<script src="<%=cp %>/resources/customJS/questToggle.js"></script>
-<script src="<%=cp %>/resources/customJS/showSelectedList.js"></script>
+<script src="<%=cp%>/resources/customJS/imageUp.js"></script>
+<script src="<%=cp%>/resources/customJS/questToggle.js"></script>
+<script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
 
 <script>
-function goBack() {
-	location.href = "<c:url value='/letter/myLetter' />";
-}
+	function goBack() {
+		location.href = "<c:url value='/letter/myLetter' />";
+	}
 
-function goQM() {
-	location.href = "<c:url value='/letter/letterManage' />";		
-}	
-</script>		
+	function goQM() {
+		location.href = "<c:url value='/letter/letterManage' />";
+	}
+</script>
 
 </head>
 <body>
-<!-- 본문 상단 공통 고정 메뉴 -->
+	<!-- 본문 상단 공통 고정 메뉴 -->
 	<div class="top-bar-light">
 		<div class="container">
 			<div class="row">
@@ -73,10 +80,13 @@ function goQM() {
 						</c:if>
 						<c:if test="${!empty authInfo }">
 							<li>${authInfo.name }님,환영합니다.</li>
-							<li><a href="<c:url value='/logout' />">
-							<i class="fa fa-user"></i> Logout</a></li>
-							<li><a href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
-							<i class="fa fa-lock"></i> ChangePW</a></li>
+							<li><a href="<c:url value='/logout' />"> <i
+									class="fa fa-user"></i> Logout
+							</a></li>
+							<li><a
+								href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+									<i class="fa fa-lock"></i> ChangePW
+							</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -101,57 +111,54 @@ function goQM() {
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdwon"><a href="<c:url value="/letter/myLetter" />">MyPage </a></li>
+						<li class="dropdwon"><a
+							href="<c:url value="/letter/myLetter" />">MyPage </a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- 본문 내용 -->
 	<div class="body-wrapper">
 		<div class="body-header">
-			<button type="button" class="btn btn-default btn-lg" onclick="goQM()">퀘스트 관리</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="goQM()">퀘스트
+				관리</button>
 			<hr>
-		</div>	
-		
+		</div>
+
 		<div class="body-content">
 			<div id="letter-reg">
 				<!-- 글 작성 페이지 -->
-				<%@include file="letterRegist.jsp" %>
+				<%@include file="letterRegist.jsp"%>
 			</div>
-		</div>	
-		
+		</div>
+
 		<h3>작성 글 목록</h3>
 		<hr>
-				
+
 		<div class="body-footer">
 			<!-- 검색 폼 들어갈 곳 -->
 			<div id="qlist-space">
 				<select id="select-QList" style="width: 300px;">
-					<c:forEach var="letter" items="${letters }">
-						<c:if test="${ empty letter.isquest }">
-							<option value="" selected="selected">검색할 퀘스트 종류를 선택하세요</option>
-						</c:if>
-						<c:if test="${ !empty letter.isquest }">
-							<option value="${letter.questcate }">
-							${letter.questcate } / by ${letter.writer } / when ${letter.regdate } / 내용 ${letter.content }</option>							
-						</c:if>
-					</c:forEach>
+					<option value="1" selected="selected">선택하세요</option>
+					<option value="걷기">30분 걷기</option>
+					<option value="줄넘기">줄넘기 100개</option>
+					<option value="달리기">1km 달리기</option>
 				</select>
 			</div>
-			
+
 		</div>
-		
+
 		<div class="body-list">
 			<!-- 기본적으로 보여줄 글 목록 리스트 -->
 			<div id="all-list" class="show">
-				<%@include file="incAllList.jsp" %>
+				<%@include file="incAllList.jsp"%>
 			</div>
 			<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
 			<div id="qselected-list" class="hidden"></div>
-		</div>	
-	</div>	
-	
+		</div>
+	</div>
+
 </body>
 </html>
