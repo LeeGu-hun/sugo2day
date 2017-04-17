@@ -128,7 +128,7 @@
 					</div>
 					
 					<c:if test="${! empty mletter.files }">
-					<div style="max-width: 600px;">	
+					<div style="max-width: 550px; margin-left: auto; margin-right: auto;">	
 					<c:set var="ext" value="${fn:split(mletter.files,'.')}"/>
 						<c:choose>
 							<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
@@ -140,7 +140,7 @@
 					</c:if>
 					<br>
 					
-					<div style="max-width: 600px;" class="list_content">
+					<div style="max-width: 550px; margin-left: auto; margin-right: auto;" class="list_content">
 						<textarea class="lead" id="content" cols="54" rows="6" style="overflow-y:scroll"
 							readonly="readonly">${mletter.content }</textarea>
 						<script type="text/javascript">

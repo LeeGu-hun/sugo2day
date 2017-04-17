@@ -52,6 +52,13 @@
 <script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
 
 <script>
+	$(function() {
+		var position = $('.body-footer').offset();
+		$('html, body').animate({
+			scrollTop : position.top-200
+		}, 100); 
+	});
+
 	function goBack() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
@@ -68,13 +75,6 @@
 	function showA() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
-
-	$(function() {
-		var position = $('.body-footer').offset();
-		$('html,body').animate({
-			scrollTop : position.top-200
-		}, 100); 
-	});
 
 	$(function() {
 		$('#goLetterW').click(function() {

@@ -55,16 +55,16 @@ function showSelectedList(selItem) {
 	    		console.log(splitImagePath[1]);
 	    		if(!isEmpty(jsonResult[i].files)) {
 	    			if (splitImagePath[1] != 'jpg' && splitImagePath[1] != 'gif' && splitImagePath[1] != 'png') {	
-	 	    			html += '<div style="max-width: 600px;">';
+	 	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	 	    			html += '</div>';
 	    			} else if(!isEmpty(jsonResult[i].files)){
-	    				html += '<div style="max-width: 600px;">';
+	    				html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].files + "'>";
 	    				html += '</div>';
 	    			}	
 	    		} else if (isEmpty(jsonResult[i].files)) {
-	    			html += '<div style="max-width: 600px;">';
+	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	    			html += '<h5>등록된 사진이 없거나 잘못된 포맷입니다.</h5>';
 	    			html += '</div>';
 	    		} 
@@ -73,7 +73,7 @@ function showSelectedList(selItem) {
 	    		
 	    		html += '<br>';
 	    		
-	    		html += '<div style="max-width: 600px;" class="list_content">';
+	    		html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;" class="list_content">';
 	    		html += '<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"';
 	    		html += 'readonly="readonly">' + jsonResult[i].content + '</textarea>';
 	    		html += '<script type="text/javascript">';

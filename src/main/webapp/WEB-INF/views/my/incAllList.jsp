@@ -27,7 +27,7 @@
 				</div>
 				
 				<c:if test="${! empty letter.files }">
-				<div style="max-width: 600px;">	
+				<div style="max-width: 550px; margin-left: auto; margin-right: auto;">	
 				<c:set var="ext" value="${fn:split(letter.files,'.')}"/>
 					<c:choose>
 						<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
@@ -39,7 +39,7 @@
 				</c:if>
 				<br>
 				
-				<div style="max-width: 600px;" class="list_content">
+				<div style="max-width: 550px; margin-left:auto; margin-right: auto;" class="list_content">
 					<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"
 						readonly="readonly">${letter.content }</textarea>
 					<script type="text/javascript">
@@ -52,6 +52,10 @@
 				<c:if test="${! empty letter.startdate }">
 				<div class="list_date">
 					<h4 class="lead">${letter.startdate } 부터 ${letter.enddate } 까지</h4>
+				</div>		
+				</c:if>
+				<c:if test="${empty letter.startdate }">
+				<div class="list_date">					
 				</div>		
 				</c:if>
 			
