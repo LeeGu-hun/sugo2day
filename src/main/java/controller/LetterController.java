@@ -36,5 +36,21 @@ public class LetterController {
 		
 		return "my/myList";
 	}
+	
+	// 일반글 목록보기
+	@RequestMapping(value="letter/myLetterN", method=RequestMethod.GET)
+	public String selectNormal(LetterWriteBean Wletter, Model model, HttpSession session){
+		LetterBean letter = new LetterBean();
+		
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		letter.setWriter(authInfo.getName());
+		
+		List<LetterBean> letters = letterDao.selectNormal(letter.getWriter());
+		model.addAttribute("letters", letters);
+		model.addAttribute("letter", Wletter);
+		
+		return "my/myList";
+	}
+	
 		
 }	

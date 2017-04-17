@@ -122,6 +122,15 @@ public class LetterDao {
 		return results;
 	}
 	
+	// 일반글만 보기
+	public List<LetterBean> selectNormal(String writer){
+		List<LetterBean> results = jdbcTemplate.query(
+				"select * from (select * from letter order by num desc)"
+						+ "where isquest = '일반글' and writer = ? ", LetterRowMapper, writer);
+		return results;			
+	}
+	
+	
 	// 공개글 설정하기
 	public void changePrivate(int num, String isprivate) {
 		jdbcTemplate.update(

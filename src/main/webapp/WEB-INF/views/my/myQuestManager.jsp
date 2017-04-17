@@ -115,8 +115,9 @@
 			<div class="list_wrapper">
 				<div class="list_container">
 					<div>
+						<input type="hidden" id="lnum"  value="${mletter.num }"/>
 						<div class="pull-left">
-							<input type="hidden" id="lnum"  value="${mletter.num }"/>
+							<h4 class="lead">${mletter.questcate }</h4>
 						</div>
 						<div class="pull-right">
 							<div class="list_title2">

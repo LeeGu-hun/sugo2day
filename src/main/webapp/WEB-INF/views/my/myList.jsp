@@ -59,6 +59,15 @@
 	function goQM() {
 		location.href = "<c:url value='/letter/letterManage' />";
 	}
+	
+	function showN() {
+		location.href = "<c:url value='/letter/myLetterN' />";
+		$("#fake-focus").focus();
+	}
+	
+	function showA() {
+		location.href = "<c:url value='/letter/myLetter' />";
+	}
 </script>
 
 </head>
@@ -146,9 +155,16 @@
 					<option value="줄넘기">줄넘기 100개</option>
 					<option value="달리기">1km 달리기</option>
 				</select>
+				<button class="btn btn-warning btn-sm" type="button" onclick="showN()">일반글 보기</button>
+				<button class="btn btn-danger btn-sm" type="button" onclick="showA()">전체글 보기</button>
+				<div class="hidden">
+				<input type="text" id="fake-focus" readonly />
+				</div>
 			</div>
 
 		</div>
+		
+		
 
 		<div class="body-list">
 			<!-- 기본적으로 보여줄 글 목록 리스트 -->

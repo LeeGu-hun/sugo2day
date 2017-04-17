@@ -54,11 +54,11 @@ function showSelectedList(selItem) {
 	    		var splitImagePath =  splitData.split('.');
 	    		console.log(splitImagePath[1]);
 	    		if(!isEmpty(jsonResult[i].files)) {
-	    			if (splitImagePath[1] != 'jpg' || splitImagePath[1] != 'gif' || !splitImagePath[1] != 'png') {	
+	    			if (splitImagePath[1] != 'jpg' && splitImagePath[1] != 'gif' && splitImagePath[1] != 'png') {	
 	 	    			html += '<div style="max-width: 600px;">';
 	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	 	    			html += '</div>';
-	    			} else if(isEmpty(jsonResult[i].files)){
+	    			} else if(!isEmpty(jsonResult[i].files)){
 	    				html += '<div style="max-width: 600px;">';
 	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].files + "'>";
 	    				html += '</div>';

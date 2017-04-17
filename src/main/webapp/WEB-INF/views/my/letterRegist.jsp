@@ -16,7 +16,7 @@
 				<label>Quest</label>
 				<div id="qlist-space" class="pull-right hidden">
 					<select name="questcate" id="qlist" style="width: 300px;" required="required">
-						<option value="" selected="selected">선택하세요</option>
+						<option selected="selected">선택하세요</option>
 						<option value="걷기">30분 걷기</option>
 						<option value="줄넘기">줄넘기 100개</option>
 						<option value="달리기">1km 달리기</option>
@@ -60,7 +60,7 @@
 		    <div class="form-group pull-left" style="margin: 0;">
 				<div class="input-group date" id="startdate">
 					<input size="16" type="text" class="form-control" name="startdate"
-						placeholder="목표 시작일" readonly/>
+						placeholder="목표 시작일" />
 					<span class="input-group-addon">
                    		<span class="glyphicon glyphicon-calendar"></span>
               		</span>	
@@ -72,7 +72,7 @@
 			<div class="form-group" style="margin: 0;">
 				<div class="input-group date" id="enddate">	
 					<input size="16" type="text" class="form-control" name="enddate"
-						placeholder="목표 종료일" readonly/>
+						placeholder="목표 종료일" />
 					<span class="input-group-addon">
                    		<span class="glyphicon glyphicon-calendar"></span>
               			</span>	
