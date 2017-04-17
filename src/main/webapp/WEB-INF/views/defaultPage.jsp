@@ -35,63 +35,69 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="top-bar-light">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-5 hidden-xs">
-						<div class="top-bar-socials"></div>
-					</div>
-					<div class="col-sm-7 text-right">
-						<ul class="list-inline top-dark-right">
-							<c:if test="${empty authInfo }">
-								<li><a href="<c:url value="/login" />"><i
-										class="fa fa-lock"></i> Login</a></li>
-								<li><a href="<c:url value="/register/registerTerm" />"><i
-										class="fa fa-user"></i> Sign Up</a></li>
-							</c:if>
-							<c:if test="${!empty authInfo }">
-								<li>${authInfo.name }님,환영합니다.</li>
-								<li><a href="<c:url value='/logout' />"><i class="fa fa-user"></i> Logout</a></li>
-								<li><a
-									href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
-										<i class="fa fa-lock"></i> ChangePW</a></li>
-							</c:if>
-						</ul>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--top-bar end here-->
-		<!--navigation -->
-		<div id="nav-wrapper">
-			<div class="navbar navbar-default navbar-static-top yamm sticky"
-				role="navigation">
+		<div class="wrapper-top-bar">
+			<div class="top-bar-light">
 				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target=".navbar-collapse">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<div id="brandLogo">
-							<a class="navbar-brand" href="<c:url value="/main" />"><img
-								src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+					<div class="row">
+						<div class="col-sm-5 hidden-xs">
+							<div class="top-bar-socials"></div>
+						</div>
+						<div class="col-sm-7 text-right">
+							<ul class="list-inline top-dark-right">
+								<c:if test="${empty authInfo }">
+									<li><a href="<c:url value="/login" />"><i
+											class="fa fa-lock"></i> Login</a></li>
+									<li><a href="<c:url value="/register/registerTerm" />"><i
+											class="fa fa-user"></i> Sign Up</a></li>
+								</c:if>
+								<c:if test="${!empty authInfo }">
+									<li>${authInfo.name }님,환영합니다.</li>
+									<li><a href="<c:url value='/logout' />"><i
+											class="fa fa-user"></i> Logout</a></li>
+									<li><a
+										href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+											<i class="fa fa-lock"></i> ChangePW
+									</a></li>
+								</c:if>
+							</ul>
+
 						</div>
 					</div>
-					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">
-							<!-- 메뉴 -->
-							<li class="dropdwon"><a href="<c:url value="/letter/myLetter" />">MyPage </a></li>
-						</ul>
-					</div>
-					<!--/.nav-collapse -->
 				</div>
-				<!--container-->
 			</div>
+			<!--top-bar end here-->
+			<!--navigation -->
+			<div id="nav-wrapper">
+				<div class="navbar navbar-default navbar-static-top yamm sticky"
+					role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+							<div id="brandLogo">
+								<a class="navbar-brand" href="<c:url value="/main" />"><img
+									src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+							</div>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<!-- 메뉴 -->
+								<li class="dropdwon"><a
+									href="<c:url value="/letter/myLetter" />">MyPage </a></li>
+								<li class="dropdown"><a href="<c:url value="/letter/letterManage" />">Quest Manage</a></li>	
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</div>
+					<!--container-->
+				</div>
+			</div>
+			<!--navbar-default-->
 		</div>
-		<!--navbar-default-->
 
 
 		<!--carousel slider-->
@@ -175,17 +181,22 @@
 				<div class="main-place">
 
 					<div class="sugo2day-logo">
-						<img class="img-responsive" src="<%=cp%>/resources/images/Logo.png">
+						<img class="img-responsive"
+							src="<%=cp%>/resources/images/Logo.png">
 					</div>
 
 					<div id="main-text" style="text-align: center;">
-					<br>
-					
-					<div><hr><br><h2>Welcome</h2></div>
+						<br>
+
+						<div>
+							<hr>
+							<br>
+							<h2>Welcome</h2>
+						</div>
 						<p>수고했어, 오늘도는 이러쿵 저러쿵 해서 어쩌구저쩌구 스웩스웩</p>
 						<p>그렇기 때문 이러이러합니다. 그런데 말입니다.</p>
 						<p>성호 언제올껀데?</p>
-					<br>
+						<br>
 					</div>
 				</div>
 
@@ -194,19 +205,16 @@
 						<img src="<%=cp%>/resources/images/use.png">
 					</div>
 				</div>
-				
-				
+
+
 				<div class="main-content-2" style="text-align: center;">
-					<br>
-					<br>
+					<br> <br>
 					<hr>
-					<br>
-					<br>
+					<br> <br>
 					<h1>상세 사용설명서가 들어갈 영역입니다.</h1>
-					 <img src="http://placehold.it/1000x600/FF0000/FFFFFF?text=상세 사용 설명서">
-					 <br>
-					 <br>
-					 <br>
+					<img
+						src="http://placehold.it/1000x600/FF0000/FFFFFF?text=상세 사용 설명서">
+					<br> <br> <br>
 				</div>
 
 
@@ -248,7 +256,7 @@
 		type="text/javascript"></script>
 
 	<!--on scroll animation-->
-	<script src="<%=cp%>/resources/js/wow.min.js" type="text/javascript"></script>
+	<script src="<%=cp%>/resources/js/wow.min.js" type="text/javascript"></script> 
 	<!--owl carousel slider-->
 	<script src="<%=cp%>/resources/owl-carousel/owl.carousel.min.js"
 		type="text/javascript"></script>

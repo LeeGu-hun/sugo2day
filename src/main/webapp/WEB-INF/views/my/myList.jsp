@@ -59,122 +59,141 @@
 	function goQM() {
 		location.href = "<c:url value='/letter/letterManage' />";
 	}
-	
+
 	function showN() {
 		location.href = "<c:url value='/letter/myLetterN' />";
 		$("#fake-focus").focus();
 	}
-	
+
 	function showA() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
+
+	$(function() {
+		var position = $('.body-footer').offset();
+		$('html,body').animate({
+			scrollTop : position.top-200
+		}, 100);
+	});
+
+	$(function() {
+		$('#goLetterW').click(function() {
+			var position = $('.body-content').offset();
+			$('html,body').animate({
+				scrollTop : position.top-200
+			}, 100);
+		});
+	});
 </script>
 
 </head>
 <body>
 	<!-- 본문 상단 공통 고정 메뉴 -->
-	<div class="top-bar-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-5 hidden-xs">
-					<div class="top-bar-socials"></div>
-				</div>
-				<div class="col-sm-7 text-right">
-					<ul class="list-inline top-dark-right">
-						<c:if test="${empty authInfo }">
-							<li><a href="<c:url value='/login' />"><i
-									class="fa fa-lock"></i> Login</a></li>
-							<li><a href="<c:url value='/register/registerTerm' />"><i
-									class="fa fa-user"></i> Sign Up</a></li>
-						</c:if>
-						<c:if test="${!empty authInfo }">
-							<li>${authInfo.name }님,환영합니다.</li>
-							<li><a href="<c:url value='/logout' />"> <i
-									class="fa fa-user"></i> Logout
-							</a></li>
-							<li><a
-								href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
-									<i class="fa fa-lock"></i> ChangePW
-							</a></li>
-						</c:if>
-					</ul>
+	<div class="wrapper-top-bar">
+		<div class="top-bar-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 hidden-xs">
+						<div class="top-bar-socials"></div>
+					</div>
+					<div class="col-sm-7 text-right">
+						<ul class="list-inline top-dark-right">
+							<c:if test="${empty authInfo }">
+								<li><a href="<c:url value='/login' />"><i
+										class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<c:url value='/register/registerTerm' />"><i
+										class="fa fa-user"></i> Sign Up</a></li>
+							</c:if>
+							<c:if test="${!empty authInfo }">
+								<li>${authInfo.name }님,환영합니다.</li>
+								<li><a href="<c:url value='/logout' />"> <i
+										class="fa fa-user"></i> Logout
+								</a></li>
+								<li><a
+									href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
+										<i class="fa fa-lock"></i> ChangePW
+								</a></li>
+							</c:if>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="nav-wrapper">
-		<div class="navbar navbar-default navbar-static-top yamm sticky"
-			role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<div id="brandLogo">
-						<a class="navbar-brand" href="<c:url value="/main" />"><img
-							src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+		<div id="nav-wrapper">
+			<div class="navbar navbar-default navbar-static-top yamm sticky"
+				role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<div id="brandLogo">
+							<a class="navbar-brand" href="<c:url value="/main" />"><img
+								src="<%=cp%>/resources/images/Logo.png" alt=""></a>
+						</div>
 					</div>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdwon"><a
-							href="<c:url value="/letter/myLetter" />">MyPage </a></li>
-					</ul>
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdwon"><a
+								href="<c:url value="/letter/myLetter" />">MyPage </a></li>
+							<li class="dropdown"><a
+								href="<c:url value="/letter/letterManage" />">Quest Manage</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- 본문 내용 -->
-	<div class="body-wrapper">
-		<div class="body-header">
-			<button type="button" class="btn btn-default btn-lg" onclick="goQM()">퀘스트
-				관리</button>
-			<hr>
-		</div>
-
-		<div class="body-content">
-			<div id="letter-reg">
-				<!-- 글 작성 페이지 -->
-				<%@include file="letterRegist.jsp"%>
+	<div id="page-wrapper">
+		<div class="body-wrapper">
+			<div class="body-header">
 			</div>
-		</div>
+			<h3>게시글 작성</h3>
+			<hr>
 
-		<h3>작성 글 목록</h3>
-		<hr>
-		
-		<div class="body-footer">
-			<!-- 검색 폼 들어갈 곳 -->
-			<div id="qlist-space">
-				<select id="select-QList" style="width: 300px;">
-					<option value="1" selected="selected">선택하세요</option>
-					<option value="걷기">30분 걷기</option>
-					<option value="줄넘기">줄넘기 100개</option>
-					<option value="달리기">1km 달리기</option>
-				</select>
-				<button class="btn btn-warning btn-sm" type="button" onclick="showN()">일반글 보기</button>
-				<button class="btn btn-danger btn-sm" type="button" onclick="showA()">전체글 보기</button>
-				<div class="hidden">
-				<input type="text" id="fake-focus" readonly />
+				<div class="body-content">
+					<div id="letter-reg">
+						<!-- 글 작성 페이지 -->
+						<%@include file="letterRegist.jsp"%>
+					</div>
+				</div>
+
+				<h3>작성 글 목록</h3>
+				<hr>
+
+				<div class="body-footer">
+					<!-- 검색 폼 들어갈 곳 -->
+					<div id="qlist-space">
+						<select id="select-QList" style="width: 300px;">
+							<option value="1" selected="selected">선택하세요</option>
+							<option value="걷기">30분 걷기</option>
+							<option value="줄넘기">줄넘기 100개</option>
+							<option value="달리기">1km 달리기</option>
+						</select> <span style="padding-right: 70px;"></span>
+						<button class="btn btn-default btn-xs" type="button"
+							onclick="showN()">일반글 보기</button>
+						<button class="btn btn-default btn-xs" type="button"
+							onclick="showA()">전체글 보기</button>
+						<button id="goLetterW" class="btn btn-default btn-xs"
+							type="button">글 작성</button>
+					</div>
+				</div>
+
+				<div class="body-list">
+					<!-- 기본적으로 보여줄 글 목록 리스트 -->
+					<div id="all-list" class="show">
+						<%@include file="incAllList.jsp"%>
+					</div>
+					<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
+					<div id="qselected-list" class="hidden"></div>
 				</div>
 			</div>
-
 		</div>
-		
-		
-
-		<div class="body-list">
-			<!-- 기본적으로 보여줄 글 목록 리스트 -->
-			<div id="all-list" class="show">
-				<%@include file="incAllList.jsp"%>
-			</div>
-			<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
-			<div id="qselected-list" class="hidden"></div>
-		</div>
-	</div>
 
 </body>
 </html>
