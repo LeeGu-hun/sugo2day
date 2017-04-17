@@ -73,7 +73,7 @@
 		var position = $('.body-footer').offset();
 		$('html,body').animate({
 			scrollTop : position.top-200
-		}, 100);
+		}, 100); 
 	});
 
 	$(function() {
