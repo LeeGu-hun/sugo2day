@@ -38,7 +38,7 @@ public class LetterWriteController {
 	public String letterWrite(LetterWriteBean letter, Model model, HttpSession session) {
 						
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-		letter.setWriter(authInfo.getName());
+		letter.setL_WRITER(authInfo.getName());
 		
 		MultipartFile multi = letter.getMultiFile();
 		String newFileName = "";

@@ -27,9 +27,9 @@ public class LetterManageController {
 		LetterBean letter = new LetterBean();
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-		letter.setWriter(authInfo.getName());
+		letter.setL_WRITER(authInfo.getName());
 		
-		List<LetterBean> letters = letterDao.selectQuest(letter.getWriter());
+		List<LetterBean> letters = letterDao.selectQuest(letter.getL_WRITER());
 		model.addAttribute("letterM", letters);
 		
 		return "my/myQuestManager";

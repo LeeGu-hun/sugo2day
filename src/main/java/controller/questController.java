@@ -15,7 +15,7 @@ import dao.LetterDao;
 import member.login.AuthInfo;
 
 @Controller
-public class LetterController {
+public class questController {
 	private LetterDao letterDao;
 
 	public void setLetterDao(LetterDao letterDao) {

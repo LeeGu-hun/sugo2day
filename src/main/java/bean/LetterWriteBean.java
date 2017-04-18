@@ -9,12 +9,10 @@ public class LetterWriteBean {
 	private Integer L_NUM;
 	private String L_WRITER;
 	private String L_CONTENT;
-	
 	private MultipartFile multiFile;
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	
 	private Date L_REGDATE;
 	private String L_ISQUEST;
 	private String L_ISPRIVATE;
@@ -24,7 +22,7 @@ public class LetterWriteBean {
 	public LetterWriteBean() {
 		super();
 	}
-
+	
 	public Integer getL_NUM() {
 		return L_NUM;
 	}
