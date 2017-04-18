@@ -15,23 +15,24 @@ var isEmpty = function(value) {
 /* Select option Get */
 $(function() {
 	$('#select-QList').change(function() {
-		var selItem = $("#select-QList option:selected").val();
-		var selDefault = $("#select-QList option:selected").text();
-		console.log(selItem);
-		console.log(selDefault);
-				
-		if(selDefault != "선택하세요") {
-			showSelectedList(selItem);
+		var selItemN = parseInt($("#select-QList option:selected").val());	// l_num
+		var selItemT = $("#select-QList option:selected").text();	// q_title	 	
+		console.log(selItemN + " = l_num");
+		console.log(selItemT + " = q_title");
+		
+		if(selItemN != "X") {
+			showSelectedList(selItemN, selItemT);
 		}	
 	});
 });
 
 
-function showSelectedList(selItem) {
+function showSelectedList(selItemN, selItemT) {
 		
     $.post("incQList", {
-        questcate : selItem
-    }, function(jsonResult) {
+        num : selItemN,
+        title : selItemT
+   }, function(jsonResult) {
     	    	
     	$("#all-list").removeClass("show");
     	$("#all-list").addClass("hidden");
@@ -46,24 +47,26 @@ function showSelectedList(selItem) {
 	    	for(var i = 0 ; i < jsonResult.length ; i++) {
 	    		html += '<div class="list_container">';
 	    		html += '<div class="pull-right">';
+	    		html += '<div style="margin-left: 10px;">';
+	    		html +=	'<h4 class="lead">' + jsonResult[i].q_title + '</h4>';
 	    		html += '<div class="list_title2">';
-	    		html += '<h4 class="lead">' + jsonResult[i].regdate + '</h4>';
+	    		html += '<h4 class="lead">' + jsonResult[i].l_regdate + '</h4>';
 	    		html += '</div>';
 	    		html += '</div>';
-	    		var splitData = '' + jsonResult[i].files + ''; 
+	    		var splitData = '' + jsonResult[i].l_files + ''; 
 	    		var splitImagePath =  splitData.split('.');
 	    		console.log(splitImagePath[1]);
-	    		if(!isEmpty(jsonResult[i].files)) {
+	    		if(!isEmpty(jsonResult[i].l_files)) {
 	    			if (splitImagePath[1] != 'jpg' && splitImagePath[1] != 'gif' && splitImagePath[1] != 'png') {	
 	 	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	 	    			html += '</div>';
-	    			} else if(!isEmpty(jsonResult[i].files)){
+	    			} else if(!isEmpty(jsonResult[i].l_files)){
 	    				html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
-	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].files + "'>";
+	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].l_files + "'>";
 	    				html += '</div>';
 	    			}	
-	    		} else if (isEmpty(jsonResult[i].files)) {
+	    		} else if (isEmpty(jsonResult[i].l_files)) {
 	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	    			html += '<h5>등록된 사진이 없거나 잘못된 포맷입니다.</h5>';
 	    			html += '</div>';
@@ -75,21 +78,16 @@ function showSelectedList(selItem) {
 	    		
 	    		html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;" class="list_content">';
 	    		html += '<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"';
-	    		html += 'readonly="readonly">' + jsonResult[i].content + '</textarea>';
+	    		html += 'readonly="readonly">' + jsonResult[i].l_content + '</textarea>';
 	    		html += '<script type="text/javascript">';
 	    		html += '$(function() {';
 	    		html += '$("#content").val().replace(/\n/g, "<br>");';
 	    		html += '});';
 	    		html += '</script>';
 	    		html += '</div>';
-	    		
-	    		html += '<div class="list_date">';
-	    		html += '<h4 class="lead"> ' + jsonResult[i].startdate + '  부터 ' + jsonResult[i].enddate + '  까지</h4>';
-	    		html += '</div>	';
-	    		
 	    		html += '<div class="pull-left">';
 	    		html += '<div class="user_id">';
-	    		html += '<h3 class="lead">by <b> ' + jsonResult[i].writer + ' </b></h3>';
+	    		html += '<h3 class="lead">by <b> ' + jsonResult[i].l_writer + ' </b></h3>';
 	    		html += '</div>';
 	    		html += '</div>';
 	    		html += '</div>';

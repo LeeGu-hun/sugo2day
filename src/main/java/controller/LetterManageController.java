@@ -2,7 +2,6 @@ package controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import bean.JoinBean;
 import bean.LetterBean;
 import dao.LetterDao;
 import member.login.AuthInfo;
@@ -27,9 +27,9 @@ public class LetterManageController {
 		LetterBean letter = new LetterBean();
 		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-		letter.setL_WRITER(authInfo.getName());
+		letter.setL_writer(authInfo.getName());
 		
-		List<LetterBean> letters = letterDao.selectQuest(letter.getL_WRITER());
+		List<JoinBean> letters = letterDao.selectQuest(letter.getL_writer());
 		model.addAttribute("letterM", letters);
 		
 		return "my/myQuestManager";

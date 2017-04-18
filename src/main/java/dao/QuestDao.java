@@ -37,7 +37,9 @@ private JdbcTemplate jdbcTemplate;
 					rs.getDate("q_startdate"),
 					rs.getDate("q_enddate"),
 					rs.getString("q_isprivate"),
-					rs.getString("q_writer"));
+					rs.getString("q_writer"),
+					rs.getString("q_maincate"),
+					rs.getString("q_subcate"));
 			return quest;
 		}
 	};
@@ -63,7 +65,7 @@ private JdbcTemplate jdbcTemplate;
 	// 전체 퀘스트 보기
 	public List<QuestBean> selectAllQ(String writer) {
 		List<QuestBean> results = jdbcTemplate.query(
-				"select * from (select * from quest_reg order by num desc) "
+				"select * from (select * from quest order by q_num desc) "
 				+ "where q_writer = ? " , QuestRowMapper, writer);
 		return results;
 	}
@@ -71,7 +73,7 @@ private JdbcTemplate jdbcTemplate;
 	// 공개/비공개 설정하기
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(
-				"update quest_Reg set q_isprivate = ? where q_num = ? ", isprivate, num);
+				"update quest set q_isprivate = ? where q_num = ? ", isprivate, num);
 		
 	}
 	

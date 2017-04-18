@@ -47,10 +47,12 @@
 	<!-- My Page Controller -->
 	<bean class="controller.LetterController">
 		<property name="letterDao" ref="letterDao" />
+		<property name="questDao" ref="questDao" />
 	</bean>
 	
 	<bean class="controller.LetterWriteController">
 		<property name="letterDao" ref="letterDao" />
+		<property name="questDao" ref="questDao" />
 	</bean>
 	
 	<bean class="controller.LetterManageController">

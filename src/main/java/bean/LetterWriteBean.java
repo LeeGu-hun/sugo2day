@@ -6,45 +6,45 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class LetterWriteBean {
-	private Integer L_NUM;
-	private String L_WRITER;
-	private String L_CONTENT;
+	private Integer l_num;
+	private String l_writer;
+	private String l_content;
 	private MultipartFile multiFile;
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	private Date L_REGDATE;
-	private String L_ISQUEST;
-	private String L_ISPRIVATE;
-	private String L_QUESTCATE;
+	private Date l_regdate;
+	private String l_isquest;
+	private String l_isprivate;
+	private String l_questcate;
 	
 	// 기본 생성자
 	public LetterWriteBean() {
 		super();
 	}
-	
-	public Integer getL_NUM() {
-		return L_NUM;
+
+	public Integer getL_num() {
+		return l_num;
 	}
 
-	public void setL_NUM(Integer l_NUM) {
-		L_NUM = l_NUM;
+	public void setL_num(Integer l_num) {
+		this.l_num = l_num;
 	}
 
-	public String getL_WRITER() {
-		return L_WRITER;
+	public String getL_writer() {
+		return l_writer;
 	}
 
-	public void setL_WRITER(String l_WRITER) {
-		L_WRITER = l_WRITER;
+	public void setL_writer(String l_writer) {
+		this.l_writer = l_writer;
 	}
 
-	public String getL_CONTENT() {
-		return L_CONTENT;
+	public String getL_content() {
+		return l_content;
 	}
 
-	public void setL_CONTENT(String l_CONTENT) {
-		L_CONTENT = l_CONTENT;
+	public void setL_content(String l_content) {
+		this.l_content = l_content;
 	}
 
 	public MultipartFile getMultiFile() {
@@ -79,39 +79,36 @@ public class LetterWriteBean {
 		this.upDir = upDir;
 	}
 
-	public Date getL_REGDATE() {
-		return L_REGDATE;
+	public Date getL_regdate() {
+		return l_regdate;
 	}
 
-	public void setL_REGDATE(Date l_REGDATE) {
-		L_REGDATE = l_REGDATE;
+	public void setL_regdate(Date l_regdate) {
+		this.l_regdate = l_regdate;
 	}
 
-	public String getL_ISQUEST() {
-		return L_ISQUEST;
+	public String getL_isquest() {
+		return l_isquest;
 	}
 
-	public void setL_ISQUEST(String l_ISQUEST) {
-		L_ISQUEST = l_ISQUEST;
+	public void setL_isquest(String l_isquest) {
+		this.l_isquest = l_isquest;
 	}
 
-	public String getL_ISPRIVATE() {
-		return L_ISPRIVATE;
+	public String getL_isprivate() {
+		return l_isprivate;
 	}
 
-	public void setL_ISPRIVATE(String l_ISPRIVATE) {
-		L_ISPRIVATE = l_ISPRIVATE;
+	public void setL_isprivate(String l_isprivate) {
+		this.l_isprivate = l_isprivate;
 	}
 
-	public String getL_QUESTCATE() {
-		return L_QUESTCATE;
+	public String getL_questcate() {
+		return l_questcate;
 	}
 
-	public void setL_QUESTCATE(String l_QUESTCATE) {
-		L_QUESTCATE = l_QUESTCATE;
+	public void setL_questcate(String l_questcate) {
+		this.l_questcate = l_questcate;
 	}
-	
-	
-	
 	
 }

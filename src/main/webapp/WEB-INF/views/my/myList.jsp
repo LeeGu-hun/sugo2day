@@ -167,13 +167,15 @@
 				<hr>
 
 				<div class="body-footer">
-					<!-- 검색 폼 들어갈 곳 -->
+					<!-- option 부분 db에서 값(q_title) 가져오기 -->
 					<div id="qlist-space">
 						<select id="select-QList" style="width: 300px;">
-							<option value="1" selected="selected">선택하세요</option>
-							<option value="걷기">30분 걷기</option>
-							<option value="줄넘기">줄넘기 100개</option>
-							<option value="달리기">1km 달리기</option>
+							<option value="X" selected="selected">선택하세요</option>
+							<c:forEach var="letter" items="${letters }">
+							<c:if test="${letter.l_questcate != null}">
+									<option value="${letter.l_num }">${letter.q_title }</option>
+							</c:if>
+							</c:forEach>
 						</select> <span style="padding-right: 70px;"></span>
 						<button class="btn btn-default btn-xs" type="button"
 							onclick="showN()">일반글 보기</button>

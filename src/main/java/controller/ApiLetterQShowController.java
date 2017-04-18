@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import bean.JoinBean;
 import bean.LetterBean;
 import dao.LetterDao;
 import member.login.AuthInfo;
@@ -24,15 +25,16 @@ public class ApiLetterQShowController {
 	
 	@RequestMapping(value="letter/incQList", method=RequestMethod.POST)
 	@ResponseBody
-	public List<LetterBean> getSelectedJsonLetter(
-			@RequestParam(value = "questcate") String questcate, HttpSession session) {
+	public List<JoinBean> getSelectedJsonLetter(
+			@RequestParam(value="num") Integer num,
+			@RequestParam(value="title") String title, HttpSession session) {
 		
 		LetterBean letter = new LetterBean();
 
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-		letter.setL_WRITER(authInfo.getName());
+		letter.setL_writer(authInfo.getName());
 		
-		List<LetterBean> letters = letterDao.changeQList(questcate, letter.getL_WRITER());
+		List<JoinBean> letters = letterDao.changeQList(num, title, letter.getL_writer());
 		return letters;	
 	}
 }

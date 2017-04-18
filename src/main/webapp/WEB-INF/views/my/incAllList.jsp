@@ -19,49 +19,43 @@
 		<div class="list_wrapper">
 			<div class="list_container">
 				<div>
+					<div style="margin-left: 10px;" id="show_title">
+					<c:if test="${letter.l_isquest == 'Y' }">
+						<h4 class="lead">${letter.q_title }</h4> 
+					</c:if>
+					</div>
 					<div class="pull-right">
 						<div class="list_title2">
-							<h4 class="lead">${letter.regdate }</h4>
+							<h4 class="lead">${letter.l_regdate }</h4>
 						</div>
 					</div>
 				</div>
 				
-				<c:if test="${! empty letter.files }">
+				<c:if test="${! empty letter.l_files }">
 				<div style="max-width: 550px; margin-left: auto; margin-right: auto;">	
-				<c:set var="ext" value="${fn:split(letter.files,'.')}"/>
+				<c:set var="ext" value="${fn:split(letter.l_files,'.')}"/>
 					<c:choose>
 						<c:when test="${ext[1] eq 'jpg' || ext[1] eq 'gif' || ext[1] eq 'png'}">
-							<img class="img-responsive" src='<c:url value="/" />uploads/${letter.files }'>
+							<img class="img-responsive" src='<c:url value="/" />uploads/${letter.l_files }'>
 						</c:when>
 						<c:otherwise>첨부된 사진 없음</c:otherwise>
 					</c:choose>
 				</div>	
 				</c:if>
-				<br>
 				
 				<div style="max-width: 550px; margin-left:auto; margin-right: auto;" class="list_content">
 					<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"
-						readonly="readonly">${letter.content }</textarea>
+						readonly="readonly">${letter.l_content }</textarea>
 					<script type="text/javascript">
 					$(function() {
 						$('#content').val().replace(/\n/g, "<br>");
 					});	
 				</script>					
 				</div>
-				
-				<c:if test="${! empty letter.startdate }">
-				<div class="list_date">
-					<h4 class="lead">${letter.startdate } 부터 ${letter.enddate } 까지</h4>
-				</div>		
-				</c:if>
-				<c:if test="${empty letter.startdate }">
-				<div class="list_date">					
-				</div>		
-				</c:if>
 			
 				<div class="pull-left">
 					<div class="user_id">
-						<h3 class="lead">by <b>${letter.writer }</b></h3>
+						<h3 class="lead">by <b>${letter.l_writer }</b></h3>
 					</div>
 				</div>
 			

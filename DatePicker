@@ -1,0 +1,42 @@
+<!-- Date picker -->
+		<div id="datepick-div" class="hidden">
+		    <div class="form-group pull-left" style="margin: 0;">
+				<div class="input-group date" id="startdate">
+					<input size="16" type="text" class="form-control" name="startdate"
+						placeholder="목표 시작일" />
+					<span class="input-group-addon">
+                   		<span class="glyphicon glyphicon-calendar"></span>
+              		</span>	
+				</div>
+			</div>	
+	
+			<span class="txt-at"> - </span>
+			
+			<div class="form-group" style="margin: 0;">
+				<div class="input-group date" id="enddate">	
+					<input size="16" type="text" class="form-control" name="enddate"
+						placeholder="목표 종료일" />
+					<span class="input-group-addon">
+                   		<span class="glyphicon glyphicon-calendar"></span>
+              			</span>	
+              		</div>	
+			</div>
+			<script type="text/javascript">
+				$(function() {
+					$('#startdate').datetimepicker({
+						locale: 'ko',
+						format: 'L',
+						defaultDate: new Date()
+					});
+					
+					$('#enddate').datetimepicker({
+						locale: 'ko',
+						format: 'L',
+						defaultDate: new Date()
+					});
+				});	
+			</script>
+			<div class="fake-size-bottom">
+				<p>&nbsp;</p>
+			</div>	
+		</div>
