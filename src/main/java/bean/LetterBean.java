@@ -3,116 +3,82 @@ package bean;
 import java.util.Date;
 
 public class LetterBean {
-	private Integer num;
-	private String writer;
-	private String content;
-	private String files;
-	private Date regdate;
-	private String isquest;
-	private String isprivate;
-	private Date startdate;
-	private Date enddate;
-	private String questcate;
+	private Integer L_NUM;
+	private String L_WRITER;
+	private String L_CONTENT;
+	private String L_FILES;
+	private Date L_REGDATE;
+	private String L_ISQUEST;
+	private String L_ISPRIVATE;
+	private String L_QUESTCATE;
 	
-	// 기본 생성자
+	//기본 생성자
 	public LetterBean() {
 		super();
 	}
-	
-	public LetterBean(Integer num, String writer, String content, String files, Date regdate,
-			String isquest, String isprivate, Date startdate, Date enddate, String questcate) {
+		
+	public LetterBean(Integer l_NUM, String l_WRITER, String l_CONTENT, String l_FILES, Date l_REGDATE,
+			String l_ISQUEST, String l_ISPRIVATE, String l_QUESTCATE) {
 		super();
-		this.num = num;
-		this.writer = writer;
-		this.content = content;
-		this.files = files;
-		this.regdate = regdate;
-		this.isquest = isquest;
-		this.isprivate = isprivate;
-		this.startdate = startdate;
-		this.enddate = enddate;
-		this.questcate = questcate;
+		L_NUM = l_NUM;
+		L_WRITER = l_WRITER;
+		L_CONTENT = l_CONTENT;
+		L_FILES = l_FILES;
+		L_REGDATE = l_REGDATE;
+		L_ISQUEST = l_ISQUEST;
+		L_ISPRIVATE = l_ISPRIVATE;
+		L_QUESTCATE = l_QUESTCATE;
 	}
 
 
-	public Integer getNum() {
-		return num;
-	}
 
-	public void setNum(Integer num) {
-		this.num = num;
+	public Integer getL_NUM() {
+		return L_NUM;
 	}
-
-	public String getWriter() {
-		return writer;
+	public void setL_NUM(Integer l_NUM) {
+		L_NUM = l_NUM;
 	}
-
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public String getL_WRITER() {
+		return L_WRITER;
 	}
-
-	public String getContent() {
-		return content;
+	public void setL_WRITER(String l_WRITER) {
+		L_WRITER = l_WRITER;
 	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public String getL_CONTENT() {
+		return L_CONTENT;
 	}
-
-	public String getFiles() {
-		return files;
+	public void setL_CONTENT(String l_CONTENT) {
+		L_CONTENT = l_CONTENT;
 	}
-
-	public void setFiles(String files) {
-		this.files = files;
+	public String getL_FILES() {
+		return L_FILES;
 	}
-
-	public Date getRegdate() {
-		return regdate;
+	public void setL_FILES(String l_FILES) {
+		L_FILES = l_FILES;
 	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public Date getL_REGDATE() {
+		return L_REGDATE;
 	}
-
-	public String getIsquest() {
-		return isquest;
+	public void setL_REGDATE(Date l_REGDATE) {
+		L_REGDATE = l_REGDATE;
 	}
-
-	public void setIsquest(String isquest) {
-		this.isquest = isquest;
+	public String getL_ISQUEST() {
+		return L_ISQUEST;
 	}
-
-	public String getIsprivate() {
-		return isprivate;
+	public void setL_ISQUEST(String l_ISQUEST) {
+		L_ISQUEST = l_ISQUEST;
 	}
-
-	public void setIsprivate(String isprivate) {
-		this.isprivate = isprivate;
+	public String getL_ISPRIVATE() {
+		return L_ISPRIVATE;
 	}
-
-	public Date getStartdate() {
-		return startdate;
+	public void setL_ISPRIVATE(String l_ISPRIVATE) {
+		L_ISPRIVATE = l_ISPRIVATE;
 	}
-
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+	public String getL_QUESTCATE() {
+		return L_QUESTCATE;
 	}
-
-	public Date getEnddate() {
-		return enddate;
+	public void setL_QUESTCATE(String l_QUESTCATE) {
+		L_QUESTCATE = l_QUESTCATE;
 	}
-
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
-	}
-
-	public String getQuestcate() {
-		return questcate;
-	}
-
-	public void setQuestcate(String questcate) {
-		this.questcate = questcate;
-	}
-	
 }
+	

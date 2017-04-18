@@ -1,57 +1,52 @@
 package bean;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class LetterWriteBean {
-	private Integer num;
-	private String writer;
-	private String content;
+	private Integer L_NUM;
+	private String L_WRITER;
+	private String L_CONTENT;
+	
 	private MultipartFile multiFile;
 	private List<MultipartFile> files;
 	private String fileName;
 	private String upDir;
-	private Date regdate;
-	private String isquest;
-	private String isprivate;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date startdate;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date enddate;
-	private String questcate;
+	
+	private Date L_REGDATE;
+	private String L_ISQUEST;
+	private String L_ISPRIVATE;
+	private String L_QUESTCATE;
 	
 	// 기본 생성자
 	public LetterWriteBean() {
 		super();
 	}
-	
-	public Integer getNum() {
-		return num;
+
+	public Integer getL_NUM() {
+		return L_NUM;
 	}
 
-	public void setNum(Integer num) {
-		this.num = num;
+	public void setL_NUM(Integer l_NUM) {
+		L_NUM = l_NUM;
 	}
 
-	public String getWriter() {
-		return writer;
+	public String getL_WRITER() {
+		return L_WRITER;
 	}
 
-	public void setWriter(String writer) {
-		this.writer = writer;
+	public void setL_WRITER(String l_WRITER) {
+		L_WRITER = l_WRITER;
 	}
 
-	public String getContent() {
-		return content;
+	public String getL_CONTENT() {
+		return L_CONTENT;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setL_CONTENT(String l_CONTENT) {
+		L_CONTENT = l_CONTENT;
 	}
 
 	public MultipartFile getMultiFile() {
@@ -86,72 +81,39 @@ public class LetterWriteBean {
 		this.upDir = upDir;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getL_REGDATE() {
+		return L_REGDATE;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setL_REGDATE(Date l_REGDATE) {
+		L_REGDATE = l_REGDATE;
 	}
 
-	public String getIsquest() {
-		return isquest;
+	public String getL_ISQUEST() {
+		return L_ISQUEST;
 	}
 
-	public void setIsquest(String isquest) {
-		this.isquest = isquest;
+	public void setL_ISQUEST(String l_ISQUEST) {
+		L_ISQUEST = l_ISQUEST;
 	}
 
-	public String getIsprivate() {
-		return isprivate;
+	public String getL_ISPRIVATE() {
+		return L_ISPRIVATE;
 	}
 
-	public void setIsprivate(String isprivate) {
-		this.isprivate = isprivate;
+	public void setL_ISPRIVATE(String l_ISPRIVATE) {
+		L_ISPRIVATE = l_ISPRIVATE;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public String getL_QUESTCATE() {
+		return L_QUESTCATE;
 	}
 
-	public void setStartdate(String startdate) {
-		this.startdate = transformDate(startdate);
-	}
-
-	public Date getEnddate() {
-		return enddate;
-	}
-
-	public void setEnddate(String enddate) {
-		this.enddate = transformDate(enddate);
+	public void setL_QUESTCATE(String l_QUESTCATE) {
+		L_QUESTCATE = l_QUESTCATE;
 	}
 	
-	public String getQuestcate() {
-		return questcate;
-	}
-
-	public void setQuestcate(String questcate) {
-		this.questcate = questcate;
-	}
-
-	public Date transformDate(String date) {
-        SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyy.mm.dd");
-        SimpleDateFormat afterFormat = new SimpleDateFormat("yyyy-mm-dd");
-        java.util.Date tempDate = null;
-        
-        try {
-        	tempDate = beforeFormat.parse(date);
-        } catch (ParseException e) {
-        	e.printStackTrace();
-        }
-       
-        String transDate = afterFormat.format(tempDate);
-    	Date d = Date.valueOf(transDate);
-              
-        return d;
-        
-    }
-
+	
 	
 	
 }
