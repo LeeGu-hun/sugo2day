@@ -19,11 +19,11 @@
 		<div class="list_wrapper">
 			<div class="list_container">
 				<div>
-					<div style="margin-left: 10px;" id="show_title">
 					<c:if test="${letter.l_isquest == 'Y' }">
-						<h4 class="lead">${letter.q_title }</h4> 
-					</c:if>
+					<div class="pull-left" id="show_title">
+						<h4 class="lead" style="padding-left: 10px;">Quest : ${letter.q_title }</h4> 
 					</div>
+					</c:if>
 					<div class="pull-right">
 						<div class="list_title2">
 							<h4 class="lead">${letter.l_regdate }</h4>
@@ -47,25 +47,24 @@
 					<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"
 						readonly="readonly">${letter.l_content }</textarea>
 					<script type="text/javascript">
-					$(function() {
-						$('#content').val().replace(/\n/g, "<br>");
-					});	
-				</script>					
+						$(function() {
+							$('#content').val().replace(/\n/g, "<br>");
+						});	
+					</script>	
 				</div>
-			
-				<div class="pull-left">
+				
+				<c:if test="${empty letter.l_files }">
+				<div>
+					<br>
+					<br>
+				</div>
+				</c:if>					
+								
+				<div class="pull-right">
 					<div class="user_id">
 						<h3 class="lead">by <b>${letter.l_writer }</b></h3>
 					</div>
 				</div>
-			
-				<!-- 추후 B페이지에서 사용 
-				<div class="pull-right">
-					<div class="user_write">
-						여기에 라디오 버튼으로 공개/비공개 설정
-					</div>
-				</div>
-				 -->
 			</div>
 		</div>
 	<div class="fake-size">

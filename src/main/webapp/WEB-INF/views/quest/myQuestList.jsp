@@ -136,11 +136,11 @@
 						</div>
 					</div>
 					<div class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-right">     
 							<li class="dropdwon"><a
 								href="<c:url value="/letter/myLetter" />">MyPage </a></li>
 							<li class="dropdown"><a
-								href="<c:url value="/letter/letterManage" />">Quest Manage</a></li>
+								href="<c:url value="/quest/myQuest" />">Quest Manage</a></li>
 						</ul>
 					</div>
 				</div>
@@ -153,29 +153,27 @@
 		<div class="body-wrapper">
 			<div class="body-header">
 			</div>
-			<h3>게시글 작성</h3>
+			<h3>퀘스트 등록</h3>
 			<hr>
 
 				<div class="body-content">
 					<div id="letter-reg">
 						<!-- 글 작성 페이지 -->
-						<%@include file="letterRegist.jsp"%>
+						<%@include file="questRegist.jsp"%>
 					</div>
 				</div>
 
-				<h3>작성 글 목록</h3>
+				<h3>퀘스트 글 목록</h3>
 				<hr>
 
 				<div class="body-footer">
-					<!-- option 부분 db에서 값(q_title) 가져오기 -->
+					<!-- 검색 폼 들어갈 곳 -->
 					<div id="qlist-space">
 						<select id="select-QList" style="width: 300px;">
-							<option value="X" selected="selected">선택하세요</option>
-							<c:forEach var="letter" items="${letters }">
-								<c:if test="${letter.l_questcate != null}">
-									<option value="${letter.l_num }">${letter.q_title }</option>
-								</c:if>
-							</c:forEach>
+							<option value="1" selected="selected">선택하세요</option>
+							<option value="걷기">30분 걷기</option>
+							<option value="줄넘기">줄넘기 100개</option>
+							<option value="달리기">1km 달리기</option>
 						</select> <span style="padding-right: 70px;"></span>
 						<button class="btn btn-default btn-xs" type="button"
 							onclick="showN()">일반글 보기</button>
@@ -189,7 +187,7 @@
 				<div class="body-list">
 					<!-- 기본적으로 보여줄 글 목록 리스트 -->
 					<div id="all-list" class="show">
-						<%@include file="incAllList.jsp"%>
+					<%@include file="questAllList.jsp"%>
 					</div>
 					<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
 					<div id="qselected-list" class="hidden"></div>
