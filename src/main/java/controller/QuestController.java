@@ -31,6 +31,8 @@ public class QuestController {
 		questB.setQ_writer(authInfo.getName());
 		
 		List<QuestBean> quests = questDao.selectAllQ(questB.getQ_writer());
+		
+		
 		model.addAttribute("quests", quests);
 		model.addAttribute("quest", quest);
 		

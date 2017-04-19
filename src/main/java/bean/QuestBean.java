@@ -14,8 +14,6 @@ public class QuestBean {
 	private Date q_enddate;
 	private String q_isprivate;
 	private String q_writer;
-	private String q_maincate;
-	private String q_subcate;
 	
 	
 	public QuestBean() {
@@ -23,7 +21,7 @@ public class QuestBean {
 	}
 
 	public QuestBean(Integer q_num, String q_title, String q_descript, Date q_startdate, Date q_enddate,
-			String q_isprivate, String q_writer, String q_maincate, String q_subcate) {
+			String q_isprivate, String q_writer) {
 		super();
 		this.q_num = q_num;
 		this.q_title = q_title;
@@ -32,8 +30,6 @@ public class QuestBean {
 		this.q_enddate = q_enddate;
 		this.q_isprivate = q_isprivate;
 		this.q_writer = q_writer;
-		this.q_maincate = q_maincate;
-		this.q_subcate = q_subcate;
 	}
 
 	public Integer getQ_num() {
@@ -91,23 +87,5 @@ public class QuestBean {
 	public void setQ_writer(String q_writer) {
 		this.q_writer = q_writer;
 	}
-
-	public String getQ_maincate() {
-		return q_maincate;
-	}
-
-	public void setQ_maincate(String q_maincate) {
-		this.q_maincate = q_maincate;
-	}
-
-	public String getQ_subcate() {
-		return q_subcate;
-	}
-
-	public void setQ_subcate(String q_subcate) {
-		this.q_subcate = q_subcate;
-	}
-	
-	
 	
 }

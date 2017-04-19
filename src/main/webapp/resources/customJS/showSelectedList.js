@@ -42,15 +42,19 @@ function showSelectedList(selItemN, selItemT) {
 
     	if(!isEmpty(jsonResult)) {
 	    	
-	    	var html = '<div class="list_wrapper">';
+	    	var html = '';
 	    		
 	    	for(var i = 0 ; i < jsonResult.length ; i++) {
+	    		html += '<div class="list_wrapper">';
 	    		html += '<div class="list_container">';
+	    		html += '<div>';
+	    		html += '<div class="pull-left">';
+	    		html +=	'<h4 class="lead" style="padding-left: 10px;">Quest : ' + jsonResult[i].q_title + '</h4>';
+	    		html += '</div>';
 	    		html += '<div class="pull-right">';
-	    		html += '<div style="margin-left: 10px;">';
-	    		html +=	'<h4 class="lead">' + jsonResult[i].q_title + '</h4>';
 	    		html += '<div class="list_title2">';
-	    		html += '<h4 class="lead">' + jsonResult[i].l_regdate + '</h4>';
+	    		html += '<h4 class="lead">'+ jsonResult[i].l_regdate +'</h4>';
+	    		html += '</div>';
 	    		html += '</div>';
 	    		html += '</div>';
 	    		var splitData = '' + jsonResult[i].l_files + ''; 
@@ -72,8 +76,6 @@ function showSelectedList(selItemN, selItemT) {
 	    			html += '</div>';
 	    		} 
 	    		
-	    		
-	    		
 	    		html += '<br>';
 	    		
 	    		html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;" class="list_content">';
@@ -85,7 +87,8 @@ function showSelectedList(selItemN, selItemT) {
 	    		html += '});';
 	    		html += '</script>';
 	    		html += '</div>';
-	    		html += '<div class="pull-left">';
+	    		
+	    		html += '<div class="pull-right">';
 	    		html += '<div class="user_id">';
 	    		html += '<h3 class="lead">by <b> ' + jsonResult[i].l_writer + ' </b></h3>';
 	    		html += '</div>';
@@ -95,8 +98,8 @@ function showSelectedList(selItemN, selItemT) {
 	    		html += '<div class="fake-size">';
 	    		html += '<p>&nbsp;</p>';
 	    		html += '</div>';    		
+	    		html += '</div>';
 	    	}
-	    	html += '</div>';
 	    	$('#qselected-list').html(html);   
     	} else if (isEmpty(jsonResult)) {
     		var noQuest = '<h3>선택한 퀘스트 카테고리로 작성한 글이 없습니다.</h3>';

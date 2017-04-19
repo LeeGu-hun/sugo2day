@@ -42,6 +42,7 @@ public class LetterController {
 							
 		List<JoinBean> letters = letterDao.selectAll(letter.getL_writer());
 		List<QuestBean> quests = questDao.selectAllQ(letter.getL_writer());
+		
 		model.addAttribute("letters", letters);
 		model.addAttribute("letter", Wletter);
 		model.addAttribute("quests", quests);
@@ -57,7 +58,7 @@ public class LetterController {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setL_writer(authInfo.getName());
 		
-		List<JoinBean> letters = letterDao.selectNormal(letter.getL_writer());
+		List<LetterBean> letters = letterDao.selectNormal(letter.getL_writer());
 		model.addAttribute("letters", letters);
 		model.addAttribute("letter", Wletter);
 		

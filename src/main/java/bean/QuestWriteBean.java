@@ -16,8 +16,6 @@ public class QuestWriteBean {
 	private Date q_enddate;
 	private String q_isprivate;
 	private String q_writer;
-	private String q_maincate;
-	private String q_subcate;
 	
 	
 	public QuestWriteBean() {
@@ -79,22 +77,6 @@ public class QuestWriteBean {
 	public void setQ_writer(String q_writer) {
 		this.q_writer = q_writer;
 	}	
-
-	public String getQ_maincate() {
-		return q_maincate;
-	}
-
-	public void setQ_maincate(String q_maincate) {
-		this.q_maincate = q_maincate;
-	}
-
-	public String getQ_subcate() {
-		return q_subcate;
-	}
-
-	public void setQ_subcate(String q_subcate) {
-		this.q_subcate = q_subcate;
-	}
 
 	
 	public Date transformDate(String date) {

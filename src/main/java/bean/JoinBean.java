@@ -18,8 +18,6 @@ public class JoinBean {
 	private Date q_enddate;
 	private String q_isprivate;
 	private String q_writer;
-	private String q_maincate;
-	private String q_subcate;
 	
 	public JoinBean() {
 		super();
@@ -27,7 +25,7 @@ public class JoinBean {
 
 	public JoinBean(Integer l_num, String l_writer, String l_content, String l_files, Date l_regdate, String l_isquest,
 			String l_isprivate, String l_questcate, Integer q_num, String q_title, String q_descript, Date q_startdate,
-			Date q_enddate, String q_isprivate, String q_writer, String q_maincate, String q_subcate) {
+			Date q_enddate, String q_isprivate, String q_writer) {
 		super();
 		this.l_num = l_num;
 		this.l_writer = l_writer;
@@ -44,8 +42,6 @@ public class JoinBean {
 		this.q_enddate = q_enddate;
 		this.q_isprivate = q_isprivate;
 		this.q_writer = q_writer;
-		this.q_maincate = q_maincate;
-		this.q_subcate = q_subcate;
 	}
 
 	public Integer getL_num() {
@@ -166,22 +162,6 @@ public class JoinBean {
 
 	public void setQ_writer(String q_writer) {
 		this.q_writer = q_writer;
-	}
-
-	public String getQ_maincate() {
-		return q_maincate;
-	}
-
-	public void setQ_maincate(String q_maincate) {
-		this.q_maincate = q_maincate;
-	}
-
-	public String getQ_subcate() {
-		return q_subcate;
-	}
-
-	public void setQ_subcate(String q_subcate) {
-		this.q_subcate = q_subcate;
 	}
 	
 }

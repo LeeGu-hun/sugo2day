@@ -26,7 +26,7 @@ private JdbcTemplate jdbcTemplate;
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	// 중복 코드 처리
+	// QuestBean RowMapper
 	private RowMapper<QuestBean> QuestRowMapper = new RowMapper<QuestBean>() {
 		@Override
 		public QuestBean mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -37,19 +37,18 @@ private JdbcTemplate jdbcTemplate;
 					rs.getDate("q_startdate"),
 					rs.getDate("q_enddate"),
 					rs.getString("q_isprivate"),
-					rs.getString("q_writer"),
-					rs.getString("q_maincate"),
-					rs.getString("q_subcate"));
+					rs.getString("q_writer"));
 			return quest;
 		}
 	};
 	
+		
 	// 퀘스트 등록하기
 	@Transactional
 	public void regQuest(final QuestWriteBean quest) {
-		String sql = "insert into quest_reg (q_num, q_title, q_descript, q_startdate, "
-				+ "q_enddate, q_isprivate) "
-				+ "values (qnum_seq.nextval, ?, ?, ?, ?, ?) ";
+		String sql = "insert into quest (q_num, q_title, q_descript, q_startdate, "
+				+ "q_enddate, q_isprivate, q_writer) "
+				+ "values (qnum_seq.nextval, ?, ?, ?, ?, ?, ?) ";
 		
 		jdbcTemplate.update((Connection con) -> {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -58,11 +57,12 @@ private JdbcTemplate jdbcTemplate;
 				pstmt.setDate(3, new java.sql.Date(quest.getQ_startdate().getTime()));
 				pstmt.setDate(4,  new java.sql.Date(quest.getQ_enddate().getTime()));
 				pstmt.setString(5, quest.getQ_isprivate());
+				pstmt.setString(6, quest.getQ_writer());
 				return pstmt;
 		});
 	}
 	
-	// 전체 퀘스트 보기
+	// 전체 퀘스트 보기(Letter에서 사용)
 	public List<QuestBean> selectAllQ(String writer) {
 		List<QuestBean> results = jdbcTemplate.query(
 				"select * from (select * from quest order by q_num desc) "
@@ -70,6 +70,7 @@ private JdbcTemplate jdbcTemplate;
 		return results;
 	}
 	
+		
 	// 공개/비공개 설정하기
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(

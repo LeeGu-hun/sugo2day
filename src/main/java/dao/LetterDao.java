@@ -57,9 +57,7 @@ public class LetterDao {
 					rs.getDate("q_startdate"),
 					rs.getDate("q_enddate"),
 					rs.getString("q_isprivate"),
-					rs.getString("q_writer"),
-					rs.getString("q_maincate"),
-					rs.getString("q_subcate"));
+					rs.getString("q_writer"));
 			return quest;
 		}
 	};
@@ -84,9 +82,7 @@ public class LetterDao {
 					rs.getDate("q_startdate"),
 					rs.getDate("q_enddate"),
 					rs.getString("q_isprivate"),
-					rs.getString("q_writer"),
-					rs.getString("q_maincate"),
-					rs.getString("q_subcate"));
+					rs.getString("q_writer"));
 			return join;
 		}
 	};
@@ -163,11 +159,10 @@ public class LetterDao {
 	}
 	
 	// 일반글만 보기
-	public List<JoinBean> selectNormal(String writer) {
-		List<JoinBean> results = jdbcTemplate.query(
-				"select * from letter lt, quest qt where lt.l_writer = qt.q_writer "
-				+ "and lt.l_writer = ? and lt.l_isquest = 'N' order by lt.l_num desc ", 
-					JoinRowMapper, writer);
+	public List<LetterBean> selectNormal(String writer) {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select * from letter where l_writer = ? and l_isquest = 'N' order by l_num desc ", 
+					LetterRowMapper, writer);
 		return results;
 	}
 	
