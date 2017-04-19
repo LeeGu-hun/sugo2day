@@ -90,16 +90,13 @@
 		<!-- Ajax 처리 필요.. 18 -->
 		<div style="width: 550px;">
 			<select id="q_maincate" name="q_maincate" style="width: 150px;">
-				<option selected="selected">대분류</option>
-				<option value=""></option>
+				<option value="0" selected="selected">대분류</option>
+				<option value="1">운동</option>
+				<option value="2">공부</option>
+				<option value="3">저축</option>
 			</select>
 			<span style="padding-left: 5px;"></span>
-			<select id="q_subcate" name="q_subcate" style="width: 150px;">
-				<option selected="selected">소분류</option>
-				<option value=""></option>
-				<option value=""></option>
-				<option value=""></option>
-			</select>
+			<select id="q_subcate" name="q_subcate" style="width: 150px;"></select>
 		</div>				
 	
 	

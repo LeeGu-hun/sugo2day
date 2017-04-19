@@ -74,7 +74,6 @@ private JdbcTemplate jdbcTemplate;
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(
 				"update quest set q_isprivate = ? where q_num = ? ", isprivate, num);
-		
 	}
 	
 }

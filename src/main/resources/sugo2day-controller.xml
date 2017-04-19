@@ -19,9 +19,9 @@
 			<!-- 로그인이 안되면 볼 수 없는 것들 -->
 			<mvc:mapping path="/my/**" />
 			<mvc:mapping path="/letter/**" />
+			<mvc:mapping path="/quest/**" />
 			
 			<!-- 그 중에서도 예외로 볼 수 있는 것들 -->
-			<mvc:mapping path="/letter/incQList" />
 			<bean class="intercepter.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -55,10 +55,6 @@
 		<property name="questDao" ref="questDao" />
 	</bean>
 		
-	<bean class="controller.ApiLetterManageController">
-		<property name="letterDao" ref="letterDao" />
-	</bean>
-	
 	<bean class="controller.ApiLetterQShowController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
@@ -73,5 +69,8 @@
 		<property name="questDao" ref="questDao" />
 	</bean>
 	
+	<bean class="controller.ApiQuestPublicShowController">
+		<property name="questDao" ref="questDao" />
+	</bean>
 </beans>	
 	

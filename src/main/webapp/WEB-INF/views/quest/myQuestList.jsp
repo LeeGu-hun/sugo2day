@@ -32,7 +32,6 @@
 <link href="<%=cp%>/resources/css/style.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/myList.css" rel="stylesheet">
 <link href="<%=cp%>/resources/css/letterLayout.css" rel="stylesheet">
-<link href="<%=cp%>/resources/css/file-upload-css.css" rel="stylesheet">
 
 <!-- JQuery Main -->
 <script
@@ -47,9 +46,7 @@
 <script src="<%=cp%>/resources/dpick/ko.js"></script>
 
 <!-- Custom Script -->
-<script src="<%=cp%>/resources/customJS/imageUp.js"></script>
-<script src="<%=cp%>/resources/customJS/questToggle.js"></script>
-<script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
+<script src="<%=cp%>/resources/customJS/changeQPublicStatus.js"></script>
 
 <script>
 	function goBack() {
@@ -57,7 +54,7 @@
 	}
 
 	function goQM() {
-		location.href = "<c:url value='/letter/letterManage' />";
+		location.href = "<c:url value='/quest/questManage' />";
 	}
 
 </script>
@@ -116,7 +113,7 @@
 							<li class="dropdwon"><a
 								href="<c:url value="/letter/myLetter" />">MyPage </a></li>
 							<li class="dropdown"><a
-								href="<c:url value="/quest/myQuest" />">Quest Manage</a></li>
+								href="<c:url value='/quest/questManage' />">Quest Manage</a></li>
 						</ul>
 					</div>
 				</div>

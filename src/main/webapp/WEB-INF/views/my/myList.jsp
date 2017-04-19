@@ -38,14 +38,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<!-- Dpick -->
-<script src="<%=cp%>/resources/dpick/moment.js"></script>
-<script src="<%=cp%>/resources/dpick/bootstrap.min.js"></script>
-<script src="<%=cp%>/resources/dpick/bootstrap-datetimepicker.min.js"></script>
-<link rel="<%=cp%>/resources/dpick/bootstrap-datetimepicker.min.css"
-	rel="stylesheet">
-<script src="<%=cp%>/resources/dpick/ko.js"></script>
-
 <!-- Custom Script -->
 <script src="<%=cp%>/resources/customJS/imageUp.js"></script>
 <script src="<%=cp%>/resources/customJS/questToggle.js"></script>

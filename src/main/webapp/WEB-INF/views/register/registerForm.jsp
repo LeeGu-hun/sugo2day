@@ -159,7 +159,7 @@ body {
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdwon"><a href="<c:url value="/letter/myLetter" />">MyPage </a></li>
-							<li class="dropdown"><a href="<c:url value="/letter/letterManage" />">Quest Manage</a></li>
+							<li class="dropdown"><a href="<c:url value='/quest/questManage' />">Quest Manage</a></li>
 						</ul>
 
 

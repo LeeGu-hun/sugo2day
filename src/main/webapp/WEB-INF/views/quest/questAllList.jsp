@@ -47,7 +47,7 @@
 						<div class="col-lg-5" style="padding: 0; max-width: 125px;">		
 							<div class="input-group">	
 								<span class="input-group-addon">
-									<input type="radio" name="stat" value="공개글" onclick="changeShow(${quest.q_num }, '공개글')">
+									<input type="radio" name="stat" value="Y" onclick="changeShow(${quest.q_num }, '공개')">
 								</span>
 									<input type="text" class="form-control" placeholder="공개글" readonly style="width: 88px;">
 							</div>
@@ -55,7 +55,7 @@
 						<div class="col-lg-5" style="padding: 0; max-width: 125px;">	
 							<div class="input-group">	
 								<span class="input-group-addon">
-									<input type="radio" name="stat" value="비공개" onclick="changeShow(${quest.q_num }, '비공개')">
+									<input type="radio" name="stat" value="N" onclick="changeShow(${quest.q_num }, '비공개')">
 								</span>
 									<input type="text" class="form-control" placeholder="비공개" readonly style="width: 88px;">
 							</div>
