@@ -38,16 +38,16 @@
 		<!-- 공개여부 // 기본값 : 공개글 -->
 		<div class="show">	
 			<div class="input-group" style="width: 200px;">
-				<input type="radio" name="q_isprivate" id="q_isprivate" value="공개글" checked="checked">
-				<label> 공개</label>
+				<input type="radio" name="q_isprivate" id="q_isprivate_y" value="Y" checked="checked">
+				<label for="q_isprivate_y"> 공개</label>
 				<span style="padding-left: 5px;"></span>
-				<input type="radio" name="q_isprivate" id="q_isprivate" value="공개글">
-				<label> 비공개</label>
+				<input type="radio" name="q_isprivate" id="q_isprivate_n" value="N">
+				<label for="q_isprivate_n"> 비공개</label>
 			</div>
 		</div>		
 		
 		<!-- Date picker -->
-		<div id="datepick-div" class="hidden">
+		<div id="datepick-div">
 		    <div class="form-group pull-left" style="margin: 0;">
 				<div class="input-group date" id="startdate">
 					<input size="16" type="text" class="form-control" name="q_startdate"

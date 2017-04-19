@@ -40,8 +40,7 @@ public class LetterController {
 							
 		List<LetterBean> letters = letterDao.selectAll(letter.getL_writer());
 		List<QuestBean> quests = questDao.selectAllQ(letter.getL_writer());
-	
-		
+								
 		model.addAttribute("letters", letters);
 		model.addAttribute("letter", Wletter);
 		model.addAttribute("quests", quests);

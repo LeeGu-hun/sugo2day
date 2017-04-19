@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.Date;
-
 public class LetterBean {
 	private Integer l_num;
 	private String l_writer;

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -75,6 +76,6 @@ private JdbcTemplate jdbcTemplate;
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(
 				"update quest set q_isprivate = ? where q_num = ? ", isprivate, num);
-	}
+	}	
 	
 }

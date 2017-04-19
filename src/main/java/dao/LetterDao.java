@@ -44,7 +44,7 @@ public class LetterDao {
 			return letter;
 		}
 	};
-	
+		
 	// 퀘스트 글 등록하기
 	@Transactional
 	public void insert(final LetterWriteBean letter) {		
@@ -57,7 +57,6 @@ public class LetterDao {
 		String Nullsql = "insert into letter (L_NUM, L_WRITER, L_CONTENT, L_FILES, L_REGDATE, "
 				+ "L_ISQUEST, L_ISPRIVATE) "
 				+ "values (lnum_seq.nextval, ?, ?, ?, sysdate, 'N', ?) ";
-		
 		
 		if(letter.getL_isquest() == null) {
 			System.out.println("일반글 값 null 루트");
@@ -135,15 +134,21 @@ public class LetterDao {
 	}
 	
 	// Select 박스 선택될 때마다 Q-List 가져오기
-	public List<LetterBean> changeQList(Integer num, String title, String writer) {
+	public List<LetterBean> changeQList(String title, String writer) {
 		List<LetterBean> results = jdbcTemplate.query(
 				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
-				+ "l_isquest, l_isprivate, l_questcate from letter "
-				+ "where l_writer = ? and l_questcate = ? and l_num = ? "
+				+ "l_isquest, l_isprivate, l_questcate from letter, quest "
+				+ "where letter.l_questcate = quest.q_title and letter.l_writer =? and letter.l_questcate = ? "
 				+ "order by l_num desc ", 
-						LetterRowMapper, writer, title, num);
+						LetterRowMapper, writer, title);
 		return results;
-	}
+	}	
 	
+	
+	public String getLimit(String questcate) {
+		String sql = "select to_char(q_enddate, 'YYYY-MM-DD') as q_enddate from quest where q_title = ? ";
+		String limit = jdbcTemplate.queryForObject(sql, String.class, questcate);
+		return limit;
+	}
 
 }

@@ -2,6 +2,10 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -44,7 +48,7 @@ public class LetterWriteController {
 	// 글 작성 누를때
 	@RequestMapping(value = "letter/letterWrite", method=RequestMethod.POST)
 	public String letterWrite(LetterWriteBean letter, QuestBean quest, Model model, HttpSession session) {
-						
+				
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setL_writer(authInfo.getName());
 		
@@ -67,17 +71,44 @@ public class LetterWriteController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		}		
 		
+		String limit = letterDao.getLimit(letter.getL_questcate());
+				
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date currentTime = new Date();
+		String dTime = formatter.format (currentTime);
+		
+		System.out.println(limit + " = enddate");
+		System.out.println(dTime + " = 현재 시간");
+		
+		Date limitD = null;
+		Date currD = null;
 		
 		try {
-			letterDao.insert(letter);
-			return "redirect:/letter/myLetter";
-		} catch (Exception e) {
-			System.out.println("Error! = " + e);	
+			limitD = formatter.parse(limit);
+			currD = formatter.parse(dTime);
+		} catch (ParseException e) {
+			System.out.println("Pare Error !!! = " + e);
+		}
+		
+		int compare = limitD.compareTo(currD);
+		System.out.println(compare);
+		
+		if(compare >= 0) {
+			try {
+				letterDao.insert(letter);
+				return "redirect:/letter/myLetter";
+			} catch (Exception e) {
+				System.out.println("Error! = " + e);	
+				return "redirect:/main";
+			}
+		} else {
+			System.out.println("글 작성 실패.. 퀘스트 기한이 지났습니다.");
 			return "redirect:/main";
 		}
 	}
+		
 	
 
 }

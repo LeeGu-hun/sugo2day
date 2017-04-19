@@ -15,12 +15,13 @@
 			<div id="qtype-space">
 				<input type="checkbox" name="l_isquest" id="qsel" value="Y"
 					onclick="questToggle()">
-				<label>Quest</label>
+				<label for="qsel">Quest</label>
 				
 				<div id="qlist-space" class="pull-right hidden">
 					<select name="l_questcate" id="qlist" style="width: 300px;" required="required">
 							<c:forEach var="quest" items="${quests }">
-									<option value="${quest.q_title }">${quest.q_title }</option>
+									<option value="${quest.q_title }">
+									${quest.q_title } // 기간: ${quest.q_startdate } ~ ${quest.q_enddate }</option>
 							</c:forEach>
 						
 					</select>
@@ -28,14 +29,15 @@
 			</div>				
 		</div>
 		</c:if>	
-				
+		
 		<!-- 공개여부는 숨기기 // 기본값 : 공개글 -->
 		<div class="show">	
 			<div class="input-group" style="width: 200px;">
-				<input type="radio" name="l_isprivate" id="l_isprivate" value="Y" checked="checked">
-				<label> 공개글</label>
-				<input type="radio" name="l_isprivate" id="l_isprivate" value="N">
-				<label> 비공개글</label>
+				<input type="radio" name="l_isprivate" id="l_isprivate_y" value="Y" checked="checked">
+				<label for="l_isprivate_y"> 공개글</label>
+				<span style="padding-left: 5px;"></span>
+				<input type="radio" name="l_isprivate" id="l_isprivate_n" value="N">
+				<label for="l_isprivate_n"> 비공개글</label>
 			</div>
 		</div>		
 		

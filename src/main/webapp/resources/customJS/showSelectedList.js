@@ -14,27 +14,21 @@ var isEmpty = function(value) {
 
 /* Select option Get */
 $(function() {
-	$('#select-QList').change(function() {
-		var originString = $("#select-QList option:selected").text();
-		var splitString =  originString.split('/');
-		
-		var selItemN = parseInt($("#select-QList option:selected").val());	// l_num
-		var selItemT = splitString[0].trim();	// l_questcate
-		console.log(selItemN + " = l_num");
+	$('#select-QList').change(function() {		
+		var selItemT = $("#select-QList option:selected").val();
 		console.log(selItemT + " = l_questcate");
 		
-		if(selItemN != "X") {
-			showSelectedList(selItemN, selItemT);
+		if(selItemT != "X") {
+			showSelectedList(selItemT);
 		}	
 	});
 });
 
 
-function showSelectedList(selItemN, selItemT) {
+function showSelectedList(selItemT) {
 		
     $.post("incQList", {
-        num : selItemN,
-        title : selItemT
+      title : selItemT
    }, function(jsonResult) {
     	    	
     	$("#all-list").removeClass("show");

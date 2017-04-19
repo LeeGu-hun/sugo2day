@@ -25,7 +25,6 @@ public class ApiLetterQShowController {
 	@RequestMapping(value="letter/incQList", method=RequestMethod.POST)
 	@ResponseBody
 	public List<LetterBean> getSelectedJsonLetter(
-			@RequestParam(value="num") Integer num,
 			@RequestParam(value="title") String title, HttpSession session) {
 		
 		LetterBean letter = new LetterBean();
@@ -33,7 +32,7 @@ public class ApiLetterQShowController {
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setL_writer(authInfo.getName());
 		
-		List<LetterBean> letters = letterDao.changeQList(num, title, letter.getL_writer());
+		List<LetterBean> letters = letterDao.changeQList(title, letter.getL_writer());
 		return letters;	
 	}
 }

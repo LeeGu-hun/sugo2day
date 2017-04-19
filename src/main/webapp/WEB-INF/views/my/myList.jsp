@@ -171,13 +171,11 @@
 						<select id="select-QList" style="width: 250px;">
 							<option value="X" selected="selected">선택하세요</option>
 							<c:if test="${!empty quests}">
-							<c:forEach var="letter" items="${letters }">
-								<c:if test="${letter.l_questcate != null}">
-									<option value="${letter.l_num }">${letter.l_questcate } / ${letter.l_regdate }</option>
-								</c:if>
+							<c:forEach var="quest" items="${quests }">
+									<option value="${quest.q_title }">${quest.q_title }</option>
 							</c:forEach>
 							</c:if>
-						</select> <span style="padding-right: 40px;"></span>
+						</select><span style="padding-right: 40px;"></span>
 						<button class="btn btn-default btn-xs" type="button"
 							onclick="showN()">일반글 보기</button>
 						<button class="btn btn-default btn-xs" type="button"
