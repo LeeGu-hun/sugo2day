@@ -39,9 +39,10 @@
 		<div class="show">	
 			<div class="input-group" style="width: 200px;">
 				<input type="radio" name="q_isprivate" id="q_isprivate" value="공개글" checked="checked">
-				<label> 공개글</label>
+				<label> 공개</label>
+				<span style="padding-left: 5px;"></span>
 				<input type="radio" name="q_isprivate" id="q_isprivate" value="공개글">
-				<label> 비공개글</label>
+				<label> 비공개</label>
 			</div>
 		</div>		
 		

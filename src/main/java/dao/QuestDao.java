@@ -70,7 +70,7 @@ private JdbcTemplate jdbcTemplate;
 		return results;
 	}
 	
-		
+			
 	// 공개/비공개 설정하기
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(

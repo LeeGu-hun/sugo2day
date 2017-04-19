@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import bean.JoinBean;
 import bean.LetterBean;
 import bean.LetterWriteBean;
 import bean.QuestBean;
@@ -35,13 +34,13 @@ public class LetterController {
 	@RequestMapping(value="letter/myLetter", method=RequestMethod.GET)
 	public String selectDefault(LetterWriteBean Wletter, Model model, HttpSession session) {
 		LetterBean letter = new LetterBean();
-		JoinBean join = new JoinBean();
-
+		
 		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
 		letter.setL_writer(authInfo.getName());;
 							
-		List<JoinBean> letters = letterDao.selectAll(letter.getL_writer());
+		List<LetterBean> letters = letterDao.selectAll(letter.getL_writer());
 		List<QuestBean> quests = questDao.selectAllQ(letter.getL_writer());
+	
 		
 		model.addAttribute("letters", letters);
 		model.addAttribute("letter", Wletter);

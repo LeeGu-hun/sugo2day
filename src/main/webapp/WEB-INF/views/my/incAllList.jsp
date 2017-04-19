@@ -20,15 +20,12 @@
 			<div class="list_container">
 				<div>
 					<c:if test="${letter.l_isquest == 'Y' }">
+					<c:if test="${letter.l_questcate != 'null' }">
 					<div class="pull-left" id="show_title">
-						<h4 class="lead" style="padding-left: 10px;">Quest : ${letter.q_title }</h4> 
+						<h4 class="lead" style="padding-left: 10px;">Quest : ${letter.l_questcate }</h4> 
 					</div>
 					</c:if>
-					<div class="pull-right">
-						<div class="list_title2">
-							<h4 class="lead">${letter.l_regdate }</h4>
-						</div>
-					</div>
+					</c:if>					
 				</div>
 				
 				<c:if test="${! empty letter.l_files }">

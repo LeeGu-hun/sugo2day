@@ -77,7 +77,14 @@
 		});
 	});
 </script>
-
+<style>
+#btn-nclick:hover {
+	outline: 0;
+	color: #fff;
+	background-color: #000;
+	border-color: #000;
+}
+</style>
 </head>
 <body>
 	<!-- 본문 상단 공통 고정 메뉴 -->
@@ -159,16 +166,18 @@
 				<hr>
 
 				<div class="body-footer">
-					<!-- option 부분 db에서 값(q_title) 가져오기 -->
 					<div id="qlist-space">
-						<select id="select-QList" style="width: 300px;">
+						<button id="btn-nclick" class="btn btn-default btn-xs disabled">퀘스트 관련글</button> 
+						<select id="select-QList" style="width: 250px;">
 							<option value="X" selected="selected">선택하세요</option>
+							<c:if test="${!empty quests}">
 							<c:forEach var="letter" items="${letters }">
 								<c:if test="${letter.l_questcate != null}">
-									<option value="${letter.l_num }">${letter.q_title }</option>
+									<option value="${letter.l_num }">${letter.l_questcate } / ${letter.l_regdate }</option>
 								</c:if>
 							</c:forEach>
-						</select> <span style="padding-right: 70px;"></span>
+							</c:if>
+						</select> <span style="padding-right: 40px;"></span>
 						<button class="btn btn-default btn-xs" type="button"
 							onclick="showN()">일반글 보기</button>
 						<button class="btn btn-default btn-xs" type="button"

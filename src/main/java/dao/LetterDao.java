@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.annotation.Transactional;
 
-import bean.JoinBean;
 import bean.LetterBean;
 import bean.LetterWriteBean;
 import bean.QuestBean;
@@ -37,53 +36,12 @@ public class LetterDao {
 					rs.getString("l_writer"),
 					rs.getString("l_content"),
 					rs.getString("l_files"), 
-					rs.getDate("l_regdate"),
+					rs.getString("l_regdate"),
 					rs.getString("l_isquest"),
 					rs.getString("l_isprivate"),
 					rs.getString("l_questcate")
 					);
 			return letter;
-		}
-	};
-	
-	// QuestRowMapper
-	private RowMapper<QuestBean> QuestRowMapper = new RowMapper<QuestBean>() {
-		@Override
-		public QuestBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-			QuestBean quest = new QuestBean(
-					rs.getInt("q_num"),
-					rs.getString("q_title"),
-					rs.getString("q_descript"),
-					rs.getDate("q_startdate"),
-					rs.getDate("q_enddate"),
-					rs.getString("q_isprivate"),
-					rs.getString("q_writer"));
-			return quest;
-		}
-	};
-	
-	
-	// JoinRowMapper
-	private RowMapper<JoinBean> JoinRowMapper = new RowMapper<JoinBean>() {
-		@Override
-		public JoinBean mapRow(ResultSet rs, int rowNum) throws SQLException {
-			JoinBean join = new JoinBean(
-					rs.getInt("l_num"),
-					rs.getString("l_writer"),
-					rs.getString("l_content"),
-					rs.getString("l_files"), 
-					rs.getDate("l_regdate"),
-					rs.getString("l_isquest"),
-					rs.getString("l_isprivate"),
-					rs.getString("l_questcate"),
-					rs.getInt("q_num"),
-					rs.getString("q_title"),
-					rs.getString("q_descript"),
-					rs.getDate("q_startdate"),
-					rs.getDate("q_enddate"),
-					rs.getString("q_isprivate"),
-					rs.getString("q_writer"));
-			return join;
 		}
 	};
 	
@@ -142,26 +100,30 @@ public class LetterDao {
 	
 		
 	// 전체 글 보기
-	public List<JoinBean> selectAll(String writer) {
-		List<JoinBean> results = jdbcTemplate.query(
-				"select * from letter, quest where letter.l_writer = quest.q_writer and letter.l_writer = ? order by letter.l_num desc ",
-					JoinRowMapper, writer);
+	public List<LetterBean> selectAll(String writer) {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter where l_writer = ? order by l_num desc ",
+					LetterRowMapper, writer);
 		return results;	
 	}
 	
 	// 퀘스트 글만 보기
-	public List<JoinBean> selectQuest(String writer) {
-		List<JoinBean> results = jdbcTemplate.query(
-				"select * from letter lt, quest qt where lt.l_writer = qt.q_writer "
-				+ "and lt.l_writer = ? and lt.l_isquest = 'Y' order by lt.l_num desc ", 
-					JoinRowMapper, writer);
+	public List<LetterBean> selectQuest(String writer) {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter "
+				+ "where l_writer = ? and l_isquest = 'Y' order by l_num desc ", 
+					LetterRowMapper, writer);
 		return results;
 	}
 	
 	// 일반글만 보기
 	public List<LetterBean> selectNormal(String writer) {
 		List<LetterBean> results = jdbcTemplate.query(
-				"select * from letter where l_writer = ? and l_isquest = 'N' order by l_num desc ", 
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter "
+				+ "where l_writer = ? and l_isquest = 'N' order by l_num desc ", 
 					LetterRowMapper, writer);
 		return results;
 	}
@@ -173,12 +135,13 @@ public class LetterDao {
 	}
 	
 	// Select 박스 선택될 때마다 Q-List 가져오기
-	public List<JoinBean> changeQList(Integer num, String title, String writer) {
-		List<JoinBean> results = jdbcTemplate.query(
-				"select * from letter lt, quest qt where lt.l_writer = qt.q_writer "
-				+ "and lt.l_writer = ? and qt.q_title = ? and lt.l_num = ? "
-				+ "order by lt.l_num desc ", 
-						JoinRowMapper, writer, title, num);
+	public List<LetterBean> changeQList(Integer num, String title, String writer) {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter "
+				+ "where l_writer = ? and l_questcate = ? and l_num = ? "
+				+ "order by l_num desc ", 
+						LetterRowMapper, writer, title, num);
 		return results;
 	}
 	

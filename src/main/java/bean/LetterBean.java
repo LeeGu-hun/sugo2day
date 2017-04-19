@@ -7,7 +7,7 @@ public class LetterBean {
 	private String l_writer;
 	private String l_content;
 	private String l_files;
-	private Date l_regdate;
+	private String l_regdate;
 	private String l_isquest;
 	private String l_isprivate;
 	private String l_questcate;
@@ -17,7 +17,7 @@ public class LetterBean {
 		super();
 	}
 		
-	public LetterBean(Integer l_num, String l_writer, String l_content, String l_files, Date l_regdate,
+	public LetterBean(Integer l_num, String l_writer, String l_content, String l_files, String l_regdate,
 			String l_isquest, String l_isprivate, String l_questcate) {
 		super();
 		this.l_num = l_num;
@@ -63,11 +63,11 @@ public class LetterBean {
 		this.l_files = l_files;
 	}
 
-	public Date getL_regdate() {
+	public String getL_regdate() {
 		return l_regdate;
 	}
 
-	public void setL_regdate(Date l_regdate) {
+	public void setL_regdate(String l_regdate) {
 		this.l_regdate = l_regdate;
 	}
 

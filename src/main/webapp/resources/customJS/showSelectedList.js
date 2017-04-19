@@ -15,10 +15,13 @@ var isEmpty = function(value) {
 /* Select option Get */
 $(function() {
 	$('#select-QList').change(function() {
+		var originString = $("#select-QList option:selected").text();
+		var splitString =  originString.split('/');
+		
 		var selItemN = parseInt($("#select-QList option:selected").val());	// l_num
-		var selItemT = $("#select-QList option:selected").text();	// q_title	 	
+		var selItemT = splitString[0].trim();	// l_questcate
 		console.log(selItemN + " = l_num");
-		console.log(selItemT + " = q_title");
+		console.log(selItemT + " = l_questcate");
 		
 		if(selItemN != "X") {
 			showSelectedList(selItemN, selItemT);
@@ -49,13 +52,8 @@ function showSelectedList(selItemN, selItemT) {
 	    		html += '<div class="list_container">';
 	    		html += '<div>';
 	    		html += '<div class="pull-left">';
-	    		html +=	'<h4 class="lead" style="padding-left: 10px;">Quest : ' + jsonResult[i].q_title + '</h4>';
-	    		html += '</div>';
-	    		html += '<div class="pull-right">';
-	    		html += '<div class="list_title2">';
-	    		html += '<h4 class="lead">'+ jsonResult[i].l_regdate +'</h4>';
-	    		html += '</div>';
-	    		html += '</div>';
+	    		html +=	'<h4 class="lead" style="padding-left: 10px;">Quest : ' + jsonResult[i].l_questcate + '</h4>';
+	    		html += '</div>';	    		
 	    		html += '</div>';
 	    		var splitData = '' + jsonResult[i].l_files + ''; 
 	    		var splitImagePath =  splitData.split('.');
@@ -63,6 +61,8 @@ function showSelectedList(selItemN, selItemT) {
 	    		if(!isEmpty(jsonResult[i].l_files)) {
 	    			if (splitImagePath[1] != 'jpg' && splitImagePath[1] != 'gif' && splitImagePath[1] != 'png') {	
 	 	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
+	 	    			html += '<br>';
+		    			html += '<br>';
 	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	 	    			html += '</div>';
 	    			} else if(!isEmpty(jsonResult[i].l_files)){
@@ -72,7 +72,9 @@ function showSelectedList(selItemN, selItemT) {
 	    			}	
 	    		} else if (isEmpty(jsonResult[i].l_files)) {
 	    			html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
-	    			html += '<h5>등록된 사진이 없거나 잘못된 포맷입니다.</h5>';
+	    			html += '<br>';
+	    			html += '<br>';
+	    			html += '<h5>등록된 사진이 없습니다</h5>';
 	    			html += '</div>';
 	    		} 
 	    		
