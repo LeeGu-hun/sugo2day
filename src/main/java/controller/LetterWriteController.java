@@ -89,7 +89,7 @@ public class LetterWriteController {
 			limitD = formatter.parse(limit);
 			currD = formatter.parse(dTime);
 		} catch (ParseException e) {
-			System.out.println("Pare Error !!! = " + e);
+			System.out.println("Parse Error !!! = " + e);
 		}
 		
 		int compare = limitD.compareTo(currD);

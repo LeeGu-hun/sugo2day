@@ -9,7 +9,6 @@
 	
 	<fieldset>		
 		<!-- 퀘스트 카테고리 -->
-		<!-- option 값을 db에서 가져와서 forEach로 뿌려주는게 가장 좋지만 보류 -->
 		<c:if test="${!empty quests}">
 		<div id="quest-cate">
 			<div id="qtype-space">
@@ -18,17 +17,16 @@
 				<label for="qsel">Quest</label>
 				
 				<div id="qlist-space" class="pull-right hidden">
-					<select name="l_questcate" id="qlist" style="width: 300px;" required="required">
+					<select name="l_questcate" id="qlist" style="width: 350px;" required="required">
 							<c:forEach var="quest" items="${quests }">
 									<option value="${quest.q_title }">
 									${quest.q_title } // 기간: ${quest.q_startdate } ~ ${quest.q_enddate }</option>
 							</c:forEach>
-						
-					</select>
+					</select>					
 				</div>			
 			</div>				
 		</div>
-		</c:if>	
+		</c:if>			
 		
 		<!-- 공개여부는 숨기기 // 기본값 : 공개글 -->
 		<div class="show">	
@@ -39,6 +37,10 @@
 				<input type="radio" name="l_isprivate" id="l_isprivate_n" value="N">
 				<label for="l_isprivate_n"> 비공개글</label>
 			</div>
+			<div id="warn-msg-div"class="hidden">				
+				<span id="warn-msg" class="label label-danger label-large"
+					style="padding-left: 10px;"></span>
+			</div>					
 		</div>		
 		
 		<!-- 글쓴이도 숨기기 -->
@@ -74,7 +76,8 @@
 		    	</div>
 		    </div>	
 		   	<div class="pull-right">
-		   		<button class="btn btn-default btn-warning" type="submit" style="height: 35px;">등록</button>
+		   		<button id="letter-reg-btn" class="btn btn-default btn-warning"
+		   			type="submit" style="height: 35px;">등록</button>
 		   	</div>
 	    </div>
 	    <div class="clearfix"></div>   

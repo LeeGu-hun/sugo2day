@@ -42,6 +42,7 @@
 <script src="<%=cp%>/resources/customJS/imageUp.js"></script>
 <script src="<%=cp%>/resources/customJS/questToggle.js"></script>
 <script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
+<script src="<%=cp%>/resources/customJS/compareDate.js"></script>
 
 <script>
 	$(function() {
@@ -167,7 +168,7 @@
 
 				<div class="body-footer">
 					<div id="qlist-space">
-						<button id="btn-nclick" class="btn btn-default btn-xs disabled">퀘스트 관련글</button> 
+						<button id="btn-nclick" class="btn btn-default btn-xs" disabled="disabled">퀘스트 관련글</button> 
 						<select id="select-QList" style="width: 250px;">
 							<option value="X" selected="selected">선택하세요</option>
 							<c:if test="${!empty quests}">
