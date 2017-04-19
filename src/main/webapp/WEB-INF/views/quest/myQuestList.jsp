@@ -52,13 +52,6 @@
 <script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
 
 <script>
-	$(function() {
-		var position = $('.body-footer').offset();
-		$('html, body').animate({
-			scrollTop : position.top-200
-		}, 100); 
-	});
-
 	function goBack() {
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
@@ -67,23 +60,6 @@
 		location.href = "<c:url value='/letter/letterManage' />";
 	}
 
-	function showN() {
-		location.href = "<c:url value='/letter/myLetterN' />";
-		$("#fake-focus").focus();
-	}
-
-	function showA() {
-		location.href = "<c:url value='/letter/myLetter' />";
-	}
-
-	$(function() {
-		$('#goLetterW').click(function() {
-			var position = $('.body-content').offset();
-			$('html,body').animate({
-				scrollTop : position.top-200
-			}, 100);
-		});
-	});
 </script>
 
 </head>
@@ -167,21 +143,7 @@
 				<hr>
 
 				<div class="body-footer">
-					<!-- 검색 폼 들어갈 곳 -->
-					<div id="qlist-space">
-						<select id="select-QList" style="width: 300px;">
-							<option value="1" selected="selected">선택하세요</option>
-							<option value="걷기">30분 걷기</option>
-							<option value="줄넘기">줄넘기 100개</option>
-							<option value="달리기">1km 달리기</option>
-						</select> <span style="padding-right: 70px;"></span>
-						<button class="btn btn-default btn-xs" type="button"
-							onclick="showN()">일반글 보기</button>
-						<button class="btn btn-default btn-xs" type="button"
-							onclick="showA()">전체글 보기</button>
-						<button id="goLetterW" class="btn btn-default btn-xs"
-							type="button">글 작성</button>
-					</div>
+					
 				</div>
 
 				<div class="body-list">
@@ -189,8 +151,6 @@
 					<div id="all-list" class="show">
 					<%@include file="questAllList.jsp"%>
 					</div>
-					<!-- 검색 셀렉트가 될 때 보여질 글 페이지 -->
-					<div id="qselected-list" class="hidden"></div>
 				</div>
 			</div>
 		</div>

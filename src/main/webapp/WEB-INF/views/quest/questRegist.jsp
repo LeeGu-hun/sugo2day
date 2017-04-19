@@ -4,7 +4,7 @@
 
 <div class="wrap_questReg" style="width: 500px;">
 <form:form commandName="quest" class="form-horizontal"
-	enctype="multipart/form-data" action="questWrite" method="post">
+	action="questWrite" method="post">
 	
 	<fieldset>	
 		<div class="input-group" style="width: 200px;">
@@ -14,10 +14,10 @@
 		<br/>
 
 		<!-- 글쓴이 숨기기 -->
-		<div class="show">
+		<div class="hidden">
 			<div class="input-group" style="width: 200px;">
-				<form:hidden path="q_writer" value="${sessionScope.authInfo.name }"
-					class="form-control" readonly="true" />
+				<input type="hidden" name="q_writer" value="${sessionScope.authInfo.name }"
+					class="form-control" readonly />
 			</div>
 		</div>
 			
@@ -28,13 +28,13 @@
 		</div>
 		<script type="text/javascript">
 			$(function() {
-				$('#content').val().replace(/\n/g, "<br>");
+				$('#q_descript').val().replace(/\n/g, "<br>");
 			});	
 		</script>
 		
 		
 		
-		<!-- 공개여부는 숨기기 // 기본값 : 공개글 -->
+		<!-- 공개여부 // 기본값 : 공개글 -->
 		<div class="show">	
 			<div class="input-group" style="width: 200px;">
 				<input type="radio" name="q_isprivate" id="q_isprivate" value="공개글" checked="checked">
@@ -87,6 +87,7 @@
 			</div>	
 		</div>
 		
+		<!-- Ajax 처리 필요.. 18 -->
 		<div style="width: 550px;">
 			<select id="q_maincate" name="q_maincate" style="width: 150px;">
 				<option selected="selected">대분류</option>
@@ -99,10 +100,7 @@
 				<option value=""></option>
 				<option value=""></option>
 			</select>
-		</div>		
-		
-			<input type="text" id="q_subcate" name="q_subcate"
-				class="form-control"  placeholder="소분류"/>
+		</div>				
 	
 	
 		<div id="letter-bottom" class="pull-right">

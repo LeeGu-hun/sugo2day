@@ -13,22 +13,19 @@
 </c:if>
 
 <c:if test="${! empty quests}">
-
 <!-- 게시글을 주우우욱 보여주기 -->
 	<c:forEach var="quest" items="${quests}">
 		<div class="list_wrapper">
 			<div class="list_container">
-				<div>
-					<div class="pull-right">
-						<div class="list_title2">
-							<h4 class="lead">${quest.q_regdate }</h4>
-						</div>
+				<div class="pull-left">
+					<div>
+						<h4 class="lead" style="padding-left: 10px;">Quest : ${quest.q_title }</h4>
 					</div>
 				</div>
 				<br>
 				<div style="max-width: 550px; margin-left:auto; margin-right: auto;" class="list_content">
 					<textarea class="lead" id="content" cols="52" rows="6" style="resize: none; overflow-y:scroll"
-						readonly="readonly">${quest.q_content }</textarea>
+						readonly="readonly" >${quest.q_descript }</textarea>
 					<script type="text/javascript">
 					$(function() {
 						$('#content').val().replace(/\n/g, "<br>");
@@ -41,24 +38,30 @@
 					<h4 class="lead">${quest.q_startdate } 부터 ${quest.q_enddate } 까지</h4>
 				</div>		
 				</c:if>
-				<c:if test="${empty quest.q_startdate }">
-				<div class="list_date">					
-				</div>		
-				</c:if>
-			
-				<div class="pull-left">
-					<div class="user_id">
+				
+				<div class="row" style="margin-left: 0; margin-right: 0; padding-left: 15px;">
+					<div class="pull-left" style="max-width: 300px;">
 						<h3 class="lead">by <b>${quest.q_writer }</b></h3>
 					</div>
-				</div>
-			
-				<!-- 추후 B페이지에서 사용 
-				<div class="pull-right">
-					<div class="user_write">
-						여기에 라디오 버튼으로 공개/비공개 설정
+					<div class="input-group pull-right" role="group" style="width: 300px; height: 35px;">
+						<div class="col-lg-5" style="padding: 0; max-width: 125px;">		
+							<div class="input-group">	
+								<span class="input-group-addon">
+									<input type="radio" name="stat" value="공개글" onclick="changeShow(${quest.q_num }, '공개글')">
+								</span>
+									<input type="text" class="form-control" placeholder="공개글" readonly style="width: 88px;">
+							</div>
+						</div>
+						<div class="col-lg-5" style="padding: 0; max-width: 125px;">	
+							<div class="input-group">	
+								<span class="input-group-addon">
+									<input type="radio" name="stat" value="비공개" onclick="changeShow(${quest.q_num }, '비공개')">
+								</span>
+									<input type="text" class="form-control" placeholder="비공개" readonly style="width: 88px;">
+							</div>
+						</div>
 					</div>
 				</div>
-				 -->
 			</div>
 		</div>
 	<div class="fake-size">

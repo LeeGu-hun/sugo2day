@@ -54,17 +54,23 @@
 		<property name="letterDao" ref="letterDao" />
 		<property name="questDao" ref="questDao" />
 	</bean>
-	
-	<bean class="controller.LetterManageController">
-		<property name="letterDao" ref="letterDao" />
-	</bean>
-	
+		
 	<bean class="controller.ApiLetterManageController">
 		<property name="letterDao" ref="letterDao" />
 	</bean>
 	
 	<bean class="controller.ApiLetterQShowController">
 		<property name="letterDao" ref="letterDao" />
+	</bean>
+	
+	<!-- Quest Manage Controller -->
+	
+	<bean class="controller.QuestController">
+		<property name="questDao" ref="questDao" />
+	</bean>
+	
+	<bean class="controller.QuestWriteController">
+		<property name="questDao" ref="questDao" />
 	</bean>
 	
 </beans>	
