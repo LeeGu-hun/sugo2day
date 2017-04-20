@@ -1,7 +1,6 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,18 +15,15 @@ public class ApiQuestPublicShowController {
 		this.questDao = questDao;
 	}
 	
+	
 	@RequestMapping(value="quest/questChangePriv", method=RequestMethod.POST)
 	public String questChangePublic(
 			@RequestParam(value="num") int num,
-			@RequestParam(value="isprivate") String isprivate, Model model) {
+			@RequestParam(value="isprivate") String isprivate) {
 		
-		try {
-			questDao.changePublic(num, isprivate);
-			return "redirect:/quest/questManage";
-		} catch (Exception e) {
-			System.out.println("Error! = " + e);
-			return "redirect:/main";
-		}
+		questDao.changePublic(num, isprivate);
+		return "redirect:/quest/questManage";
+		
 	}
 	
 

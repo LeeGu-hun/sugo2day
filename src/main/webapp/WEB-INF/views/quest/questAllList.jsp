@@ -9,7 +9,7 @@
 <div class="fake-size-top">
 	<p>&nbsp;</p>
 </div>
-	<h3>작성된 글이 없습니다</h3>
+	<h3>등록된 퀘스트가 없습니다</h3>
 </c:if>
 
 <c:if test="${! empty quests}">
@@ -47,7 +47,7 @@
 						<div class="col-lg-5" style="padding: 0; max-width: 125px;">		
 							<div class="input-group">	
 								<span class="input-group-addon">
-									<input type="radio" name="stat" value="Y" onclick="changeShow(${quest.q_num }, '공개')">
+									<input type="radio" name="stat" value="Y" onclick="changeShow(${quest.q_num }, 'Y')">
 								</span>
 									<input type="text" class="form-control" placeholder="공개글" readonly style="width: 88px;">
 							</div>
@@ -55,13 +55,21 @@
 						<div class="col-lg-5" style="padding: 0; max-width: 125px;">	
 							<div class="input-group">	
 								<span class="input-group-addon">
-									<input type="radio" name="stat" value="N" onclick="changeShow(${quest.q_num }, '비공개')">
+									<input type="radio" name="stat" value="N" onclick="changeShow(${quest.q_num }, 'N')">
 								</span>
 									<input type="text" class="form-control" placeholder="비공개" readonly style="width: 88px;">
 							</div>
 						</div>
 					</div>
 				</div>
+				
+				<div class="pull-right" style="margin-top:10px; max-width: 300px;">
+					<input type="checkbox" name="q-del-chk" id="${quest.q_num }">
+					<label for="${quest.q_num }" class="label label-danger label-large" style="margin-right: 5px;">이 퀘스트를 삭제합니다</label>
+							
+					<button id="q-del-btn" type="button" class="btn btn-xs btn-default"
+						onclick="questDelete(${quest.q_num}, '${quest.q_isprivate }', '${quest.q_title }')">삭제</button>
+				</div>	
 			</div>
 		</div>
 	<div class="fake-size">

@@ -72,5 +72,9 @@
 	<bean class="controller.ApiQuestPublicShowController">
 		<property name="questDao" ref="questDao" />
 	</bean>
+	
+	<bean class="controller.ApiQuestDeleteController">
+		<property name="questDao" ref="questDao" />
+	</bean>
 </beans>	
 	

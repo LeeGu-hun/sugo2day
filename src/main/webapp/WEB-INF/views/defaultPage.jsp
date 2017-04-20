@@ -87,8 +87,8 @@
 							<ul class="nav navbar-nav navbar-right">
 								<!-- 메뉴 -->
 								<li class="dropdwon"><a
-									href="<c:url value="/letter/myLetter" />">MyPage </a></li>
-								<li class="dropdown"><a href="<c:url value='/quest/questManage' />">Quest Manage</a></li>	
+									href="<c:url value="/letter/myLetter" />">My Page </a></li>
+								<li class="dropdown"><a href="<c:url value='/quest/questManage' />">My Quest</a></li>	
 							</ul>
 						</div>
 						<!--/.nav-collapse -->

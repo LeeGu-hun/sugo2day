@@ -48,16 +48,41 @@
 <!-- Custom Script -->
 <script src="<%=cp%>/resources/customJS/changeQPublicStatus.js"></script>
 <script src="<%=cp%>/resources/customJS/compareTitle.js"></script>
+<script src="<%=cp%>/resources/customJS/questDelete.js"></script>
 
 <script>
-	function goBack() {
-		location.href = "<c:url value='/letter/myLetter' />";
-	}
+$(function() {
+	var position = $('.body-footer').offset();
+	$('html, body').animate({
+		scrollTop : position.top - 200
+	}, 100);
+});
 
-	function goQM() {
-		location.href = "<c:url value='/quest/questManage' />";
-	}
 
+function goBack() {
+	location.href = "<c:url value='/letter/myLetter' />";
+}
+
+function showA() {
+	location.href = "<c:url value='/quest/questManage'/>"
+}
+
+function showS() {
+	location.href = "<c:url value='/quest/myQuestS'/>";
+}
+
+function showO() {
+	location.href = "<c:url value='/quest/myQuestO'/>";
+}
+
+$(function() {
+	$('#goQuestW').click(function() {
+		var position = $('.body-content').offset();
+		$('html, body').animate({
+			scrollTop : position.top - 200
+		}, 100);
+	});
+});	
 </script>
 
 </head>
@@ -112,9 +137,9 @@
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">     
 							<li class="dropdwon"><a
-								href="<c:url value="/letter/myLetter" />">MyPage </a></li>
+								href="<c:url value="/letter/myLetter" />">My Page </a></li>
 							<li class="dropdown"><a
-								href="<c:url value='/quest/questManage' />">Quest Manage</a></li>
+								href="<c:url value='/quest/questManage' />">My Quest</a></li>
 						</ul>
 					</div>
 				</div>
@@ -138,18 +163,21 @@
 					</div>
 				</div>
 
-				<h3>퀘스트 글 목록</h3>
-				<hr>
-
 				<div class="body-footer">
-					
+					<h3>퀘스트 글 목록</h3>
+					<span style="margin-left: 10px;"></span>
+					<button class="btn btn-default btn-xs" type="button" onclick="showA()">전체 퀘스트 보기</button>
+					<button class="btn btn-default btn-xs" type="button" onclick="showO()">공개 퀘스트 보기</button>
+					<button class="btn btn-default btn-xs" type="button" onclick="showS()">비밀 퀘스트 보기</button>
+					<button id="goQuestW" class="btn btn-default btn-xs" type="button">퀘스트 작성</button>
+					<hr>
 				</div>
 
 				<div class="body-list">
 					<!-- 기본적으로 보여줄 글 목록 리스트 -->
 					<div id="all-list" class="show">
-					<%@include file="questAllList.jsp"%>
-					</div>
+						<%@include file="questAllList.jsp"%>
+					</div>				
 				</div>
 			</div>
 		</div>

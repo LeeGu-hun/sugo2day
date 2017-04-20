@@ -71,11 +71,33 @@ private JdbcTemplate jdbcTemplate;
 		return results;
 	}
 	
+	// 공개 퀘스트 보기
+	public List<QuestBean> selectOpenQ(String writer) {
+		List<QuestBean> results = jdbcTemplate.query(
+				"select * from (select * from quest order by q_num desc) "
+				+ "where q_writer = ? and q_isprivate = 'Y' ", QuestRowMapper, writer);
+		return results;
+	}
+	
+	// 비공개 퀘스트 보기
+	public List<QuestBean> selectQuestS(String writer) {
+		List<QuestBean> results = jdbcTemplate.query(
+				"select * from (select * from quest order by q_num desc) "
+				+ "where q_writer = ? and q_isprivate = 'N' ", QuestRowMapper, writer);
+		return results;
+	}
+	
 			
-	// 공개/비공개 설정하기
+	// 공개, 비공개 설정하기
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(
 				"update quest set q_isprivate = ? where q_num = ? ", isprivate, num);
 	}	
+	
+	// 퀘스트 삭제하기
+	public void deleteQ(String title, String writer) {
+		jdbcTemplate.update(
+				"delete from quest where q_title = ? and q_writer = ? ", title, writer);
+	}
 	
 }

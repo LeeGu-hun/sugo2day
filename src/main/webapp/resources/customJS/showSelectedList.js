@@ -60,6 +60,8 @@ function showSelectedList(selItemT) {
 	 	    			html += '<h5>허용되는 사진 포맷은 jpg, gif, png 입니다.</h5>'
 	 	    			html += '</div>';
 	    			} else if(!isEmpty(jsonResult[i].l_files)){
+	    				html += '<br>';
+	    				html += '<br>';
 	    				html += '<div style="max-width: 550px; margin-left: auto; margin-right: auto;">';
 	    				html += "<img class='img-responsive' src='http://localhost:8080/sugo2day/uploads/" + jsonResult[i].l_files + "'>";
 	    				html += '</div>';

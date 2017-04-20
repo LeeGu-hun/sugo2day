@@ -58,7 +58,7 @@
 		</div>
 		<script type="text/javascript">
 			$(function() {
-				$('#q_content').val().replace(/\n/g, "<br>");
+				$('#l_content').val().replace(/\n/g, "<br>");
 			});	
 		</script>
 		

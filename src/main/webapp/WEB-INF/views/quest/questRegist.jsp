@@ -29,9 +29,8 @@
 		<div id="warn-msg-div"class="hidden">				
 			<span id="warn-msg" class="label label-danger label-large"
 				style="padding-left: 10px;"></span>
-		</div>		
-
-		<br>
+		</div>
+			
 		<!-- 글쓴이 숨기기 -->
 		<div class="hidden">
 			<div class="input-group" style="width: 200px;">
@@ -41,7 +40,7 @@
 		</div>
 			
 		<!-- 본문 내용 -->		
-		<div class="content-area">
+		<div class="content-area" style="margin-top: 10px;">
 			<form:textarea path="q_descript" id="q_descript" cols="80" rows="8" style="resize: none; overflow-y:scroll;"
 					placeholder="어떠한 내용의 퀘스트인지 설명해" required="true" />
 		</div>

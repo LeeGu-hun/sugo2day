@@ -39,4 +39,39 @@ public class QuestController {
 		return "quest/myQuestList";
 	}
 	
+	
+	// 공개글 보기
+	@RequestMapping(value="quest/myQuestO", method=RequestMethod.GET)
+	public String selectQO(QuestWriteBean quest, Model model, HttpSession session){
+		QuestBean questC = new QuestBean();
+		
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		questC.setQ_writer(authInfo.getName());
+		
+		List<QuestBean> quests = questDao.selectOpenQ(questC.getQ_writer());
+		
+		model.addAttribute("quests", quests);
+		model.addAttribute("quest", quest);
+		
+		return "quest/myQuestList";
+	}
+	
+	
+	
+	//비공개 보기
+	@RequestMapping(value="quest/myQuestS", method=RequestMethod.GET)
+	public String selectQS(QuestWriteBean quest, Model model, HttpSession session){
+		QuestBean questD = new QuestBean();
+		
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		questD.setQ_writer(authInfo.getName());
+		
+		List<QuestBean> quests = questDao.selectQuestS(questD.getQ_writer());
+		
+		model.addAttribute("quests", quests);
+		model.addAttribute("quest", quest);
+		
+		return "quest/myQuestList";
+	}
+	
 }
