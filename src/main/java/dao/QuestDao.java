@@ -66,7 +66,7 @@ private JdbcTemplate jdbcTemplate;
 	// 전체 퀘스트 보기(Letter에서 사용)
 	public List<QuestBean> selectAllQ(String writer) {
 		List<QuestBean> results = jdbcTemplate.query(
-				"select * from (select * from quest order by q_num desc) "
+				"select * from (select * from quest order by q_enddate desc, q_num desc) "
 				+ "where q_writer = ? " , QuestRowMapper, writer);
 		return results;
 	}

@@ -47,6 +47,7 @@
 
 <!-- Custom Script -->
 <script src="<%=cp%>/resources/customJS/changeQPublicStatus.js"></script>
+<script src="<%=cp%>/resources/customJS/compareTitle.js"></script>
 
 <script>
 	function goBack() {
@@ -122,12 +123,13 @@
 	</div>
 
 	<!-- 본문 내용 -->
+
 	<div id="page-wrapper">
 		<div class="body-wrapper">
-			<div class="body-header">
+			<div class="body-header">			
+				<h3>퀘스트 등록</h3>
+				<hr>
 			</div>
-			<h3>퀘스트 등록</h3>
-			<hr>
 
 				<div class="body-content">
 					<div id="letter-reg">

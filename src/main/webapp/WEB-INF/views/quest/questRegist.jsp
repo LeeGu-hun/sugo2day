@@ -4,16 +4,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="wrap_questReg" style="width: 500px;">
+
 <form:form commandName="quest" class="form-horizontal"
 	action="questWrite" method="post">
 	
 	<fieldset>	
+		<!-- 퀘스트 제목 -->
+		<div class="hidden">
+			<c:if test="${empty quests }">
+				<h6>quests 못가져왔다</h6>
+			</c:if>
+			<c:if test="${!empty quests }">
+				<h6>quests 가져왔다</h6>
+				<c:forEach var="fquest" items="${quests }">
+					<input type="checkbox" value="${fquest.q_title }" class="fCheckSel">
+				</c:forEach>
+			</c:if>
+		</div>
 		<div class="input-group" style="width: 200px;">
-				<input type="text" id="q_title" name="q_title"
-					class="form-control"  placeholder="퀘스트 타이틀을 입력하세요"/>
-			</div>
-		<br/>
+			<input type="text" id="q_title" name="q_title"
+				class="form-control"  placeholder="퀘스트 타이틀을 입력하세요"/>
+		</div>		
+			
+		<div id="warn-msg-div"class="hidden">				
+			<span id="warn-msg" class="label label-danger label-large"
+				style="padding-left: 10px;"></span>
+		</div>		
 
+		<br>
 		<!-- 글쓴이 숨기기 -->
 		<div class="hidden">
 			<div class="input-group" style="width: 200px;">
@@ -93,7 +111,7 @@
 		<div class="clearfix"></div>
 		
 		   	<div class="pull-right">
-		   		<button class="btn btn-default btn-warning" type="submit" style="height: 35px;">등록</button>
+		   		<button id="reg-q-btn" class="btn btn-default btn-warning" type="submit" style="height: 35px;">등록</button>
 		   	</div>
 	    </div>
 	    <div class="clearfix"></div>   

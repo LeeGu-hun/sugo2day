@@ -32,7 +32,7 @@ public class QuestController {
 		
 		List<QuestBean> quests = questDao.selectAllQ(questB.getQ_writer());
 		
-		
+			
 		model.addAttribute("quests", quests);
 		model.addAttribute("quest", quest);
 		
