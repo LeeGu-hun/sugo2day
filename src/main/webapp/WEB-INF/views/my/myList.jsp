@@ -43,6 +43,8 @@
 <script src="<%=cp%>/resources/customJS/questToggle.js"></script>
 <script src="<%=cp%>/resources/customJS/showSelectedList.js"></script>
 <script src="<%=cp%>/resources/customJS/compareDate.js"></script>
+<script src="<%=cp%>/resources/customJS/changeLPublicStatus.js"></script>
+<script src="<%=cp%>/resources/customJS/letterDelete.js"></script>
 
 <script>
 	$(function() {
@@ -56,13 +58,23 @@
 		location.href = "<c:url value='/letter/myLetter' />";
 	}
 
-	function goQM() {
-		location.href = "<c:url value='/quest/questManage' />";
+	function showM() {
+		$("#all-list").removeClass("show");
+		$("#all-list").addClass("hidden");
+		$("#qselected-list").removeClass("show");
+		$("#qselected-list").addClass("hidden");
+		
+		$("#letter-manage").removeClass("hidden");
+		$("#letter-manage").addClass("show");
+		
+		var position = $('.body-list').offset();
+		$('html, body').animate({
+			scrollTop: position.top-200
+		}, 100);
 	}
 
 	function showN() {
 		location.href = "<c:url value='/letter/myLetterN' />";
-		$("#fake-focus").focus();
 	}
 
 	function showA() {
@@ -72,7 +84,7 @@
 	$(function() {
 		$('#goLetterW').click(function() {
 			var position = $('.body-content').offset();
-			$('html,body').animate({
+			$('html, body').animate({
 				scrollTop : position.top-200
 			}, 100);
 		});
@@ -168,25 +180,27 @@
 
 				<div class="body-footer">
 					<div id="qlist-space">
-						<button id="btn-nclick" class="btn btn-default btn-xs" disabled="disabled">퀘스트 관련글</button> 
+						<span style="margin-left: 10px;"></span>
 						<select id="select-QList" style="width: 250px;">
-							<option value="X" selected="selected">선택하세요</option>
+							<option value="X" selected="selected">퀘스트 관련 글 선택</option>
 							<c:if test="${!empty quests}">
 							<c:forEach var="quest" items="${quests }">
 									<option value="${quest.q_title }">${quest.q_title }</option>
 							</c:forEach>
 							</c:if>
 						</select><span style="padding-right: 40px;"></span>
-						<button class="btn btn-default btn-xs" type="button"
-							onclick="showN()">일반글 보기</button>
-						<button class="btn btn-default btn-xs" type="button"
-							onclick="showA()">전체글 보기</button>
-						<button id="goLetterW" class="btn btn-default btn-xs"
-							type="button">글 작성</button>
+						<button class="btn btn-default btn-xs" type="button" onclick="showN()">일반글 보기</button>
+						<button class="btn btn-default btn-xs" type="button" onclick="showA()">전체글 보기</button>
+						<button id="goLetterW" class="btn btn-default btn-xs" type="button">글 작성</button>
+						<button class="btn btn-default btn-xs" type="button" onclick="showM()">내 글 관리</button>
 					</div>
 				</div>
 
 				<div class="body-list">
+					<!-- 내 글 관리 페이지 -->
+					<div id="letter-manage" class="hidden">
+						<%@include file="letterManage.jsp" %>
+					</div>
 					<!-- 기본적으로 보여줄 글 목록 리스트 -->
 					<div id="all-list" class="show">
 						<%@include file="incAllList.jsp"%>

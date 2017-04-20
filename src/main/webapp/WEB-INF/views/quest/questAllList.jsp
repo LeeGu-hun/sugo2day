@@ -62,14 +62,14 @@
 						</div>
 					</div>
 				</div>
-				
-				<div class="pull-right" style="margin-top:10px; max-width: 300px;">
+				<!-- 일단 퀘스트 삭제는 안하는걸로 -->
+				<%-- <div class="pull-right" style="margin-top:10px; max-width: 300px;">
 					<input type="checkbox" name="q-del-chk" id="${quest.q_num }">
 					<label for="${quest.q_num }" class="label label-danger label-large" style="margin-right: 5px;">이 퀘스트를 삭제합니다</label>
 							
 					<button id="q-del-btn" type="button" class="btn btn-xs btn-default"
 						onclick="questDelete(${quest.q_num}, '${quest.q_isprivate }', '${quest.q_title }')">삭제</button>
-				</div>	
+				</div> --%>	
 			</div>
 		</div>
 	<div class="fake-size">

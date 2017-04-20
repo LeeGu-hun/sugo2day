@@ -33,6 +33,8 @@ function showSelectedList(selItemT) {
     	    	
     	$("#all-list").removeClass("show");
     	$("#all-list").addClass("hidden");
+    	$("#letter-manage").removeClass("show");
+    	$("#letter-manage").addClass("hidden");
     	
     	$("#qselected-list").removeClass("hidden");
     	$("#qselected-list").addClass("show");

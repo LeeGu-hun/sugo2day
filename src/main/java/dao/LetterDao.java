@@ -130,7 +130,7 @@ public class LetterDao {
 	// 공개글 설정하기
 	public void changePrivate(int num, String isprivate) {
 		jdbcTemplate.update(
-				"update letter set l_isprivate = ? where num = ? ", isprivate, num);		
+				"update letter set l_isprivate = ? where l_num = ? ", isprivate, num);		
 	}
 	
 	// Select 박스 선택될 때마다 Q-List 가져오기
@@ -144,11 +144,18 @@ public class LetterDao {
 		return results;
 	}	
 	
-	
+	// 퀘스트 기한 가져오기 (javascript로 글쓰는 단계에서 처리했기에 사용 안함)
 	public String getLimit(String questcate) {
 		String sql = "select to_char(q_enddate, 'YYYY-MM-DD') as q_enddate from quest where q_title = ? ";
 		String limit = jdbcTemplate.queryForObject(sql, String.class, questcate);
 		return limit;
+	}
+
+	// 게시글 삭제하기
+	public void deleteL(int num, String writer) {
+		jdbcTemplate.update(
+				"delete from letter where l_num = ? and l_writer = ? ", num, writer);
+		
 	}
 
 }

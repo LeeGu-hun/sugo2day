@@ -44,7 +44,7 @@
 		<property name="changePasswordService" ref="changePwdSvc" />
 	</bean>
 	
-	<!-- My Page Controller -->
+	<!-- Letter Controller -->
 	<bean class="controller.LetterController">
 		<property name="letterDao" ref="letterDao" />
 		<property name="questDao" ref="questDao" />
@@ -59,7 +59,16 @@
 		<property name="letterDao" ref="letterDao" />
 	</bean>
 	
-	<!-- Quest Manage Controller -->
+	<bean class="controller.ApiLetterPublicShowController">
+		<property name="letterDao" ref="letterDao" />
+	</bean>
+	
+	<bean class="controller.ApiLetterDeleteController">
+		<property name="letterDao" ref="letterDao" />
+		<property name="questDao" ref="questDao" />
+	</bean>
+	
+	<!-- Quest Controller -->
 	
 	<bean class="controller.QuestController">
 		<property name="questDao" ref="questDao" />
