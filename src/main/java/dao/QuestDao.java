@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -92,6 +93,13 @@ private JdbcTemplate jdbcTemplate;
 		List<QuestBean> results = jdbcTemplate.query(
 				"select * from (select * from quest order by q_num desc) "
 				+ "where q_isprivate = 'Y' ", QuestRowMapper);
+		return results;
+	}
+	
+	// l_questcate를 작성한 작성자 구하기
+	public List<Map<String, Object>> getlqcateWriter(String title) {
+		String sql = "select distinct q_writer from quest where q_isprivate = 'Y' and q_title = ? ";
+		List<Map<String,Object>> results = jdbcTemplate.queryForList(sql, title);
 		return results;
 	}
 	

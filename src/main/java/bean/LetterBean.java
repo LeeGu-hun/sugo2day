@@ -29,6 +29,13 @@ public class LetterBean {
 	}
 
 	
+	public LetterBean(String l_questcate) {
+		super();
+		this.l_questcate = l_questcate;
+	}
+
+	
+	
 	public Integer getL_num() {
 		return l_num;
 	}

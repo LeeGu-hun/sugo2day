@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -41,6 +42,14 @@ public class LetterDao {
 					rs.getString("l_isprivate"),
 					rs.getString("l_questcate")
 					);
+			return letter;
+		}
+	};
+	
+	private RowMapper<LetterBean> RowMapper = new RowMapper<LetterBean>() {
+		@Override
+		public LetterBean mapRow(ResultSet rs, int rowNum) throws SQLException {
+			LetterBean letter = new LetterBean(rs.getString("l_questcate"));
 			return letter;
 		}
 	};
@@ -174,5 +183,13 @@ public class LetterDao {
 		int count = jdbcTemplate.queryForObject(sql, Integer.class, questcate);
 		return count;
 	}
+	
+	// 퀘스트 관련 글에서 l_questcate (=q_title) 중복 없이 가져오기
+	public List<Map<String,Object>> getlqcate() {
+		String sql = "select distinct l_questcate from letter where l_isquest = 'Y' ";
+		List<Map<String,Object>> results = jdbcTemplate.queryForList(sql);
+		return results;
+	}
+	
 
 }
