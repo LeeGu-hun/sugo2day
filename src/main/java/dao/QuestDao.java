@@ -87,7 +87,15 @@ private JdbcTemplate jdbcTemplate;
 		return results;
 	}
 	
-			
+	// 공개된 전체 퀘스트 보기(for all user)
+	public List<QuestBean> selectQuestPublic() {
+		List<QuestBean> results = jdbcTemplate.query(
+				"select * from (select * from quest order by q_num desc) "
+				+ "where q_isprivate = 'Y' ", QuestRowMapper);
+		return results;
+	}
+	
+				
 	// 공개, 비공개 설정하기
 	public void changePublic(int num, String isprivate) {
 		jdbcTemplate.update(

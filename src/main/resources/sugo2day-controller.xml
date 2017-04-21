@@ -7,7 +7,6 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 		
 	<!-- Controller 구현 없이 View Page Mapping -->
-	<mvc:view-controller path="/main" view-name="defaultPage" />
 	<mvc:view-controller path="/login/**" view-name="login" />
 	
 	<!-- Bootstrap 사용을 위한 경로 Mapping -->	

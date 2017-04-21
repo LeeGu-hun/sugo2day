@@ -229,6 +229,12 @@ pre:after, pre:before {
 	overflow: hidden;
 }
 
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	DIVIDERS
 /*-----------------------------------------------------------------------------------*/

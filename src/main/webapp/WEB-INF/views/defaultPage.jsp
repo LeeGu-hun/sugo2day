@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 
 <%-- Context Path 경로를 String cp 로 정의--%>
 <%
@@ -114,13 +115,9 @@
 					</ol>
 					<!-- Carousel items -->
 					<div class="carousel-inner">
-
-
 						<div class="item active" id="carousel-slide-1">
 							<div class="carousel-overlay">
 								<div class="carousel-item-content">
-
-
 									<div class="container">
 										<div class="animated fadeInDown delay-1">
 											<h1>제발..</h1>
@@ -129,8 +126,6 @@
 											<p>여자친구가 태어나긴 했나요?</p>
 										</div>
 									</div>
-
-
 								</div>
 							</div>
 						</div>
@@ -175,51 +170,22 @@
 					</a>
 				</div>
 				<!--carousel slider-->
-
-				<div class="divide70"></div>
-
 				<div class="main-place">
-
 					<div class="sugo2day-logo">
-						<img class="img-responsive"
-							src="<%=cp%>/resources/images/Logo.png">
-					</div>
-
-					<div id="main-text" style="text-align: center;">
-						<br>
-
-						<div>
-							<hr>
-							<br>
-							<h2>Welcome</h2>
-						</div>
-						<p>수고했어, 오늘도는 이러쿵 저러쿵 해서 어쩌구저쩌구 스웩스웩</p>
-						<p>그렇기 때문 이러이러합니다. 그런데 말입니다.</p>
-						<p>성호 언제올껀데?</p>
-						<br>
+						<img class="img-responsive" src="<%=cp%>/resources/images/Logo.png">
 					</div>
 				</div>
-
-				<div class="main-content-1">
-					<div>
-						<img src="<%=cp%>/resources/images/use.png">
-					</div>
-				</div>
-
-
-				<div class="main-content-2" style="text-align: center;">
-					<br> <br>
-					<hr>
-					<br> <br>
-					<h1>상세 사용설명서가 들어갈 영역입니다.</h1>
-					<img
-						src="http://placehold.it/1000x600/FF0000/FFFFFF?text=상세 사용 설명서">
-					<br> <br> <br>
-				</div>
-
-
+				<!-- include 시킬 공간 -->
+				<%@include file="ctx/ctxMain.jsp"%>
+				
+				
 			</div>
 		</div>
+		
+		
+		
+		
+		
 		<footer id="footer">
 			<div class="container">
 

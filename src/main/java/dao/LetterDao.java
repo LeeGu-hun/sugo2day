@@ -125,6 +125,16 @@ public class LetterDao {
 				+ "where l_writer = ? and l_isquest = 'N' order by l_num desc ", 
 					LetterRowMapper, writer);
 		return results;
+	}	
+	
+	// 공개된 전체 글 보기
+	public List<LetterBean> selectLetterPublic() {
+		List<LetterBean> results = jdbcTemplate.query(
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter "
+				+ "where l_isprivate = 'Y' order by l_num desc ", 
+					LetterRowMapper);
+		return results;
 	}
 	
 	// 공개글 설정하기
@@ -156,6 +166,13 @@ public class LetterDao {
 		jdbcTemplate.update(
 				"delete from letter where l_num = ? and l_writer = ? ", num, writer);
 		
+	}
+	
+	// 가장 많이 작성된 퀘스트 글 갯수 구하기
+	public int countHotQL(String questcate) {
+		String sql = "select count(l_questcate) from letter where l_questcate = ? ";
+		int count = jdbcTemplate.queryForObject(sql, Integer.class, questcate);
+		return count;
 	}
 
 }

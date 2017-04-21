@@ -30,7 +30,7 @@ public class LetterController {
 	}
 
 
-	// 전체 글 목록보기
+	// 전체 글 목록보기(Only for me)
 	@RequestMapping(value="letter/myLetter", method=RequestMethod.GET)
 	public String selectDefault(LetterWriteBean Wletter, Model model, HttpSession session) {
 		LetterBean letter = new LetterBean();
@@ -48,7 +48,7 @@ public class LetterController {
 		return "my/myList";
 	}
 	
-	// 일반글 목록보기
+	// 일반글 목록보기(Only for me)
 	@RequestMapping(value="letter/myLetterN", method=RequestMethod.GET)
 	public String selectNormal(LetterWriteBean Wletter, Model model, HttpSession session){
 		LetterBean letter = new LetterBean();
@@ -62,6 +62,19 @@ public class LetterController {
 		
 		return "my/myList";
 	}
+	
+	// 전체 글 보기(For all user, isprivate is = 'y')
+	@RequestMapping("/main")
+	public String ctxMain(HttpSession session, Model model) {				
+		List<LetterBean> letters = letterDao.selectLetterPublic();
+		List<QuestBean> quests = questDao.selectQuestPublic();
+		
+		model.addAttribute("letters", letters);
+		model.addAttribute("quests", quests);
+		
+		return "defaultPage";		
+	}
+	
 	
 		
 }	
