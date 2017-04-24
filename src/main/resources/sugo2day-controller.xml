@@ -21,6 +21,8 @@
 			<mvc:mapping path="/quest/**" />
 			
 			<!-- 그 중에서도 예외로 볼 수 있는 것들 -->
+			<mvc:exclude-mapping path="/letter/Xml**" />
+			
 			<bean class="intercepter.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -84,5 +86,17 @@
 	<bean class="controller.ApiQuestDeleteController">
 		<property name="questDao" ref="questDao" />
 	</bean>
+	
+	
+	<!-- Android APP Controller -->
+	
+	<bean class="controller.XmlLetterListController">
+		<property ref="letterDao" name="letterDao"/>
+	</bean>
+	
+	<bean class="controller.XmlLetterWriteController">
+		<property ref="questDao" name="questDao"/>
+	</bean>
+	
 </beans>	
 	

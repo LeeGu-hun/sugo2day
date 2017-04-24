@@ -108,6 +108,7 @@ public class LetterController {
 		
 	}
 	
+	// HashMap 데이터를 Value 값으로 정렬 후 새로이 TreeMap에 담기
 	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
 		Comparator<K> valueComparator = new Comparator<K>() {
 			@Override
