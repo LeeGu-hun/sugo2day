@@ -11,7 +11,7 @@
         <h1>화제의 퀘스트 3가지 !</h1>
         <hr>
       <c:forEach var="hq" items="${map }" end="2">
-        <span class="text-left lead" style="margin-left: 20px;"><b>&laquo;${hq.value }&raquo; 퀘스트 관련 글이 총 ${hq.key }개 작성되었습니다 !</b></span>
+        <span class="text-left lead" style="margin-left: 20px;"><b>&laquo;${hq.key }&raquo; 퀘스트 관련 글이 총 ${hq.value }개 작성되었습니다 !</b></span>
         <span class="pull-right"><button type="button" class="btn btn-primary btn-xm">퀘스트 확인하기 &raquo;</button></span>
         <hr>
         <div class="divide10"></div>
@@ -64,7 +64,8 @@
       	<c:forEach var="letter" items="${letters}">
       	<c:if test="${letter.l_isquest == 'Y' }">
       	<div class="row" style="background-color: #D6F1FC; border-radius: 5px;">
-      	  <h4 id="content" class="text-right" style="padding: 10px 50px 0 0;">작성자 : ${letter.l_writer }</h4>          
+      	  <h4 class="text-left" style="margin: 10px 0 5px 30px;">퀘스트 : ${letter.l_questcate }</h4>
+      	  <h4 class="text-right" style="padding: 5px 50px 0 0;">작성자 : ${letter.l_writer }</h4>          
 		  <div>
 			<c:if test="${!empty letter.l_files }">
 			<div style="max-width: 350px; margin-left: auto; margin-right: auto;">

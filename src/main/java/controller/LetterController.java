@@ -1,14 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpSession;
@@ -29,7 +25,7 @@ import member.login.AuthInfo;
 public class LetterController {
 	private LetterDao letterDao;
 	private QuestDao questDao;
-
+	
 	public void setLetterDao(LetterDao letterDao) {
 		this.letterDao = letterDao;
 	}
@@ -97,33 +93,35 @@ public class LetterController {
 		}
 		
 		// lCates 와 작성된 횟수를 HashMap에 담기
-		HashMap<Integer, String> map = new HashMap<Integer, String>();
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		for(int i=0; i<tempList.size(); i++) {
-			map.put(maxValues.get(i), tempList.get(i));
-		}		
-		
-		TreeMap<Integer, String> treeMapRev = new TreeMap<Integer, String>(Collections.reverseOrder());
-		treeMapRev.putAll(map);
-		
-		Iterator<Integer> it = treeMapRev.keySet().iterator();
-		Integer key = 0;
-		String value = "";
-		
-		HashMap<Integer, String> hotQ = new HashMap<Integer, String>();
-		
-		while(it.hasNext()) {
-			key = it.next();
-			value = treeMapRev.get(key);
-			
-			System.out.println("key : " + key + ", value : " + value);
-			hotQ.put(key, value);
+			map.put(tempList.get(i), maxValues.get(i));
 		}
 		
+		TreeMap<String, Integer> hotQ = new TreeMap<String, Integer>();
+		hotQ = (TreeMap<String, Integer>) sortByValues(map);
+		
+		System.out.println(hotQ);
 		
 		model.addAttribute("map", hotQ);
 		return "defaultPage";
 		
 	}
 	
-		
+	public static <K, V extends Comparable<V>> Map<K, V> sortByValues(final Map<K, V> map) {
+		Comparator<K> valueComparator = new Comparator<K>() {
+			@Override
+			public int compare(K o1, K o2) {
+				int compare = map.get(o2).compareTo(map.get(o1));
+				if(compare == 0) 
+					return 1;
+				else
+					return compare;
+			}
+		};
+		Map<K, V> sortedByValues = new TreeMap<K, V>(valueComparator);
+		sortedByValues.putAll(map);
+		return sortedByValues;
+	}	
+	
 }	
