@@ -174,7 +174,6 @@ public class LetterDao {
 	public void deleteL(int num, String writer) {
 		jdbcTemplate.update(
 				"delete from letter where l_num = ? and l_writer = ? ", num, writer);
-		
 	}
 	
 	// 가장 많이 작성된 퀘스트 글 갯수 구하기
@@ -189,7 +188,6 @@ public class LetterDao {
 		String sql = "select distinct l_questcate from letter where l_isquest = 'Y' ";
 		List<Map<String,Object>> results = jdbcTemplate.queryForList(sql);
 		return results;
-	}
+	}	
 	
-
 }

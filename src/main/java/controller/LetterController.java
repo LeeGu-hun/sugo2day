@@ -86,12 +86,21 @@ public class LetterController {
 				tempList.add(entry.getValue().toString());				
 			}
 		}		
+		
+		System.out.println("########## tempList 값 확인 ############");		
+		for(int i=0; i<tempList.size(); i++) {
+			System.out.println(tempList.get(i));
+		}
 		// 각각의 퀘스트 관련글이 작성된 횟수 저장
 		List<Integer> maxValues = new ArrayList<Integer>(); 
 		for(int i=0; i<tempList.size(); i++) {
 			maxValues.add(letterDao.countHotQL(tempList.get(i)));
 		}
 		
+		System.out.println("########## maxValues 값 확인 #############");
+		for(int i=0; i<maxValues.size(); i++) {
+			System.out.println(maxValues.get(i));
+		}
 		// lCates 와 작성된 횟수를 HashMap에 담기
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
 		for(int i=0; i<tempList.size(); i++) {

@@ -23,7 +23,7 @@ public class XmlLetterListController {
 	// Letter List 보기 부분 XML Parse
 	@RequestMapping(value="/letter/XmlLetterList", method=RequestMethod.GET, 
 			produces= "application/xml")
-	public @ResponseBody List<LetterBean> getLetterListXml (HttpSession session) {
+	public @ResponseBody List<LetterBean> getLetterListXml() {
 			
 		/*AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		List<LetterBean> letterBean = letterDao.selectAll(authInfo.getName());*/

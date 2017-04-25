@@ -98,5 +98,12 @@
 		<property ref="questDao" name="questDao"/>
 	</bean>
 	
+	<bean class="controller.XmlQuestListController">
+		<property ref="questDao" name="questDao"/>
+	</bean>
+	
+	<bean class="controller.XmlQuestWriteController">
+		<property ref="questDao" name="questDao"/>
+	</bean>
 </beans>	
 	
