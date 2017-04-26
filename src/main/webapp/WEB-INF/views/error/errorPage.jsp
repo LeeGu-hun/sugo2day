@@ -7,20 +7,17 @@
 <% String cp = request.getContextPath(); %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
 
 <!--  5초 뒤 메인으로 이동 -->
 <meta http-equiv="refresh" content="500; url=<c:url value='/letter/myLetter'/>">
 
+<title>수고했어, 오늘도!</title>
 
-<title>Insert title here</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="<%=cp%>/resources/bootstrap/css/else/successPage.css"

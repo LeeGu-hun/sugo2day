@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bean.MemberBean;
 import dao.MemberDao;
+import exception.AlreadyExistPasswordException;
 import exception.MemberNotFoundException;
 
 public class ChangePasswordService {
@@ -19,6 +20,9 @@ public class ChangePasswordService {
 		if(member == null) {
 			throw new MemberNotFoundException();
 		} 
+		if(oldPwd.equals(cfnNewPwd)) {
+			throw new AlreadyExistPasswordException();
+		}
 		
 		member.changePassword(oldPwd, cfnNewPwd);
 		memberDao.update(member);

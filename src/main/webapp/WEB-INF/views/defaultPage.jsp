@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>수고했어, 오늘도</title>
+<title>수고했어, 오늘도!</title>
 <!-- Bootstrap -->
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -58,6 +58,10 @@
 									<li><a
 										href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
 											<i class="fa fa-lock"></i> ChangePW
+									</a></li>
+									<li><a
+										href="javascript:void(window.open('<c:url value='/edit/withDrawAgree' />', '_blank', 'width=400, height=450'))">
+											<i class="fa fa-lock"></i> Withdraw
 									</a></li>
 								</c:if>
 							</ul>

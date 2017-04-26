@@ -79,9 +79,12 @@ public class MemberDao {
 	}
 	
 	// 회원 정보 삭제 (member.manage)
+	@Transactional
 	public void delete(MemberBean member) {
 		jdbcTemplate.update("delete from member where email = ? ",
 				member.getEmail());
+		jdbcTemplate.update("delete from letter where l_writer = ? ", member.getName());
+		jdbcTemplate.update("delete from quest where q_writer = ? ", member.getName());
 	}
 			
 }

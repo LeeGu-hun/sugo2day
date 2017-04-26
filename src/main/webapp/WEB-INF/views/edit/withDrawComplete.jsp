@@ -13,30 +13,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--  5초 뒤 메인으로 이동 -->
-<meta http-equiv="refresh" content="5; url=<c:url value='/'/>">
+<!--  5초 뒤 자동으로 창 닫기 -->
+<script type='text/javascript'>
+     opener=self;
+     setTimeout('self.close()',5000);
+</script>
 
-<title>수고했어, 오늘도!</title>
+<title>회원 탈퇴</title>
+
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="<%=cp%>/resources/bootstrap/css/else/successPage.css"
 	rel="stylesheet">
 </head>
-<body>
+<body onLoad="setTimeout('window.close()', 5000);">
 	<div class="site-wrapper">
 		<div class="site-wrapper-inner">
 			<div class="cover-container">
 				<div class="inner cover">
-					<h1 class="cover-heading">가입 성공</h1>
-					<br>
-					<p class="lead">
-						<spring:message code="register.done" arguments="${registerRequest.name }" />
-					</p>	
-					<p class="lead">5초 후, 자동으로 메인 페이지로 이동합니다.</p>
+					<h1 class="cover-heading">회원 탈퇴 완료</h1>
+					<h4 class="warining">작성하신 모든 게시글이 삭제되었습니다.</h4>
+					<h3 class="primary">지금까지 서비스를 이용해 주셔서 감사합니다.</h3>
+					<p class="lead">5초 후, 자동으로 창이 닫힙니다.</p>
 					<br>
 					<br>
 					<p class="lead">
-						<a href="<c:url value='/'/>" class="btn btn-lg btn-default">즉시 이동</a>
+						<a href="#" class="btn btn-lg btn-default" onclick="window.close();">즉시 닫기</a>
 					</p>
 				</div>
 			</div>

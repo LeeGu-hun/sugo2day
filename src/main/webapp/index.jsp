@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>수고했어, 오늘도!</title>
 </head>
 <body>
 <!--  sugo2day-controller 에서 /main 을 defaultPage로 매핑 했으므로 

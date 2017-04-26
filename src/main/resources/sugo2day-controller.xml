@@ -16,6 +16,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- 로그인이 안되면 볼 수 없는 것들 -->
+			<mvc:mapping path="/edit/**"/>
 			<mvc:mapping path="/my/**" />
 			<mvc:mapping path="/letter/**" />
 			<mvc:mapping path="/quest/**" />
@@ -43,6 +44,10 @@
 	
 	<bean class="controller.ChangePwdController">
 		<property name="changePasswordService" ref="changePwdSvc" />
+	</bean>
+	
+	<bean class="controller.WithDrawController">
+		<property name="memberDao" ref="memberDao" />
 	</bean>
 	
 	<!-- Letter Controller -->

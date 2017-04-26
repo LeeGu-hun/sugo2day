@@ -9,20 +9,13 @@
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- Title 왼쪽 아이콘 삽입 -->
-<!-- 
-    <link rel="icon" href="../../favicon.ico">
-	 -->
 
-<title>Insert title here</title>
+<title>수고했어, 오늘도!</title>
 <link href="<%=cp%>/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- font awesome for icons -->
@@ -124,6 +117,8 @@ body {
 							<li><a
 								href="javascript:void(window.open('<c:url value='/edit/changePassword' />', '_blank', 'width=350, height=400'))">
 									<i class="fa fa-lock"></i> ChangePW</a></li>
+							<li><a href="javascript:void(window.open('<c:url value='/edit/withDrawAgree' />', '_blank', 'width=400, height=450'))">
+							<i class="fa fa-lock"></i> Withdraw</a></li>		
 							
 						</c:if>
 					</ul>
@@ -172,20 +167,23 @@ body {
 			<label for="inputEmail" class="sr-only">Email address</label>
 			<form:input path="email" id="inputEmail" class="form-control"
 				placeholder="Email address" />
-			<form:errors path="email" />
+			<div class="error-message">
+				<span class="label label-danger label-large"><form:errors path="email" /></span>
+			</div>
 
 			<label for="inputPassword" class="sr-only">Password</label>
 			<form:password path="password" id="inputPassword"
 				class="form-control" placeholder="Password" />
+			<div class="error-message">
+				<span class="label label-danger label-large"><form:errors /></span>
+			</div>	
 
 			<div class="checkbox">
 				<label> <form:checkbox path="rmbEmail" /> Remember me
 				</label>
 			</div>
 
-			<div class="error-message">
-				<span class="label label-danger label-large"><form:errors /></span>
-			</div>
+			
 
 			<button class="btn btn-primary btn-block" type="submit">Login</button>
 		</form:form>

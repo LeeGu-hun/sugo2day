@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import exception.AlreadyExistPasswordException;
 import exception.IdPasswordNotMatchingException;
 import member.edit.ChangePasswordService;
 import member.edit.ChangePwdCommand;
@@ -39,6 +40,9 @@ public class ChangePwdController {
 		try {
 			changePasswordService.changePassword(authInfo.getEmail(), pwdCmd.getCurrentPassword(), pwdCmd.getConfirmNewPassword());
 			return "edit/changePwdSuccess";
+		} catch (AlreadyExistPasswordException ep){
+			errors.rejectValue("currentPassword", "samePassword");
+			return "edit/changePwdForm";
 		} catch (IdPasswordNotMatchingException e) {
 			errors.rejectValue("currentPassword", "notMatching");
 			return "edit/changePwdForm";
