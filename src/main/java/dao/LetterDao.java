@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import bean.LetterBean;
 import bean.LetterWriteBean;
-import bean.QuestBean;
+import xml.Data;
 
 public class LetterDao {
 	private JdbcTemplate jdbcTemplate;
@@ -50,6 +50,24 @@ public class LetterDao {
 		@Override
 		public LetterBean mapRow(ResultSet rs, int rowNum) throws SQLException {
 			LetterBean letter = new LetterBean(rs.getString("l_questcate"));
+			return letter;
+		}
+	};
+	
+	// DataRowMapper
+	private RowMapper<Data> DataRowMapper = new RowMapper<Data>() {
+		@Override
+		public Data mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Data letter = new Data(
+					rs.getInt("l_num"),
+					rs.getString("l_writer"),
+					rs.getString("l_content"),
+					rs.getString("l_files"), 
+					rs.getString("l_regdate"),
+					rs.getString("l_isquest"),
+					rs.getString("l_isprivate"),
+					rs.getString("l_questcate")
+					);
 			return letter;
 		}
 	};
@@ -143,6 +161,16 @@ public class LetterDao {
 				+ "l_isquest, l_isprivate, l_questcate from letter "
 				+ "where l_isprivate = 'Y' order by l_num desc ", 
 					LetterRowMapper);
+		return results;
+	}
+	
+	// 공개된 전체 글 보기
+	public List<Data> selectDataPublic() {
+		List<Data> results = jdbcTemplate.query(
+				"select l_num, l_writer, l_content, l_files, to_char(l_regdate, 'YYYY-MM-DD HH24:MI:SS') as l_regdate, "
+				+ "l_isquest, l_isprivate, l_questcate from letter "
+				+ "where l_isprivate = 'Y' order by l_num desc ", 
+					DataRowMapper);
 		return results;
 	}
 	
