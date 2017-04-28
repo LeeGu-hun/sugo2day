@@ -190,14 +190,32 @@
 		
 		
 		
-		<footer id="footer">
+		<footer id="footer" style="padding: 20px 0 0;">
 			<div class="container">
-
-
+				<div class="row">
+					<div class="col-md-12 text-left">
+						<span class="lead">Project Name : 수고했어, 오늘도!</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-left">
+						<span class="lead">Team Name : sugo2day</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-left">
+						<span class="lead">Member : JJH, SHS, KKJ, JSB</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-left">
+						<span class="lead">Contact US : None</span>
+					</div>
+				</div>					
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer-btm">
-							<span>&copy;2017. Theme by Design_mylife</span>
+							<span>&copy;2017. 04. 27. Team sugo2day</span>
 						</div>
 					</div>
 				</div>

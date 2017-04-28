@@ -68,7 +68,7 @@ public class LetterController {
 		return "my/myList";
 	}
 	
-	// 전체 글 보기(For all user, isprivate is = 'y')
+	// 전체 글 보기(For all user, isprivate is = 'Y')
 	@RequestMapping("/main")
 	public String ctxMain(HttpSession session, Model model) {				
 		List<LetterBean> letters = letterDao.selectLetterPublic();

@@ -16,6 +16,8 @@ function questToggle() {
 			$("#qlist-space").addClass("hidden");
 			$("#datepick-div").removeClass("show");
 			$("#datepick-div").addClass("hidden");
+			$('#warn-msg-div').removeClass("show");
+			$('#warn-msg-div').addClass("hidden");
 		}
 		
 }

@@ -35,8 +35,8 @@ public class XmlLetterListController {
 			
 		return letterBean; 
 	}
-	// /login 주소에 GET 방식으로 접근 할 시
 	
+	// /login 주소에 GET 방식으로 접근 할 시
 	@RequestMapping(value="/GetXmlLetter", method = RequestMethod.GET, produces="application/xml")
 	public String form(Model model) {
 		List<LetterBean> letterBean = letterDao.selectLetterPublic();

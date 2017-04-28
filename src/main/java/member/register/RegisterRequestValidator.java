@@ -10,16 +10,19 @@ import org.springframework.validation.Validator;
 import member.register.RegisterRequest;
 
 public class RegisterRequestValidator implements Validator {
+	// email 형식만 허용하는 정규식 패턴
 	private static final String emailRegExp = 
 			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
 			"[A-Za-z0-9-]+(\\A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private Pattern pattern;
 	
+	// YYYY-MM-DD 형식만 허용하는 정규식 패턴
 	private static final String birthdayRegExp = 
 			"^([1-2]{1}[0-9]{1,3})-([0-1]{1}[0-9]{1,2})-([0-2]{1}[0-9]{1,2}|30|31)$";
 	
 	private Pattern pattern2;
 	
+	// male, female 만 허용하는 정규식 패턴
 	private static final String genderRegExp =
 			"^(male|female)$";
 	

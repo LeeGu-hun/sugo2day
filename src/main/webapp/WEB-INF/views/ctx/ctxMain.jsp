@@ -11,8 +11,9 @@
         <h1>화제의 퀘스트 3가지 !</h1>
         <hr>
       <c:forEach var="hq" items="${map }" end="2">
-        <span class="text-left lead" style="margin-left: 20px;"><b>&laquo;${hq.key }&raquo; 퀘스트 관련 글이 총 ${hq.value }개 작성되었습니다 !</b></span>
-        <span class="pull-right"><button type="button" class="btn btn-primary btn-xm">퀘스트 확인하기 &raquo;</button></span>
+        <span class="text-left lead" style="margin-left: 20px;">
+        <b>&laquo;${hq.key }&raquo; 퀘스트 관련 글이 총 ${hq.value }개 작성되었습니다 !</b>
+        </span>        
         <hr>
         <div class="divide10"></div>
       </c:forEach> 

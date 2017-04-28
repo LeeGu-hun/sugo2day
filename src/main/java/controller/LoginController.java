@@ -42,12 +42,12 @@ public class LoginController {
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String submit(LoginCommand loginCommand, Errors errors,
 			HttpSession session, HttpServletResponse response) {
+		
 		new LoginCommandValidator().validate(loginCommand, errors);
 		
 		if(errors.hasErrors()) {
 			return "login/loginForm";
 		}
-		
 		try {
 			AuthInfo authInfo = authService.authenticate(loginCommand.getEmail(), loginCommand.getPassword());
 			session.setAttribute("authInfo", authInfo);
