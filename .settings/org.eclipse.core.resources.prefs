@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/message/label.properties=UTF-8
+encoding/<project>=UTF-8
 encoding/DB\uC124\uACC4=UTF-8
+encoding/Query.sql=UTF-8
 encoding/ReadMe=UTF-8
 separateDerivedEncodings=true
